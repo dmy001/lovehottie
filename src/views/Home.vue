@@ -1,6 +1,11 @@
 <template>
   <div class="home">
     <div class="sectionBox section1">
+      <div>
+      <button @click="showRegister">注册</button>
+      <button @click="showLogin">登录</button>
+      <button @click="closeLoginBox">关闭登录框</button>
+    </div>
        <div class="titleBox">
           <div class="title">
              跨越语言， 向世界SayHi
@@ -38,12 +43,8 @@
     </div>
     </div>
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-    <div>
-      <button @click="showRegister">注册</button>
-      <button @click="showLogin">登录</button>
-      <button @click="closeLoginBox">关闭登录框</button>
-    </div>
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+    
     <Login v-if="loginState" />
     <Register v-if="registerState" />
   </div>
@@ -51,7 +52,7 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+// import HelloWorld from "@/components/HelloWorld.vue";
 import Login from "@components/index/Login.vue";
 import Register from "@components/index/Register.vue";
 
@@ -64,7 +65,7 @@ export default {
     };
   },
   components: {
-    HelloWorld,
+    // HelloWorld,
     Login,
     Register,
   },
