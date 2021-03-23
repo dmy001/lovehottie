@@ -1,51 +1,33 @@
 <template>
   <div class="home">
+    <Header @showLogin="showLogin" @showRegister="showRegister" />
     <div class="sectionBox section1">
-      <div>
-      <button @click="showRegister">注册</button>
-      <button @click="showLogin">登录</button>
-      <button @click="closeLoginBox">关闭登录框</button>
-    </div>
-       <div class="titleBox">
-          <div class="title">
-             跨越语言， 向世界SayHi
-          </div>
-       </div>
+      <div class="titleBox">
+        <div class="title">跨越语言， 向世界SayHi</div>
+      </div>
     </div>
     <div class="section">
-        <div class="sectionBox section2">
-        
-    </div>
-    </div>
-       <div class="section">
-        <div class="sectionBox section3">
-       
-    </div>
+      <div class="sectionBox section2"></div>
     </div>
     <div class="section">
-        <div class="sectionBox section4">
-       
-    </div>
-    </div>
-      <div class="section">
-        <div class="sectionBox section5">
-       
-    </div>
+      <div class="sectionBox section3"></div>
     </div>
     <div class="section">
-        <div class="sectionBox section6">
-       
-    </div>
+      <div class="sectionBox section4"></div>
     </div>
     <div class="section">
-        <div class="sectionBox section7">
-       
+      <div class="sectionBox section5"></div>
     </div>
+    <div class="section">
+      <div class="sectionBox section6"></div>
+    </div>
+    <div class="section">
+      <div class="sectionBox section7"></div>
     </div>
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
-    
-    <Login v-if="loginState" />
+
+    <Login v-if="loginState" @closeBox="closeLoginBox" />
     <Register v-if="registerState" />
   </div>
 </template>
@@ -55,6 +37,7 @@
 // import HelloWorld from "@/components/HelloWorld.vue";
 import Login from "@components/index/Login.vue";
 import Register from "@components/index/Register.vue";
+import Header from "@components/index/Header.vue";
 
 export default {
   name: "Home",
@@ -68,6 +51,7 @@ export default {
     // HelloWorld,
     Login,
     Register,
+    Header,
   },
   methods: {
     showLogin() {
@@ -86,7 +70,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.home{
+.home {
   width: 100%;
   overflow: hidden;
 }
@@ -96,36 +80,37 @@ export default {
   overflow: hidden;
 }
 .section1 {
-  background: url(https://sources.gagahi.com/zh_CN_bg111.jpg) center center no-repeat;
+  background: url(https://sources.gagahi.com/zh_CN_bg111.jpg) center center
+    no-repeat;
   background-size: 1920px 969px;
 }
-.section{
+.section {
   display: table;
   table-layout: fixed;
   width: 100%;
 }
-.section2{
-  background: url('../assets/image/zh_CN_bg2.jpg') center center no-repeat;
+.section2 {
+  background: url("../assets/image/zh_CN_bg2.jpg") center center no-repeat;
   background-size: 1920px 969px;
 }
-.section3{
-  background: url('../assets/image/zh_CN_bg3.jpg') center center no-repeat;
+.section3 {
+  background: url("../assets/image/zh_CN_bg3.jpg") center center no-repeat;
   background-size: 1920px 969px;
 }
-.section4{
-  background: url('../assets/image/zh_CN_bg4.jpg') center center no-repeat;
+.section4 {
+  background: url("../assets/image/zh_CN_bg4.jpg") center center no-repeat;
   background-size: 1920px 969px;
 }
-.section5{
-  background: url('../assets/image/section_live.jpg') center center no-repeat;
+.section5 {
+  background: url("../assets/image/section_live.jpg") center center no-repeat;
   background-size: 1920px 969px;
 }
-.section6{
-  background: url('../assets/image/zh_CN_bg5.jpg') center center no-repeat;
+.section6 {
+  background: url("../assets/image/zh_CN_bg5.jpg") center center no-repeat;
   background-size: 1920px 969px;
 }
-.section7{
-  background: url('../assets/image/zh_CN_bg6.jpg') center center no-repeat;
+.section7 {
+  background: url("../assets/image/zh_CN_bg6.jpg") center center no-repeat;
   background-size: 1920px 969px;
 }
 </style>
