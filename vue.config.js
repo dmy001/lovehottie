@@ -1,7 +1,7 @@
 const path = require('path')
 module.exports = {
 
-  publicPath: '/test',
+  publicPath: '/',
   outputDir: 'buildPackage',
   chainWebpack: config => {
     const oneOfsMap = config.module.rule('scss').oneOfs.store
@@ -11,7 +11,11 @@ module.exports = {
         .loader('sass-resources-loader')
         .options({
           // Provide path to the file with resources
-          resources: './src/assets/css/common/variables.scss',
+          resources: [
+                        './src/assets/css/common/variables.scss',
+                        './src/assets/css/common/common.scss',
+
+          ]
  
           // Or array of paths
           // resources: ['./path/to/vars.scss', './path/to/mixins.scss', './path/to/functions.scss']
@@ -23,5 +27,6 @@ module.exports = {
       .set('@src', path.resolve(__dirname, 'src'))
       .set('@assets', path.resolve(__dirname, 'src/assets'))
       .set('@images', path.resolve(__dirname, './src/assets/images'))
+      .set('@components', path.resolve(__dirname, './src/components/'))
   }
 }

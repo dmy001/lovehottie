@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div id="hello">
     <h1 class="blue">{{ msg }}</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "HelloWorl",
   props: {
     msg: String,
   },
@@ -16,8 +16,4 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 $blue: #333333;
-
-.blue {
-  color: $red;
-}
 </style>
