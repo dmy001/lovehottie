@@ -37,7 +37,16 @@ export default {
   left: 50%;
   transform: translate(-50%);
   z-index: $zIndexMax;
-
+  font-size: $font14;
+  .head-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    img {
+      margin-right: 20px;
+    }
+  }
   .head-right {
     display: flex;
     .btn-control {
@@ -52,7 +61,6 @@ export default {
         outline: none;
         cursor: pointer;
         color: #ffffff;
-        font-size: 14px;
         font-weight: bold;
       }
     }

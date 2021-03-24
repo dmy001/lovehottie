@@ -3,11 +3,6 @@
     <Header @showLogin="showLogin" @showRegister="showRegister" />
     <div class="sectionBox section1">
       <div class="content">
-        <div>
-          <button @click="showRegister">注册</button>
-          <button @click="showLogin">登录</button>
-          <button @click="closeLoginBox">关闭登录框</button>
-        </div>
         <div class="titleBox">
           <div class="title">跨越语言， 向世界SayHi</div>
           <div class="titleText">GaGa拥有来自100多个国家的注册会员</div>
@@ -23,22 +18,22 @@
           <div class="titleText">进入GaGaHi的世界，结识更多异国朋友……</div>
         </div>
         <img
-          src="https://s.gagahi.com/web-pc//images/new_index/page2_1.png"
+          :src="baseURI + '/images/new_index/page2_1.png'"
           alt=""
           class="page2_1"
         />
         <img
-          src="https://s.gagahi.com/web-pc//images/new_index/page2_2.png"
+          :src="baseURI + '/images/new_index/page2_2.png'"
           alt=""
           class="page2_2"
         />
         <img
-          src="https://s.gagahi.com/web-pc//images/new_index/page2_3.png"
+          :src="baseURI + '/images/new_index/page2_3.png'"
           alt=""
           class="page2_3"
         />
         <img
-          src="https://s.gagahi.com/web-pc//images/new_index/page2_5.png"
+          :src="baseURI + '/images/new_index/page2_5.png'"
           alt=""
           class="page2_5"
         />
@@ -51,12 +46,12 @@
           <div class="titleText">在线即时聊天，畅想国际化多语种沟通乐趣</div>
         </div>
         <img
-          src="https://s.gagahi.com/web-pc//images/new_index/page3_2.png"
+          :src="baseURI + '/images/new_index/page3_2.png'"
           alt=""
           class="page3_2"
         />
         <img
-          src="https://s.gagahi.com/web-pc//images/new_index/page3_1.png"
+          :src="baseURI + '/images/new_index/page3_1.png'"
           alt=""
           class="page3_1"
         />
@@ -69,12 +64,12 @@
           <div class="titleText">朋友圈国际化、无限大，让世界变得触手可及</div>
         </div>
         <img
-          src="https://s.gagahi.com/web-pc//images/new_index/page3_2.png"
+          :src="baseURI + '/images/new_index/page3_2.png'"
           alt=""
           class="page3_2"
         />
         <img
-          src="https://s.gagahi.com/web-pc//images/new_index/page3_1.png"
+          :src="baseURI + '/images/new_index/page3_1.png'"
           alt=""
           class="page3_1"
         />
@@ -89,18 +84,9 @@
           </div>
         </div>
         <div class="live_list">
-          <img
-            src="https://s.gagahi.com/web-pc//images/new_index/page_live_1.png"
-            alt=""
-          />
-          <img
-            src="https://s.gagahi.com/web-pc//images/new_index/page_live_2.png"
-            alt=""
-          />
-          <img
-            src="https://s.gagahi.com/web-pc//images/new_index/page_live_3.png"
-            alt=""
-          />
+          <img :src="baseURI + '/images/new_index/page_live_1.png'" alt="" />
+          <img :src="baseURI + '/images/new_index/page_live_2.png'" alt="" />
+          <img :src="baseURI + '/images/new_index/page_live_3.png'" alt="" />
         </div>
       </div>
     </div>
@@ -112,26 +98,26 @@
         </div>
         <div class="GaGa_box">
           <img
-            src="https://s.gagahi.com/web-pc//images/new_index/page5_1.png"
+            :src="baseURI + '/images/new_index/page5_1.png'"
             alt=""
             class="section5_logo"
           />
           GaGa
           <img
-            src="https://s.gagahi.com/web-pc//images/new_index/page5_1_1.png"
+            :src="baseURI + '/images/new_index/page5_1_1.png'"
             alt=""
             class="section5_tip"
           />
         </div>
         <div class="GaGa_box">
           <img
-            src="https://s.gagahi.com/web-pc//images/new_index/page5_1.png"
+            :src="baseURI + '/images/new_index/page5_1.png'"
             alt=""
             class="section5_logo"
           />
           GaGa
           <img
-            src="https://s.gagahi.com/web-pc//images/new_index/page5_1_1.png"
+            :src="baseURI + '/images/new_index/page5_1_1.png'"
             alt=""
             class="section5_tip"
           />
@@ -139,7 +125,7 @@
       </div>
     </div>
     <div class="sectionBox section7"></div>
-    <Login v-if="loginState" />
+    <Login v-if="loginState" @closeBox="closeLoginBox" />
     <Register v-if="registerState" />
   </div>
 </template>
@@ -155,6 +141,7 @@ export default {
     return {
       loginState: false,
       registerState: false,
+      baseURI: process.env.VUE_APP_STATICURI,
     };
   },
   components: {
