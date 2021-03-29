@@ -8,7 +8,7 @@
           <div class="titleText">GaGa拥有来自100多个国家的注册会员</div>
           <div class="titleText">是聊天，交友，分享趣事的绝佳平台</div>
         </div>
-        <div class="bottom_index"></div>
+        <div class="bottom_index" @click="nextPage"></div>
       </div>
     </div>
     <div class="sectionBox section2">
@@ -63,16 +63,41 @@
           <div class="title">让他们了解你</div>
           <div class="titleText">朋友圈国际化、无限大，让世界变得触手可及</div>
         </div>
-        <img
-          :src="STATICBASEURI + '/images/new_index/page3_2.png'"
-          alt=""
-          class="page3_2"
-        />
-        <img
-          :src="STATICBASEURI + '/images/new_index/page3_1.png'"
-          alt=""
-          class="page3_1"
-        />
+        <div class="swiper-container topBanner" ref="topBanner">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img
+                class="page4_1"
+                :src="STATICBASEURI + '/images/new_index/page4_1.png'"
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                class="page4_2"
+                :src="STATICBASEURI + '/images/new_index/page4_2.png'"
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                class="page4_3"
+                :src="STATICBASEURI + '/images/new_index/page4_3.png'"
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                class="page4_4"
+                :src="STATICBASEURI + '/images/new_index/page4_4.png'"
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                class="page4_5"
+                :src="STATICBASEURI + '/images/new_index/page4_5.png'"
+              />
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
       </div>
     </div>
     <div class="sectionBox section5">
@@ -118,22 +143,91 @@
             class="section5_tip"
           />
         </div>
-        <div class="GaGa_box">
+        <div class="Game_box">
           <img
-            :src="STATICBASEURI + '/images/new_index/page5_1.png'"
+            :src="STATICBASEURI + '/images/new_index/page5_2.png'"
             alt=""
             class="section5_logo"
           />
-          GaGa
+          Game
           <img
-            :src="STATICBASEURI + '/images/new_index/page5_1_1.png'"
+            :src="STATICBASEURI + '/images/new_index/page5_2_2.png'"
             alt=""
             class="section5_tip"
           />
         </div>
+        <div class="Travel_box">
+          <img
+            class="section5_logo"
+            :src="STATICBASEURI + '/images/new_index/page5_3.png'"
+          />
+          Travel
+          <img
+            class="section5_tip"
+            style="left: -95px; width: 325px; margin-top: 10px"
+            :src="STATICBASEURI + '/images/new_index/page5_3_3.png'"
+          />
+        </div>
+        <div class="Love_box">
+          <img
+            class="section5_logo"
+            :src="STATICBASEURI + '/images/new_index/page5_4.png'"
+          />
+          Love
+          <img
+            class="section5_tip"
+            style="left: -138px; width: 368px; top: 0"
+            :src="STATICBASEURI + '/images/new_index/page5_4_4.png'"
+          />
+        </div>
+        <div class="Explore_box">
+          <img
+            class="section5_logo"
+            :src="STATICBASEURI + '/images/new_index/page5_5.png'"
+          />
+          Explore
+          <img
+            class="section5_tip"
+            style="width: 504px"
+            :src="STATICBASEURI + '/images/new_index/page5_5_5.png'"
+          />
+        </div>
       </div>
     </div>
-    <div class="sectionBox section7"></div>
+    <div class="sectionBox section7">
+      <div class="login_box">
+        <img
+          :src="STATICBASEURI + '/images/new_index/zh_CN_page6_88.png'"
+          alt=""
+          class="section6_iphone"
+        />
+        <div class="download">
+          <div class="download_code">
+            <img
+              :src="STATICBASEURI + '/images/new_index/page6_1.jpg'"
+              style="margin-top: 10px"
+            />
+          </div>
+          <div class="download_text">手机扫码下载</div>
+          <a
+            id="apkUrl"
+            href="https://s.gagahi.com/web-common/app/Android/download/GaGaV2.7.9.apk"
+            target="blank"
+            ><img
+              class="dow_btn"
+              style="margin: 20px 0"
+              :src="STATICBASEURI + '/images/new_index/page6_3.png'"
+          /></a>
+          <a
+            href="https://itunes.apple.com/cn/app/gaga-ga-ga-kua-yue-yu-yan/id1051978194?mt=8"
+            target="blank"
+            ><img
+              class="dow_btn"
+              :src="STATICBASEURI + '/images/new_index/page6_4.png'"
+          /></a>
+        </div>
+      </div>
+    </div>
     <Login v-if="loginState" @closeBox="closeLoginBox" />
     <Register v-if="registerState" />
   </div>
@@ -171,6 +265,32 @@ export default {
       this.registerState = false;
       this.loginState = false;
     },
+    // 轮播
+    newbannerInit() {
+      let self = this;
+      self.$nextTick(function () {
+        const topSwiper = new window.Swiper(".topBanner", {
+          autoplay: {
+            delay: 1500,
+          },
+          slidesPerView: 5,
+          spaceBetween: 0,
+          centeredSlides: true,
+          loop: true
+        });
+        self.topSwiper = topSwiper;
+      });
+    },
+   nextPage() {
+    window.scrollTo({
+      'top': 969,
+      'behavior': 'smooth'
+      })
+   } 
+   
+  },
+  created() {
+    this.newbannerInit();
   },
 };
 </script>
@@ -178,6 +298,7 @@ export default {
 .home {
   width: 100%;
   overflow: hidden;
+  min-width: 1200px;
   .sectionBox {
     height: 969px;
     width: 100%;
@@ -299,6 +420,10 @@ export default {
     background: url("~@images/index/zh_CN_bg4.jpg") center center no-repeat;
     background-size: 1920px 969px;
     .content {
+      width: 1200px;
+      margin: 0 auto;
+      height: 969px;
+      position: relative;
       .page3_2 {
         position: absolute;
         top: 365px;
@@ -309,6 +434,19 @@ export default {
         position: absolute;
         bottom: 160px;
         right: 268px;
+        opacity: 1;
+      }
+      .swiper-container {
+        width: 1580px;
+        left: -190px;
+        top: 80px;
+      }
+      .swiper-slide {
+        opacity: 0.5;
+      }
+      .swiper-slide-active,
+      .swiper-slide-next,
+      .swiper-slide-prev {
         opacity: 1;
       }
     }
@@ -335,6 +473,27 @@ export default {
     background-size: 1920px 969px;
     .content {
       text-align: center;
+      .section5_logo {
+        margin-bottom: 15px;
+        cursor: pointer;
+        width: 100%;
+      }
+      .section5_tip {
+        position: relative;
+        left: -190px;
+        bottom: 20px;
+        z-index: 99;
+        display: none;
+        opacity: 0;
+      }
+      @keyframes section5_tip {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
       .GaGa_box {
         width: 185px;
         position: absolute;
@@ -354,25 +513,90 @@ export default {
           opacity: 1;
         }
       }
+
       .GaGa_box:hover .section5_logo {
         transform: translateZ(0) scale(1.1);
       }
       .GaGa_box:hover .section5_tip {
         position: relative;
         left: -160px;
-        display: block;
+        display: inline;
         width: 504px;
         animation-name: section5_tip;
         animation-duration: 1s;
         bottom: 10px;
       }
-      @keyframes section5_tip {
-        0% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
+      .Game_box {
+        width: 120px;
+        top: 270px;
+        left: 230px;
+        position: absolute;
+      }
+      .Game_box:hover .section5_logo {
+        transform: translateZ(0) scale(1.1);
+      }
+      .Game_box:hover .section5_tip {
+        position: relative;
+        left: -190px;
+        display: inline;
+        width: 504px;
+        animation-name: section5_tip;
+        animation-duration: 1s;
+        bottom: 10px;
+      }
+      .Travel_box {
+        width: 130px;
+        top: 435px;
+        left: 850px;
+        position: absolute;
+      }
+      .Travel_box:hover .section5_logo {
+        transform: translateZ(0) scale(1.1);
+      }
+      .Travel_box:hover .section5_tip {
+        position: relative;
+        left: -95px;
+        display: inline;
+        width: 325px;
+        animation-name: section5_tip;
+        animation-duration: 1s;
+        // bottom: 10px;
+      }
+      .Love_box {
+        width: 90px;
+        top: 293px;
+        left: 973px;
+        position: absolute;
+      }
+      .Love_box:hover .section5_logo {
+        transform: translateZ(0) scale(1.1);
+      }
+      .Love_box:hover .section5_tip {
+        position: relative;
+        left: -138px;
+        display: inline;
+        width: 368px;
+        animation-name: section5_tip;
+        animation-duration: 1s;
+        // bottom: 10px;。
+      }
+      .Explore_box {
+        width: 120px;
+        top: 470px;
+        left: 120px;
+        position: absolute;
+      }
+      .Explore_box:hover .section5_logo {
+        transform: translateZ(0) scale(1.1);
+      }
+      .Explore_box:hover .section5_tip {
+        position: relative;
+        left: -190px;
+        display: inline;
+        width: 504px;
+        animation-name: section5_tip;
+        animation-duration: 1s;
+        // bottom: 10px;
       }
     }
   }
@@ -380,6 +604,29 @@ export default {
   .section7 {
     background: url("~@images/index/zh_CN_bg6.jpg") center center no-repeat;
     background-size: 1920px 969px;
+    .login_box {
+      width: 1200px;
+      margin: 0 auto;
+      height: 969px;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      .section6_iphone {
+        margin-top: 118px;
+        width: 338px;
+        height: 690px;
+      }
+      .download {
+        display: flex;
+        flex-direction: column;
+        margin-left: 132px;
+        margin-top: 210px;
+        .download_text {
+          color: #fff;
+          margin: 20px 0;
+        }
+      }
+    }
   }
 }
 </style>
