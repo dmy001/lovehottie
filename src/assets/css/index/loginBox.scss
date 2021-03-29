@@ -54,6 +54,7 @@
         padding: 0 4px;
         background: $inputBgColor;
         text-indent: 14px;
+        outline: none;
       }
     }
 
@@ -63,12 +64,12 @@
         height: 38px;
         border-radius: 18px;
         text-align: center;
-        border: 1px solid $baseBlue;
+        border: 1px solid $btnColor;
         background-color: white;
         min-width: 100px;
         outline: none;
         cursor: pointer;
-        color: $baseBlue;
+        color: $btnColor;
         font-size: 14px;
         font-weight: bold;
       }

@@ -1,7 +1,31 @@
 // color  颜色设置
-$baseBlue: #5e7afe;
-$linkBlue: #4070c3;
+
+// 主色
+$baseColor1: #5e7afe;
+$baseColor2: #E63561;
+$baseColor3:#90A0BC;
+$baseColor4: #FFFFFF;
+
+// 文字色
+$fontColor1: #2d57a1;
+$fontColor2: #333333;
+$fontColor3: #666666;
+$fontColor4: #999999;
+$fontColor5:#90A0BC;
+$fontColor6: #FFFFFF;
+
+// 线条色
+$lineColor1: #EDF0F1;
+$lineColor2: #FFFFFF;
+
+// 按钮颜色
+$btnColor: #5e7afe;
+
+// 表单底色
 $inputBgColor: #F4F7FE;
+
+// 选中图标的颜色
+$iconSelectedColor:#5e7afe;
 
 
 // z-index 层级设置
@@ -12,8 +36,4 @@ $font14: 14px;
 
 // 文件路径地址,gaga图片路径
 $baseImgURI: "https://sources.gagahi.com/";
-$s_baseImgURI: "https://s.gagahi.com/web-pc/images/";
-
-// lovehottie 图片路劲
-$baseImgURI: "https://sources.gagahi.com/";
-$s_baseImgURI: "https://s.gagahi.com/web-pc/images/";
+$STATICBASEURI: "https://statics.lovehottie.com/web-pc/";

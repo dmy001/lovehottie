@@ -67,7 +67,7 @@ export default {
     width: 300px;
   }
   &.login-btn button {
-    background-color: $baseBlue !important;
+    background-color: $btnColor !important;
     color: #fff !important;
   }
 }

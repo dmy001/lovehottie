@@ -56,7 +56,7 @@ export default {
         min-width: 100px;
         border-radius: 20px;
         text-align: center;
-        border: 1px solid $baseBlue;
+        border: 1px solid $btnColor;
         background-color: rgba(0, 0, 0, 0);
         outline: none;
         cursor: pointer;
@@ -66,7 +66,7 @@ export default {
     }
 
     .register-btn button {
-      background-color: $baseBlue;
+      background-color: $btnColor;
     }
   }
 }
