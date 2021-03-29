@@ -1,7 +1,7 @@
 <template>
   <div id="header">
     <div class="head-left">
-      <img src="~@images/index/logo.png" />
+      <img :src="STATICBASEURI + '/images/new_index/logo.png'" />
       <span>语言</span>
     </div>
     <div class="head-right">

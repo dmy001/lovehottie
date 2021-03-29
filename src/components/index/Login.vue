@@ -6,7 +6,7 @@
       </div>
       <div class="login-box-container">
         <div class="login-logo">
-          <img src="~@images/index/login_logo.png" />
+          <img :src="STATICBASEURI + 'images/new_index/login_logo.png'" />
         </div>
         <div class="input-control">
           <input :placeholder="userHodler" />

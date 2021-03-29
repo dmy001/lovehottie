@@ -18,22 +18,22 @@
           <div class="titleText">进入GaGaHi的世界，结识更多异国朋友……</div>
         </div>
         <img
-          :src="baseURI + '/images/new_index/page2_1.png'"
+          :src="STATICBASEURI + '/images/new_index/page2_1.png'"
           alt=""
           class="page2_1"
         />
         <img
-          :src="baseURI + '/images/new_index/page2_2.png'"
+          :src="STATICBASEURI + '/images/new_index/page2_2.png'"
           alt=""
           class="page2_2"
         />
         <img
-          :src="baseURI + '/images/new_index/page2_3.png'"
+          :src="STATICBASEURI + '/images/new_index/page2_3.png'"
           alt=""
           class="page2_3"
         />
         <img
-          :src="baseURI + '/images/new_index/page2_5.png'"
+          :src="STATICBASEURI + '/images/new_index/page2_5.png'"
           alt=""
           class="page2_5"
         />
@@ -46,12 +46,12 @@
           <div class="titleText">在线即时聊天，畅想国际化多语种沟通乐趣</div>
         </div>
         <img
-          :src="baseURI + '/images/new_index/page3_2.png'"
+          :src="STATICBASEURI + '/images/new_index/page3_2.png'"
           alt=""
           class="page3_2"
         />
         <img
-          :src="baseURI + '/images/new_index/page3_1.png'"
+          :src="STATICBASEURI + '/images/new_index/page3_1.png'"
           alt=""
           class="page3_1"
         />
@@ -64,12 +64,12 @@
           <div class="titleText">朋友圈国际化、无限大，让世界变得触手可及</div>
         </div>
         <img
-          :src="baseURI + '/images/new_index/page3_2.png'"
+          :src="STATICBASEURI + '/images/new_index/page3_2.png'"
           alt=""
           class="page3_2"
         />
         <img
-          :src="baseURI + '/images/new_index/page3_1.png'"
+          :src="STATICBASEURI + '/images/new_index/page3_1.png'"
           alt=""
           class="page3_1"
         />
@@ -84,9 +84,18 @@
           </div>
         </div>
         <div class="live_list">
-          <img :src="baseURI + '/images/new_index/page_live_1.png'" alt="" />
-          <img :src="baseURI + '/images/new_index/page_live_2.png'" alt="" />
-          <img :src="baseURI + '/images/new_index/page_live_3.png'" alt="" />
+          <img
+            :src="STATICBASEURI + '/images/new_index/page_live_1.png'"
+            alt=""
+          />
+          <img
+            :src="STATICBASEURI + '/images/new_index/page_live_2.png'"
+            alt=""
+          />
+          <img
+            :src="STATICBASEURI + '/images/new_index/page_live_3.png'"
+            alt=""
+          />
         </div>
       </div>
     </div>
@@ -98,26 +107,26 @@
         </div>
         <div class="GaGa_box">
           <img
-            :src="baseURI + '/images/new_index/page5_1.png'"
+            :src="STATICBASEURI + '/images/new_index/page5_1.png'"
             alt=""
             class="section5_logo"
           />
           GaGa
           <img
-            :src="baseURI + '/images/new_index/page5_1_1.png'"
+            :src="STATICBASEURI + '/images/new_index/page5_1_1.png'"
             alt=""
             class="section5_tip"
           />
         </div>
         <div class="GaGa_box">
           <img
-            :src="baseURI + '/images/new_index/page5_1.png'"
+            :src="STATICBASEURI + '/images/new_index/page5_1.png'"
             alt=""
             class="section5_logo"
           />
           GaGa
           <img
-            :src="baseURI + '/images/new_index/page5_1_1.png'"
+            :src="STATICBASEURI + '/images/new_index/page5_1_1.png'"
             alt=""
             class="section5_tip"
           />
@@ -141,7 +150,6 @@ export default {
     return {
       loginState: false,
       registerState: false,
-      baseURI: process.env.VUE_APP_STATICURI,
     };
   },
   components: {
@@ -195,8 +203,7 @@ export default {
     }
   }
   .section1 {
-    background: url(https://sources.gagahi.com/zh_CN_bg111.jpg) center center
-      no-repeat;
+    background: url($baseImgURI + "zh_CN_bg111.jpg") center center no-repeat;
     background-size: 1920px 969px;
     .content {
       .titleBox {

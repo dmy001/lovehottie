@@ -1,4 +1,11 @@
 const path = require('path')
+
+let css_variables_path = './src/assets/css/common/gaga/variables.scss'
+let css_common_path = './src/assets/css/common/gaga/common.scss'
+if(process.env.VUE_APP_TYPE === 'lh'){
+  css_variables_path = './src/assets/css/common/lh/variables.scss'
+  css_common_path = './src/assets/css/common/lh/common.scss'
+}
 module.exports = {
 
   publicPath: '/',
@@ -12,8 +19,8 @@ module.exports = {
         .options({
           // Provide path to the file with resources
           resources: [
-                        './src/assets/css/common/variables.scss',
-                        './src/assets/css/common/common.scss',
+                        css_variables_path,
+                        css_common_path,
 
           ]
  
@@ -28,5 +35,6 @@ module.exports = {
       .set('@assets', path.resolve(__dirname, 'src/assets'))
       .set('@images', path.resolve(__dirname, './src/assets/images'))
       .set('@components', path.resolve(__dirname, './src/components/'))
+      .set('@imagesuri', path.resolve('','https://sources.gagahi.com'))
   }
 }
