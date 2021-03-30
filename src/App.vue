@@ -13,4 +13,8 @@
   text-align: center;
   color: #2c3e50;
 }
+img, video {
+    max-width: none;
+    height: auto;
+}
 </style>
