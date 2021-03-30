@@ -1,14 +1,30 @@
 const path = require('path')
 
-let css_variables_path = './src/assets/css/common/gaga/variables.scss'
-let css_common_path = './src/assets/css/common/gaga/common.scss'
+let css_variables_path = './src/styles/common/gaga/variables.scss'
+let proxyURL = 'http://localhost:9001'
 if(process.env.VUE_APP_TYPE === 'lh'){
-  css_variables_path = './src/assets/css/common/lh/variables.scss'
-  css_common_path = './src/assets/css/common/lh/common.scss'
+  css_variables_path = './src/styles/common/lh/variables.scss'
+  proxyURL = 'http://localhost:9002'
 }
 module.exports = {
 
   publicPath: '/',
+  devServer: {
+    port: '9001',
+    proxy: {
+      '/': {
+        // 线上老接口
+        target: 'http://localhost:8088/', // 后台接口域名
+        ws: false, //如果要代理 websocket，配置这个参数
+        secure: false, // 如果是https接口，需要配置这个参数
+        changeOrigin: true, //是否跨域
+        pathRewrite: {
+          '^/': '' // 替换
+        },
+        historyApiFallback: true // 开启单页应用
+      }
+    }
+  },
   outputDir: 'buildPackage',
   chainWebpack: config => {
     const oneOfsMap = config.module.rule('scss').oneOfs.store
@@ -20,7 +36,7 @@ module.exports = {
           // Provide path to the file with resources
           resources: [
                         css_variables_path,
-                        './src/assets/css/common/common.scss',
+                        './src/styles/common/common.scss',
                         // './src/assets/css/tailwind.css'
 
           ]
@@ -32,10 +48,11 @@ module.exports = {
     })
     config.resolve.alias
       .set('vue$', 'vue/dist/vue.esm.js')
-      .set('@src', path.resolve(__dirname, 'src'))
+      .set('@', path.resolve(__dirname, 'src'))
       .set('@assets', path.resolve(__dirname, 'src/assets'))
       .set('@images', path.resolve(__dirname, './src/assets/images'))
       .set('@components', path.resolve(__dirname, './src/components/'))
+      .set('@styles', path.resolve(__dirname, './src/styles/'))
   },
 
 }

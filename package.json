@@ -5,14 +5,16 @@
   "scripts": {
     "serve": "vue-cli-service serve --open --mode gaga",
     "build": "vue-cli-service build",
-    "build:gaga": "vue-cli-service build --mode gaga",
     "lint": "vue-cli-service lint",
+    "build:gaga": "vue-cli-service build --mode gaga",
     "serve:lh": "vue-cli-service serve --open --mode lh"
   },
   "dependencies": {
     "autoprefixer": "^9.8.6",
     "core-js": "^3.6.5",
+    "crypto": "^1.0.1",
     "postcss": "^7.0.35",
+    "qs": "^6.10.1",
     "sass": "^1.32.8",
     "sass-loader": "^7.3.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.4",
@@ -26,9 +28,11 @@
     "@vue/cli-plugin-router": "^4.5.12",
     "@vue/cli-plugin-vuex": "^4.5.12",
     "@vue/cli-service": "~4.5.0",
+    "axios": "^0.18.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "vue-cli-plugin-axios": "0.0.4",
     "vue-cli-plugin-sass-resources-loader": "^1.0.0",
     "vue-template-compiler": "^2.6.11"
   },

@@ -276,18 +276,17 @@ export default {
           slidesPerView: 5,
           spaceBetween: 0,
           centeredSlides: true,
-          loop: true
+          loop: true,
         });
         self.topSwiper = topSwiper;
       });
     },
-   nextPage() {
-    window.scrollTo({
-      'top': 969,
-      'behavior': 'smooth'
-      })
-   } 
-   
+    nextPage() {
+      window.scrollTo({
+        top: 969,
+        behavior: "smooth",
+      });
+    },
   },
   created() {
     this.newbannerInit();

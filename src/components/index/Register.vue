@@ -75,7 +75,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "@src/assets/css/index/loginBox";
+@import "@styles/index/loginBox";
 .flex-around-center {
   width: 300px;
   justify-content: space-around;
