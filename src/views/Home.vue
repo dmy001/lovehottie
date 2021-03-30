@@ -309,8 +309,6 @@ export default {
         behavior: "smooth",
       });
     },
-<<<<<<< HEAD
-=======
     handleScroll() {
       var scrollTop =
         window.pageXOffset ||
@@ -360,7 +358,6 @@ export default {
     leaveFive() {
       this.fiveShow = false;
     },
->>>>>>> 69416d95fc9afcbfbe33f3945b77cd832bd1ee69
   },
   created() {
     this.newbannerInit();
