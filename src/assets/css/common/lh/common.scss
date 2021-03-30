@@ -17,5 +17,16 @@ body {
 }
 
 .fontBlue {
-  color: #FF625A;
+  color: $fontColor1;
+}
+
+.btn {
+  background-color: white;
+  color: $fontColor1;
+  border: 1px solid $btnColor;
+}
+
+.btn-actived {
+  background-color: $btnColor;
+  color: $fontColor6;
 }

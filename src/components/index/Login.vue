@@ -15,13 +15,13 @@
           <input :placeholder="passwordHodler" />
         </div>
         <div>
-          <div>{{ findPassword }}</div>
+          <div class="text-base-color1">{{ findPassword }}</div>
         </div>
-        <div class="btn-control login-btn">
-          <button>{{ loginBtn }}</button>
+        <div class="btn-control">
+          <button class="btn btn-actived">{{ loginBtn }}</button>
         </div>
-        <div class="btn-control register-btn">
-          <button>{{ lookBtn }}</button>
+        <div class="btn-control">
+          <button class="btn">{{ lookBtn }}</button>
         </div>
         <div class="other-login-icon">
           <img src="~@images/index/fb.png" />
@@ -31,7 +31,7 @@
 
         <div>
           <span class="fontGray">{{ noUsernumber }}</span>
-          <a class="fontBlue">{{ registeNow }}</a>
+          <a class="text-base-color1">{{ registeNow }}</a>
         </div>
       </div>
     </div>
@@ -65,10 +65,6 @@ export default {
 .btn-control {
   button {
     width: 300px;
-  }
-  &.login-btn button {
-    background-color: $btnColor !important;
-    color: #fff !important;
   }
 }
 </style>

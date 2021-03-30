@@ -135,7 +135,7 @@
     </div>
     <div class="sectionBox section7"></div>
     <Login v-if="loginState" @closeBox="closeLoginBox" />
-    <Register v-if="registerState" />
+    <Register v-if="registerState" @closeBox="closeLoginBox" />
   </div>
 </template>
 
