@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <Header @showLogin="showLogin" @showRegister="showRegister" />
     <div class="sectionBox section1">
+      <Header @showLogin="showLogin" @showRegister="showRegister" />
       <div class="content">
         <div class="titleBox">
           <div class="title">跨越语言， 向世界SayHi</div>
@@ -20,22 +20,27 @@
         <img
           :src="STATICBASEURI + '/images/new_index/page2_1.png'"
           alt=""
-          class="page2_1"
+          :class="['page2_1', { fadein: show }]"
+          ref="page2_1"
+          v-if="show"
         />
         <img
           :src="STATICBASEURI + '/images/new_index/page2_2.png'"
           alt=""
-          class="page2_2"
+          :class="['page2_2', { active: show1 }]"
+          ref="page2_2"
         />
         <img
           :src="STATICBASEURI + '/images/new_index/page2_3.png'"
           alt=""
-          class="page2_3"
+          :class="['page2_3', { active: show1 }]"
+          ref="page2_3"
         />
         <img
           :src="STATICBASEURI + '/images/new_index/page2_5.png'"
           alt=""
-          class="page2_5"
+          ref="page2_5"
+          :class="['page2_5', { fadein: show }]"
         />
       </div>
     </div>
@@ -48,12 +53,12 @@
         <img
           :src="STATICBASEURI + '/images/new_index/page3_2.png'"
           alt=""
-          class="page3_2"
+          :class="['page3_2', { fadeImg_in: showImg }]"
         />
         <img
           :src="STATICBASEURI + '/images/new_index/page3_1.png'"
           alt=""
-          class="page3_1"
+          :class="['page3_1', { fadeImg_bottom: showImg }]"
         />
       </div>
     </div>
@@ -100,7 +105,7 @@
         </div>
       </div>
     </div>
-    <div class="sectionBox section5">
+    <div class="section sectionBox section5">
       <div class="content">
         <div class="titleBox">
           <div class="title">面对面视频直播</div>
@@ -135,12 +140,14 @@
             :src="STATICBASEURI + '/images/new_index/page5_1.png'"
             alt=""
             class="section5_logo"
+            @mouseenter="enter"
+            @mouseleave="leave"
           />
           GaGa
           <img
             :src="STATICBASEURI + '/images/new_index/page5_1_1.png'"
             alt=""
-            class="section5_tip"
+            :class="['section5_tip', { showImg: firstShow }]"
           />
         </div>
         <div class="Game_box">
@@ -148,22 +155,26 @@
             :src="STATICBASEURI + '/images/new_index/page5_2.png'"
             alt=""
             class="section5_logo"
+            @mouseenter="enterSecond"
+            @mouseleave="leaveSecond"
           />
           Game
           <img
             :src="STATICBASEURI + '/images/new_index/page5_2_2.png'"
             alt=""
-            class="section5_tip"
+            :class="['section5_tip', { showImg2: secondShow }]"
           />
         </div>
         <div class="Travel_box">
           <img
             class="section5_logo"
             :src="STATICBASEURI + '/images/new_index/page5_3.png'"
+            @mouseenter="enterThree"
+            @mouseleave="leaveThree"
           />
           Travel
           <img
-            class="section5_tip"
+            :class="['section5_tip', { showImg3: threeShow }]"
             style="left: -95px; width: 325px; margin-top: 10px"
             :src="STATICBASEURI + '/images/new_index/page5_3_3.png'"
           />
@@ -172,10 +183,12 @@
           <img
             class="section5_logo"
             :src="STATICBASEURI + '/images/new_index/page5_4.png'"
+            @mouseenter="enterFour"
+            @mouseleave="leaveFour"
           />
           Love
           <img
-            class="section5_tip"
+            :class="['section5_tip', { showImg4: fourShow }]"
             style="left: -138px; width: 368px; top: 0"
             :src="STATICBASEURI + '/images/new_index/page5_4_4.png'"
           />
@@ -184,10 +197,12 @@
           <img
             class="section5_logo"
             :src="STATICBASEURI + '/images/new_index/page5_5.png'"
+            @mouseenter="enterFive"
+            @mouseleave="leaveFive"
           />
           Explore
           <img
-            class="section5_tip"
+            :class="['section5_tip', { showImg5: fiveShow }]"
             style="width: 504px"
             :src="STATICBASEURI + '/images/new_index/page5_5_5.png'"
           />
@@ -237,13 +252,20 @@
 import Login from "@components/index/Login.vue";
 import Register from "@components/index/Register.vue";
 import Header from "@components/index/Header.vue";
-
 export default {
   name: "Home",
   data() {
     return {
       loginState: false,
       registerState: false,
+      show: false,
+      show1: false,
+      showImg: false,
+      firstShow: true,
+      secondShow: false,
+      threeShow: false,
+      fourShow: false,
+      fiveShow: false,
     };
   },
   components: {
@@ -276,21 +298,85 @@ export default {
           slidesPerView: 5,
           spaceBetween: 0,
           centeredSlides: true,
-          loop: true
+          loop: true,
         });
         self.topSwiper = topSwiper;
       });
     },
-   nextPage() {
-    window.scrollTo({
-      'top': 969,
-      'behavior': 'smooth'
-      })
-   } 
-   
+    nextPage() {
+      window.scrollTo({
+        top: 969,
+        behavior: "smooth",
+      });
+    },
+    handleScroll() {
+      var scrollTop =
+        window.pageXOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+      if (scrollTop >= 490) {
+        this.show = true;
+        setTimeout(() => {
+          this.show1 = true;
+        }, 800);
+      }
+      if (scrollTop >= 1450) {
+        this.showImg = true;
+      }
+    },
+    enter() {
+      this.firstShow = true;
+    },
+    leave() {
+      this.firstShow = false;
+    },
+    enterSecond() {
+      this.secondShow = true;
+      this.firstShow = false;
+    },
+    leaveSecond() {
+      this.secondShow = false;
+    },
+    enterThree() {
+      this.threeShow = true;
+      this.firstShow = false;
+    },
+    leaveThree() {
+      this.threeShow = false;
+    },
+    enterFour() {
+      this.fourShow = true;
+      this.firstShow = false;
+    },
+    leaveFour() {
+      this.fourShow = false;
+    },
+    enterFive() {
+      this.fiveShow = true;
+      this.firstShow = false;
+    },
+    leaveFive() {
+      this.fiveShow = false;
+    },
   },
   created() {
     this.newbannerInit();
+  },
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+    this.timer = setInterval(() => {
+      if (
+        !this.secondShow &&
+        !this.threeShow &&
+        !this.fourShow &&
+        !this.fiveShow
+      ) {
+        this.firstShow = true;
+      }
+    }, 2000);
+  },
+  beforeDestroy() {
+    clearInterval(this.timer);
   },
 };
 </script>
@@ -368,27 +454,60 @@ export default {
         top: 410px;
         left: 546px;
         z-index: 100;
-        opacity: 1;
+        opacity: 0;
       }
       .page2_2 {
         position: absolute;
         bottom: 350px;
         right: 330px;
         z-index: 99;
-        opacity: 1;
+        visibility: 0;
+        opacity: 0;
       }
       .page2_3 {
         position: absolute;
         bottom: 350px;
         left: 330px;
         z-index: 99;
-        opacity: 1;
+        opacity: 0;
       }
       .page2_5 {
         position: absolute;
         top: 730px;
         left: 550px;
         width: 100px;
+        opacity: 0;
+      }
+      @keyframes page2_1 {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .fadein {
+        animation-name: page2_1;
+        animation-duration: 0.4s;
+        opacity: 1;
+      }
+      @keyframes page2_2 {
+        from {
+          bottom: 300px;
+        }
+        to {
+          bottom: 350px;
+        }
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .active {
+        animation: page2_2;
+        animation-duration: 0.5s;
         opacity: 1;
       }
     }
@@ -406,12 +525,50 @@ export default {
         position: absolute;
         top: 365px;
         left: 288px;
-        opacity: 1;
+        opacity: 0;
       }
       .page3_1 {
         position: absolute;
         bottom: 160px;
         right: 268px;
+        opacity: 0;
+      }
+      @keyframes page3_2 {
+        from {
+          top: 260px;
+        }
+        to {
+          top: 365px;
+        }
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @keyframes page3_1 {
+        from {
+          bottom: 60px;
+        }
+        to {
+          bottom: 160px;
+        }
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .fadeImg_in {
+        animation: page3_2;
+        animation-duration: 0.4s;
+        opacity: 1;
+      }
+      .fadeImg_bottom {
+        animation: page3_1;
+        animation-duration: 0.4s;
         opacity: 1;
       }
     }
@@ -473,11 +630,7 @@ export default {
     background-size: 1920px 969px;
     .content {
       text-align: center;
-      .section5_logo {
-        margin-bottom: 15px;
-        cursor: pointer;
-        width: 100%;
-      }
+      position: relative;
       .section5_tip {
         position: relative;
         left: -190px;
@@ -485,14 +638,6 @@ export default {
         z-index: 99;
         display: none;
         opacity: 0;
-      }
-      @keyframes section5_tip {
-        0% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
       }
       .GaGa_box {
         width: 185px;
@@ -504,99 +649,104 @@ export default {
           margin-bottom: 15px;
           cursor: pointer;
         }
-        .section5_tip {
+        .showImg {
           position: relative;
-          left: -190px;
-          bottom: 20px;
-          z-index: 99;
-          display: none;
+          left: -160px;
+          display: block;
+          width: 504px;
+          animation-name: section5_tip;
+          animation-duration: 1s;
+          bottom: 10px;
           opacity: 1;
         }
       }
-
       .GaGa_box:hover .section5_logo {
         transform: translateZ(0) scale(1.1);
-      }
-      .GaGa_box:hover .section5_tip {
-        position: relative;
-        left: -160px;
-        display: inline;
-        width: 504px;
-        animation-name: section5_tip;
-        animation-duration: 1s;
-        bottom: 10px;
       }
       .Game_box {
         width: 120px;
         top: 270px;
         left: 230px;
         position: absolute;
+        .showImg2 {
+          left: -190px;
+          display: block;
+          width: 504px;
+          animation-name: section5_tip;
+          animation-duration: 1s;
+          bottom: 10px;
+          opacity: 1;
+        }
       }
       .Game_box:hover .section5_logo {
         transform: translateZ(0) scale(1.1);
-      }
-      .Game_box:hover .section5_tip {
-        position: relative;
-        left: -190px;
-        display: inline;
-        width: 504px;
-        animation-name: section5_tip;
-        animation-duration: 1s;
-        bottom: 10px;
       }
       .Travel_box {
         width: 130px;
         top: 435px;
         left: 850px;
         position: absolute;
+        .showImg3 {
+          position: relative;
+          left: -95px;
+          display: inline;
+          width: 325px;
+          animation-name: section5_tip;
+          animation-duration: 1s;
+          opacity: 1;
+        }
       }
       .Travel_box:hover .section5_logo {
         transform: translateZ(0) scale(1.1);
-      }
-      .Travel_box:hover .section5_tip {
-        position: relative;
-        left: -95px;
-        display: inline;
-        width: 325px;
-        animation-name: section5_tip;
-        animation-duration: 1s;
-        // bottom: 10px;
       }
       .Love_box {
         width: 90px;
         top: 293px;
         left: 973px;
         position: absolute;
+        .showImg4 {
+          position: relative;
+          left: -138px;
+          display: inline;
+          width: 368px;
+          animation-name: section5_tip;
+          animation-duration: 1s;
+          opacity: 1;
+        }
       }
       .Love_box:hover .section5_logo {
         transform: translateZ(0) scale(1.1);
-      }
-      .Love_box:hover .section5_tip {
-        position: relative;
-        left: -138px;
-        display: inline;
-        width: 368px;
-        animation-name: section5_tip;
-        animation-duration: 1s;
-        // bottom: 10px;。
       }
       .Explore_box {
         width: 120px;
         top: 470px;
         left: 120px;
         position: absolute;
+        .showImg5 {
+          position: relative;
+          left: -190px;
+          display: inline;
+          width: 504px;
+          animation-name: section5_tip;
+          animation-duration: 1s;
+          opacity: 1;
+        }
       }
       .Explore_box:hover .section5_logo {
         transform: translateZ(0) scale(1.1);
       }
-      .Explore_box:hover .section5_tip {
-        position: relative;
-        left: -190px;
-        display: inline;
-        width: 504px;
-        animation-name: section5_tip;
-        animation-duration: 1s;
-        // bottom: 10px;
+      .section5_logo {
+        margin-bottom: 15px;
+        cursor: pointer;
+        width: 100%;
+      }
+      @keyframes section5_tip {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
       }
     }
   }
