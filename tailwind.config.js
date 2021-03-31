@@ -83,7 +83,8 @@ module.exports = {
       80: '20rem',
       96: '24rem',
       px15: '15px',
-      px3: '3px'
+      px3: '3px',
+      px260: '260px'
     },
     animation: {
       none: 'none',

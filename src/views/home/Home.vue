@@ -1,20 +1,19 @@
 <template>
-  <div  class="bg-base-bgColor">
+  <div class="bg-base-bgColor">
     <Header />
-    <div class="flex justify-end w-px1200 mx-auto">
+    <div class="flex w-px1200 mx-auto">
       <div class="min-h-810">
         <Left></Left>
-        <div class="m-px15 w-px860">
-        <ToolBar />
-        <AD />
-        <div
-          class="flex flex-wrap justify-around w-full bg-white mt-px15 min-h-px200 p-px15"
-        >
-          <Card v-for="i in 30" :key="i" />
+        <div class="m-px15 w-px860 ml-px260">
+          <ToolBar />
+          <AD />
+          <div
+            class="flex flex-wrap justify-around w-full bg-white mt-px15 min-h-px200 p-px15"
+          >
+            <Card v-for="i in 30" :key="i" />
+          </div>
         </div>
-      </div> 
       </div>
-      
     </div>
   </div>
 </template>
