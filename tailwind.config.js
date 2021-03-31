@@ -1,8 +1,10 @@
 const colors = require('tailwindcss/colors')
 
 let baseColor1 = '#5e7afe';
+let baseColor2 = '#5e7afe';
 if (process.env.VUE_APP_TYPE === 'lh'){
   baseColor1 = '#FF625A';
+  baseColor2 = '#E63561';
 }
 
 module.exports = {
@@ -32,7 +34,8 @@ module.exports = {
       purple: colors.violet,
       pink: colors.pink,
       base: {
-        color1: baseColor1
+        color1: baseColor1,
+        color2: baseColor2
       }
     },
     spacing: {
@@ -361,6 +364,7 @@ module.exports = {
       '5/6': '83.333333%',
       full: '100%',
       screen: '100vh',
+      '50': '50px'
     }),
     inset: (theme, { negative }) => ({
       auto: 'auto',
@@ -713,6 +717,8 @@ module.exports = {
       screen: '100vw',
       min: 'min-content',
       max: 'max-content',
+      '1240': '1240px',
+      '1200': '1200px'
     }),
     zIndex: {
       auto: 'auto',
@@ -722,6 +728,8 @@ module.exports = {
       30: '30',
       40: '40',
       50: '50',
+      100: '100',
+      1000: '1000'
     },
   },
   variantOrder: [

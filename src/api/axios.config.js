@@ -5,12 +5,14 @@ const instance = axios.create({
   timeout: 10000,
   withCredentials: false,
   headers: {
-    'Content-Type':'application/x-www-form-urlencoded'
+    'Content-Type':'application/json'
   }
 })
 
 // 添加请求拦截器
 instance.interceptors.request.use(function (config) {
+  console.log("request")
+  console.log(config)
   // 在发送请求之前做些什么
   return config;
 }, function (error) {
@@ -20,6 +22,8 @@ instance.interceptors.request.use(function (config) {
 
 // 添加响应拦截器
 instance.interceptors.response.use(function (response) {
+  console.log("response")
+  console.log(response)
   // 对响应数据做点什么
   return response;
 }, function (error) {
