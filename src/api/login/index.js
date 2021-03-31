@@ -9,8 +9,15 @@ function login(params){
   md5.update(params.passWord)
   let password = md5.digest('hex')
   params.passWord = password
-  console.log(qs.stringify(params))
- return axios.post('Platform/login',qs.stringify(params)) 
+
+  return axios({
+   url: 'Platform/login',
+   data: qs.stringify(params),
+   method: 'post',
+   headers: {
+    'Content-Type':'application/x-www-form-urlencoded'
+   }
+  }) 
 }
 
 

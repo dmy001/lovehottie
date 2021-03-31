@@ -16,6 +16,7 @@
             type="password"
             :placeholder="passwordHodler"
             v-model="password"
+            @keydown.enter="toLogin"
           />
         </div>
         <div>
@@ -65,13 +66,23 @@ export default {
     closeBox() {
       this.$emit("closeBox");
     },
-    toLogin() {
-      this.$api.login({
+    async toLogin() {
+      this.loginBtn = "登录中";
+      const res = await this.$api.login({
         userName: this.userNumber,
         passWord: this.password,
         type: 1,
         code: "",
       });
+
+      let data = res.data;
+      if (data.success) {
+        window.sessionStorage.setItem("isLogin", true);
+        this.$router.push("home");
+      } else {
+        alert(data.msg);
+        this.loginBtn = "登录";
+      }
     },
   },
 };
