@@ -1,11 +1,14 @@
 const colors = require('tailwindcss/colors')
 
-let baseColor1 = '#5e7afe';
-let baseColor2 = '#5e7afe';
+
 let bgColor1='#eeeef6'
+let baseColor1 = '#2d57a1';
+let baseColor2 = '#2d57a1';
+let baseColor3 = '#6281b9';
 if (process.env.VUE_APP_TYPE === 'lh'){
   baseColor1 = '#FF625A';
   baseColor2 = '#E63561';
+  baseColor3 = '#F28595';
 }
 
 module.exports = {
@@ -39,6 +42,8 @@ module.exports = {
         color1: baseColor1,
         color2: baseColor2,
         bgColor:bgColor1,
+        color3: baseColor3,
+        color4: '#999999'
       }
     },
     spacing: {
@@ -77,6 +82,8 @@ module.exports = {
       72: '18rem',
       80: '20rem',
       96: '24rem',
+      px15: '15px',
+      px3: '3px'
     },
     animation: {
       none: 'none',
@@ -129,6 +136,9 @@ module.exports = {
       '2xl': '1rem',
       '3xl': '1.5rem',
       full: '9999px',
+      px15: '15px',
+      '1/2': '50%',
+      px8: '8px'
     },
     borderWidth: {
       DEFAULT: '1px',
@@ -220,6 +230,7 @@ module.exports = {
       '8xl': ['6rem', { lineHeight: '1' }],
       '9xl': ['8rem', { lineHeight: '1' }],
       '12px': ['12px', { lineHeight: '1' }],
+      'px14': ['14px']
     },
     fontWeight: {
       thin: '100',
@@ -369,7 +380,9 @@ module.exports = {
       full: '100%',
       screen: '100vh',
       '50': '50px',
-      '60':'60px'
+      '60':'60px',
+      'px50': '50px',
+      px24: '24px'
     }),
     inset: (theme, { negative }) => ({
       auto: 'auto',
@@ -481,7 +494,8 @@ module.exports = {
       0: '0px',
       full: '100%',
       screen: '100vh',
-      810:'810px'
+      810:'810px',
+      'px200': '200px'
     },
     minWidth: {
       0: '0px',
@@ -725,7 +739,12 @@ module.exports = {
       max: 'max-content',
       '1240': '1240px',
       '1200': '1200px',
-      '1100':'1100px'
+      '1100':'1100px',
+      'px1240': '1240px',
+      'px1200': '1200px',
+      'px72': '72px',
+      'px120': '120px',
+      'px860': '860px'
     }),
     zIndex: {
       auto: 'auto',

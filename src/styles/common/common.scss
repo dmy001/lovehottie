@@ -35,3 +35,9 @@ body {
   background-color: $btnColor;
   color: $fontColor6;
 }
+
+// 三角，尖朝上
+.triangle-top {
+  border: 15px solid transparent;
+  border-bottom-color: white;
+}
