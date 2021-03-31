@@ -6,7 +6,12 @@
   bottom: 0;
   background-color: rgb(0, 0, 0, 0.3);
 }
-
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, button, fieldset, input, textarea, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;
+  font-family: "Microsoft YaHei", '微软雅黑', arial,'HanHei SC', 'PingFang SC', 'lucida grande', tahoma, verdana, sans-serif;
+  font-size: 14px;
+}
 body {
   display: block;
   margin: 0px;

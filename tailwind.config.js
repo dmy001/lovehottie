@@ -2,6 +2,7 @@ const colors = require('tailwindcss/colors')
 
 let baseColor1 = '#5e7afe';
 let baseColor2 = '#5e7afe';
+let bgColor1='#eeeef6'
 if (process.env.VUE_APP_TYPE === 'lh'){
   baseColor1 = '#FF625A';
   baseColor2 = '#E63561';
@@ -33,9 +34,11 @@ module.exports = {
       indigo: colors.indigo,
       purple: colors.violet,
       pink: colors.pink,
+      buttonColor:'#f6f6f6',
       base: {
         color1: baseColor1,
-        color2: baseColor2
+        color2: baseColor2,
+        bgColor:bgColor1,
       }
     },
     spacing: {
@@ -216,6 +219,7 @@ module.exports = {
       '7xl': ['4.5rem', { lineHeight: '1' }],
       '8xl': ['6rem', { lineHeight: '1' }],
       '9xl': ['8rem', { lineHeight: '1' }],
+      '12px': ['12px', { lineHeight: '1' }],
     },
     fontWeight: {
       thin: '100',
@@ -364,7 +368,8 @@ module.exports = {
       '5/6': '83.333333%',
       full: '100%',
       screen: '100vh',
-      '50': '50px'
+      '50': '50px',
+      '60':'60px'
     }),
     inset: (theme, { negative }) => ({
       auto: 'auto',
@@ -476,6 +481,7 @@ module.exports = {
       0: '0px',
       full: '100%',
       screen: '100vh',
+      810:'810px'
     },
     minWidth: {
       0: '0px',
@@ -718,7 +724,8 @@ module.exports = {
       min: 'min-content',
       max: 'max-content',
       '1240': '1240px',
-      '1200': '1200px'
+      '1200': '1200px',
+      '1100':'1100px'
     }),
     zIndex: {
       auto: 'auto',
