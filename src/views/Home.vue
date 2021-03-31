@@ -220,7 +220,7 @@
           <div class="download_code">
             <img
               :src="STATICBASEURI + '/images/new_index/page6_1.jpg'"
-              style="margin-top: 10px"
+              style="margin-top: 10px;margin-left:10px"
             />
           </div>
           <div class="download_text">手机扫码下载</div>
@@ -245,6 +245,7 @@
     </div>
     <Login v-if="loginState" @closeBox="closeLoginBox" />
     <Register v-if="registerState" @closeBox="closeLoginBox" />
+    <Footer />
   </div>
 </template>
 
@@ -252,6 +253,7 @@
 import Login from "@components/index/Login.vue";
 import Register from "@components/index/Register.vue";
 import Header from "@components/index/Header.vue";
+import Footer from "@components/index/footer.vue";
 export default {
   name: "Home",
   data() {
@@ -273,6 +275,7 @@ export default {
     Login,
     Register,
     Header,
+    Footer,
   },
   methods: {
     showLogin() {
@@ -385,6 +388,7 @@ export default {
   width: 100%;
   overflow: hidden;
   min-width: 1200px;
+  font-size: 14px;
   .sectionBox {
     height: 969px;
     width: 100%;
@@ -767,10 +771,22 @@ export default {
         height: 690px;
       }
       .download {
+        position: absolute;
+        top: 210px;
+        left: 470px;
+        width: 260px;
+        text-align: center;
         display: flex;
         flex-direction: column;
-        margin-left: 132px;
-        margin-top: 210px;
+        justify-content: center;
+        align-items: center;
+        .download_code {
+          width: 240px;
+          height: 240px;
+          background: #fff;
+          border-radius: 10px;
+          margin: 0 auto;
+        }
         .download_text {
           color: #fff;
           margin: 20px 0;
