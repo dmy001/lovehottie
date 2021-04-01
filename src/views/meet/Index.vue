@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import ToolBar from "@components/home/ToolBar.vue";
-import AD from "@components/home/AD.vue";
-import Card from "@components/home/Card.vue";
+import ToolBar from "@components/home/meet/ToolBar.vue";
+import AD from "@components/home/meet/AD.vue";
+import Card from "@components/home/meet/Card.vue";
 
 export default {
   name: "meet",

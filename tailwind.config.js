@@ -46,6 +46,9 @@ module.exports = {
         bgFooterColor:bgColor2,
         color3: baseColor3, // 主页头部中偶遇 输入框背景色
         color4: '#999999'
+      },
+      card: {
+        gray: '#dcdcdc'
       }
     },
     spacing: {
@@ -84,6 +87,7 @@ module.exports = {
       72: '18rem',
       80: '20rem',
       96: '24rem',
+      px10: '10px',
       px15: '15px',
       px3: '3px',
       px260: '260px',
@@ -384,6 +388,7 @@ module.exports = {
       '5/6': '83.333333%',
       full: '100%',
       screen: '100vh',
+      'px30': '30px',
       '50': '50px',
       '60':'60px',
       'px50': '50px',
@@ -749,7 +754,8 @@ module.exports = {
       'px1200': '1200px',
       'px72': '72px',
       'px120': '120px',
-      'px860': '860px'
+      'px860': '860px',
+      'px30': '30px'
     }),
     zIndex: {
       auto: 'auto',

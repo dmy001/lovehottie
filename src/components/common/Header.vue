@@ -8,12 +8,16 @@
       >
         <img :src="STATICBASEURI + '/images/logo.png'" />
         <div
-          class="flex justify-center items-center h-full w-px72 ml-px15 bg-base-color3 cursor-pointer"
+          class="flex justify-center items-center h-full w-px72 ml-px15 cursor-pointer"
+          :class="{ 'bg-base-color3': isMeetPage }"
+          @click="goMeetPage"
         >
           偶遇
         </div>
         <div
           class="flex justify-center items-center h-full w-px72 ml-px15 cursor-pointer"
+          :class="{ 'bg-base-color3': !isMeetPage }"
+          @click="goZonePage"
         >
           动态
         </div>
@@ -73,10 +77,21 @@ export default {
     return {
       upMoney: "充值",
       upGrade: "升级",
+      isMeetPage: true,
     };
   },
   components: {
     "msg-info-item": MsgInfoItem,
+  },
+  methods: {
+    goMeetPage() {
+      this.isMeetPage = true;
+      this.$router.push({ path: "/home/meet" });
+    },
+    goZonePage() {
+      this.isMeetPage = false;
+      this.$router.push({ path: "/home/zone" });
+    },
   },
 };
 </script>
