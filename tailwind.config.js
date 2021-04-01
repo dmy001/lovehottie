@@ -42,7 +42,7 @@ module.exports = {
         color1: baseColor1,
         color2: baseColor2,
         bgColor:bgColor1,
-        color3: baseColor3,
+        color3: baseColor3, // 主页头部中偶遇 输入框背景色
         color4: '#999999'
       }
     },
@@ -84,7 +84,8 @@ module.exports = {
       96: '24rem',
       px15: '15px',
       px3: '3px',
-      px260: '260px'
+      px260: '260px',
+      px50: '50px'
     },
     animation: {
       none: 'none',

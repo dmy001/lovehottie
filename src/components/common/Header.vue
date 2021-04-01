@@ -1,6 +1,6 @@
 <template>
   <div
-    class="home-header z-1000 w-full h-px50 bg-gradient-to-r from-base-color2 to-base-color1"
+    class="home-header fixed z-1000 w-full h-px50 bg-gradient-to-r from-base-color2 to-base-color1"
   >
     <div class="w-px1200 h-full mx-auto flex justify-between items-center">
       <div
@@ -8,11 +8,13 @@
       >
         <img :src="STATICBASEURI + '/images/logo.png'" />
         <div
-          class="flex justify-center items-center h-full w-px72 ml-px15 bg-base-color3"
+          class="flex justify-center items-center h-full w-px72 ml-px15 bg-base-color3 cursor-pointer"
         >
           偶遇
         </div>
-        <div class="flex justify-center items-center h-full w-px72 ml-px15">
+        <div
+          class="flex justify-center items-center h-full w-px72 ml-px15 cursor-pointer"
+        >
           动态
         </div>
       </div>
