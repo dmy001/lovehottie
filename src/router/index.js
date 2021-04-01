@@ -8,7 +8,7 @@ const About = () => import('../views/About.vue')
 const Home = () => import('../views/home/Home.vue')
 const Meet = () => import('../views/meet/Index.vue')
 const Zone = () => import('../views/zone/Index.vue')
-
+const Person = () => import('../views/Person/index.vue')
 const routes = [
   {
     path: '/',
@@ -55,7 +55,15 @@ const routes = [
         meta: {
           title: '空间'
         }
-      }
+      },
+      // 个人主页
+      {
+        path: 'PersonHome',
+        component: Person,
+        meta: {
+          title: '个人主页'
+        }
+      },
       
     ]
   },

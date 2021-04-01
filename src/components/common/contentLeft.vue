@@ -8,12 +8,23 @@
       />
       <div class="flex flex-col l15">
         <p class="text-black ari cursor-pointer">
-          可爱小怪咖
+          <router-link to="PersonHome">可爱小怪咖</router-link>
           <img
             :src="STATICBASEURI + '/images/mem_offline.png'"
             alt=""
             class="inline"
+            @click.stop="showLine"
           />
+          <ul class="lineStatus" v-if="lineStatus">
+            <li>
+              <img src="../../assets/images/index/mem_online.png" alt="" class="inline-block">
+              在线
+            </li>
+            <li>
+              <img :src="STATICBASEURI + '/images/mem_offline.png'" alt="" class="inline-block">
+              隐身
+            </li>
+          </ul>
         </p>
         <p class="text-12px text-gray-500 ari" style="margin-top: 8px">
           GaGaID: 40473864
@@ -99,8 +110,28 @@
 export default {
   name: "contentLeft",
   data() {
-    return {};
+    return {
+      lineStatus:false
+    };
   },
+  methods: {
+    showLine() {
+      this.lineStatus = true
+    },
+    // 点击空白处关闭隐身
+   bodyCloseMenus() {
+   let self = this;
+    if (self.lineStatus == true){
+     self.lineStatus = false;
+    }
+   }
+  },
+  mounted() {
+  document.addEventListener("click", this.bodyCloseMenus);
+ },
+ beforeDestroy() {
+  document.removeEventListener("click", this.bodyCloseMenus);
+ },
 };
 </script>
 <style lang="scss" scoped>
@@ -150,6 +181,23 @@ export default {
     .noHasCoupon {
       background: url("~@images/index/icon_sale_gray.png") no-repeat;
       background-position: 1px 6.4px;
+    }
+    .lineStatus{
+      @apply fixed text-center z-100;
+      top:100px;
+      margin-left: 120px;
+      width: 89px;
+      height: 62px;
+      background: #fff;
+      border-radius: 5px;
+      border: 1px solid #d9d9d9;
+      li{
+        height:30px;
+        line-height: 30px;
+      }
+      li:hover{
+        background:rgb(241,241,241);
+      }
     }
   }
   .fsgz {
