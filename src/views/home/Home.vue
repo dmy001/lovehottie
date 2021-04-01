@@ -15,6 +15,7 @@
         </div>
       </div>
     </div>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -24,6 +25,7 @@ import Left from "@components/common/contentLeft.vue";
 import ToolBar from "@components/home/ToolBar.vue";
 import AD from "@components/home/AD.vue";
 import Card from "@components/home/Card.vue";
+import Footer from "@components/common/footer.vue";
 
 export default {
   name: "home",
@@ -38,6 +40,7 @@ export default {
     ToolBar,
     AD,
     Card,
+    Footer,
   },
 };
 </script>
