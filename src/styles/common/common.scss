@@ -12,6 +12,9 @@ body {
   display: block;
   margin: 0px;
 }
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, button, fieldset, input, textarea, p, blockquote, th, td {
+  font-family: "Microsoft YaHei", '微软雅黑', arial,'HanHei SC', 'PingFang SC', 'lucida grande', tahoma, verdana, sans-serif;
+}
 
 .fontGray {
   color: #c5c5c5;

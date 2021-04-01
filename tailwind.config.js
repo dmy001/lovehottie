@@ -87,7 +87,8 @@ module.exports = {
       px15: '15px',
       px3: '3px',
       px260: '260px',
-      px50: '50px'
+      px50: '50px',
+      px10:'10px'
     },
     animation: {
       none: 'none',
