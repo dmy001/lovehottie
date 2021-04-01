@@ -1,0 +1,24 @@
+<template>
+  <div>
+    <ToolBar />
+    <AD />
+    <div class="flex flex-wrap w-full bg-white mt-px15 min-h-px200 p-px15">
+      <Card v-for="i in 30" :key="i" />
+    </div>
+  </div>
+</template>
+
+<script>
+import ToolBar from "@components/home/ToolBar.vue";
+import AD from "@components/home/AD.vue";
+import Card from "@components/home/Card.vue";
+
+export default {
+  name: "meet",
+  components: {
+    ToolBar,
+    AD,
+    Card,
+  },
+};
+</script>

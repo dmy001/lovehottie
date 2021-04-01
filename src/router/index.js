@@ -6,6 +6,8 @@ Vue.use(VueRouter)
 const Index = () => import('../views/Index.vue')
 const About = () => import('../views/About.vue')
 const Home = () => import('../views/home/Home.vue')
+const Meet = () => import('../views/meet/Index.vue')
+const Zone = () => import('../views/zone/Index.vue')
 
 const routes = [
   {
@@ -33,10 +35,37 @@ const routes = [
   {
     path: '/home',
     name: 'home',
+    redirect: 'home/meet',
     component: Home,
     meta: {
       loginCheck: true,
-      title: '偶遇'
+      title: '主页'
+    },
+    children: [
+      {
+        path: 'meet',
+        component: Meet,
+        meta: {
+          title: '偶遇'
+        }
+      },
+      {
+        path: 'zone',
+        component: Zone,
+        meta: {
+          title: '空间'
+        }
+      }
+      
+    ]
+  },
+  {
+    path: '/meet',
+    name: 'meet',
+    component: Meet,
+    meta: {
+      loginCheck: true,
+      title: 'meet'
     }
   }
 ]
