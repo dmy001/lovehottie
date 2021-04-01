@@ -9,12 +9,14 @@
         </div>
       </div>
     </div>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Header from "@components/common/Header.vue";
 import Left from "@components/common/contentLeft.vue";
+import Footer from "@components/common/footer.vue";
 
 export default {
   name: "home",
@@ -26,6 +28,7 @@ export default {
   components: {
     Header,
     Left,
+    Footer,
   },
 };
 </script>

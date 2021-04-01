@@ -4,10 +4,10 @@
       <img
         :src="STATICBASEURI + '/images/default/female.png'"
         alt=""
-        class="mCS_img_loaded"
+        class="mCS_img_loaded relative"
       />
       <div class="flex flex-col l15">
-        <p class="text-black ari">
+        <p class="text-black ari cursor-pointer">
           可爱小怪咖
           <img
             :src="STATICBASEURI + '/images/mem_offline.png'"
@@ -62,7 +62,7 @@
      <div id="leftSixinIndexText">
        我的消息
      </div>
-     <div id="leftSixinNotice" class="inline-block">
+     <div id="leftSixinNotice" class="inline-block absolute">
      </div>
     </div>
     <div class="lf-lb flex flex-row cursor-pointer lkmLeft">
@@ -126,7 +126,6 @@ export default {
       -webkit-border-radius: 50%;
       -moz-border-radius: 50%;
       z-index: 1;
-      position: relative;
     }
     .inline {
       display: inline;
@@ -233,7 +232,6 @@ export default {
          background: url("~@images/index/indexIcon.png") -72px -2px no-repeat 
     }
     #leftSixinNotice{
-      position: absolute;
       background: #FA5A4B;
       color: white;
       width: 8px;
@@ -263,6 +261,18 @@ export default {
   }
   .leftMessage:hover  #leftSixinIndexImg{
    background-position: -47px -2px;
+  }
+  .lkmLeft:hover .lkm{
+    background-position: 0px -53px;
+  }
+   .mlkLeft:hover .mlk{
+    background-position: -52px -30px;
+  }
+  .eachLeft:hover .each-lk{
+    background-position: -52px -54px;
+  }
+   .AdvertisementLeft:hover .Advertisement{
+    background: url("~@images/index/Advertisement_blue.png") 4px 0 no-repeat;
   }
   .ggw1{
     width: 200px;
