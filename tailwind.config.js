@@ -391,6 +391,7 @@ module.exports = {
       '50': '50px',
       '60':'60px',
       'px50': '50px',
+      'px60': '60px',
       px24: '24px'
     }),
     inset: (theme, { negative }) => ({

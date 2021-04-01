@@ -8,9 +8,10 @@
 }
 
 body {
-  font-family: "Microsoft YaHei", '微软雅黑', arial,'HanHei SC', 'PingFang SC', 'lucida grande', tahoma, verdana, sans-serif;
+  font-family: "Microsoft YaHei", '微软雅黑', arial, 'HanHei SC', 'PingFang SC', 'lucida grande', tahoma, verdana, sans-serif;
   display: block;
   margin: 0px;
+  font-size: 14px;
 }
 
 .fontGray {
@@ -36,4 +37,10 @@ body {
 .triangle-top {
   border: 15px solid transparent;
   border-bottom-color: white;
+}
+
+// 三角，尖朝下
+.triangle-bottom {
+  border: 15px solid transparent;
+  border-top-color: white;
 }
