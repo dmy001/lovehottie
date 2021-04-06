@@ -1,7 +1,7 @@
 const colors = require('tailwindcss/colors')
 
 
-let bgColor1='#eeeef6'
+let bgColor1='rgb(242,242,242)'
 let bgColor2='#e3e6ee'
 let baseColor1 = '#2d57a1';
 let baseColor2 = '#2d57a1';
@@ -45,7 +45,7 @@ module.exports = {
         bgColor:bgColor1,
         bgFooterColor:bgColor2,
         color3: baseColor3, // 主页头部中偶遇 输入框背景色
-        color4: '#999999'
+        color4: '#999999',
       },
       card: {
         gray: '#dcdcdc'

@@ -5,6 +5,7 @@
 </template>
 
 <style lang="scss">
+@import '../node_modules/view-design/dist/styles/iview.css';
 @import "~@styles/tailwind.css";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
