@@ -14,13 +14,16 @@
         >
           偶遇
         </div>
-        <div
+      <router-link to="zone">
+          <div
           class="flex justify-center items-center h-full w-px72 ml-px15 cursor-pointer"
           :class="{ 'bg-base-color3': !isMeetPage }"
-          @click="goZonePage"
+           @click="goZonePage"
         >
           动态
         </div>
+      </router-link>
+       
       </div>
 
       <div class="flex h-full justify-start items-center text-px14 text-white">
@@ -90,7 +93,7 @@ export default {
     },
     goZonePage() {
       this.isMeetPage = false;
-      this.$router.push({ path: "/home/zone" });
+      // this.$router.push({ path: "/home/zone" });
     },
   },
 };

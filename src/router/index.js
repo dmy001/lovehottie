@@ -88,16 +88,16 @@ router.beforeEach((to, from, next) => {
   if (to.meta.title) {
     document.title = to.meta.title
   }
-  const loginCheck = to.meta.loginCheck
-  if(loginCheck){
-    if (to.name !== 'index' && !window.sessionStorage.getItem('isLogin')) {
-      next({ name: 'index' })
-    }else {
-      next()
-    }
-  }else{
+  // const loginCheck = to.meta.loginCheck
+  // if(loginCheck){
+  //   if (to.name !== 'index' && !window.sessionStorage.getItem('isLogin')) {
+  //     next({ name: 'index' })
+  //   }else {
+  //     next()
+  //   }
+  // }else{
     next()
-  }
+  // }
   
 })
 
