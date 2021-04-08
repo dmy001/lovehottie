@@ -339,7 +339,6 @@ export default {
 }
 .personContent {
   width: 856px;
-  overflow: hidden;
   .shareList {
     padding: 20px;
     background: #fff;
@@ -611,7 +610,7 @@ export default {
         width: 44px;
         height: 29px;
         border-radius: 30px;
-        background: $baseColor6 none repeat scroll 0 0;
+        background: $baseColor2 none repeat scroll 0 0;
         color: #fff;
         font-size: 12px;
         @apply cursor-pointer absolute text-center;

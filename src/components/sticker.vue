@@ -8,10 +8,10 @@
 -->
 <template>
 <div>
-   <span></span>
-   <div class="sticker">
+   <span class="z-1000"></span>
+   <div class="sticker z-100">
    
-    <div class="emoji-content">
+    <div class="emoji-content" >
       <img
         v-for="emojiIndex in 90"
         :key="emojiIndex"
@@ -52,8 +52,7 @@ export default {
     display: block;
     width: 15px;
     height: 10px;
-    z-index: 1001;
-    background: url(/img/IMicon.69d8538c.png) -310px -82px no-repeat;
+    background: url('~@images/person/IMicon.png') -310px -82px no-repeat;
 }
 .sticker {
   min-height: 200px;
@@ -65,7 +64,6 @@ export default {
   position: absolute;
   bottom: 39px;
   right: 15px;
-  z-index: 1000;
 
   .emoji-content {
     min-height: 182px;
