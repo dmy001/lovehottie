@@ -3,12 +3,22 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-const Index = () => import('../views/Index.vue')
-const About = () => import('../views/About.vue')
-const Home = () => import('../views/home/Home.vue')
-const Meet = () => import('../views/meet/Index.vue')
-const Zone = () => import('../views/zone/Index.vue')
-const Person = () => import('../views/Person/index.vue')
+const Index = () => import('@/views/Index.vue')
+const About = () => import('@/views/About.vue')
+const Home = () => import('@/views/home/Home.vue')
+const Meet = () => import('@/views/meet/Index.vue')
+const Zone = () => import('@/views/zone/Index.vue')
+const ZoneRoom = () => import('@/views/zone/Room.vue')
+const ZoneFriend = () => import('@/views/zone/Friend.vue')
+const Person = () => import('@/views/Person/index.vue')
+
+
+// 避免同一个路由多次添加报错
+const VueRouterPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(to) {
+  return VueRouterPush.call(this, to).catch(err => err)
+}
+
 const routes = [
   {
     path: '/',
@@ -53,8 +63,25 @@ const routes = [
         path: 'zone',
         component: Zone,
         meta: {
-          title: '空间'
-        }
+          title: '动态'
+        },
+        children: [
+          {
+            path: '',
+            alias: 'room',
+            component: ZoneRoom,
+            meta: {
+              title: '动态广场'
+            }
+          },
+          {
+            path: 'friend',
+            component: ZoneFriend,
+            meta: {
+              title: '朋友圈'
+            }
+          }
+        ]
       },
       // 个人主页
       {

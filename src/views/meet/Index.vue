@@ -20,5 +20,12 @@ export default {
     AD,
     Card,
   },
+  created() {
+    // this.$store.state.pathStore.currentPath
+    this.$store.commit("setCurrentPath", {
+      path: this.$router.history.current.path,
+    });
+    console.log(this.$store);
+  },
 };
 </script>
