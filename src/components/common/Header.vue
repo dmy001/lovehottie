@@ -9,7 +9,7 @@
         <img :src="STATICBASEURI + '/images/logo.png'" />
         <div
           class="flex justify-center items-center h-full w-px72 ml-px15 cursor-pointer"
-          :class="{ 'bg-base-color3': isMeetPage }"
+          :class="{ 'bg-base-color3': !isZonePage }"
           @click="goMeetPage"
         >
           偶遇
@@ -17,8 +17,8 @@
       <router-link to="zone">
           <div
           class="flex justify-center items-center h-full w-px72 ml-px15 cursor-pointer"
-          :class="{ 'bg-base-color3': !isMeetPage }"
-           @click="goZonePage"
+          :class="{ 'bg-base-color3': isZonePage }"
+          @click="goZonePage"
         >
           动态
         </div>
@@ -80,21 +80,38 @@ export default {
     return {
       upMoney: "充值",
       upGrade: "升级",
-      isMeetPage: true,
+      // isMeetPage: true,
     };
   },
   components: {
     "msg-info-item": MsgInfoItem,
   },
+  computed: {
+    isZonePage() {
+      return this.$store.state.pathStore.currentPath.includes("home/zone")
+        ? true
+        : false;
+    },
+  },
   methods: {
     goMeetPage() {
-      this.isMeetPage = true;
+      // this.isMeetPage = true;
       this.$router.push({ path: "/home/meet" });
     },
     goZonePage() {
-      this.isMeetPage = false;
-      // this.$router.push({ path: "/home/zone" });
+      // this.isMeetPage = false;
+      this.$router.push({ path: "/home/zone" });
     },
+  },
+  created() {
+    this.$store.commit("setCurrentPath", {
+      path: this.$router.history.current.path,
+    });
+    console.log("abc");
+    console.log(this.$store.state.pathStore.currentPath);
+    // this.$store.state.pathStore.currentPath.includes("home/zone")
+    //   ? (this.isMeetPage = false)
+    //   : (this.isMeetPage = true);
   },
 };
 </script>

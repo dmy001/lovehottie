@@ -18,6 +18,7 @@
     <div class="w-full min-h-810 bg-white rounded-px8 mt-px15">
       <div v-if="isZoneRoom">动态广场</div>
       <div v-if="!isZoneRoom">朋友圈</div>
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -27,16 +28,28 @@ export default {
   name: "zonelist",
   data() {
     return {
-      isZoneRoom: true,
+      // isZoneRoom: true,
     };
+  },
+  computed: {
+    isZoneRoom() {
+      return this.$store.state.pathStore.currentPath.includes("zone/friend")
+        ? false
+        : true;
+    },
   },
   methods: {
     goZoneRoom() {
-      this.isZoneRoom = true;
+      this.$router.push({ path: "/home/zone/room" });
     },
     goZoneFriend() {
-      this.isZoneRoom = false;
+      this.$router.push({ path: "/home/zone/friend" });
     },
+  },
+  created: function () {
+    this.$store.commit("setCurrentPath", {
+      path: this.$router.history.current.path,
+    });
   },
 };
 </script>
