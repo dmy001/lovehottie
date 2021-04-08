@@ -47,3 +47,32 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, button, fi
   border: 15px solid transparent;
   border-top-color: white;
 }
+// 弹出层
+.ivu-modal-content{
+  height: 566px;
+  border-radius:15px ;
+}
+.ivu-modal-header{
+  background:$baseColor6;
+  border-top-left-radius:15px;
+  border-top-right-radius:15px
+}
+.ivu-modal-close{
+  background: url('~@images/person/icon-closedgaga.png') no-repeat 0 -39px;
+  height: 38px;
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  width: 38px;
+  display: inline-block;
+}
+.ivu-modal-close .ivu-icon-ios-close {
+  display: none;
+}
+.ivu-upload-drag{
+  margin-top: 100px;
+  height: 330px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

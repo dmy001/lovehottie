@@ -4,7 +4,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import api from './api'
+import ViewUI from 'view-design'
 
+Vue.use(ViewUI);
 Vue.config.productionTip = false
 
 Vue.prototype.STATICBASEURI = process.env.VUE_APP_STATICURI
