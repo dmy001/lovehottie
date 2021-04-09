@@ -36,28 +36,7 @@
     </div>
     <div class="personContent mt-px15">
       <div class="shareList flex justify-between">
-        <div class="left relative">
-          <Input
-            v-model="value17"
-            maxlength="500"
-            show-word-limit
-            type="textarea"
-            :border="false"
-            placeholder="想和大家分享什么"
-            style="width: 240px; border: none"
-            class="leftText placeholder-gray-800"
-            :rows="9"
-          />
-          <div class="leftFoot">
-            <div class="footLeft">
-              <i class="bg_icon expression" @click="emojiShow = !emojiShow"></i>
-              <i class="bg_icon img_icon"></i>
-                <emoji v-show="emojiShow"></emoji>
-            </div>
-            <div class="footRight">发送</div>
-          </div>
-           
-        </div>
+        <editDynamic></editDynamic>
         <div class="content">
           <div class="content_top">礼物(0)</div>
           <div class="content_bottom">还未收到礼物</div>
@@ -223,8 +202,9 @@
   </div>
 </template>
 <script>
+import editDynamic from "@components/editDynamic.vue"
 import imgUpload from "@components/uploadImg.vue";
-import emoji from "@components/sticker.vue";
+
 export default {
   data() {
     return {
@@ -257,7 +237,7 @@ export default {
   },
   components: {
     imgUpload,
-    emoji
+    editDynamic
   },
   methods: {
     openList() {
@@ -342,7 +322,6 @@ export default {
   .shareList {
     padding: 20px;
     background: #fff;
-    .left,
     .content,
     .right {
       width: 262px;
@@ -350,52 +329,6 @@ export default {
       background: #fff none repeat scroll 0 0;
       border: 1px solid #dcdcdc;
       border-radius: 5px;
-    }
-    textarea.ivu-input {
-      width: 240px;
-      height: 148px;
-      padding-bottom: 12px;
-      color: #333;
-      margin: 20px 0 5px 0;
-    }
-    .leftFoot {
-      height: 40px;
-      padding: 10px;
-      margin-top: 20px;
-      background: #f9f9f9;
-      border-bottom-left-radius: 5px;
-      border-bottom-right-radius: 5px;
-      .footLeft {
-        @apply float-left;
-
-        .expression {
-          background-position: -73px -1px;
-          cursor: pointer;
-          height: 18px;
-          width: 18px;
-        }
-        .img_icon {
-          background-position: -98px -2px;
-          cursor: pointer;
-          height: 16px;
-          width: 18px;
-          margin-left: 15px;
-        }
-      }
-      .footRight {
-        width: 54px;
-        height: 24px;
-        background: #fff none repeat scroll 0 0;
-        border-radius: 30px;
-        line-height: 24px;
-        color: #999;
-        font-size: 12px;
-        @apply float-right cursor-pointer text-center;
-      }
-      .footRight:hover {
-        background: $baseColor1;
-        color: #fff;
-      }
     }
     .content_top {
       width: 100%;
