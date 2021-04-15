@@ -41,6 +41,16 @@
           <a class="text-base-color1">{{ registeNow }}</a>
         </div>
       </div>
+      <div class="w-full flex justify-center mb-px15">
+        <div>
+          <span class="text-base-color4">没有账号?</span>
+          <span
+            class="text-base-color2 cursor-pointer ml-px10"
+            @click="$emit('changeBox')"
+            >立即注册</span
+          >
+        </div>
+      </div>
     </div>
   </div>
 </template>

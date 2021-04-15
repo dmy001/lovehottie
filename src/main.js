@@ -10,6 +10,7 @@ Vue.use(ViewUI);
 Vue.config.productionTip = false
 
 Vue.prototype.STATICBASEURI = process.env.VUE_APP_STATICURI
+Vue.prototype.DOMAIN = process.env.VUE_APP_DOMAIN
 Vue.prototype.$api = api
 
 new Vue({

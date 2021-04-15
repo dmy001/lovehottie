@@ -5,6 +5,7 @@
   top: 0;
   bottom: 0;
   background-color: rgb(0, 0, 0, 0.3);
+  z-index: 999;
 }
 
 body {
@@ -13,8 +14,32 @@ body {
   margin: 0px;
   font-size: 14px;
 }
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, button, fieldset, input, textarea, p, blockquote, th, td {
-  font-family: "Microsoft YaHei", '微软雅黑', arial,'HanHei SC', 'PingFang SC', 'lucida grande', tahoma, verdana, sans-serif;
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+button,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  font-family: "Microsoft YaHei", '微软雅黑', arial, 'HanHei SC', 'PingFang SC', 'lucida grande', tahoma, verdana, sans-serif;
 }
 
 .fontGray {
@@ -47,17 +72,20 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, button, fi
   border: 15px solid transparent;
   border-top-color: white;
 }
+
 // 弹出层
-.ivu-modal-content{
+.ivu-modal-content {
   height: 566px;
-  border-radius:15px ;
+  border-radius: 15px;
 }
-.ivu-modal-header{
-  background:$baseColor2;
-  border-top-left-radius:15px;
-  border-top-right-radius:15px
+
+.ivu-modal-header {
+  background: $baseColor2;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px
 }
-.ivu-modal-close{
+
+.ivu-modal-close {
   background: url('~@images/person/icon-closedgaga.png') no-repeat 0 -39px;
   height: 38px;
   position: absolute;
@@ -66,13 +94,24 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, button, fi
   width: 38px;
   display: inline-block;
 }
+
 .ivu-modal-close .ivu-icon-ios-close {
   display: none;
 }
-.ivu-upload-drag{
+
+.ivu-upload-drag {
   margin-top: 100px;
   height: 330px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }

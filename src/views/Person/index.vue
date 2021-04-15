@@ -52,11 +52,10 @@
             <div class="footLeft">
               <i class="bg_icon expression" @click="emojiShow = !emojiShow"></i>
               <i class="bg_icon img_icon"></i>
-                <emoji v-show="emojiShow"></emoji>
+              <emoji v-show="emojiShow"></emoji>
             </div>
             <div class="footRight">发送</div>
           </div>
-           
         </div>
         <div class="content">
           <div class="content_top">礼物(0)</div>
@@ -67,7 +66,7 @@
           <div class="content_bottom">还未收到礼物</div>
         </div>
       </div>
-     
+
       <div class="mt-px15 bg-white w-full">
         <div class="dynamic">
           <div class="dynamic_left float-left">
@@ -232,7 +231,7 @@ export default {
       inputShow: false,
       value17: "",
       listShow: false,
-      emojiShow:false,
+      emojiShow: false,
       contentList: [
         {
           name: "可爱小怪咖",
@@ -257,7 +256,7 @@ export default {
   },
   components: {
     imgUpload,
-    emoji
+    emoji,
   },
   methods: {
     openList() {
@@ -426,7 +425,7 @@ export default {
       @apply flex items-center;
 
       .bg_circle {
-        background: url("~@images/person/dynamic.png") no-repeat;
+        background: url("~@images/dynamic.png") no-repeat;
         display: inline-block;
         background-position: -54px -48px;
         cursor: pointer;

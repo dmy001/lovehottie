@@ -2,21 +2,24 @@
   <div>
     <div class="w-full h-px60 bg-white flex flex-row">
       <div class="mr-px15 zone-room" @click="goZoneRoom">
-        <a class="cursor-pointer" :class="{ 'text-base-color2': isZoneRoom }"
-          >动态广场</a
-        >
+        <div class="cursor-pointer" :class="{ 'text-base-color2': isZoneRoom }">
+          动态广场
+        </div>
         <div v-if="isZoneRoom" class="triangle-top"></div>
       </div>
       <div class="zone-friend" @click="goZoneFriend">
-        <a class="cursor-pointer" :class="{ 'text-base-color2': !isZoneRoom }"
-          >朋友圈</a
+        <div
+          class="cursor-pointer"
+          :class="{ 'text-base-color2': !isZoneRoom }"
         >
+          朋友圈
+        </div>
         <div v-if="!isZoneRoom" class="triangle-top"></div>
       </div>
     </div>
 
     <div class="w-full min-h-810 bg-white rounded-px8 mt-px15">
-      <div v-if="isZoneRoom">动态广场</div>
+      <div v-if="isZoneRoom"></div>
       <div v-if="!isZoneRoom">朋友圈</div>
       <router-view></router-view>
     </div>

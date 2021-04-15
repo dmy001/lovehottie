@@ -1,15 +1,17 @@
 <template>
   <div class="w-full">
-    <Card />
+    <!-- <Card /> -->
+    <waterfall />
   </div>
 </template>
 
 <script>
-import Card from "@components/home/zone/Card.vue";
+// import Card from "@components/home/zone/Card.vue";
+import waterfall from "@components/home/zone/Waterfall.vue";
 export default {
   name: "zoneCard",
   components: {
-    Card,
+    waterfall,
   },
   created() {
     this.$store.commit("setCurrentPath", {
