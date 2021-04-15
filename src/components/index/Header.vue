@@ -1,8 +1,25 @@
 <template>
   <div id="header">
-    <div class="head-left">
+    <div class="head-left pr-px10 pl-px10 relative">
       <img :src="STATICBASEURI + '/images/new_index/logo.png'" />
-      <span>语言</span>
+      <div
+        class="inline-block cursor-pointer"
+        @mouseover="langListShow = true"
+        @mouseleave="langListShow = false"
+      >
+        <span class="inline-block p-px3">语言</span>
+        <i class="lang-arrow-icon"></i>
+        <div v-if="langListShow" class="langList text-black">
+          <div
+            v-for="(lan, key) in langArr"
+            :key="key"
+            :class="{ 'lang-selected': lan == selectLan ? true : false }"
+            @click="chooseLan"
+          >
+            {{ lan }}
+          </div>
+        </div>
+      </div>
     </div>
     <div class="head-right">
       <div class="btn-control register-btn">
@@ -21,7 +38,24 @@ export default {
     return {
       login: "登录",
       reginster: "注册",
+      langArr: [
+        "English",
+        "简体中文",
+        "繁體中文",
+        "한국어",
+        "Pусский",
+        "Deutsch",
+        "Español",
+        "日本語",
+      ],
+      langListShow: false,
+      selectLan: "简体中文",
     };
+  },
+  methods: {
+    chooseLan(e) {
+      this.selectLan = e.target.innerText.replace(/\s/g, "");
+    },
   },
 };
 </script>
@@ -69,5 +103,31 @@ export default {
       background-color: $btnColor;
     }
   }
+}
+.langList {
+  width: 112px;
+  background-color: #dcdcdc;
+  border-radius: 5px;
+  @apply cursor-pointer absolute;
+  top: 30px;
+  right: -30px;
+
+  div {
+    padding: 3px 0;
+    &:hover {
+      @apply text-base-color1;
+    }
+  }
+}
+.lang-selected {
+  @apply text-base-color1;
+}
+.lang-arrow-icon {
+  display: inline-block;
+  width: 20px;
+  height: 8px;
+  background: url("~@images/down.png") no-repeat;
+  vertical-align: middle;
+  margin-left: 3px;
 }
 </style>

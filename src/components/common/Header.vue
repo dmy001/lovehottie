@@ -14,16 +14,13 @@
         >
           偶遇
         </div>
-      <router-link to="zone">
-          <div
+        <div
           class="flex justify-center items-center h-full w-px72 ml-px15 cursor-pointer"
           :class="{ 'bg-base-color3': isZonePage }"
           @click="goZonePage"
         >
           动态
         </div>
-      </router-link>
-       
       </div>
 
       <div class="flex h-full justify-start items-center text-px14 text-white">

@@ -20,6 +20,8 @@
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.4",
     "view-design": "^4.5.0",
     "vue": "^2.6.11",
+    "vue-country-code-selector": "^1.0.5",
+    "vue-i18n": "^9.1.5",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
   },

@@ -220,7 +220,7 @@
           <div class="download_code">
             <img
               :src="STATICBASEURI + '/images/new_index/page6_1.jpg'"
-              style="margin-top: 10px;margin-left:10px"
+              style="margin-top: 10px; margin-left: 10px"
             />
           </div>
           <div class="download_text">手机扫码下载</div>
@@ -243,8 +243,16 @@
         </div>
       </div>
     </div>
-    <Login v-if="loginState" @closeBox="closeLoginBox" />
-    <Register v-if="registerState" @closeBox="closeLoginBox" />
+    <Login
+      v-if="loginState"
+      @closeBox="closeLoginBox"
+      @changeBox="showRegister"
+    />
+    <Register
+      v-if="registerState"
+      @closeBox="closeLoginBox"
+      @changeBox="showLogin"
+    />
     <Footer />
   </div>
 </template>
