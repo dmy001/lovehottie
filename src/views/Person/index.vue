@@ -52,7 +52,6 @@
             <div class="footLeft">
               <i class="bg_icon expression" @click="emojiShow = !emojiShow"></i>
               <i class="bg_icon img_icon"></i>
-              <emoji v-show="emojiShow"></emoji>
             </div>
             <div class="footRight">发送</div>
           </div>
@@ -258,7 +257,6 @@ export default {
   },
   components: {
     imgUpload,
-    emoji,
     editDynamic,
   },
   methods: {
