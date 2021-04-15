@@ -46,6 +46,8 @@ module.exports = {
         bgFooterColor:bgColor2,
         color3: baseColor3, // 主页头部中偶遇 输入框背景色
         color4: '#999999',
+        color5:'#666666',
+        iconColor:'rgb(212,212,212)'
       },
       card: {
         gray: '#dcdcdc'
@@ -92,7 +94,8 @@ module.exports = {
       px3: '3px',
       px260: '260px',
       px50: '50px',
-      px10:'10px'
+      px10:'10px',
+      px100:'100px'
     },
     animation: {
       none: 'none',
@@ -756,7 +759,7 @@ module.exports = {
       'px72': '72px',
       'px120': '120px',
       'px860': '860px',
-      'px30': '30px'
+      'px30': '30px',
     }),
     zIndex: {
       auto: 'auto',
