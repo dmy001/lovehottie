@@ -33,15 +33,20 @@
           </div>
         </div>
         <!-- 本地上传 -->
-        <div v-if="imgShow" class="upload_img flex  items-start flex-col  p-px3">
-          <span class="z-1000 icon_top"></span>
-          <div class="p-px10 ">
-             本地上传
-             <i></i>
+        <div v-if="imgShow" class="upload_img flex items-start flex-col p-px3">
+          <span class="z-1000 iocn icon_top"></span>
+          <div class="p-px10">
+            本地上传
+            <i class="iocn close_icon"></i>
           </div>
-          
+
           <div class="mt-px100 ml-px3">
-            <span class="block text-12px mb-px10 text-base-color5">共0张，还能上传9张</span>
+            <span class="block text-12px mb-px10 text-base-color5 text-left"
+              >共{{ uploadList.length }}张，还能上传<span>{{
+                9 - uploadList.length
+              }}</span
+              >张</span
+            >
             <Upload
               ref="upload"
               :show-upload-list="false"
@@ -58,7 +63,11 @@
               style="display: inline-block; width: 78px"
             >
               <div style="width: 78px; height: 78px; line-height: 78px">
-                <Icon type="md-add" size="30" class="text-base-iconColor"></Icon>
+                <Icon
+                  type="md-add"
+                  size="30"
+                  class="text-base-iconColor"
+                ></Icon>
               </div>
             </Upload>
             <div
@@ -293,13 +302,25 @@ export default {
     background: #fff;
     border-radius: 5px;
     border: 1px solid #dcdcdc;
+    .iocn{
+       background: url("~@images/person/dynamic.png")  no-repeat;
+    }
     .icon_top {
       position: absolute;
       top: -7px;
       left: 45px;
       width: 9px;
       height: 7px;
-      background: url("~@images/person/dynamic.png") -270px 0 no-repeat;
+      background-position:-270px 0
+     
+    }
+    .close_icon{
+      float: right;
+      display: inline;
+      cursor: pointer;
+      background-position: -232px -3px;
+      width: 10px;
+      height: 10px;
     }
     .ivu-upload{
       float: left;
