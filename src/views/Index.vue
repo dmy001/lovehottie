@@ -105,7 +105,7 @@
         </div>
       </div>
     </div>
-    <div class="section sectionBox section5">
+    <!-- <div class="section sectionBox section5">
       <div class="content">
         <div class="titleBox">
           <div class="title">面对面视频直播</div>
@@ -128,7 +128,7 @@
           />
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="sectionBox section6">
       <div class="content">
         <div class="titleBox">
@@ -219,14 +219,14 @@
         <div class="download">
           <div class="download_code">
             <img
-              :src="STATICBASEURI + '/images/new_index/page6_1.jpg'"
+              :src="STATICBASEURI + '/public/images/qrpic.png'"
               style="margin-top: 10px; margin-left: 10px"
             />
           </div>
           <div class="download_text">手机扫码下载</div>
           <a
             id="apkUrl"
-            href="https://s.gagahi.com/web-common/app/Android/download/GaGaV2.7.9.apk"
+            href="https://play.google.com/store/apps/details?id=com.zoneyet.lovehottie"
             target="blank"
             ><img
               class="dow_btn"
@@ -301,7 +301,7 @@ export default {
     // 轮播
     newbannerInit() {
       let self = this;
-      self.$nextTick(function () {
+      self.$nextTick(function() {
         const topSwiper = new window.Swiper(".topBanner", {
           autoplay: {
             delay: 1500,
@@ -422,7 +422,7 @@ export default {
     }
   }
   .section1 {
-    background: url($baseImgURI + "zh_CN_bg111.jpg") center center no-repeat;
+    background: url($baseImgURI+"zh_CN_bg111.jpg") center center no-repeat;
     background-size: 1920px 969px;
     .content {
       .titleBox {
