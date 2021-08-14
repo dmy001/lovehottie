@@ -19,56 +19,7 @@
         </div>
       </div>
     </div>
-    <!-- 打开相册 -->
-    <div v-show="showImgs" class="w-full">
-      <div class="top w-full h-10 bg-blue-100 mx-auto flex justify-between">
-        <div class="left ml-5 text-left text-base leading-10">
-          我的照片
-          <span class="text-gray-400 leading-10">(0)</span>
-        </div>
-        <div class="right text-right">
-          <div
-            class="
-              w-24
-              h-7
-              rounded-2xl
-              text-center
-              mt-2
-              bg-red-400
-              text-white
-              leading-7
-              mr-10
-            "
-          >
-            升级会员
-          </div>
-          <img
-          src="../../assets/images/person/open.png"
-          alt=""
-          title="打开相册"
-          class=" inline-block -mt-12 mr-3"
-          @click="openImg"
-        />
-        </div> 
-      </div>
-      <div class="w-full p-5" style="min-height: 575px">
-        <div class="flex justify-between">
-          <div class="space-x-4"> 
-            <button class="h-7 w-24 rounded-2xl border border-gray-400  text-black" @click="modalPhoto = true">
-              上传照片
-            </button>
-            <button v-show="!del" class="h-7  rounded-2xl border border-gray-400 text-black" style="min-width: 96px"   @click="manage"  >
-              批量管理
-            </button>
-            <button v-show="del"  class="h-7  rounded-2xl border border-gray-400 text-black" style="min-width: 96px"   @click="manage"  >
-              取消批量管理
-            </button>
-            <button v-show="del"  class="h-7 w-24 rounded-2xl border border-gray-400 text-black">删除</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div v-show="!showImgs" class="photo">
+    <div class="photo">
       <div class="upload float-left" @click="modalPhoto = true">
         <img src="../../assets/images/person/upload.jpg" alt="" />
       </div>
@@ -78,12 +29,12 @@
           src="../../assets/images/person/open.png"
           alt=""
           title="打开相册"
-          class="imgShow "
-          @click="openImg"
+          class="imgShow"
         />
+        <!-- 打开相册 -->
       </div>
     </div>
-    <div v-show="!showImgs" class="personContent mt-px15">
+    <div class="personContent mt-px15">
       <div class="shareList flex justify-between">
         <div class="left relative">
           <Input
@@ -193,11 +144,7 @@
                             style="margin-left: 20px"
                           >
                             <i
-                              class="
-                                message_iconSmall
-                                inline-block
-                                cursor-pointer
-                              "
+                              class="message_iconSmall inline-block cursor-pointer"
                               @click.stop="inputShow = true"
                             ></i>
                           </div>
@@ -206,12 +153,7 @@
                             style="margin-left: 5px"
                           >
                             <i
-                              class="
-                                bg_circleSmall
-                                relative
-                                inline-block
-                                cursor-pointer
-                              "
+                              class="bg_circleSmall relative inline-block cursor-pointer"
                             >
                               <div class="trans-type">
                                 <span class="ul_bg"></span>
@@ -286,10 +228,6 @@ import imgUpload from "@components/uploadImg.vue";
 export default {
   data() {
     return {
-
-      title:"批量管理",
-      del:false,
-      showImgs: false,
       modalPhoto: false,
       inputShow: false,
       value17: "",
@@ -341,13 +279,6 @@ export default {
         }
       }
     },
-    openImg() {
-      this.showImgs = !this.showImgs;
-    },
-    manage() {
-      this.del=!this.del;   
-      this.title="取消批量管理"
-    }
   },
   mounted() {
     document.addEventListener("click", this.closeSel);
@@ -358,7 +289,6 @@ export default {
 };
 </script>
 <style lang="scss" >
-
 .topUser {
   width: 100%;
   background: #fff;

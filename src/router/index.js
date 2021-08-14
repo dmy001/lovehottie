@@ -11,8 +11,10 @@ const Zone = () => import('@/views/zone/Index.vue')
 const ZoneRoom = () => import('@/views/zone/Room.vue')
 const ZoneFriend = () => import('@/views/zone/Friend.vue')
 const Person = () => import('@/views/Person/index.vue')
-const Personal = () => import('@/views/Person/personal.vue')
-const Dynamic =() => import('@components/editDynamic.vue')
+const Visitor = () => import('@/views/Visitor.vue')
+const Vip = () => import('@/views/vip/index.vue')
+const UpgradeVip = () => import('@/views/vip/UpgradeVip.vue')
+const RechargeGold = () => import('@/views/vip/RechargeGold.vue')
 
 
 
@@ -33,12 +35,6 @@ const routes = [
       loginCheck: false,
       title: '首页'
     }
-  },
-  {
-path:'/dynamic',
-name:'dynamic',
-component:Dynamic,
-
   },
   {
     path: '/about',
@@ -62,6 +58,36 @@ component:Dynamic,
       title: '主页'
     },
     children: [
+      {
+        path:'visitor',
+        component:Visitor,
+        meta:{
+          title:'我的访客'
+        }
+      },
+      {
+        path:'vip',
+        component:Vip,
+        meta:{
+          title:'升级'
+        },
+        children:[
+          {
+            path: 'UpgradeVip',
+            component: UpgradeVip,
+            meta: {
+              title: '升级会员'
+            }
+          },
+          {
+            path: 'RechargeGold',
+            component: RechargeGold,
+            meta: {
+              title: '充值金币'
+            }
+          },
+        ]
+      },
       {
         path: 'meet',
         component: Meet,
@@ -90,7 +116,7 @@ component:Dynamic,
             meta: {
               title: '朋友圈'
             }
-          }
+          },
         ]
       },
       // 个人主页
@@ -101,16 +127,9 @@ component:Dynamic,
           title: '个人主页'
         }
       },
-      {
-        path: 'personal',
-        component: Personal,
-        meta: {
-          title: '个人资料'
-        }
-      },
+      
     ]
   },
-  
   {
     path: '/meet',
     name: 'meet',
@@ -140,9 +159,9 @@ router.beforeEach((to, from, next) => {
   //     next()
   //   }
   // }else{
-  next()
+    next()
   // }
-
+  
 })
 
 export default router

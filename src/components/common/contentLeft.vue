@@ -76,24 +76,29 @@
      <div id="leftSixinNotice" class="inline-block absolute">
      </div>
     </div>
+    <router-link to="/home/vip">
     <div class="lf-lb flex flex-row cursor-pointer lkmLeft">
      <span id="leftLikeMeIndexImg" class="inline-block lkm"></span>
      <div id="leftLikeMeIndexText">
        升级会员
      </div>
     </div>
+    </router-link>
+
      <div class="lf-lb flex flex-row cursor-pointer mlkLeft">
      <span id="leftIlikeIndexImg" class="inline-block mlk"></span>
      <div id="leftIlikeIndexText">
-       <router-link to='PersonHome'>我的动态</router-link>
+       我的动态
      </div>
     </div>
+    <router-link to="visitor">
      <div class="lf-lb flex flex-row cursor-pointer eachLeft">
      <span id="leftFriendIndexImg" class="inline-block each-lk"></span>
      <div id="leftFriendIndexText">
       我的访客
      </div>
     </div>
+    </router-link>
      <div class="lf-lb flex flex-row cursor-pointer AdvertisementLeft">
      <span id="leftAdvertisementIndexImg" class="inline-block Advertisement"></span>
      <div id="leftAdvertisementIndexText">

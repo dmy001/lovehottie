@@ -1,5 +1,4 @@
-<template>
-  
+<template>  
        <Upload
         multiple
         type="drag"
@@ -9,8 +8,6 @@
             <p class="text-gray-400">或将照片拖到这里，单次最多可选9张</p>
         </div>
     </Upload>
-
-  
 </template>
 <script>
     export default {
@@ -19,7 +16,6 @@
           }
         },
           methods: {
-        
       }
     }
 </script>

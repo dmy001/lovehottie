@@ -1,12 +1,7 @@
 <template>
   <div class="waterfall-container">
     <div class="w-full flex flex-row">
-
-
       <div class="flex flex-col" style="width: calc(100% / 3)">
-             <!-- 分享内容 -->
-        <editDynamic></editDynamic>
- <!-- 朋友圈内容和动态广场内容 -->
         <div v-for="i in 10" :key="i">
           <div v-if="i % 3 === 1">
             <card
@@ -51,11 +46,10 @@
 
 <script>
 import card from "@components/home/zone/Card.vue";
-import editDynamic from "@components/editDynamic.vue";
 
 export default {
   components: {
-    card,editDynamic
+    card,
   },
 };
 </script>
