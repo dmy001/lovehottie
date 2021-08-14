@@ -1,12 +1,12 @@
 const colors = require('tailwindcss/colors')
 
 
-let bgColor1='rgb(242,242,242)'
-let bgColor2='#e3e6ee'
+let bgColor1 = 'rgb(242,242,242)'
+let bgColor2 = '#e3e6ee'
 let baseColor1 = '#2d57a1';
 let baseColor2 = '#2d57a1';
 let baseColor3 = '#6281b9';
-if (process.env.VUE_APP_TYPE === 'lh'){
+if (process.env.VUE_APP_TYPE === 'lh') {
   baseColor1 = '#FF625A';
   baseColor2 = '#E63561';
   baseColor3 = '#F28595';
@@ -24,6 +24,11 @@ module.exports = {
       xl: '1280px',
       '2xl': '1536px',
     },
+    extend: {
+      backgroundImage: theme => ({
+        'select-button': "url('/src/assets/images/index/xld.png')"
+      })
+    },
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
@@ -38,16 +43,16 @@ module.exports = {
       indigo: colors.indigo,
       purple: colors.violet,
       pink: colors.pink,
-      buttonColor:'#f6f6f6',
+      buttonColor: '#f6f6f6',
       base: {
         color1: baseColor1,
         color2: baseColor2,
-        bgColor:bgColor1,
-        bgFooterColor:bgColor2,
+        bgColor: bgColor1,
+        bgFooterColor: bgColor2,
         color3: baseColor3, // 主页头部中偶遇 输入框背景色
         color4: '#999999',
-        color5:'#666666',
-        iconColor:'rgb(212,212,212)'
+        color5: '#666666',
+        iconColor: 'rgb(212,212,212)'
       },
       card: {
         gray: '#dcdcdc'
@@ -94,8 +99,8 @@ module.exports = {
       px3: '3px',
       px260: '260px',
       px50: '50px',
-      px10:'10px',
-      px100:'100px'
+      px10: '10px',
+      px100: '100px'
     },
     animation: {
       none: 'none',
@@ -115,6 +120,7 @@ module.exports = {
       'gradient-to-bl': 'linear-gradient(to bottom left, var(--tw-gradient-stops))',
       'gradient-to-l': 'linear-gradient(to left, var(--tw-gradient-stops))',
       'gradient-to-tl': 'linear-gradient(to top left, var(--tw-gradient-stops))',
+
     },
     backgroundOpacity: (theme) => theme('opacity'),
     backgroundPosition: {
@@ -393,7 +399,7 @@ module.exports = {
       screen: '100vh',
       'px30': '30px',
       '50': '50px',
-      '60':'60px',
+      '60': '60px',
       'px50': '50px',
       'px60': '60px',
       px24: '24px'
@@ -508,7 +514,7 @@ module.exports = {
       0: '0px',
       full: '100%',
       screen: '100vh',
-      810:'810px',
+      810: '810px',
       'px200': '200px'
     },
     minWidth: {
@@ -753,7 +759,7 @@ module.exports = {
       max: 'max-content',
       '1240': '1240px',
       '1200': '1200px',
-      '1100':'1100px',
+      '1100': '1100px',
       'px1240': '1240px',
       'px1200': '1200px',
       'px72': '72px',
