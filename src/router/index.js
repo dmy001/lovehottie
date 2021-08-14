@@ -11,7 +11,7 @@ const Zone = () => import('@/views/zone/Index.vue')
 const ZoneRoom = () => import('@/views/zone/Room.vue')
 const ZoneFriend = () => import('@/views/zone/Friend.vue')
 const Person = () => import('@/views/Person/index.vue')
-
+const Personal = () => import('@/views/Person/personal.vue')
 
 // 避免同一个路由多次添加报错
 const VueRouterPush = VueRouter.prototype.push
@@ -91,9 +91,16 @@ const routes = [
           title: '个人主页'
         }
       },
-      
+      {
+        path: 'personal',
+        component: Personal,
+        meta: {
+          title: '个人资料'
+        }
+      },
     ]
   },
+  
   {
     path: '/meet',
     name: 'meet',
@@ -123,9 +130,9 @@ router.beforeEach((to, from, next) => {
   //     next()
   //   }
   // }else{
-    next()
+  next()
   // }
-  
+
 })
 
 export default router
