@@ -11,12 +11,24 @@
       </div>
       <div class="flex flex-row">
         <button
-          class="flex justify-center items-center text-base-color4 text-px14 toolbar-btn"
+          class="
+            flex
+            justify-center
+            items-center
+            text-base-color4 text-px14
+            toolbar-btn
+          "
         >
           精确筛选
         </button>
         <button
-          class="flex justify-center items-center text-base-color4 text-px14 toolbar-btn"
+          class="
+            flex
+            justify-center
+            items-center
+            text-base-color4 text-px14
+            toolbar-btn
+          "
         >
           推荐
         </button>
@@ -91,16 +103,22 @@
           </div>
         </div>
         <div class="flex-1">
-          <span class="filter-item-title">年龄</span>
+          <span class="filter-item-title">语言</span>
           <div class="lang-list">
-            <div class="flex flex-row">
-              <div class="lang-list-item">
-                <input type="radio" id="sexB" value="male" v-model="selSex" />
-                <label for="sexB">男</label>
-              </div>
-              <div class="lang-list-item">
-                <input type="radio" id="sexB" value="male" v-model="selSex" />
-                <label for="sexB">男</label>
+            <div class="flex flex-wrap">
+              <div
+                v-for="(item, index) in country"
+                :key="index"
+                class="lang-list-item mt-4 w-32"
+              >
+                <input
+                  type="radio"
+                  id="countryRoudio"
+                  :value="item"
+                  v-model="redioVal"
+                  @change="getRadioVal"
+                />
+                <label for="countryRoudio">{{ item }} </label>
               </div>
             </div>
           </div>
@@ -123,7 +141,23 @@ export default {
       selCountry: "中港澳",
       selSex: "中港澳",
       sliderRange: [18, 50],
+      country: [
+        "English",
+        "日本語",
+        "русский",
+        "Español",
+        "简体中文",
+        "繁體中文",
+        "한국어",
+        "Deutsch",
+      ],
+      redioVal: "简体中文",
     };
+  },
+  methods: {
+    getRadioVal() {
+      console.log(this.redioVal);
+    },
   },
 };
 </script>
