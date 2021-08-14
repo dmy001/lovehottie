@@ -113,15 +113,55 @@
               >
                 <input
                   type="radio"
-                  id="countryRoudio"
+                  id="aa"
                   :value="item"
                   v-model="redioVal"
                   @change="getRadioVal"
                 />
-                <label for="countryRoudio">{{ item }} </label>
+                <label class="ml-2" for="aa">{{ item }} </label>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="p-px15 bg-white text-left">
+        <button class="border border-red-500 rounded-3xl px-6 py-2">
+          <div class="text-red-500 flex">
+            <span class="mr-2">高级选项</span>
+            <img
+              class="mt-2"
+              style="height: 100%"
+              src="../../../assets/images/index/xld.png"
+              alt=""
+            />
+            <!-- <span class="bg-select-button"></span> -->
+          </div>
+        </button>
+        <div class="flex">
+          <Select v-model="model1" style="width: 200px">
+            <Option
+              v-for="item in heightList"
+              :value="item.value"
+              :key="item.value"
+              >{{ item.label }}</Option
+            >
+          </Select>
+          <Select v-model="model1" style="width: 200px">
+            <Option
+              v-for="item in weightList"
+              :value="item.value"
+              :key="item.value"
+              >{{ item.label }}</Option
+            >
+          </Select>
+          <Select v-model="model1" style="width: 200px">
+            <Option
+              v-for="item in jobList"
+              :value="item.value"
+              :key="item.value"
+              >{{ item.label }}</Option
+            >
+          </Select>
         </div>
       </div>
     </div>
@@ -139,7 +179,7 @@ export default {
   data() {
     return {
       selCountry: "中港澳",
-      selSex: "中港澳",
+      selSex: "",
       sliderRange: [18, 50],
       country: [
         "English",
@@ -152,11 +192,114 @@ export default {
         "Deutsch",
       ],
       redioVal: "简体中文",
+      heightList: [
+        {
+          value: "150cm—160cm",
+          label: "150cm—160cm",
+        },
+        {
+          value: "160cm—170cm",
+          label: "160cm—170cm",
+        },
+        {
+          value: "170cm—180cm",
+          label: "170cm—180cm",
+        },
+        {
+          value: "180cm 以上",
+          label: "180cm 以上",
+        },
+      ],
+      weightList: [
+        {
+          value: "40kg—50kg",
+          label: "40kg—50kg",
+        },
+        {
+          value: "50kg—60kg",
+          label: "50kg—60kg",
+        },
+        {
+          value: "60kg—70kg",
+          label: "60kg—70kg",
+        },
+        {
+          value: "70kg—80kg",
+          label: "70kg—80kg",
+        },
+        {
+          value: "80kg 以上",
+          label: "80kg 以上",
+        },
+      ],
+      jobList: [
+        {
+          value: "文案",
+          label: "文案",
+        },
+        {
+          value: "文员",
+          label: "文员",
+        },
+        {
+          value: "程序员",
+          label: "程序员",
+        },
+        {
+          value: "设计",
+          label: "设计",
+        },
+        {
+          value: "销售",
+          label: "销售",
+        },
+        {
+          value: "客户经理",
+          label: "客户经理",
+        },
+        {
+          value: "工程师",
+          label: "客户经理",
+        },
+        {
+          value: "CEO",
+          label: "CEO",
+        },
+        {
+          value: "会计",
+          label: "会计",
+        },
+        {
+          value: "出纳",
+          label: "出纳",
+        },
+        {
+          value: "公务员",
+          label: "公务员",
+        },
+        {
+          value: "农民",
+          label: "农民",
+        },
+        {
+          value: "渔民",
+          label: "渔民",
+        },
+        {
+          value: "医生",
+          label: "医生",
+        },
+      ],
+
+      model1: "",
     };
   },
   methods: {
     getRadioVal() {
       console.log(this.redioVal);
+    },
+    change(e) {
+      console.log(e.target.value);
     },
   },
 };
