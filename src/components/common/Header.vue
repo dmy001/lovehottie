@@ -1,21 +1,53 @@
 <template>
   <div
-    class="home-header fixed z-1000 w-full h-px50 bg-gradient-to-r from-base-color2 to-base-color1"
+    class="
+      home-header
+      fixed
+      z-1000
+      w-full
+      h-px50
+      bg-gradient-to-r
+      from-base-color2
+      to-base-color1
+    "
   >
     <div class="w-px1200 h-full mx-auto flex justify-between items-center">
       <div
-        class="flex h-full justify-start items-center text-white text-px14 font-bold"
+        class="
+          flex
+          h-full
+          justify-start
+          items-center
+          text-white text-px14
+          font-bold
+        "
       >
         <img :src="STATICBASEURI + '/images/logo.png'" />
         <div
-          class="flex justify-center items-center h-full w-px72 ml-px15 cursor-pointer"
+          class="
+            flex
+            justify-center
+            items-center
+            h-full
+            w-px72
+            ml-px15
+            cursor-pointer
+          "
           :class="{ 'bg-base-color3': !isZonePage }"
           @click="goMeetPage"
         >
           偶遇
         </div>
         <div
-          class="flex justify-center items-center h-full w-px72 ml-px15 cursor-pointer"
+          class="
+            flex
+            justify-center
+            items-center
+            h-full
+            w-px72
+            ml-px15
+            cursor-pointer
+          "
           :class="{ 'bg-base-color3': isZonePage }"
           @click="goZonePage"
         >
@@ -25,7 +57,14 @@
 
       <div class="flex h-full justify-start items-center text-px14 text-white">
         <div
-          class="flex h-px24 bg-base-color3 rounded-px15 justify-between items-center"
+          class="
+            flex
+            h-px24
+            bg-base-color3
+            rounded-px15
+            justify-between
+            items-center
+          "
         >
           <input
             type="text"
@@ -55,13 +94,41 @@
           <span class="absolute info-num">1</span>
           <label class="inline-block w-full h-full"></label>
           <div class="absolute -bottom-full triangle-top"></div>
-          <div class="absolute info-panl"></div>
+            <div class="absolute info-panl space-y-5">
+              <p class="text-black text-left ml-5 mt-3">加好友申请</p>
+              <p
+                class="
+                  text-gray-400
+                  mt-5
+                  border-b border-dashed border-gray-400
+                  pb-5
+                "
+              >
+                没有新好友请求！
+              </p>
+              <p class="text-black text-left ml-5">可能认识的人</p>
+              <p
+                class="
+                  text-gray-400
+                  mt-5
+                  border-b border-dashed border-gray-400
+                  pb-5
+                "
+              >
+                暂无推荐的人
+              </p>
+            </div>
         </div>
         <div class="relative cursor-pointer set-info header-info ml-px15">
           <!-- <span class="absolute info">1</span> -->
           <label class="inline-block w-full h-full"></label>
           <div class="absolute -bottom-full triangle-top"></div>
-          <div class="absolute info-panl"></div>
+          <div class="absolute info-pan  leading-6">
+            <p class="info-pan-list text-black mt-3">个人资料</p>
+            <p class="info-pan-list text-black">账号设置</p>
+            <p class=" info-pan-list text-black">退出</p>
+          </div>
+
         </div>
       </div>
     </div>
@@ -157,12 +224,24 @@ input::placeholder {
     left: -4px;
     display: none;
   }
+  .info-pan {
+    width: 96px;
+    height: 100px;
+    background-color: white;
+    border-radius: 20px;
+    top:35px;
+    right:-20px;
+    display: none;
+  }
+  .info-pan-list:hover{
+    background-color: rgba(202, 204, 207, 0.3);
+  }
   .info-panl {
     width: 360px;
     height: 400px;
     padding: 8px;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 20px;
     bottom: -415px;
     left: -260px;
     display: none;
@@ -172,7 +251,7 @@ input::placeholder {
     }
   }
   &:hover .triangle-top,
-  &:hover .info-panl {
+  &:hover .info-panl ,&:hover .info-pan{
     display: block;
   }
 }
