@@ -88,7 +88,7 @@
      <div class="lf-lb flex flex-row cursor-pointer mlkLeft">
      <span id="leftIlikeIndexImg" class="inline-block mlk"></span>
      <div id="leftIlikeIndexText">
-       我的动态
+      <router-link to='PersonHome'>我的动态</router-link> 
      </div>
     </div>
     <router-link to="visitor">
