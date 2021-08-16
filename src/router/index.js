@@ -7,6 +7,7 @@ const Index = () => import('@/views/Index.vue')
 const About = () => import('@/views/About.vue')
 const Home = () => import('@/views/home/Home.vue')
 const Meet = () => import('@/views/meet/Index.vue')
+const OtherCentre = () => import('@/views/meet/OtherCentre.vue')
 const Zone = () => import('@/views/zone/Index.vue')
 const ZoneRoom = () => import('@/views/zone/Room.vue')
 const ZoneFriend = () => import('@/views/zone/Friend.vue')
@@ -59,19 +60,19 @@ const routes = [
     },
     children: [
       {
-        path:'visitor',
-        component:Visitor,
-        meta:{
-          title:'我的访客'
+        path: 'visitor',
+        component: Visitor,
+        meta: {
+          title: '我的访客'
         }
       },
       {
-        path:'vip',
-        component:Vip,
-        meta:{
-          title:'升级'
+        path: 'vip',
+        component: Vip,
+        meta: {
+          title: '升级'
         },
-        children:[
+        children: [
           {
             path: 'UpgradeVip',
             component: UpgradeVip,
@@ -93,8 +94,17 @@ const routes = [
         component: Meet,
         meta: {
           title: '偶遇'
+        },
+
+      },
+      {
+        path: 'otherCentre',
+        component: OtherCentre,
+        meta: {
+          title: '他人主页'
         }
       },
+
       {
         path: 'zone',
         component: Zone,
@@ -127,7 +137,7 @@ const routes = [
           title: '个人主页'
         }
       },
-      
+
     ]
   },
   {
@@ -159,9 +169,9 @@ router.beforeEach((to, from, next) => {
   //     next()
   //   }
   // }else{
-    next()
+  next()
   // }
-  
+
 })
 
 export default router

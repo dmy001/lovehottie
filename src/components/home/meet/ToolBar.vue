@@ -10,31 +10,67 @@
         <a class="ml-px15 text-base-color2 cursor-pointer">邀请好友 >></a>
       </div>
       <div class="flex flex-row">
-        <button
-          class="
-            flex
-            justify-center
-            items-center
-            text-base-color4 text-px14
-            toolbar-btn
-          "
-        >
-          精确筛选
-        </button>
-        <button
-          class="
-            flex
-            justify-center
-            items-center
-            text-base-color4 text-px14
-            toolbar-btn
-          "
-        >
-          推荐
-        </button>
+        <div>
+          <button
+            class="
+              flex
+              justify-center
+              items-center
+              text-base-color4 text-px14
+              toolbar-btn
+            "
+            @click="btnSelect()"
+          >
+            精确筛选
+          </button>
+        </div>
+        <div class="menu">
+          <button
+            class="
+              menuBtn
+              flex
+              justify-center
+              items-center
+              text-base-color4 text-px14
+              toolbar-btn
+            "
+            @mouseover="mouseOver"
+            @mouseleave="mouseLeave"
+          >
+            {{ value }}
+            <img
+              class="ml-2"
+              src="../../../assets/images/index/xld.png"
+              v-show="showText"
+              alt=""
+            />
+            <img
+              class="ml-2"
+              src="../../../assets/images/index/xld1.png"
+              v-show="showText1"
+              alt=""
+            />
+          </button>
+          <ul
+            class="menuContent absolute ml-2"
+            @mouseover="mouseOver1"
+            @mouseleave="mouseLeave1"
+          >
+            <li
+              class="title mt-1"
+              v-for="(item, index) in menuSelect"
+              :key="index"
+              @click="changeValue(item)"
+            >
+              {{ item }}
+            </li>
+            <!-- <li class="title"><a href="#">在线</a></li>
+            <li class="title"><a href="#">最新</a></li> -->
+          </ul>
+        </div>
       </div>
     </div>
-    <div class="w-full mt-px3">
+    <div class="w-full mt-px3" v-show="showSelect">
       <div class="flex flex-row p-px15 bg-white text-left">
         <div class="flex-1">
           <span class="filter-item-title">国家</span>
@@ -125,19 +161,31 @@
         </div>
       </div>
       <div class="p-px15 bg-white text-left">
-        <button class="border border-red-500 rounded-3xl px-6 py-2">
+        <div
+          class="border border-red-500 w-32 rounded-3xl px-6 py-2"
+          @click="showTitle()"
+          style="cursor: pointer"
+        >
           <div class="text-red-500 flex">
             <span class="mr-2">高级选项</span>
             <img
               class="mt-2"
               style="height: 100%"
               src="../../../assets/images/index/xld.png"
+              v-show="showImg"
+              alt=""
+            />
+            <img
+              class="mt-2"
+              style="height: 100%"
+              src="../../../assets/images/index/xld1.png"
+              v-show="showImg1"
               alt=""
             />
             <!-- <span class="bg-select-button"></span> -->
           </div>
-        </button>
-        <div class="flex">
+        </div>
+        <div class="flex ml-6 mt-6" v-show="isShow">
           <Select v-model="model1" style="width: 200px">
             <Option
               v-for="item in heightList"
@@ -146,7 +194,7 @@
               >{{ item.label }}</Option
             >
           </Select>
-          <Select v-model="model1" style="width: 200px">
+          <Select class="ml-10" v-model="model2" style="width: 200px">
             <Option
               v-for="item in weightList"
               :value="item.value"
@@ -154,7 +202,7 @@
               >{{ item.label }}</Option
             >
           </Select>
-          <Select v-model="model1" style="width: 200px">
+          <Select class="ml-10" v-model="model3" style="width: 200px">
             <Option
               v-for="item in jobList"
               :value="item.value"
@@ -162,6 +210,14 @@
               >{{ item.label }}</Option
             >
           </Select>
+        </div>
+        <div class="flex justify-center mt-6">
+          <button class="bg-red-400 text-white rounded-3xl px-6 py-2">
+            重新搜索
+          </button>
+          <button class="ml-6 bg-gray-200 text-black rounded-3xl px-6 py-2">
+            取消
+          </button>
         </div>
       </div>
     </div>
@@ -191,7 +247,17 @@ export default {
         "한국어",
         "Deutsch",
       ],
+      menuSelect: ["推荐", "在线", "最新"],
       redioVal: "简体中文",
+      isShow: false,
+      showImg: true,
+      showImg1: false,
+      showSelect: false,
+      showText: true,
+      showText1: false,
+
+      value: "推荐",
+
       heightList: [
         {
           value: "150cm—160cm",
@@ -291,15 +357,43 @@ export default {
         },
       ],
 
-      model1: "",
+      model1: "160cm—170cm",
+      model2: "60kg—70kg",
+      model3: "程序员",
     };
   },
   methods: {
+    changeValue(item) {
+      this.value = item;
+    },
+    mouseOver() {
+      this.showText = false;
+      this.showText1 = true;
+    },
+    mouseLeave() {
+      this.showText1 = false;
+      this.showText = true;
+    },
+    mouseOver1() {
+      this.mouseOver();
+    },
+    mouseLeave1() {
+      this.mouseLeave();
+    },
+
     getRadioVal() {
       console.log(this.redioVal);
     },
     change(e) {
       console.log(e.target.value);
+    },
+    showTitle() {
+      this.isShow = !this.isShow;
+      this.showImg = !this.showImg;
+      this.showImg1 = !this.showImg1;
+    },
+    btnSelect() {
+      this.showSelect = !this.showSelect;
     },
   },
 };
@@ -342,5 +436,27 @@ export default {
   & > div {
     margin-left: 5px;
   }
+}
+ul li {
+  cursor: pointer;
+}
+ul li:hover {
+  background-color: #ccc;
+  display: block;
+}
+.menuContent {
+  display: none;
+  border: 1px solid #dcdcdc;
+  border-radius: 18px;
+  background: #fff;
+  padding: 13px 0;
+  width: 5.5rem;
+}
+.menuContent a {
+  text-decoration: none;
+  color: #696969;
+}
+.menu:hover .menuContent {
+  display: block;
 }
 </style>
