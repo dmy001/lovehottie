@@ -20,7 +20,9 @@
 
     <div class="w-full min-h-810 bg-white rounded-px8 mt-px15">
       <div v-if="isZoneRoom"></div>
-      <div v-if="!isZoneRoom">朋友圈</div>
+      <div v-if="!isZoneRoom">
+        <!-- 朋友圈 -->
+        </div>
       <router-view></router-view>
     </div>
   </div>
