@@ -15,7 +15,9 @@ const Visitor = () => import('@/views/Visitor.vue')
 const Vip = () => import('@/views/vip/index.vue')
 const UpgradeVip = () => import('@/views/vip/UpgradeVip.vue')
 const RechargeGold = () => import('@/views/vip/RechargeGold.vue')
+const TranslateVip = () => import('@/views/vip/TranslateVip.vue')
 
+const Personal = () => import('@/views/Person/personal.vue')
 
 
 
@@ -86,6 +88,14 @@ const routes = [
               title: '充值金币'
             }
           },
+          {
+            path: 'TranslateVip',
+            component: TranslateVip,
+            meta: {
+              title: '充值金币'
+            }
+          },
+          
         ]
       },
       {
@@ -127,7 +137,14 @@ const routes = [
           title: '个人主页'
         }
       },
-      
+      //个人资料
+      {
+        path: 'personal',
+        component: Personal,
+        meta: {
+          title: '个人资料'
+        }
+      },
     ]
   },
   {
