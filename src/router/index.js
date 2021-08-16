@@ -18,6 +18,8 @@ const RechargeGold = () => import('@/views/vip/RechargeGold.vue')
 const TransPackage = ()=> import('@/views/vip/TransPackage.vue')
 const DetailsPrivilege = () => import('@/views/vip/DetailsPrivilege.vue')
 
+const TranslateVip = () => import('@/views/vip/TranslateVip.vue')
+const Personal = () => import('@/views/Person/personal.vue')
 
 
 
@@ -102,6 +104,13 @@ const routes = [
               title:'特权详情'
             }
           },
+            path: 'TranslateVip',
+            component: TranslateVip,
+            meta: {
+              title: '充值金币'
+            }
+          },
+          
         ]
       },
       {
@@ -143,7 +152,14 @@ const routes = [
           title: '个人主页'
         }
       },
-      
+      //个人资料
+      {
+        path: 'personal',
+        component: Personal,
+        meta: {
+          title: '个人资料'
+        }
+      },
     ]
   },
   {
