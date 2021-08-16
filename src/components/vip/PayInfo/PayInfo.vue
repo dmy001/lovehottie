@@ -29,6 +29,7 @@ export default {};
 
 <style lang='scss'>
 .pay {
+  margin-top: 20px;
   .zfb .daller {
     width: 140px;
     height: 40px;
@@ -37,7 +38,6 @@ export default {};
   .paypal{
       width: 325px;
       height: 45px;
-      
   }
   
 }

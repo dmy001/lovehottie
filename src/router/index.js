@@ -16,7 +16,6 @@ const Vip = () => import('@/views/vip/index.vue')
 const UpgradeVip = () => import('@/views/vip/UpgradeVip.vue')
 const RechargeGold = () => import('@/views/vip/RechargeGold.vue')
 const TranslateVip = () => import('@/views/vip/TranslateVip.vue')
-
 const Personal = () => import('@/views/Person/personal.vue')
 
 
