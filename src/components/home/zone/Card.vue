@@ -65,8 +65,8 @@ export default {
   width: 100%;
 }
 .zone-card-container {
-  width: 260px;
-  margin: 5px;
+  width: 262px;
+  margin: 5px 5px 5px 0px;
   border-radius: 3px;
   border: 1px solid $lineColor1;
 }

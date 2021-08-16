@@ -1,12 +1,16 @@
 <template>
   <div class="bg-white">
-    <div class="flex w-full bg-white rounded-px8 mt-px15 h-10 leading-10 ">
-      <div  class="ml-5 text-base leading-10" @click="goUpgradeVip">升级会员</div> 
-      <!-- :class="{active:selected}" -->
-      <div class="ml-5" @click="goRechargeGold">充值金币</div>
-      <div>翻译VIP</div>
-      <div>翻译包</div>
-      <div>充值记录</div>
+    <div class="flex w-full bg-white rounded-px8 mt-px15 h-10 leading-10 border-b">
+      <!-- v-for循环出click 只能用组件名字，路径无法使用 -->
+      <div   
+        v-for="(item, index) in list"
+        :key="index"
+        class="ml-5 w-16  text-base leading-10"
+        :class="{active:index == currentIndex }"
+        @click="goClick(index, item.path)"
+      >
+        {{ item.name }}
+      </div>
     </div>
     <router-view class="ml-16 mt-5"></router-view>
   </div>
@@ -15,21 +19,32 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      list: [
+        { name: "升级会员", path: "UpgradeVip" },
+        { name: "充值金币", path: "RechargeGold" },
+        { name: "翻译VIP", path: "TranslateVip" },
+        { name: "翻译包", path: "" },
+        { name: "充值记录", path: "" },
+        {name:''}
+      ],
+      currentIndex:0,
+    };
   },
   methods: {
-    goUpgradeVip() {
-      this.$router.push({ path: "/home/vip/UpgradeVip" });
+    goClick(index, path){
+      this.currentIndex = index
+      this.$router.push(path);
     },
-    goRechargeGold() {
-      this.$router.push({ path: "/home/vip/RechargeGold" });
-    },
+  },
+  mounted() {
+    this.$router.push({ path: "/home/vip/UpgradeVip" });
   },
 };
 </script>
 
 <style lang="scss">
-// .selected{
-//   border-bottom: 1px solid red ;
-// }
+.active{
+border-bottom:2px solid #e63561 ;
+}
 </style>
