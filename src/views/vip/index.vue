@@ -24,7 +24,7 @@ export default {
         { name: "升级会员", path: "UpgradeVip" },
         { name: "充值金币", path: "RechargeGold" },
         { name: "翻译VIP", path: "TranslateVip" },
-        { name: "翻译包", path: "" },
+        { name: "翻译包", path: "TransPackage" },
         { name: "充值记录", path: "" },
         {name:''}
       ],
@@ -43,7 +43,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .active{
 border-bottom:2px solid #e63561 ;
 }

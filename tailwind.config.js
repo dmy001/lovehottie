@@ -27,7 +27,7 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-
+      orangeFont:'#ff8a00',
       black: colors.black,
       white: colors.white,
       gray: colors.coolGray,
@@ -94,7 +94,6 @@ module.exports = {
       px3: '3px',
       px260: '260px',
       px50: '50px',
-      px10:'10px',
       px100:'100px'
     },
     animation: {
