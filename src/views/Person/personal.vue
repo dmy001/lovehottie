@@ -22,7 +22,7 @@
       ></SetUpHeader>
       <!--个人信息展示部分-->
       <div v-show="!show">
-        <div class="w-1/4 flex justify-end ">
+        <div class="w-1/4 flex justify-end">
           <img
             class="
               w-16
@@ -44,7 +44,7 @@
       <div v-show="show">
         <ul>
           <li class="flex flex-row">
-            <div class="w-1/4 flex justify-end ">
+            <div class="w-1/4 flex justify-end">
               <img
                 class="
                   w-16
@@ -61,7 +61,7 @@
               />
             </div>
             <div class="w-3/4 flex justify-start ml-2">
-              <span
+              <button
                 class="
                   w-24
                   h-8
@@ -72,15 +72,153 @@
                   border border-solid border-gray-300
                   rounded-2xl
                 "
-                >编辑照片</span
+                >编辑照片</button
               >
             </div>
           </li>
-          <li class="flex justify-between text-sm  mt-3 ">
-            <span class="w-1/4 text-right text-gray-400  pr-2 ">昵称:</span>
+          <li class="flex justify-between text-sm mt-3">
+            <span class="w-1/4 text-right text-gray-400 pr-2">昵称:</span>
             <label class="w-3/4 text-left">
-              <input class="w-1/2 h-7 rounded-xl border border-solid border-gray-300" type="text" maxlength="16" value="" />
+              <input
+                class="
+                  w-1/2
+                  h-8
+                  rounded-2xl
+                  border border-solid border-gray-300
+                  p-4
+                "
+                type="text"
+                maxlength="16"
+                value=""
+              />
             </label>
+          </li>
+          <li class="flex justify-between text-sm mt-5">
+            <span class="w-1/4 text-right text-gray-400 pr-2">ID号:</span>
+            <label class="w-3/4 text-left">
+              <input
+                class="
+                  w-1/2
+                  h-8
+                  rounded-2xl
+                  border border-solid border-gray-300
+                  p-4
+                "
+                type="text"
+                maxlength="16"
+                value=""
+              />
+            </label>
+          </li>
+          <li class="flex justify-between text-sm mt-5">
+            <span class="w-1/4 text-right text-gray-400 pr-2">年龄:</span>
+            <label class="w-3/4 text-left space-x-3">
+              <Select class="w-28 h-8">
+                <Option v-for="(it, index) in years" :value="it" :key="index">
+                </Option>
+              </Select>
+              <Select class="w-28 h-8">
+                <Option v-for="(it, index) in years" :value="it" :key="index">
+                </Option>
+              </Select>
+              <Select class="w-28 h-8">
+                <Option v-for="(it, index) in years" :value="it" :key="index">
+                </Option>
+              </Select>
+            </label>
+          </li>
+          <li class="flex justify-between text-sm mt-5">
+            <span class="w-1/4 text-right text-gray-400 pr-2">性别:</span>
+            <label class="w-3/4 text-left">
+              <RadioGroup>
+                <Radio label="女"> </Radio>
+                <Radio label="男"> </Radio>
+              </RadioGroup>
+            </label>
+          </li>
+          <li class="flex justify-between text-sm mt-5">
+            <span class="w-1/4 text-right text-gray-400 pr-2">职业:</span>
+            <label class="w-3/4 text-left">
+              <Select class="w-1/2 h-8" placeholder="其他">
+                <Option v-for="(it, index) in job" :value="it" :key="index">
+                </Option>
+              </Select>
+            </label>
+          </li>
+          <li class="flex justify-between text-sm mt-5">
+            <span class="w-1/4 text-right text-gray-400 pr-2">国家:</span>
+            <label class="w-3/4 text-left">
+              <Select class="w-1/2 h-8">
+                <Option>
+                  <City></City>
+                </Option>
+              </Select>
+            </label>
+          </li>
+          <li class="flex justify-between text-sm mt-5">
+            <span class="w-1/4 text-right text-gray-400 pr-2">语言:</span>
+            <label class="w-3/4 text-left">
+              <Select class="w-1/2 h-8" placeholder="English">
+                <Option v-for="(it, index) in language" :value="it" :key="index">
+                </Option>
+              </Select>
+            </label>
+          </li>
+          <li class="flex justify-between text-sm mt-5">
+            <span class="w-1/4 text-right text-gray-400 pr-2">身高(cm):</span>
+            <label class="w-3/4 text-left">
+              <input
+                class="
+                  w-1/2
+                  h-8
+                  rounded-2xl
+                  border border-solid border-gray-300
+                  p-4
+                "
+                type="text"
+                maxlength="16"
+                value=""
+              />
+            </label>
+          </li>
+          <li class="flex justify-between text-sm mt-5">
+            <span class="w-1/4 text-right text-gray-400 pr-2">体重(kg):</span>
+            <label class="w-3/4 text-left">
+              <input
+                class="
+                  w-1/2
+                  h-8
+                  rounded-2xl
+                  border border-solid border-gray-300
+                  p-4
+                "
+                type="text"
+                maxlength="16"
+                value=""
+              />
+            </label>
+          </li>
+          <li class="flex justify-between text-sm mt-5">
+            <span class="w-1/4 text-right text-gray-400 pr-2">个性签名:</span>
+            <span class="w-3/4 text-left">
+              <textarea
+                class="
+                  w-1/2
+                  h-20
+                  rounded-2xl
+                  border border-solid border-gray-300
+                  p-4
+                "
+                value=""
+              />
+            </span>
+          </li>
+          <li class="flex justify-between text-sm mt-5">
+            <span class="w-1/4 text-right text-gray-400 pr-2">兴趣:</span>
+            <div class="w-3/4 text-left">
+              <Interest></Interest>
+            
+            </div>
           </li>
         </ul>
       </div>
@@ -154,6 +292,8 @@
 <script>
 import SetUpHeader from "@components/personal/SetUpHeader.vue";
 import ShowContent from "@components/personal/ShowContent.vue";
+import Interest from "@components/personal/Interest.vue";
+import City from "@components/personal/City.vue";
 export default {
   data() {
     return {
@@ -178,12 +318,36 @@ export default {
         { title: "手机号码", value: " " },
         { title: "密码", value: "****" },
       ],
+      years: [2003, 2002, 2001, 2000, 1999, 1998, 1997, 1996],
+      job: [
+        "文案",
+        "客户经理",
+        "文员",
+        "销售",
+        "设计",
+        "程序员",
+        "会计",
+        "模特",
+        "商人",
+      ],
+      language:[
+        "English",
+        "简体中文",
+        "繁體中文",
+        "한국어",
+        "Pусский",
+        "Deutsch",
+        "Español",
+        "日本語",
+      ],
       show: false,
     };
   },
   components: {
     SetUpHeader,
     ShowContent,
+    Interest,
+    City
   },
   methods: {
     writeInformation() {
@@ -199,4 +363,11 @@ export default {
   background: url(/img/little.c7c7e4e0.png) 0 -616px no-repeat;
   vertical-align: middle;
 }
+// select{
+//   -webkit-appearance: none;
+//     -moz-appearance: none;
+//     appearance:none;
+//     background: url("~@images/triggle.png") right center no-repeat;
+//     vertical-align: middle;
+// }
 </style>

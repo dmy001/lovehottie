@@ -21,7 +21,7 @@ const DetailsPrivilege = () => import('@/views/vip/DetailsPrivilege.vue')
 
 const TranslateVip = () => import('@/views/vip/TranslateVip.vue')
 const Personal = () => import('@/views/Person/personal.vue')
-
+const City =() =>import('@components/personal/City.vue')
 
 
 // 避免同一个路由多次添加报错
@@ -41,6 +41,7 @@ const routes = [
       title: '首页'
     }
   },
+  
   {
     path: '/about',
     name: 'About',
@@ -172,6 +173,10 @@ const routes = [
           title: '个人资料'
         }
       },
+      {
+        path:'/city',
+        component:City
+    },
     ]
   },
   {
