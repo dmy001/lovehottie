@@ -57,7 +57,7 @@
             @mouseleave="mouseLeave1"
           >
             <li
-              class="title mt-1"
+              class="mt-1"
               v-for="(item, index) in menuSelect"
               :key="index"
               @click="changeValue(item)"
@@ -452,10 +452,7 @@ ul li:hover {
   padding: 13px 0;
   width: 5.5rem;
 }
-.menuContent a {
-  text-decoration: none;
-  color: #696969;
-}
+
 .menu:hover .menuContent {
   display: block;
 }
