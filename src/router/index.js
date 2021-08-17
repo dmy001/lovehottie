@@ -105,6 +105,7 @@ const routes = [
               title:'特权详情'
             }
           },
+          {
             path: 'TranslateVip',
             component: TranslateVip,
             meta: {
