@@ -20,7 +20,9 @@
               >ID:40215904</span
             >
           </p>
-          <p class="border text-left mb-2.5" style="color: #696969">个性签名</p>
+          <p class="border text-left mb-2.5" style="color: #696969">
+            个性签名：
+          </p>
         </div>
       </div>
     </section>

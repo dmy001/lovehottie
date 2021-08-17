@@ -9,7 +9,6 @@
     "build:gaga": "vue-cli-service build --mode gaga",
     "serve:gaga": "vue-cli-service serve --open --mode gaga",
     "commit": "git-cz"
-
   },
   "dependencies": {
     "autoprefixer": "9.8.6",
@@ -18,7 +17,7 @@
     "postcss": "7.0.35",
     "qs": "6.10.1",
     "sass": "1.32.8",
-    "sass-loader": "7.3.1",
+    "sass-loader": "^10.1.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@2.0.4",
     "view-design": "4.5.0",
     "vue": "2.6.11",
