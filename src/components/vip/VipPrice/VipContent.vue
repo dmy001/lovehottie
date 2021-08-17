@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="MiniVip flex border h-full items-center">
+    <div v-if="false" class="MiniVip flex border h-full items-center">
       <div class="left flex justify-between">
         <div class="ml-12">
           <p>7天</p>
@@ -23,32 +23,16 @@
     </div>
     <div class="VIP flex relative">
       <i class="absolute inline-block"></i>
-      <div class="border content-item">
-        <p class="text-base">12个月</p>
-        <p class="text-px20">US$124.91/月</p>
-        <p class="text-px18">节省40%</p>
-        <p class="text-px14">费用US$1499</p>
-        <button class="border w-14 h-7 rounded-xl">选择</button>
-      </div>
-      <div class="border content-item">
-        <p class="text-base">12个月</p>
-        <p class="text-px20">US$124.91/月</p>
-        <p class="text-px18">节省40%</p>
-        <p class="text-px14">费用US$1499</p>
-        <button class="border w-14 h-7 rounded-xl">选择</button>
-      </div>
-      <div class="border content-item">
-        <p class="text-base">12个月</p>
-        <p class="text-px20">US$124.91/月</p>
-        <p class="text-px18">节省40%</p>
-        <p class="text-px14">费用US$1499</p>
-        <button class="border w-14 h-7 rounded-xl">选择</button>
-      </div>
-      <div class="border content-item">
-        <p class="text-base">12个月</p>
-        <p class="text-px20">US$124.91/月</p>
-        <p class="text-px18">节省40%</p>
-        <p class="text-px14">费用US$1499</p>
+      <div 
+       v-for="(item, index) in list"
+            :key="index"
+            :class="{ active: index === currentIndex }"
+            @click="changeColor(index)"
+       class="border content-item">
+        <p class="text-base">{{item.time}}</p>
+        <p class="text-px20">US${{item.price}}/月</p>
+        <p class="text-px18">节省{{item.save}}%</p>
+        <p class="text-px14">费用US${{item.priceTotle}}</p>
         <button class="border w-14 h-7 rounded-xl">选择</button>
       </div>
     </div>
@@ -56,10 +40,40 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return {
+      list:[
+        {time:12,price:'124.91',save:40,priceTotle:1499,Ischange:'选择'},
+        {time:6,price:'149.83',save:30,priceTotle:999,Ischange:'选择'},
+        {time:3,price:'163.33',save:20,priceTotle:499,Ischange:'选择'},
+        {time:1,price:'199.00',save:5,priceTotle:199,Ischange:'选择'},
+        // {time:12,price:'12.50',save:40,priceTotle:150},
+        // {time:6,price:'15.00',save:30,priceTotle:90},
+        // {time:3,price:'16.66',save:20,priceTotle:50},
+        // {time:1,price:'20.00',save:5,priceTotle:20},
+      ],
+      currentIndex: 0,
+    }
+  },
+   methods: {
+    changeColor(index) {
+      this.currentIndex = index;
+      // 1.0
+      this.list.map((item) => {
+        item.Ischange = "选择";
+      });
+      this.list[index].Ischange = "已选";
+    },
+  },
+};
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
+.active {
+      background-color: white !important;
+      box-shadow: 0 0 10px #999;
+    }
 .MiniVip {
   width: 756px;
   height: 121px;
@@ -94,7 +108,7 @@ export default {};
     }
     p:nth-child(2) {
       margin-top: 10px;
-      font-size:20px ;
+      font-size: 20px;
       font-weight: 600;
     }
     p:nth-child(3) {
@@ -112,7 +126,6 @@ export default {};
       color: #ff8a00;
       border-color: #ff8a00;
     }
-    
   }
 }
 </style>
