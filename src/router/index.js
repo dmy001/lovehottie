@@ -16,6 +16,9 @@ const Visitor = () => import('@/views/Visitor.vue')
 const Vip = () => import('@/views/vip/index.vue')
 const UpgradeVip = () => import('@/views/vip/UpgradeVip.vue')
 const RechargeGold = () => import('@/views/vip/RechargeGold.vue')
+const TransPackage = ()=> import('@/views/vip/TransPackage.vue')
+const DetailsPrivilege = () => import('@/views/vip/DetailsPrivilege.vue')
+
 const TranslateVip = () => import('@/views/vip/TranslateVip.vue')
 const Personal = () => import('@/views/Person/personal.vue')
 
@@ -89,6 +92,19 @@ const routes = [
             }
           },
           {
+            path:'TransPackage',
+            component:TransPackage,
+            meta:{
+              title:'翻译包'
+            }
+          },
+          {
+            path:'DetailsPrivilege',
+            component:DetailsPrivilege,
+            meta:{
+              title:'特权详情'
+            }
+          },
             path: 'TranslateVip',
             component: TranslateVip,
             meta: {
