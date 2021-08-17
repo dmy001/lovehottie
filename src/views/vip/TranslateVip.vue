@@ -1,67 +1,110 @@
 <template>
   <div class="translateVip">
-    <div class="header text-left">
-      <span class="align-middle text-px14">您账户可用翻译VIP: 0 min</span>
+    <div class="header h-9 bg-yellow-100 flex items-center pl-5">
+      <span class="align-middle">您账户可用翻译VIP: </span>
+      <span class="text-red-500 font-bold">0min</span>
+      <i class="inline-block align-middle"></i>
     </div>
     <div class="content flex border w-full">
-      <div class="left border w-2/3">
-        <div class="top flex">
-          <div class="border content-item">
-            <i class="inline-block"></i>
-            <p class="text-px20">20</p>
-            <p class="text-px18">US$20 (CN¥120)</p>
-            <button class="">选择</button>
-          </div>
-          <div class="border content-item">
-            <i class="inline-block"></i>
-            <p class="text-px20">20</p>
-            <p class="text-px18">US$20 (CN¥120)</p>
-            <button class="">选择</button>
-          </div>
-          <div class="border content-item">
-            <i class="inline-block"></i>
-            <p class="text-px20">20</p>
-            <p class="text-px18">US$20 (CN¥120)</p>
-            <button class="">选择</button>
+      <div class="left w-3/5 border">
+        <div class="top flex h-full">
+          <div
+            v-for="(item, index) in list"
+            :key="index"
+            class="border content-item flex-auto relative"
+            :class="{ active: index === currentIndex }"
+            @click="changeColor(index)"
+          >
+            <i class="inline-block absolute"></i>
+            <p class="text-px20 text-orangeFont">{{ item.time }}</p>
+            <p class="text-px20">min</p>
+            <p class="text-px20 text-orangeFont">节省{{ item.save }}%</p>
+            <p class="text-px18">费用US${{ item.price }}</p>
+            <button class="border w-14 h-7 rounded-xl mt-3">
+              {{ item.Ischange }}
+            </button>
           </div>
         </div>
-        
       </div>
 
-      <div class="right w-1/3">
-        
-        <p class="mt-5">
-          <i class="inline-block"></i><span>在翻译会员有效时长内可无限免费使用平台内翻译，包含聊天翻译、动态翻译、探索翻译等；</span>
+      <div class="right w-2/5">
+        <p v-for="(item, index) in message" :key="index" class="mt-5">
+          <i class="inline-block"></i><span>{{ item }}</span>
         </p>
-        <p class="mt-5">
-          <i class="inline-block"></i
-          ><span>翻译会员生效时间，以购买完成为开始，相应时长后结束。</span>
-        </p>
-        
       </div>
     </div>
-    <PayInfo/>
+    <PayInfo />
   </div>
 </template>
 
 <script>
-import PayInfo from '@components/vip/PayInfo/PayInfo.vue'
+import PayInfo from "@components/vip/PayInfo/PayInfo.vue";
 export default {
-  components:{
+  components: {
     PayInfo,
-  }
+  },
+  data() {
+    return {
+      list: [
+        { time: 10, save: 10, price: 10, Ischange: "选择" },
+        { time: 30, save: 15, price: 20, Ischange: "选择" },
+        { time: 60, save: 25, price: 30, Ischange: "选择" },
+      ],
+      message: [
+        "在翻译会员有效时长内可无限免费使用平台内翻译，包含聊天翻译、动态翻译、探索翻译等；",
+        "翻译会员生效时间，以购买完成为开始，相应时长后结束。",
+      ],
+      currentIndex: 0,
+    };
+  },
+  methods: {
+    changeColor(index) {
+      this.currentIndex = index;
+      // 1.0
+      this.list.map((item) => {
+        item.Ischange = "选择";
+      });
+      this.list[index].Ischange = "已选";
+    },
+  },
 };
 </script>
 
 
 <style lang='scss'>
-.translateVip{
-  .right{
-     i {
+.translateVip {
+  .content {
+    .left {
+      height: 250px;
+      .top {
+        div {
+          background: #fffcf6;
+        }
+        button {
+          color: #ff8a00;
+          border-color: #ff8a00;
+        }
+        i {
+          right: -10px;
+          top: -10px;
+          width: 21px;
+          height: 21px;
+          background: url("~@images/person/little1.png") 0 -201px no-repeat;
+        }
+      }
+    }
+    .right {
+      i {
         width: 8px;
         height: 16px;
+        
         background: url("~@images/person/little1.png") -100px -1038px no-repeat;
       }
+    }
+    .active {
+      background-color: white !important;
+      box-shadow: 0 0 10px #999;
+    }
   }
 }
 </style>

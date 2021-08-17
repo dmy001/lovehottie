@@ -1,7 +1,9 @@
 <template>
   <div>
-    <div class="flex">
-        <vip/>
+    <div class="flex flex-col">
+        <VipPrice/>
+        <VipPrice/>
+        
     </div>
     <PayInfo/>
     <Discount/>
@@ -9,13 +11,13 @@
 </template>
 
 <script>
-import vip from '@components/vip/index.vue'
+import VipPrice from '@components/vip/VipPrice/index.vue'
 import PayInfo from '@components/vip/PayInfo/PayInfo.vue'
 import Discount from '@components/vip/PayInfo/Discount.vue'
 
 export default {
     components:{
-        vip,
+        VipPrice,
         PayInfo,
         Discount
     }
