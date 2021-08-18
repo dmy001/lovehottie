@@ -44,12 +44,11 @@
       </div>
       <div class="border">
         <img
-          class="mx-auto pt-2 inline-block align-middle"
+          class="mx-auto  inline-block align-middle"
           src="../../../assets/images/xinyongka.svg"
           alt=""
         />
-        <span class="text-base leading-8 align-middle">借记卡或信用卡</span>
-        <!-- 字和图片不居中 -->
+        <span class="text-base leading-10 align-middle">借记卡或信用卡</span>
       </div>
       <div>
     <span class="text-xs">  技术支持提供方 ：</span><img class="inline-block" src="../../../assets/images/PayPal.svg" alt="" />

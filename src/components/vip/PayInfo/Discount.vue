@@ -1,16 +1,21 @@
 <template>
-  <div>
-    <div class="text-left w-full   text-sm">
+  <div class="Discount">
+    <div class="text-left w-full text-sm">
       <p class="text-left">优惠券</p>
       <hr />
-      <!-- 对号不显示 -->
-     <div class="my-5"> <i class="w-5 h-5 rounded-full inline-block"></i><span>无可用优惠券</span
-      ><span class="descrip">（会员优惠券仅限金币支付使用）</span></div>
+      <div class="my-5">
+        <i class="w-5 h-5 rounded-full inline-block align-middle"></i
+        ><span>无可用优惠券</span
+        ><span class="text-orangeFont align-middle"
+          >（会员优惠券仅限金币支付使用）</span
+        >
+      </div>
       <hr />
       <div class="mr-5">
-      <p class="text-right mt-8">订单金额：499</p>
-      <!-- 499加颜色 -->
-      <p class="text-right mt-4 mb-8">实付金额:<span class="descrip">499</span></p>
+        <p class="text-right mt-8">订单金额：499</p>
+        <p class="text-right mt-4 mb-8">
+          实付金额:<span class="text-orangeFont">499</span>
+        </p>
       </div>
       <hr />
     </div>
@@ -22,16 +27,14 @@ export default {};
 </script>
 
 <style lang='scss' scoped>
-hr{
-  border-style: dotted;
+.Discount {
+  hr {
+    border-style: dotted;
+  }
+  i {
+    background: url("../../../assets/images/nocounpon_ischecked.jpg") 4px 5px
+      no-repeat;
+    background-color: rgb(203, 203, 203);
+  }
 }
-.descrip{
-  color: #f8a00f;
-}
-i {
-  background-image: url("../../../assets/images/nocounpon_ischecked.jpg")
-  no-repeat;
-  background-color: rgb(203, 203, 203);
-}
-
 </style>

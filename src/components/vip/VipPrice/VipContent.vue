@@ -15,15 +15,14 @@
           <p class="price">费用US$9.9</p>
           <!-- <button class="border w-14 h-7 rounded-xl">选择</button> -->
           <div class="select-btn" style="display: inline-block">
-            <span v-show="!selectedBtn" class="sel-0">选择</span>
+            <span  class="sel-0">选择</span>
             <span  class="sel-1" >已选</span>
           </div>
         </div>
       </div>
-      <div class="right w-48 h-full border-l pt-10">
+      <div class="right w-48 h-full border-l flex flex-col justify-center">
         <!-- 给父元素设置padding-top, 会传到子元素上    -->
-        <!-- 两行文字垂直居中 -->
-        <p class="">LoveHottie会员</p>
+        <p >LoveHottie会员</p>
         <p>畅爽体验</p>
       </div>
     </div>
@@ -40,7 +39,10 @@
         <p class="text-px20">US${{ item.price }}/月</p>
         <p class="text-px18">节省{{ item.save }}%</p>
         <p class="text-px14">费用US${{ item.priceTotle }}</p>
-        <button class="border w-14 h-7 rounded-xl">{{ item.Ischange }}</button>
+         <div class="select-btn" style="display: inline-block">
+            <span  class="sel-0">选择</span>
+            <span  class="sel-1" >已选</span>
+          </div>
       </div>
     </div>
   </div>

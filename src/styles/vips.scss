@@ -1,11 +1,22 @@
-.select-btn{
+.select-btn {
     width: 58px;
     height: 26px;
     line-height: 26px;
     border: solid 1px #ff8a00;
     color: #ff8a00;
     border-radius: 12px;
-    .sel-0{
+    overflow: hidden;
+    .sel-0 {
         color: #ff8a00;
+    }
+
+    .sel-1 {
+        display: inline-block;
+        width: 58px;
+    line-height: 26px;
+
+        height: 26px;
+        background: #ff8a00;
+        color: #FFF;
     }
 }
