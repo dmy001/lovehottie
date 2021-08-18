@@ -39,6 +39,7 @@ module.exports = {
       purple: colors.violet,
       pink: colors.pink,
       buttonColor:'#f6f6f6',
+      descrip:'#999999',
       base: {
         color1: baseColor1,
         color2: baseColor2,
@@ -241,7 +242,8 @@ module.exports = {
       '8xl': ['6rem', { lineHeight: '1' }],
       '9xl': ['8rem', { lineHeight: '1' }],
       '12px': ['12px', { lineHeight: '1' }],
-      'px14': ['14px']
+      'px14': ['14px'],
+      'px28':['28px'],
     },
     fontWeight: {
       thin: '100',

@@ -23,6 +23,8 @@ const Help = () => import('@/views/vip/Help.vue')
 const TranslateVip = () => import('@/views/vip/TranslateVip.vue')
 const Personal = () => import('@/views/Person/personal.vue')
 const City =() =>import('@components/personal/City.vue')
+const RewardRecord = ()=> import('@/views/vip/RewardRecord.vue')
+
 
 
 // 避免同一个路由多次添加报错
@@ -118,10 +120,17 @@ const routes = [
             path: 'TranslateVip',
             component: TranslateVip,
             meta: {
-              title: '充值金币'
+              title: '翻译VIP'
             }
           },
-
+          {
+            path: 'RewardRecord',
+            component: RewardRecord,
+            meta: {
+              title: '打赏记录'
+            }
+          },
+          
         ]
       },
       {
