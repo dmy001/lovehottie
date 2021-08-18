@@ -94,41 +94,45 @@
           <span class="absolute info-num">1</span>
           <label class="inline-block w-full h-full"></label>
           <div class="absolute -bottom-full triangle-top"></div>
-            <div class="absolute info-panl space-y-5">
-              <p class="text-black text-left ml-5 mt-3">加好友申请</p>
-              <p
-                class="
-                  text-gray-400
-                  mt-5
-                  border-b border-dashed border-gray-400
-                  pb-5
-                "
-              >
-                没有新好友请求！
-              </p>
-              <p class="text-black text-left ml-5">可能认识的人</p>
-              <p
-                class="
-                  text-gray-400
-                  mt-5
-                  border-b border-dashed border-gray-400
-                  pb-5
-                "
-              >
-                暂无推荐的人
-              </p>
-            </div>
+          <div class="absolute info-panl space-y-5">
+            <p class="text-black text-left ml-5 mt-3">加好友申请</p>
+            <p
+              class="
+                text-gray-400
+                mt-5
+                border-b border-dashed border-gray-400
+                pb-5
+              "
+            >
+              没有新好友请求！
+            </p>
+            <p class="text-black text-left ml-5">可能认识的人</p>
+            <p
+              class="
+                text-gray-400
+                mt-5
+                border-b border-dashed border-gray-400
+                pb-5
+              "
+            >
+              暂无推荐的人
+            </p>
+          </div>
         </div>
         <div class="relative cursor-pointer set-info header-info ml-px15">
           <!-- <span class="absolute info">1</span> -->
           <label class="inline-block w-full h-full"></label>
           <div class="absolute -bottom-full triangle-top"></div>
-          <div class="absolute info-pan  leading-6">
-            <p class="info-pan-list text-black mt-3">个人资料</p>
-            <p class="info-pan-list text-black">账号设置</p>
-            <p class=" info-pan-list text-black">退出</p>
-          </div>
+          <div class="absolute info-pan leading-6">
+            <a href="#information" @click="toSet()">
+              <p class="info-pan-list text-black mt-3">个人资料</p>
+            </a>
+            <a href="#account" @click="toSet()">
+              <p class="info-pan-list text-black">账号设置</p>
+            </a>
 
+            <p class="info-pan-list text-black">退出</p>
+          </div>
         </div>
       </div>
     </div>
@@ -165,6 +169,10 @@ export default {
     goZonePage() {
       // this.isMeetPage = false;
       this.$router.push({ path: "/home/zone" });
+    },
+    //跳转账号设置页
+    toSet() {
+      this.$router.push("personal");
     },
   },
   created() {
@@ -229,11 +237,11 @@ input::placeholder {
     height: 100px;
     background-color: white;
     border-radius: 20px;
-    top:35px;
-    right:-20px;
+    top: 35px;
+    right: -20px;
     display: none;
   }
-  .info-pan-list:hover{
+  .info-pan-list:hover {
     background-color: rgba(202, 204, 207, 0.3);
   }
   .info-panl {
@@ -251,7 +259,8 @@ input::placeholder {
     }
   }
   &:hover .triangle-top,
-  &:hover .info-panl ,&:hover .info-pan{
+  &:hover .info-panl,
+  &:hover .info-pan {
     display: block;
   }
 }

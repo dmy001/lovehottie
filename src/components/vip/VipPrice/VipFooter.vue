@@ -7,10 +7,10 @@
           <i class="inline-block align-middle footerImg"></i>
           <span class="align-middle break-normal">{{ item }}</span>
         </span>
-        <div class="downArr mt-5 -mb-5">
-      <p>查看更多特权</p>
-      <i class="inline-block" @click="showInfo"></i>
-    </div>
+        <div class="downArr text-center mt-5 -mb-5">
+          <p>查看更多特权</p>
+          <i class="inline-block" @click="showInfo"></i>
+        </div>
       </div>
       <div v-show="!flag">
         <div v-for="(item, index) in descriptionList" :key="index" class="mt-2">
@@ -19,13 +19,12 @@
             {{ item.descrip }}
           </p>
         </div>
-        <div class="upArr mt-5 -mb-5">
-        <p>收起</p>
-      <i class="inline-block" @click="showInfo"></i>
-    </div>
+        <div class="upArr text-center mt-5 -mb-5">
+          <p>收起</p>
+          <i class="inline-block" @click="showInfo"></i>
+        </div>
       </div>
     </div>
-    
   </div>
 </template>
 
@@ -62,6 +61,13 @@ export default {
       width: 30px;
       height: 30px;
       background: url("~@images/person/little1.png") -80px -870px no-repeat;
+    }
+  }
+  .upArr {
+    i {
+      width: 30px;
+      height: 30px;
+      background: url("~@images/person/little1.png") -80px -812px no-repeat;
     }
   }
 }
