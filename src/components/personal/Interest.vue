@@ -67,10 +67,8 @@ export default {
   methods: {
     checked(e) {
       let value = e.target.innerHTML;
-
       if (this.interests.includes(value)) {
-        //   console.log(this.interests.indexOf(value));
-            this.interests=this.interests.slice(this.interests.indexOf(value),1) 
+        this.interests.splice(this.interests.indexOf(value),1) 
       } else {
         this.interests.push(value);
       }

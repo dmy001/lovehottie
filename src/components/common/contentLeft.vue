@@ -76,7 +76,7 @@
      <div id="leftSixinNotice" class="inline-block absolute">
      </div>
     </div>
-    <router-link to="/home/vip">
+    <router-link to="/home/vip/UpgradeVip">
     <div class="lf-lb flex flex-row cursor-pointer lkmLeft">
      <span id="leftLikeMeIndexImg" class="inline-block lkm"></span>
      <div id="leftLikeMeIndexText">

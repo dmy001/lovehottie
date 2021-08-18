@@ -30,5 +30,6 @@ export default {
   height: 20px;
   background: url(/img/little.c7c7e4e0.png) 0 -616px no-repeat;
   vertical-align: middle;
+  cursor: pointer;
 }
 </style>

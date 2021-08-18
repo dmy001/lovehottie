@@ -5,7 +5,7 @@
      <span class="align-middle">您账户可用金币数:</span> <span class="text-red-500 font-bold">0</span>
       <i class="inline-block align-middle"></i>
     </div>
-    <div class="content flex border w-full">
+    <div class="content flex border w-full mt-5">
       <div class="left border w-2/3">
         <div class="top flex flex-wrap">
           <div
@@ -41,16 +41,20 @@
     </div>
     <PayInfo />
     <Discount />
+    <payButton payType='立即充值' />
   </div>
 </template>
 
 <script>
 import PayInfo from "@components/vip/PayInfo/PayInfo.vue";
 import Discount from "@components/vip/PayInfo/Discount.vue";
+import payButton from "@components/vip/PayInfo/payButton.vue";
+
 export default {
   components: {
     PayInfo,
     Discount,
+    payButton
   },
   data() {
     return {

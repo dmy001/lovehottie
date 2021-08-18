@@ -5,7 +5,7 @@
       <span class="text-red-500 font-bold">0min</span>
       <i class="inline-block align-middle"></i>
     </div>
-    <div class="content flex border w-full">
+    <div class="content flex border w-full mt-5">
       <div class="left w-3/5 border">
         <div class="top flex h-full">
           <div
@@ -15,9 +15,9 @@
             :class="{ active: index === currentIndex }"
             @click="changeColor(index)"
           >
-            <i class="inline-block absolute"></i>
-            <p class="text-px20 text-orangeFont">{{ item.time }}</p>
-            <p class="text-px20">min</p>
+            <!-- <i class="inline-block absolute"></i> -->
+            <p class="text-28 text-orangeFont">{{ item.time }}</p>
+            <p class="text-xl">min</p>
             <p class="text-px20 text-orangeFont">节省{{ item.save }}%</p>
             <p class="text-px18">费用US${{ item.price }}</p>
             <button class="border w-14 h-7 rounded-xl mt-3">
@@ -34,14 +34,18 @@
       </div>
     </div>
     <PayInfo />
+    <payButton payType='立即充值' />
   </div>
 </template>
 
 <script>
 import PayInfo from "@components/vip/PayInfo/PayInfo.vue";
+import payButton from "@components/vip/PayInfo/payButton.vue";
+
 export default {
   components: {
     PayInfo,
+    payButton
   },
   data() {
     return {

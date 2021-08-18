@@ -1,6 +1,6 @@
 <template>
-  <div class="align-middle mt-5 mb-5">
-      <i ref="bg" class="headerImg1 inline-block align-middle "></i>
+  <div class="align-middle mt-10 mb-5">
+      <i ref="bg" :class="bgClassName" class=" w-8 h-8 inline-block align-middle "></i>
       <span class="text-2xl align-middle">{{title}}</span>
   </div>
 </template>
@@ -12,27 +12,23 @@ export default {
         type:String,
         defalut:'Mini会员'
       },
-      y:{
-        type:Number,
+      bgClassName:{
+        type:String,
+        default:"headerImg1"
       }
     },
-    data(){
-      return {
-               
-      }
-    },
-    mounted(){
-      var bg = this.$refs.bg;
-      bg.style.backgroundPosition="'-75px'+this.y+'px'"
-    }
 }
 </script>
 
 <style lang ='scss' scoped>
 .headerImg1{
-  width: 30px;
-  height: 30px;
-   background: url("~@images/person/little1.png") -75px -1055px no-repeat;
+  background: url("~@images/person/little1.png") -75px -1055px no-repeat;
+}
+.headerImg2{
+  background: url("~@images/person/little1.png") -75px -1088px no-repeat;
+}
+.headerImg3{
+  background: url("~@images/person/little1.png") -75px -1122px no-repeat;
 }
 
 
