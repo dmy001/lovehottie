@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div v-if="false" class="MiniVip flex border h-full items-center">
+    <div
+      v-if="priceType === 'Mini会员'"
+      class="MiniVip flex border h-full items-center"
+    >
       <div class="left flex justify-between">
         <div class="ml-12">
           <p>7天</p>
@@ -8,10 +11,13 @@
             <strong> US$1.4<span class="text-sm">/天</span> </strong>
           </p>
         </div>
-        <div class="flex ml-40 w-36">
-          <!-- p标签如何跟button对齐 -->
-          <p class="price"><strong> 费用US$9.9</strong></p>
-          <button class="border w-14 h-7 rounded-xl">选择</button>
+        <div class="ml-40 w-36">
+          <p class="price">费用US$9.9</p>
+          <!-- <button class="border w-14 h-7 rounded-xl">选择</button> -->
+          <div class="select-btn" style="display: inline-block">
+            <span v-show="!selectedBtn" class="sel-0">选择</span>
+            <span  class="sel-1" >已选</span>
+          </div>
         </div>
       </div>
       <div class="right w-48 h-full border-l pt-10">
@@ -21,19 +27,20 @@
         <p>畅爽体验</p>
       </div>
     </div>
-    <div class="VIP flex relative">
+    <div v-if="priceType === 'VIP'" class="VIP flex relative">
       <i class="absolute inline-block"></i>
-      <div 
-       v-for="(item, index) in list"
-            :key="index"
-            :class="{ active: index === currentIndex }"
-            @click="changeColor(index)"
-       class="border content-item">
-        <p class="text-base">{{item.time}}</p>
-        <p class="text-px20">US${{item.price}}/月</p>
-        <p class="text-px18">节省{{item.save}}%</p>
-        <p class="text-px14">费用US${{item.priceTotle}}</p>
-        <button class="border w-14 h-7 rounded-xl">选择</button>
+      <div
+        v-for="(item, index) in list"
+        :key="index"
+        :class="{ active: index === currentIndex }"
+        @click="changeColor(index)"
+        class="border content-item"
+      >
+        <p class="text-base">{{ item.time }}</p>
+        <p class="text-px20">US${{ item.price }}/月</p>
+        <p class="text-px18">节省{{ item.save }}%</p>
+        <p class="text-px14">费用US${{ item.priceTotle }}</p>
+        <button class="border w-14 h-7 rounded-xl">{{ item.Ischange }}</button>
       </div>
     </div>
   </div>
@@ -41,22 +48,21 @@
 
 <script>
 export default {
-  data(){
-    return {
-      list:[
-        {time:12,price:'124.91',save:40,priceTotle:1499,Ischange:'选择'},
-        {time:6,price:'149.83',save:30,priceTotle:999,Ischange:'选择'},
-        {time:3,price:'163.33',save:20,priceTotle:499,Ischange:'选择'},
-        {time:1,price:'199.00',save:5,priceTotle:199,Ischange:'选择'},
-        // {time:12,price:'12.50',save:40,priceTotle:150},
-        // {time:6,price:'15.00',save:30,priceTotle:90},
-        // {time:3,price:'16.66',save:20,priceTotle:50},
-        // {time:1,price:'20.00',save:5,priceTotle:20},
-      ],
-      currentIndex: 0,
-    }
+  props: {
+    priceType: {
+      type: String,
+      default: "Mini会员",
+    },
+    list: {
+      type: Array,
+    },
   },
-   methods: {
+  data() {
+    return {
+      currentIndex: 0,
+    };
+  },
+  methods: {
     changeColor(index) {
       this.currentIndex = index;
       // 1.0
@@ -70,10 +76,12 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+@import "@styles/vips.scss";
+
 .active {
-      background-color: white !important;
-      box-shadow: 0 0 10px #999;
-    }
+  background-color: white !important;
+  box-shadow: 0 0 10px #999;
+}
 .MiniVip {
   width: 756px;
   height: 121px;
