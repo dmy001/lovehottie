@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="false" class="MiniVip flex border h-full items-center">
+    <div v-if="priceType==='Mini会员'" class="MiniVip flex border h-full items-center">
       <div class="left flex justify-between">
         <div class="ml-12">
           <p>7天</p>
@@ -21,7 +21,7 @@
         <p>畅爽体验</p>
       </div>
     </div>
-    <div class="VIP flex relative">
+    <div v-if="priceType==='VIP'" class="VIP flex relative">
       <i class="absolute inline-block"></i>
       <div 
        v-for="(item, index) in list"
@@ -41,18 +41,17 @@
 
 <script>
 export default {
+  props:{
+    priceType:{
+      type:String,
+      default:"Mini会员"
+    },
+    list:{
+      type:Array
+    }
+  },
   data(){
     return {
-      list:[
-        {time:12,price:'124.91',save:40,priceTotle:1499,Ischange:'选择'},
-        {time:6,price:'149.83',save:30,priceTotle:999,Ischange:'选择'},
-        {time:3,price:'163.33',save:20,priceTotle:499,Ischange:'选择'},
-        {time:1,price:'199.00',save:5,priceTotle:199,Ischange:'选择'},
-        // {time:12,price:'12.50',save:40,priceTotle:150},
-        // {time:6,price:'15.00',save:30,priceTotle:90},
-        // {time:3,price:'16.66',save:20,priceTotle:50},
-        // {time:1,price:'20.00',save:5,priceTotle:20},
-      ],
       currentIndex: 0,
     }
   },

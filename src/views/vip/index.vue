@@ -26,7 +26,11 @@ export default {
         { name: "翻译VIP", path: "TranslateVip" },
         { name: "翻译包", path: "TransPackage" },
         { name: "充值记录", path: "" },
-        {name:''}
+        { name: "打赏记录", path: "RewardRecord" },
+        { name: "特权说明", path: "" },
+        { name: "优惠券", path: "" },
+
+        
       ],
       currentIndex:0,
     };

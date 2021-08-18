@@ -39,6 +39,7 @@ module.exports = {
       purple: colors.violet,
       pink: colors.pink,
       buttonColor:'#f6f6f6',
+      descrip:'#999999',
       base: {
         color1: baseColor1,
         color2: baseColor2,
