@@ -13,18 +13,21 @@
     </div>
     <PayInfo />
     <Discount />
+        <payButton payType='立即充值' />
   </div>
 </template>
 
 <script>
 import PayInfo from "@components/vip/PayInfo/PayInfo.vue";
 import Discount from "@components/vip/PayInfo/Discount.vue";
+import payButton from "@components/vip/PayInfo/payButton.vue";
 import VipHeader from "@components/vip/VipPrice/VipHeader.vue";
 import VipContent from "@components/vip/VipPrice/VipContent.vue";
 import VipFooter from "@components/vip/VipPrice/VipFooter.vue";
 export default {
   components: {
     VipHeader,
+    payButton,
     VipContent,
     VipFooter,
     PayInfo,
