@@ -7,12 +7,12 @@
      <div class="my-5"> <i class="w-5 h-5 rounded-full inline-block"></i><span>无可用优惠券</span
       ><span class="descrip">（会员优惠券仅限金币支付使用）</span></div>
       <hr />
-
+      <div class="mr-5">
       <p class="text-right mt-8">订单金额：499</p>
       <!-- 499加颜色 -->
       <p class="text-right mt-4 mb-8">实付金额:<span class="descrip">499</span></p>
+      </div>
       <hr />
-      <button class=" w-32 h-10 text-base my-16">立即升级</button>
     </div>
   </div>
 </template>
@@ -33,10 +33,5 @@ i {
   no-repeat;
   background-color: rgb(203, 203, 203);
 }
-button{
-  background-color: #ff625a;
-  color: white;
-  border-radius:30px ;
-  margin-left: 300px;
-}
+
 </style>
