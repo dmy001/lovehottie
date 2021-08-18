@@ -19,7 +19,6 @@
         <p class="text-yellow-500 font-bold text-2xl mt-10">{{ item.glod }}</p>
         <p class="mt-1 text-gray-500">人物</p>
         <p class="font-bold text-xl mt-2 mb-2 text-black">{{ item.money }}</p>
-<<<<<<< HEAD
         <p class="text-yellow-500 text-xl">{{ item.save }}</p>
         <button
           class="
@@ -44,34 +43,16 @@
         <PayInfo/>
         <Discount/>
       </div>
-=======
-        <p class="text-yellow-500 text-2xl">{{ item.save }}</p>
-        <button class="mt-6 mb-2 text-base">选择</button>
-      </div>
-    </div>
-    <PayInfo />
-    <Discount />
-    <payButton payType="立即充值" />
->>>>>>> b732e30eec1bd895b9c63b3262a8f193a3f783dc
   </div>
 </template>
 
 <script>
 import PayInfo from "@components/vip/PayInfo/PayInfo.vue";
 import Discount from "@components/vip/PayInfo/Discount.vue";
-<<<<<<< HEAD
 export default {
   components:{
       PayInfo,
       Discount
-=======
-import payButton from "@components/vip/PayInfo/payButton.vue";
-export default {
-  components: {
-    PayInfo,
-    Discount,
-    payButton,
->>>>>>> b732e30eec1bd895b9c63b3262a8f193a3f783dc
   },
   data() {
     return {
