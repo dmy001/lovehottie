@@ -9,7 +9,7 @@
       <div class="topRight ml-px10">
         <div class="personName">
           可爱小怪咖
-          <span class="inline-block"></span>
+          <router-link to="personal"><span class="inline-block cursor-pointer" ></span></router-link>
         </div>
         <div>
           <span>女，</span>
@@ -104,7 +104,7 @@
     </div>
     <div v-show="!showImgs" class="personContent mt-px15">
       <div class="shareList flex justify-between">
-        <div class="left relative">
+        <!-- <div class="left relative">
           <Input
             v-model="value17"
             maxlength="500"
@@ -123,7 +123,7 @@
             </div>
             <div class="footRight">发送</div>
           </div>
-        </div>
+        </div> -->
         <editDynamic></editDynamic>
         <div class="content">
           <div class="content_top">礼物(0)</div>
@@ -131,12 +131,21 @@
         </div>
         <div class="right">
           <div class="content_top">好友(0)</div>
-          <div class="content_bottom">还未收到礼物</div>
+          
+            <img
+            src="../../assets/images/person/open.png"
+            alt=""
+            title="打开相册"
+            class="-mt-8 ml-56"
+            @click="openImg"
+          />
+          <div class="content_bottom">还没有好友</div>
         </div>
       </div>
 
-      <div class="mt-px15 bg-white w-full">
+      <div class="mt-px15 bg-white w-full pb-10">
         <div class="dynamic">
+          <!--v-show="isDelete == true"-->
           <div class="dynamic_left float-left">
             <img
               :src="STATICBASEURI + '/images/default/female.png'"
@@ -147,10 +156,18 @@
           <div
             class="dynamic_right float-left ml-px10 text-left"
             style="width: 92%; position: relative"
+            @mousemove="mouseInner = true"
+            @mouseleave="mouseInner = false"
           >
-            <p>
+            <p class="flex flex-row">
               <span class="mr-px15 text-base-color1">可爱小怪咖</span>
               <span class="text-xs">03-03 13:12</span>
+              <span
+                v-show="mouseInner"
+                class="absolute right-0"
+                @click="isDelete = true"
+                ><img class="w-5 cursor-pointer" src="~@images/error.png"
+              /></span>
             </p>
             <p class="content_text">我不知道啊 不知道</p>
             <div class="ml-px15 mt-px15 dynamic_icon relative">
@@ -158,7 +175,7 @@
                 class="bg_icon message_icon mr-px3"
                 @click.stop="openList"
               ></span
-              ><span class="text-gray-400">2</span>
+              ><span class="text-gray-400">{{this.contentList.length}}</span>
               <div class="fanyi_circle">
                 <span class="bg_circle ml-px15"></span>
                 <div class="trans-type">
@@ -202,7 +219,11 @@
                         }}</span>
                         <span class="text-12px">{{ item.time }}</span>
                       </p>
-                      <div class="right_text">
+                      <div
+                        @mousemove="mouseComment = true"
+                        @mouseleave="mouseComment = false"
+                        class="right_text"
+                      >
                         <span class="text-12px mr-px15">
                           {{ item.content }}
                         </span>
@@ -246,6 +267,14 @@
                                 </ul>
                               </div>
                             </i>
+                          </div>
+                          <div
+                            v-show="mouseComment"
+                            class="relative inline-block align-middle"
+                            style="margin-left: 6px"
+                            @click="deleteComment"
+                          >
+                            <i class="icon close_icon -mt-0.5"></i>
                           </div>
                         </div>
                       </div>
@@ -305,7 +334,11 @@ import imgUpload from "@components/uploadImg.vue";
 export default {
   data() {
     return {
-      del:false,
+      isDelete: false,
+      mouseInner: false,
+      mouseComment: false,
+      select: "",
+      del: false,
       showImgs: false,
       modalPhoto: false,
       inputShow: false,
@@ -358,15 +391,17 @@ export default {
         }
       }
     },
+    deleteComment() {
+      this.contentList.splice(this.index, 1);
+    },
     //打开相册
     openImg() {
       this.showImgs = !this.showImgs;
     },
     //批量管理显示删除按钮
     manage() {
-      this.del=!this.del;   
-    }
-
+      this.del = !this.del;
+    },
   },
   mounted() {
     document.addEventListener("click", this.closeSel);
@@ -672,5 +707,17 @@ export default {
 }
 .hide {
   display: none;
+}
+.dynamic_right:hover {
+  display: block;
+}
+.icon {
+  background: url("~@images/person/dynamic.png") no-repeat;
+  float: right;
+  display: inline;
+  cursor: pointer;
+  background-position: -232px -3px;
+  width: 10px;
+  height: 10px;
 }
 </style>
