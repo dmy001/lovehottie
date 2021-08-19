@@ -4,9 +4,10 @@
     <div class="reward">
       <div class="rewardLayout">
         <div class="rewardtop flex justify-end text-right">
-          <span @click="meReward">我的打赏</span>
+          
+          <span @click="meReward" :class="{ 'text-red-500': RewardPage == false }" >我的打赏</span>
           <span >/</span>
-          <span  @click="ReceiveReward">收到的打赏</span>
+          <span  @click="ReceiveReward" :class="{ 'text-red-500': RewardPage == true }">收到的打赏</span>
         </div>
      <table >
 <thead class="tableSize">
@@ -27,7 +28,7 @@
 <!-- 表格内容 -->
 <!-- 我的打赏 -->
 <tbody v-for="item in items" :key="item.message" v-show ="!RewardPage">
-  <tr class="tabularData">
+  <tr>
     <td class="indicationData">{{item.message}}</td>
     <td  class="rewardData">{{item.ss}}</td>
     <td  class="timeData">{{item.sss}}</td>
@@ -35,7 +36,7 @@
 </tbody>
 <!-- 收到的打赏 -->
 <tbody v-for="item in shuju" :key="item.message" v-show="RewardPage">
-  <tr class="tabularData">
+  <tr>
     <td class="indicationData">{{item.one}}</td>
     <td  class="rewardData">{{item.tow}}</td>
     <td  class="timeData">{{item.san}}</td>
@@ -62,24 +63,24 @@ export default {
   return{
     RewardPage:false,
     items: [
-      {message:'美女',ss:'美女',sss:'美女'},
-       {message:'美女',ss:'美女',sss:'美女'},
-       {message:'美女',ss:'美女',sss:'美女'},
+      {message:'小明',ss:'1000',sss:'2021年1月3日'},
+       {message:'小红',ss:'1890',sss:'2021年2月3日'},
+       {message:'张三',ss:'2000',sss:'2021年3月3日'},
     ],
    
       shuju: [
-       {one:'美女',tow:'美女',},
-       {one:'美女',tow:'美女',san:'美女'},
-       {one:'美女',tow:'美女',san:'美女'},
+       {one:'李四',tow:'10000',san:'2020年1月3日'},
+       {one:'王二',tow:'15890',san:'2020年5月3日'},
+       {one:'麻子',tow:'20000',san:'2020年6月3日'},
     ]
   }
   },
  methods:{
    meReward(){
-    this.RewardPage = !false
+    this.RewardPage = false
    },
    ReceiveReward(){
-     this.RewardPage = !true
+     this.RewardPage = true
    }
  }
 
@@ -138,10 +139,7 @@ export default {
    border-top-style:none;
  font-size: 18px;
 } 
-// .tabularData{
-//   height:42px;
-//   background-color:red ;
-// }
+
 .indicationData{
    width: 301px;
   height: 42px;
