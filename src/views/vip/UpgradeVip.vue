@@ -2,7 +2,7 @@
   <div class="UpgradeVip">
     <div class="flex flex-col ">
       <VipHeader title="Mini会员" bgClassName = "headerImg1" />
-      <VipContent priceType="Mini会员"/>
+      <VipContent priceType="Mini会员" @getPrice='getPrice2' />
       <VipFooter :descrip=descrip :descriptionList=descriptionList title="Mini会员"/>
       <VipHeader title="VIP会员"  bgClassName = "headerImg2"/>
       <VipContent priceType="VIP" :list=itemList @getPrice='getPrice2' />
