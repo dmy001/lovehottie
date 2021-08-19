@@ -8,7 +8,7 @@
         | 翻译包：<span class="text-yellow-500 font-bold">0</span>
       </div>
     </div>
-    <div class="w-11/12 border mt-5 grid grid-cols-3">
+    <div class="w-11/12 border mt-5 grid grid-cols-3 " style="background:url(../../assets/images/mini.png) no-repeat 0 0;">
       <div
         v-for="(item, index) in list"
         :key="index"
@@ -21,38 +21,37 @@
         <p class="font-bold text-xl mt-2 mb-2 text-black">{{ item.money }}</p>
         <p class="text-yellow-500 text-xl">{{ item.save }}</p>
         <button
-          class="
-            mt-6
-            mb-3
-            text-sm
-            border border-yellow-500
-            w-16
-            h-7
-            rounded-xl
-          "
-          :class="[index === selectedIndex ? 'text-white bg-yellow-500':'text-yellow-500']"
+          class="mt-6 mb-3 text-sm border border-yellow-500 w-16 h-7 rounded-xl"
+          :class="[
+            index === selectedIndex
+              ? 'text-white bg-yellow-500'
+              : 'text-yellow-500',
+          ]"
         >
           选择
         </button>
       </div>
-      <!--
-      <img src="../../../assets/images/mini.png"/>
-      -->
+      
+      
+      
     </div>
     <div>
-        <PayInfo/>
-        <Discount/>
-      </div>
+      <PayInfo />
+      <Discount />
+      <payButton payType="现在买" />
+    </div>
   </div>
 </template>
 
 <script>
 import PayInfo from "@components/vip/PayInfo/PayInfo.vue";
 import Discount from "@components/vip/PayInfo/Discount.vue";
+import payButton from "@components/vip/PayInfo/payButton.vue";
 export default {
-  components:{
-      PayInfo,
-      Discount
+  components: {
+    PayInfo,
+    Discount,
+    payButton,
   },
   data() {
     return {
