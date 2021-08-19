@@ -4,7 +4,11 @@
       v-if="priceType === 'Mini会员'"
       class="MiniVip flex border h-full items-center"
     >
-      <div class="left flex justify-between">
+      <div
+        class="left flex justify-between"
+        :class="{ active: selected == false }"
+        @click="emitPrice('9.9')"
+      >
         <div class="ml-12">
           <p>7天</p>
           <p class="text-xl whitespace-nowrap">
@@ -13,16 +17,14 @@
         </div>
         <div class="ml-40 w-36">
           <p class="price">费用US$9.9</p>
-          <!-- <button class="border w-14 h-7 rounded-xl">选择</button> -->
           <div class="select-btn" style="display: inline-block">
-            <span  class="sel-0">选择</span>
-            <span  class="sel-1" >已选</span>
+            <span class="sel-0">选择</span>
+            <span class="sel-1">已选</span>
           </div>
         </div>
       </div>
       <div class="right w-48 h-full border-l flex flex-col justify-center">
-        <!-- 给父元素设置padding-top, 会传到子元素上    -->
-        <p >LoveHottie会员</p>
+        <p>LoveHottie会员</p>
         <p>畅爽体验</p>
       </div>
     </div>
@@ -36,13 +38,13 @@
         class="border content-item"
       >
         <p class="text-base">{{ item.time }}</p>
-        <p class="text-px20">US${{ item.price }}/月</p>
-        <p class="text-px18">节省{{ item.save }}%</p>
-        <p class="text-px14">费用US${{ item.priceTotle }}</p>
-         <div class="select-btn" style="display: inline-block">
-            <span  class="sel-0">选择</span>
-            <span  class="sel-1" >已选</span>
-          </div>
+        <p class="text-20px">US${{ item.price }}/月</p>
+        <p class="text-28px">节省{{ item.save }}%</p>
+        <p class="text-14px">费用US${{ item.priceTotle }}</p>
+        <div class="select-btn" style="display: inline-block">
+          <span class="sel-0">选择</span>
+          <span class="sel-1">已选</span>
+        </div>
       </div>
     </div>
   </div>
@@ -62,18 +64,25 @@ export default {
   data() {
     return {
       currentIndex: 0,
+      selected:false,
     };
   },
   methods: {
     changeColor(index) {
       this.currentIndex = index;
-      // 1.0
-      this.list.map((item) => {
-        item.Ischange = "选择";
-      });
-      this.list[index].Ischange = "已选";
+      console.log(this.list[index].price);
+      this.$emit('getPrice',this.list[index].price)
     },
+    emitPrice(value){
+      console.log(value);
+      this.$emit('getPrice',value)
+
+    }
+    
   },
+  // mounted(){
+  //   console.log(this.list);
+  // }
 };
 </script>
 
@@ -89,13 +98,9 @@ export default {
   height: 121px;
   .left {
     width: 567px;
-    button {
-      color: #ff8a00;
-      border-color: #ff8a00;
-    }
+    padding: 34px;
   }
   .right {
-    // line-height: 121px;
     background: #fffcf6;
     color: #999999;
   }
