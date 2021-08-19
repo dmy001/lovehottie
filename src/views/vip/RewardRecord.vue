@@ -4,7 +4,7 @@
     <div class="reward">
       <div class="rewardLayout">
         <div class="rewardtop flex justify-end text-right">
-          <span @click="meReward">我的打赏</span>
+          <span @click="meReward" >我的打赏</span>
           <span >/</span>
           <span  @click="ReceiveReward">收到的打赏</span>
         </div>

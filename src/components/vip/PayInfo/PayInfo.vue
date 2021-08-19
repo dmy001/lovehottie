@@ -1,29 +1,27 @@
 <template>
-  <div class="pay">
+  <div class="pay mt-5">
     <p class="text-left header">
       选择支付方式:
-      <span class=""
+      <span class="text-orangeFont"
         >（温馨提示：1金币仅需1美元，为避免到账延迟，请勿选择电子支票。）</span
       >
     </p>
     <hr />
-    <div class="flex payBtn my-5">
-      <!-- 整合成一个 -->
+    <div class="flex payBtn my-5 justify-between">
       <div
-        class="zfb border px-8 py-2 rounded-md"
-        :class="{ active: value == true }"
-        @click="changePay"
+        v-for="(item, index) in list"
+        :key="index"
+        v-show="(index==1&&isDaller=='true')||index!=1"
+        class="zfb border px-8 py-2 rounded-md relative"
+        :class="{ active: currentIndex == index }"
+        @click="changePay(index)"
+        
       >
-        <img src="../../../assets/images/zfb.png" alt="" />
-        <i v-show="value == true" class="inline-block"></i>
-      </div>
-      <div
-        class="daller ml-8 border px-8 py-2 rounded-md"
-        :class="{ active: value == false }"
-        @click="changePay"
-      >
-        <img src="../../../assets/images/daller.png" alt="" />
-        <i v-show="value == false" class="inline-block"></i>
+        <img :src="item.src" alt="" />
+        <i
+          v-show="currentIndex == index"
+          class="inline-block w-6 h-6 absolute -right-3 -bottom-3"
+        ></i>
       </div>
     </div>
     <div class="paypal">
@@ -44,31 +42,45 @@
       </div>
       <div class="border">
         <img
-          class="mx-auto  inline-block align-middle"
+          class="mx-auto inline-block align-middle"
           src="../../../assets/images/xinyongka.svg"
           alt=""
         />
         <span class="text-base leading-10 align-middle">借记卡或信用卡</span>
       </div>
       <div>
-    <span class="text-xs">  技术支持提供方 ：</span><img class="inline-block" src="../../../assets/images/PayPal.svg" alt="" />
+        <span class="text-xs"> 技术支持提供方 ：</span
+        ><img
+          class="inline-block"
+          src="../../../assets/images/PayPal.svg"
+          alt=""
+        />
+      </div>
     </div>
-    </div>
-
-    
   </div>
 </template>
 
 <script>
+import zfb from "../../../assets/images/zfb.png";
+
+import daller from "../../../assets/images/daller.png";
+
 export default {
+  props:{
+    isDaller:{
+      type:String,
+      default:"true"
+    }
+  },
   data() {
     return {
-      value: false,
+      list: [{ src: zfb }, { src: daller }],
+      currentIndex: 0,
     };
   },
   methods: {
-    changePay() {
-      this.value = !this.value;
+    changePay(index) {
+      this.currentIndex = index;
     },
   },
 };
@@ -76,32 +88,10 @@ export default {
 
 <style lang='scss' scoped>
 .pay {
-  margin-top: 20px;
-  .header {
-    span {
-      color: #f8a00f;
-    }
-  }
   .payBtn {
+    width: 332px;
     .zfb {
-      position: relative;
       i {
-        position: absolute;
-        right: -8px;
-        bottom: -8px;
-        width: 21px;
-        height: 21px;
-        background: url("~@images/person/little1.png") -0px -201px no-repeat;
-      }
-    }
-    .daller {
-      position: relative;
-      i {
-        position: absolute;
-        right: -8px;
-        bottom: -8px;
-        width: 21px;
-        height: 21px;
         background: url("~@images/person/little1.png") -0px -201px no-repeat;
       }
     }
@@ -120,9 +110,9 @@ export default {
     div:nth-child(4) {
       background-color: white;
       color: rgb(123, 131, 136);
-      img{
+      img {
         width: 50px;
-        height:16px;
+        height: 16px;
       }
     }
   }

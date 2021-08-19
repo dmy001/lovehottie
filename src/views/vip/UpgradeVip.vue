@@ -5,14 +5,14 @@
       <VipContent priceType="Mini会员"/>
       <VipFooter :descrip=descrip :descriptionList=descriptionList title="Mini会员"/>
       <VipHeader title="VIP会员"  bgClassName = "headerImg2"/>
-      <VipContent priceType="VIP" :list=itemList />
+      <VipContent priceType="VIP" :list=itemList @getPrice='getPrice2' />
       <VipFooter :descrip=descrip1 :descriptionList=descriptionList1 title="VIP会员"/>
       <VipHeader title="高级会员"  bgClassName = "headerImg3"/>
-      <VipContent priceType="VIP" :list=itemList2  />
+      <VipContent priceType="VIP" :list=itemList2  @getPrice='getPrice2' />
       <VipFooter :descrip=descrip2 :descriptionList=descriptionList2  title="高级会员"/>
     </div>
     <PayInfo />
-    <Discount />
+    <Discount :price=currentPrice />
         <payButton payType='立即充值' />
   </div>
 </template>
@@ -42,10 +42,10 @@ export default {
         {time:1,price:'199.00',save:5,priceTotle:199,Ischange:'选择'},
       ],
       itemList2:[
-        {time:12,price:'12.50',save:40,priceTotle:150,Ischange:'选择'},
-        {time:6,price:'15.00',save:30,priceTotle:90,Ischange:'选择'},
-        {time:3,price:'16.66',save:20,priceTotle:50,Ischange:'选择'},
-        {time:1,price:'20.00',save:5,priceTotle:20,Ischange:'选择'},
+        {time:12,price:'150',save:40,priceTotle:150,Ischange:'选择'},
+        {time:6,price:'90',save:30,priceTotle:90,Ischange:'选择'},
+        {time:3,price:'50',save:20,priceTotle:50,Ischange:'选择'},
+        {time:1,price:'20',save:5,priceTotle:20,Ischange:'选择'},
       ],
       descrip:['每天50条聊天权限 ','会员专属标识','每月免费查看3张模糊图','价值30金币的VIP会员优惠券'],
       descrip1:['1500/天免费翻译字符 ','3个10min翻译vip','vip专属表情包','无限免费查看模糊图',"无限免费赠送虚拟礼物",'消息已读通知'],
@@ -80,9 +80,15 @@ export default {
         {name:"主页可无限制展示照片",descrip:'您的主页可无限制展示照片，更加全面的展示自己。'},
         {name:"阅后即焚免费无限使用",descrip:'消息、国际圈等均可免费无限使用阅后即焚功能。'},
       ],
-
+      currentPrice:''
     }
   },
+  methods:{
+    getPrice2(value){
+        this.currentPrice = value
+        console.log(value);
+    }
+  }
 };
 </script>
 
