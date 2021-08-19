@@ -8,13 +8,17 @@
         | 翻译包：<span class="text-yellow-500 font-bold">0</span>
       </div>
     </div>
-    <div class="w-11/12 border mt-5 grid grid-cols-3 " style="background:url(../../assets/images/mini.png) no-repeat 0 0;">
+    <div class="w-11/12 border mt-5 grid grid-cols-3"
+ >
       <div
         v-for="(item, index) in list"
         :key="index"
-        class="border"
+        class="border bg-no-repeat bg-left-top"
         @click="changeColor(index)"
         :class="{ 'bg-yellow-100': index === selectedIndex }"
+        :style="{
+        backgroundImage:index == 0 ? 'url(' + require('../../assets/images/mini.png') + ')':0,
+      }"
       >
         <p class="text-yellow-500 font-bold text-2xl mt-10">{{ item.glod }}</p>
         <p class="mt-1 text-gray-500">人物</p>
