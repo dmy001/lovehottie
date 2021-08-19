@@ -35,9 +35,9 @@
         <!-- 本地上传 -->
         <div v-if="imgShow" class="upload_img flex items-start flex-col p-px3">
           <span class="z-1000 iocn icon_top"></span>
-          <div class="p-px10">
+          <div class="w-full p-px10 flex justify-between">
             本地上传
-            <i class="iocn close_icon"></i>
+            <i class="iocn close_icon" @click="imgShow=false"></i>
           </div>
 
           <div class="mt-px100 ml-px3">

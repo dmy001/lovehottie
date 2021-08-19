@@ -147,14 +147,29 @@
               </Select>
             </label>
           </li>
-          <li class="flex justify-between text-sm mt-5">
+          <li
+            class="city flex justify-between text-sm mt-5 cursor-pointer"
+            @click="toSetCity=true"
+          >
             <span class="w-1/4 text-right text-gray-400 pr-2">国家:</span>
             <label class="w-3/4 text-left">
-              <Select class="w-1/2 h-8">
-                <Option>
-                  <City></City>
-                </Option>
-              </Select>
+              <input
+                class="
+                  w-1/2
+                  h-8
+                  rounded-2xl
+                  border border-solid border-gray-300
+                  p-4
+                  cursor-pointer
+                "
+                type="text"
+              />
+              <span class="w-1/2 flex justify-end">
+                <img
+                  class="h-2 -mt-5 mr-5"
+                  src="~@images/xld.png"
+                />
+              </span>
             </label>
           </li>
           <li class="flex justify-between text-sm mt-5">
@@ -225,8 +240,8 @@
               <Interest></Interest>
             </div>
           </li>
-          <li class="ml-48 mt-8">
-            <Button title="保存" name="取消"></Button>
+          <li class="ml-48 mt-8 pb-10">
+            <SaveButton title="保存" name="取消"></SaveButton>
           </li>
         </ul>
       </div>
@@ -357,24 +372,23 @@
             /></label>
           </li>
           <li class="ml-48 mt-8">
-            <Button title="保存" name="取消"></Button>
+            <SaveButton title="保存" name="取消"></SaveButton>
           </li>
         </ul>
       </div>
     </section>
     <!-- 认证 -->
     <section>
-      <SetUpHeader
-        title="认证"
-        @writeInformation="setIdentity"
-      ></SetUpHeader>
+      <SetUpHeader title="认证" @writeInformation="setIdentity"></SetUpHeader>
       <div v-show="!identity">
         <p class="mt-5">邮箱未认证</p>
       </div>
       <!-- 认证设置部分 -->
       <div v-show="identity" class="flex flex-col">
         <section class="flex flex-row mt-5">
-          <span class="float-left mt-4 ml-36 text-sm text-gray-400">认证邮箱：</span>
+          <span class="float-left mt-4 ml-36 text-sm text-gray-400"
+            >认证邮箱：</span
+          >
           <input
             class="
               w-1/3
@@ -408,23 +422,20 @@
         </section>
         <section class="mt-3">
           <span class="float-left ml-56">
-              1、忘记登录密码后可通过此邮箱重置密码，让您的账户更安全！
-            </span>
-            <span class="float-left ml-56">
-              2、如果您没有收到认证邮件，请联系客服提出您的问题。
-            </span>
+            1、忘记登录密码后可通过此邮箱重置密码，让您的账户更安全！
+          </span>
+          <span class="float-left ml-56">
+            2、如果您没有收到认证邮件，请联系客服提出您的问题。
+          </span>
         </section>
         <section class="ml-52 mt-8 mb-20">
-            <Button title="保存" name="取消"></Button>
+          <SaveButton title="保存" name="取消"></SaveButton>
         </section>
       </div>
     </section>
     <!-- 隐私 -->
     <section>
-      <SetUpHeader
-        title="隐私"
-        @writeInformation="setSelf"
-      ></SetUpHeader>
+      <SetUpHeader title="隐私" @writeInformation="setSelf"></SetUpHeader>
       <div v-show="!self">
         <ul class="space-y-5 mt-5">
           <li class="flex justify-between text-sm">
@@ -462,7 +473,7 @@
               type="radio"
               name="personalFiles"
               value="1"
-              v-model="parama"
+              
               class="mt-1 ml-1"
             />
             <label class="ml-2">民众 </label>
@@ -470,7 +481,7 @@
               type="radio"
               name="personalFiles"
               value="1"
-              v-model="parama"
+             
               class="mt-1 ml-7"
             />
             <label class="ml-2">朋友们</label>
@@ -478,7 +489,7 @@
               type="radio"
               name="personalFiles"
               value="1"
-              v-model="parama"
+              
               class="mt-1 ml-7"
             />
             <label class="ml-2">限制自己</label>
@@ -489,7 +500,7 @@
               type="radio"
               name="friendRequest"
               value="1"
-              v-model="param"
+              
               class="mt-1 ml-1"
             />
             <label class="ml-2">允许大家加我为好友</label><br />
@@ -497,7 +508,7 @@
               type="radio"
               name="friendRequest"
               value="1"
-              v-model="param"
+              
               class="mt-1 ml-7"
             />
             <label class="ml-2">需要验证才能加我为好友</label>
@@ -510,7 +521,7 @@
               type="radio"
               name="myPreferences"
               value="1"
-              v-model="param"
+              
               class="mt-1 ml-1"
             />
             <label class="ml-2">民众</label><br />
@@ -518,7 +529,7 @@
               type="radio"
               name="myPreferences"
               value="1"
-              v-model="param"
+              
               class="mt-1 ml-7"
             />
             <label class="ml-2">限制自己</label>
@@ -531,7 +542,7 @@
               type="radio"
               name="myComments"
               value="1"
-              v-model="param"
+              
               class="mt-1 ml-1"
             />
             <label class="ml-2">民众</label><br />
@@ -539,14 +550,14 @@
               type="radio"
               name="myComments"
               value="1"
-              v-model="param"
+              
               class="mt-1 ml-7"
             />
             <label class="ml-2">限制自己</label>
           </li>
         </ul>
-        <div class="ml-48 mt-8 mb-20" >
-            <Button title="保存" name="取消"></Button>
+        <div class="ml-48 mt-8 mb-20">
+          <SaveButton title="保存" name="取消"></SaveButton>
         </div>
       </div>
     </section>
@@ -632,11 +643,36 @@
             /></label>
           </li>
         </ul>
-        <div class="ml-48 mt-8 pb-32" >
-            <Button title="保存" name="取消"></Button>
+        <div class="ml-48 mt-8 pb-32">
+          <SaveButton title="保存" name="取消"></SaveButton>
         </div>
       </div>
     </section>
+
+    <Modal
+      v-model="toSetCity"
+      title="选择国家"
+      width="600"
+      footer-hide
+      :closable="false"
+    >
+      <p slot="header">
+        <span class="text-white">选择国家</span>
+        <span
+          class="closed w-9 h-9 rounded-full -top-2 -right-3 absolute"
+          @click="toSetCity=false"
+        ></span>
+      </p>
+      <City></City>
+      <section class="absolute bottom-10 w-full text-center space-x-5">
+        <button class="w-20 h-8 bg-red-400 rounded-2xl text-white">确定</button>
+        <button
+          class="w-20 h-8 rounded-2xl border border-solid border-gray-400"
+        >
+          取消
+        </button>
+      </section>
+    </Modal>
   </div>
 </template>
 <script>
@@ -644,7 +680,7 @@ import SetUpHeader from "@components/personal/SetUpHeader.vue";
 import ShowContent from "@components/personal/ShowContent.vue";
 import Interest from "@components/personal/Interest.vue";
 import City from "@components/personal/City.vue";
-import Button from "@components/personal/Button.vue";
+import SaveButton from "@components/personal/SaveButton.vue";
 
 export default {
   data() {
@@ -652,6 +688,8 @@ export default {
       showEmail: false,
       mailboxFilling: [],
       picked: [],
+      showModal: false,
+      toSetCity: false,
       informations: [
         { title: "昵称", value: "嘟嘟" },
         { title: "ID号", value: "1354635" },
@@ -698,9 +736,9 @@ export default {
       ],
       show: false,
       set: false,
-      identity:false,
-      self:false,
-      notice:false,
+      identity: false,
+      self: false,
+      notice: false,
     };
   },
   components: {
@@ -708,11 +746,16 @@ export default {
     ShowContent,
     Interest,
     City,
-    Button,
+    SaveButton,
   },
   methods: {
     writeInformation() {
       this.show = !this.show;
+      
+    },
+    close() {
+      this.showModal = !this.showModal;
+      // this.toSetCity=!this.toSetCity
     },
     setAccount() {
       this.set = !this.set;
@@ -731,7 +774,6 @@ export default {
         this.showEmail = true;
       }
     },
-    
   },
 };
 </script>
@@ -742,6 +784,15 @@ export default {
   background: url(/img/little.c7c7e4e0.png) 0 -616px no-repeat;
   vertical-align: middle;
 }
+.closed {
+  background: url("~@images/iconClosed.png") 0 -39px no-repeat;
+  cursor: pointer;
+  z-index: 20;
+}
+.closed:hover {
+  background: url("~@images/iconClosed.png") 0 0 no-repeat;
+  cursor: pointer;
+}
 // select{
 //   -webkit-appearance: none;
 //     -moz-appearance: none;
@@ -751,5 +802,12 @@ export default {
 // }
 .sendEmail:hover {
   background-color: red;
+}
+.city span {
+  background-image: url(https://statics.lovehottie.com/web-pc/images/xld.png)
+    no-repeat;
+  cursor: pointer;
+
+  vertical-align: top;
 }
 </style>

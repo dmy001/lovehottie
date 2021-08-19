@@ -15,26 +15,26 @@
             :class="{ active: index === currentIndex }"
             @click="changeColor(index)"
           >
-            <!-- <i class="inline-block absolute"></i> -->
-            <p class="text-28 text-orangeFont">{{ item.time }}</p>
+            <p class="text-28px text-orangeFont">{{ item.time }}</p>
             <p class="text-xl">min</p>
-            <p class="text-px20 text-orangeFont">节省{{ item.save }}%</p>
-            <p class="text-px18">费用US${{ item.price }}</p>
-            <button class="border w-14 h-7 rounded-xl mt-3">
-              {{ item.Ischange }}
-            </button>
+            <p class="text-20px text-orangeFont">节省{{ item.save }}%</p>
+            <p class="text-18px mt-10">费用US${{ item.price }}</p>
+            <div class="select-btn mt-3" style="display: inline-block">
+              <span class="sel-0">选择</span>
+              <span class="sel-1">已选</span>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="right w-2/5">
-        <p v-for="(item, index) in message" :key="index" class="mt-5">
+        <p v-for="(item, index) in message" :key="index" class="mt-5 ml-2 text-left">
           <i class="inline-block"></i><span>{{ item }}</span>
         </p>
       </div>
     </div>
     <PayInfo />
-    <payButton payType='立即充值' />
+    <payButton payType="立即充值" />
   </div>
 </template>
 
@@ -45,7 +45,7 @@ import payButton from "@components/vip/PayInfo/payButton.vue";
 export default {
   components: {
     PayInfo,
-    payButton
+    payButton,
   },
   data() {
     return {
@@ -59,16 +59,14 @@ export default {
         "翻译会员生效时间，以购买完成为开始，相应时长后结束。",
       ],
       currentIndex: 0,
+      currentPrice: 0,
+
     };
   },
   methods: {
     changeColor(index) {
       this.currentIndex = index;
-      // 1.0
-      this.list.map((item) => {
-        item.Ischange = "选择";
-      });
-      this.list[index].Ischange = "已选";
+      this.currentPrice = this.list[index].price
     },
   },
 };
@@ -76,6 +74,8 @@ export default {
 
 
 <style lang='scss'>
+@import "@styles/vips.scss";
+
 .translateVip {
   .content {
     .left {
@@ -84,10 +84,7 @@ export default {
         div {
           background: #fffcf6;
         }
-        button {
-          color: #ff8a00;
-          border-color: #ff8a00;
-        }
+
         i {
           right: -10px;
           top: -10px;
@@ -101,7 +98,6 @@ export default {
       i {
         width: 8px;
         height: 16px;
-        
         background: url("~@images/person/little1.png") -100px -1038px no-repeat;
       }
     }

@@ -6,6 +6,7 @@
         <div class="rewardtop flex justify-end text-right">
           
           <span @click="meReward" :class="{ 'text-red-500': RewardPage == false }" >我的打赏</span>
+          <span @click="meReward" >我的打赏</span>
           <span >/</span>
           <span  @click="ReceiveReward" :class="{ 'text-red-500': RewardPage == true }">收到的打赏</span>
         </div>

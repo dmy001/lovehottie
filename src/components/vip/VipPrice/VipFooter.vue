@@ -2,17 +2,19 @@
   <div class="VipFooter relative border">
     <div class="text-left ml-4">
       <h3 class="font-bold py-4">成为{{ title }}会员，您可享受很多特权 :</h3>
-      <div v-show="flag">
-        <span v-for="(item, index) in descrip" :key="index" class="ml-6">
-          <i class="inline-block align-middle footerImg"></i>
-          <span class="align-middle break-normal">{{ item }}</span>
-        </span>
-        <div class="downArr text-center mt-5 -mb-5">
-          <p>查看更多特权</p>
-          <i class="inline-block" @click="showInfo"></i>
+      <!-- <transition name="fade"> -->
+        <div v-show="flag" class="down">
+          <span v-for="(item, index) in descrip" :key="index" class="ml-6">
+            <i class="inline-block align-middle footerImg"></i>
+            <span class="align-middle break-normal">{{ item }}</span>
+          </span>
+          <div class="downArr text-center mt-5 -mb-5">
+            <p>查看更多特权</p>
+            <i class="inline-block" @click="showInfo"></i>
+          </div>
         </div>
-      </div>
-      <div v-show="!flag">
+      <!-- </transition> -->
+      <div v-show="!flag" class="up">
         <div v-for="(item, index) in descriptionList" :key="index" class="mt-2">
           <p class="text-px14">{{ item.name }}</p>
           <p class="text-px14 text-descrip">
@@ -51,6 +53,18 @@ export default {
 <style lang="scss" scoped>
 .VipFooter {
   width: 756px;
+  // .fade-enter-active,
+  // .fade-leave-active {
+  //   transition: height 1s;
+  // }
+  // .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  //   height: 0px;
+  // }
+  
+  i {
+    width: 30px;
+    height: 30px;
+  }
   .footerImg {
     width: 18px;
     height: 12px;
@@ -58,15 +72,11 @@ export default {
   }
   .downArr {
     i {
-      width: 30px;
-      height: 30px;
       background: url("~@images/person/little1.png") -80px -870px no-repeat;
     }
   }
   .upArr {
     i {
-      width: 30px;
-      height: 30px;
       background: url("~@images/person/little1.png") -80px -812px no-repeat;
     }
   }
