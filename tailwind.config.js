@@ -242,8 +242,11 @@ module.exports = {
       '8xl': ['6rem', { lineHeight: '1' }],
       '9xl': ['8rem', { lineHeight: '1' }],
       '12px': ['12px', { lineHeight: '1' }],
-      'px14': ['14px'],
-      'px28':['28px'],
+      '14px': ['14px'],
+      '28px':['28px'],
+      '18px':['18px'],
+
+
     },
     fontWeight: {
       thin: '100',
