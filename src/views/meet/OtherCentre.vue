@@ -123,29 +123,39 @@
           对方尚无展示照片
         </div>
         <div
-          class="text-center"
-          style="
-            height: 122px;
-            line-height: 120px;
-            background-color: rgb(238, 238, 238);
-          "
+          class="text-center relative"
+          style="line-height: 120px; background-color: rgb(238, 238, 238)"
         >
-          <dl class="flex">
-            <dt>
+          <!-- 图片 -->
+          <dl class="">
+            <dt class="flex overflow-hidden">
+              <img
+                style="
+                  width: 123px;
+                  height: 120px;
+                  cursor: pointer;
+                  object-fit: cover;
+                  flex-shrink: 0;
+                "
+                v-for="(item, index) in images"
+                :key="index"
+                @click.stop="bigImage = true"
+                :src="item"
+                alt=""
+              />
+            </dt>
+            <!-- <dt>
               <a href="javascript:void(0)" @click="openImgDialog()"
                 ><img
-                  src="https://images.gagahi.com/Z-7357d388f80d4c919e04cb6e7c2e9b41?imageView2/5/w/123/h/120"
+                  :src="this.images"
                   alt=""
+                  style="display: block; width: 123px; height: 120px"
               /></a>
-            </dt>
-            <dt>
-              <a href="javascript:void(0)" @click="openImgDialog()"
-                ><img
-                  src="https://images.gagahi.com/Z-7357d388f80d4c919e04cb6e7c2e9b41?imageView2/5/w/123/h/120"
-                  alt=""
-              /></a>
-            </dt>
+            </dt> -->
           </dl>
+          <!-- 图片左右图标 -->
+          <a class="prev" href=""></a>
+          <a class="next" href=""></a>
         </div>
       </div>
     </section>
@@ -161,17 +171,27 @@
             src="https://images.gagahi.com/A-614b46d091d84696bf32bb34ef16e943"
             alt=""
           />
-          <div class="ml-2 w-full mr-3">
+          <div
+            class="ml-2 w-full mr-3"
+            @mousemove="mousemoveWarning"
+            @mouseleave="mouseleaveWarning"
+          >
             <p class="text-left mt-1 border">
               <span style="color: #90a0bc; font-family: Arial">Sandy</span>
               <span class="ml-2" style="color: #999; font-size: 12px"
                 >2019-05-13 12:05</span
               >
-              <span style="float: right" class="talk_icon mr-px3 w-20"></span>
+              <span
+                style="float: right"
+                v-show="showWarning"
+                @click="warning()"
+                class="talk_icon mr-px3 w-20"
+              ></span>
             </p>
             <p class="contentText border mt-2 text-left">
               お会いできてうれしいです
             </p>
+            <!-- 评论图片 -->
             <div class="border mt-2 text-left flex">
               <div class="imgboxs" style="width: 87px; height: 87px">
                 <img
@@ -380,14 +400,84 @@
       <!-- 举报 -->
       <Modal
         v-model="modal1"
-        title="Common Modal dialog box title"
-        @on-ok="ok"
-        @on-cancel="cancel"
+        title="举报"
+        width="482"
+        :styles="{ top: '150px' }"
+        footer-hide
+        :closable="false"
       >
-        <p>Content of dialog</p>
-        <p>Content of dialog</p>
-        <p>Content of dialog</p>
+        <p slot="header">
+          <span class="text-white">举报</span>
+          <span
+            class="closed w-9 h-9 rounded-full -top-2 -right-3 absolute"
+            @click="close()"
+          ></span>
+        </p>
+        <div class="flex flex-wrap ml-16">
+          <div
+            v-for="(item, index) in complain"
+            :key="index"
+            class="w-28 mt-10"
+          >
+            <input
+              type="radio"
+              id="aa"
+              v-model="redioVal"
+              @change="getRadioVal"
+              :value="item"
+            />
+            <label for="aa" class="ml-4 mr-4">{{ item }}</label>
+          </div>
+        </div>
+        <div class="w-full flex justify-center">
+          <button @click="submitBtn()" class="submitBtn mt-16">提交</button>
+        </div>
       </Modal>
+      <!-- 图片放大 -->
+      <div
+        class="imageBig left-1/3"
+        v-if="bigImage"
+        style="
+          z-index: 19891023;
+          width: 600px;
+          height: 630px;
+          top: 145.5px ;rgba（0，0，0，0．7）;
+        "
+      >
+        <span
+          class="closedImg w-9 h-9 rounded-full -top-2 -right-3 absolute"
+          @click="closeImg()"
+        ></span>
+        <div class="imageBigContent" id="sellineImg">
+          <div class="imageBigDetail">
+            <div class="imageBigDetailImg">
+              <div class="imageBigDetailImgLeft"></div>
+              <div class="imageBigDetailImgRight"></div>
+              <div class="bigger">原始尺寸</div>
+              <div class="normal hide" data-url data-i>重置</div>
+              <div class="bd slide_bd">
+                <div
+                  class="slide_item"
+                  imgid="61163a5293d24eeba0605320b5ca5830"
+                >
+                  <div
+                    class="js_img_border"
+                    v-for="(item, index) in images"
+                    :key="index"
+                  >
+                    <img
+                      :src="item"
+                      class=""
+                      style="position: relative; margin: 0 auto"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -411,7 +501,9 @@ export default {
       haveInformation: false,
       showLanguage: false,
 
-      modal1: true,
+      bigImage: false,
+      showWarning: false,
+      modal1: false,
       inputShow: false,
       inputContent: "",
       listShow: false,
@@ -435,28 +527,62 @@ export default {
           number: 323,
         },
       ],
+      complain: [
+        "垃圾广告",
+        "淫秽色情",
+        "虚假中奖",
+        "敏感信息",
+        "人身攻击",
+        "骚扰他人",
+        "骗子",
+        "广告",
+        "色情低俗",
+        "违法",
+        "政治敏感",
+        "谣言",
+        "骚扰信息",
+      ],
+      redioVal: "",
+      images: [
+        "https://images.gagahi.com/Z-2f71e8c7d56f487ca3debc5826268a59?imageView2/2/w/560/h/630",
+        "https://images.gagahi.com/Z-9e6ecf0aff16423881d874c369032d15?imageView2/2/w/560/h/630",
+        "https://images.gagahi.com/Z-9e6ecf0aff16423881d874c369032d15?imageView2/2/w/560/h/630",
+        "https://images.gagahi.com/Z-9e6ecf0aff16423881d874c369032d15?imageView2/2/w/560/h/630",
+        "https://images.gagahi.com/Z-9e6ecf0aff16423881d874c369032d15?imageView2/2/w/560/h/630",
+        "https://images.gagahi.com/Z-9e6ecf0aff16423881d874c369032d15?imageView2/2/w/560/h/630",
+        "https://images.gagahi.com/Z-9e6ecf0aff16423881d874c369032d15?imageView2/2/w/560/h/630",
+        "https://images.gagahi.com/Z-9e6ecf0aff16423881d874c369032d15?imageView2/2/w/560/h/630",
+        "https://images.gagahi.com/Z-9e6ecf0aff16423881d874c369032d15?imageView2/2/w/560/h/630",
+        "https://images.gagahi.com/Z-9e6ecf0aff16423881d874c369032d15?imageView2/2/w/560/h/630",
+      ],
     };
   },
   methods: {
-    openImgDialog() {
-      console.log(111);
-    },
-    mousemove() {
-      this.showLanguage = !this.showLanguage;
-    },
-    mouseLeave() {
-      this.showLanguage = !this.showLanguage;
-    },
-    mousemove1() {
-      this.mousemove();
-    },
-    mouseLeave1() {
-      this.mouseLeave();
-    },
+    // mousemove() {
+    //   this.showLanguage = !this.showLanguage;
+    // },
+    // mouseLeave() {
+    //   this.showLanguage = !this.showLanguage;
+    // },
+    // mousemove1() {
+    //   this.mousemove();
+    // },
+    // mouseLeave1() {
+    //   this.mouseLeave();
+    // },
     // inputText() {
     //   this.onInput = !this.onInput;
     //   this.onText = !this.onText;
     // },
+    mousemoveWarning() {
+      this.showWarning = true;
+    },
+    mouseleaveWarning() {
+      this.showWarning = false;
+    },
+    warning() {
+      this.modal1 = !this.modal1;
+    },
     //评论显示
     openList() {
       if (this.contentList.length > 0) {
@@ -474,9 +600,41 @@ export default {
         }
       }
     },
+    //点击其他地方关闭大图片
+    closeBigImage(event) {
+      const currentCli = document.getElementById("sellineImg");
+      if (currentCli) {
+        if (!currentCli.contains(event.target)) {
+          this.bigImage = false;
+        }
+      }
+    },
+
+    getRadioVal() {
+      console.log(this.redioVal);
+    },
+    submitBtn() {
+      console.log(this.redioVal);
+      if (this.redioVal === "") {
+        this.$Message.info("未选择选项内容");
+        this.modal1 = !this.modal1;
+      } else {
+        this.$Message.success("举报成功");
+        this.modal1 = !this.modal1;
+      }
+    },
+    //关闭举报
+    close() {
+      this.modal1 = !this.modal1;
+    },
+  },
+  //关闭大图
+  closeImg() {
+    this.bigImage = !this.bigImage;
   },
   mounted() {
     document.addEventListener("click", this.closeSel);
+    document.addEventListener("click", this.closeBigImage);
   },
 };
 </script>
@@ -812,5 +970,171 @@ export default {
 }
 .talk_icon:hover {
   background-position: -25px -735px;
+}
+.submitBtn {
+  background-color: #ff625a;
+  border-color: #ff625a;
+  color: #fff;
+  line-height: 28px;
+  margin-left: 6px;
+  margin-right: 6px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 14px;
+  border-radius: 45px;
+  font-weight: 400;
+  outline: none;
+}
+.closed {
+  background: url("~@images/iconClosed.png") 0 -39px no-repeat;
+  cursor: pointer;
+  z-index: 20;
+}
+.closed:hover {
+  background: url("~@images/iconClosed.png") 0 0 no-repeat;
+  cursor: pointer;
+}
+.closedImg {
+  background: url("~@images/iconClosed.png") -46px 1px no-repeat;
+  cursor: pointer;
+  z-index: 20;
+}
+.closedImg:hover {
+  background: url("~@images/iconClosed.png") -46px -38px no-repeat;
+  cursor: pointer;
+}
+.imageBig {
+  animation-name: bounceIn;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  -webkit-background-clip: content;
+  box-shadow: 0px 0px 3px rgb(0 0 0 / 20%);
+  border-radius: 15px;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  position: absolute;
+  .imageBigContent {
+    position: relative;
+    padding: 10px 25px 25px 25px;
+    overflow: auto;
+    height: 630px;
+    .imageBigDetail {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 630px;
+      width: 100%;
+      background: #000;
+      border-radius: 15px;
+      .imageBigDetailImg {
+        left: 20px;
+        overflow: hidden;
+        background: #000;
+        position: relative;
+        width: 560px;
+        height: 630px;
+        border-radius: 15px;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        float: left;
+        .imageBigDetailImgLeft {
+          background: url("../../assets/images/dynamic.png") no-repeat;
+          display: inline-block;
+          background-position: -123px 0;
+          z-index: 3;
+          cursor: pointer;
+          position: absolute;
+          left: 20px;
+          top: 50%;
+          margin-top: -23px;
+          width: 32px;
+          height: 47px;
+        }
+        .imageBigDetailImgRight {
+          background: url("../../assets/images/dynamic.png") no-repeat;
+          display: inline-block;
+          background-position: -159px 0;
+          z-index: 3;
+          cursor: pointer;
+          width: 32px;
+          height: 47px;
+          position: absolute;
+          right: 20px;
+          top: 50%;
+          margin-top: -23px;
+        }
+        .bigger {
+          font-size: 16px;
+          color: #fff;
+          position: absolute;
+          bottom: 12px;
+          left: 15px;
+          z-index: 1;
+          text-shadow: 0px 0px 3px #000;
+          cursor: pointer;
+        }
+        .normal {
+          left: 27px;
+          font-size: 16px;
+          color: #fff;
+          position: absolute;
+          bottom: 12px;
+          left: 15px;
+          z-index: 1;
+          text-shadow: 0px 0px 3px #000;
+          cursor: pointer;
+        }
+        .hide {
+          display: none !important;
+        }
+        .slide_bd {
+          height: 630px;
+          width: 560px;
+          display: flex;
+          align-items: center;
+          text-align: center;
+          .slide_item {
+            width: 100%;
+            display: inline-block;
+            max-height: 630px;
+            .js_img_border {
+              display: inline;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.prev {
+  width: 14px;
+  height: 23px;
+  position: absolute;
+  top: 44px;
+  left: 8px;
+  z-index: 1;
+  cursor: pointer;
+  background: url("../../assets/images/person/little1.png") -80px -566px
+    no-repeat;
+}
+.prev:hover {
+  background: url("../../assets/images/person/little1.png") -42px -567px;
+}
+.next {
+  width: 14px;
+  height: 23px;
+  position: absolute;
+  top: 44px;
+  right: 8px;
+  z-index: 1;
+  cursor: pointer;
+  background: url("../../assets/images/person/little1.png") 0px -598px no-repeat;
+}
+.next:hover {
+  background: url("../../assets/images/person/little1.png") -28px -599px
+    no-repeat;
 }
 </style>
