@@ -7,6 +7,7 @@
       <div
         class="left flex justify-between"
         :class="{ active: selected == false }"
+        @click="emitPrice('9.9')"
       >
         <div class="ml-12">
           <p>7天</p>
@@ -71,8 +72,12 @@ export default {
       this.currentIndex = index;
       console.log(this.list[index].price);
       this.$emit('getPrice',this.list[index].price)
-
     },
+    emitPrice(value){
+      console.log(value);
+      this.$emit('getPrice',value)
+
+    }
     
   },
   // mounted(){
