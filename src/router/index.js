@@ -25,7 +25,7 @@ const TranslateVip = () => import('@/views/vip/TranslateVip.vue')
 const Personal = () => import('@/views/Person/personal.vue')
 const City =() =>import('@components/personal/City.vue')
 const RewardRecord = ()=> import('@/views/vip/RewardRecord.vue')
-
+const RechargeRecord = ()=> import('@/views/vip/RechargeRecord.vue')
 
 
 // 避免同一个路由多次添加报错
@@ -138,7 +138,14 @@ const routes = [
               title: '打赏记录'
             }
           },
-          
+          {
+            path: 'RechargeRecord',
+            component: RechargeRecord,
+            meta: {
+              title: '充值记录'
+            }
+          },
+         
         ]
       },
       {

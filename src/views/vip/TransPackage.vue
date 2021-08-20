@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white">
+  <div class="bg-white transPackage">
     <div class="w-11/12 h-9 bg-yellow-100 flex items-center pl-5">
       剩余字符：<span class="text-yellow-500 font-bold">0个</span>字符
       <div class="ml-4">VIP人物：</div>
@@ -8,21 +8,28 @@
         | 翻译包：<span class="text-yellow-500 font-bold">0</span>
       </div>
     </div>
-    <div class="w-11/12 border mt-5 grid grid-cols-3"
- >
+    <div class="w-11/12 border mt-5 grid grid-cols-3">
       <div
         v-for="(item, index) in list"
         :key="index"
-        class="border bg-no-repeat bg-left-top"
+        class="border bg-no-repeat bg-left-top a"
         @click="changeColor(index)"
-        :class="{ 'bg-yellow-100': index === selectedIndex }"
+        :class="[
+          index === selectedIndex ? 'bg-yellow-100 shadow-2xl' : 'bg-white',
+        ]"
         :style="{
-        backgroundImage:index == 0 ? 'url(' + require('../../assets/images/mini.png') + ')':0,
-      }"
+          backgroundImage:
+            index == 0
+              ? 'url(' + require('../../assets/images/mini.png') + ')'
+              : 0,
+        }"
       >
+        <p :class="{ rightGb: index === selectedIndex }"></p>
         <p class="text-yellow-500 font-bold text-2xl mt-10">{{ item.glod }}</p>
         <p class="mt-1 text-gray-500">人物</p>
-        <p class="font-bold text-xl mt-2 mb-2 text-black">{{ item.money }}</p>
+        <p class="font-bold text-xl mt-2 mb-2 text-black">
+          {{ item.money }}美元
+        </p>
         <p class="text-yellow-500 text-xl">{{ item.save }}</p>
         <button
           class="mt-6 mb-3 text-sm border border-yellow-500 w-16 h-7 rounded-xl"
@@ -35,13 +42,10 @@
           选择
         </button>
       </div>
-      
-      
-      
     </div>
     <div>
       <PayInfo />
-      <Discount />
+      <Discount :price="currentPrice" />
       <payButton payType="现在买" />
     </div>
   </div>
@@ -60,20 +64,38 @@ export default {
   data() {
     return {
       list: [
-        { glod: "500", money: "19.99美元", save: "节省10%" },
-        { glod: "2,000", money: "69.99美元", save: "节省10%" },
-        { glod: "5,000", money: "169.99美元", save: "节省5%" },
-        { glod: "10,000", money: "299.99美元", save: "节省15%" },
-        { glod: "20,000", money: "599.99美元", save: "节省15%" },
-        { glod: "30,000", money: "799.99美元", save: "节省25%" },
+        { glod: "500", money: "19.99", save: "节省10%" },
+        { glod: "2,000", money: "69.99", save: "节省10%" },
+        { glod: "5,000", money: "169.99", save: "节省5%" },
+        { glod: "10,000", money: "299.99", save: "节省15%" },
+        { glod: "20,000", money: "599.99", save: "节省15%" },
+        { glod: "30,000", money: "799.99", save: "节省25%" },
       ],
       selectedIndex: 2,
+      currentPrice: "",
     };
   },
   methods: {
     changeColor(index) {
       this.selectedIndex = index;
+      this.currentPrice = this.list[index].money;
     },
   },
 };
 </script>
+<style lang='scss'>
+.transPackage {
+  .a {
+    position: relative;
+  }
+  .rightGb {
+    position: absolute;
+    width: 21px;
+    z-index: 1;
+    height: 21px;
+    background: url("~@images/person/little1.png") 0 -201px no-repeat;
+    top: -6px;
+    right: -5px;
+  }
+}
+</style>

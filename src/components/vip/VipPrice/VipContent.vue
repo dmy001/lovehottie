@@ -4,10 +4,7 @@
       v-if="priceType === 'Mini会员'"
       class="MiniVip flex border h-full items-center"
     >
-      <div
-        class="left flex justify-between"
-        :class="{ active: selected == false }"
-      >
+      <div class="left flex justify-between" :class="{active:selectedMini&&selected==='true'}" @click="emitPrice('9.9','selectedMini')">
         <div class="ml-12">
           <p>7天</p>
           <p class="text-xl whitespace-nowrap">
@@ -17,8 +14,10 @@
         <div class="ml-40 w-36">
           <p class="price">费用US$9.9</p>
           <div class="select-btn" style="display: inline-block">
-            <span class="sel-0">选择</span>
+            
+            <span class="sel-0" v-show="!(selectedMini&&selected==='true')">选择</span>
             <span class="sel-1">已选</span>
+            <!-- :class="{active:selectedMini&&selected==='true'}" -->
           </div>
         </div>
       </div>
@@ -27,12 +26,15 @@
         <p>畅爽体验</p>
       </div>
     </div>
-    <div v-if="priceType === 'VIP'" class="VIP flex relative">
-      <i class="absolute inline-block"></i>
+    <div
+      v-if="priceType === 'VIP' || priceType === '高级VIP'"
+      class="VIP flex relative"
+    >
+      <i v-if="priceType === 'VIP'" class="absolute inline-block"></i>
       <div
         v-for="(item, index) in list"
         :key="index"
-        :class="{ active: index === currentIndex }"
+        :class="{ active: index === currentIndex && selected==='true' }"
         @click="changeColor(index)"
         class="border content-item"
       >
@@ -41,7 +43,7 @@
         <p class="text-28px">节省{{ item.save }}%</p>
         <p class="text-14px">费用US${{ item.priceTotle }}</p>
         <div class="select-btn" style="display: inline-block">
-          <span class="sel-0">选择</span>
+          <span class="sel-0" v-show="!(index === currentIndex&&selected==='true')">选择</span>
           <span class="sel-1">已选</span>
         </div>
       </div>
@@ -59,25 +61,29 @@ export default {
     list: {
       type: Array,
     },
+    selected: String
   },
   data() {
     return {
       currentIndex: 0,
-      selected:false,
+      selectedMini:false
     };
   },
   methods: {
     changeColor(index) {
       this.currentIndex = index;
-      console.log(this.list[index].price);
-      this.$emit('getPrice',this.list[index].price)
+      if(this.priceType==='VIP')
+      this.$emit("getPrice", this.list[index].price,'selectedVip');
+      else if(this.priceType === '高级VIP')
+      this.$emit("getPrice", this.list[index].price,'selectedTwoVip');
 
     },
-    
+    emitPrice(value,str) {
+      if(value=='9.9')
+      this.selectedMini = true
+      this.$emit("getPrice", value,str);
+    },
   },
-  // mounted(){
-  //   console.log(this.list);
-  // }
 };
 </script>
 
