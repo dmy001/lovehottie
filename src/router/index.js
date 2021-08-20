@@ -6,6 +6,7 @@ Vue.use(VueRouter)
 const Index = () => import('@/views/Index.vue')
 const About = () => import('@/views/About.vue')
 const Home = () => import('@/views/home/Home.vue')
+
 const Meet = () => import('@/views/meet/Index.vue')
 const OtherCentre = () => import('@/views/meet/OtherCentre.vue')
 const Zone = () => import('@/views/zone/Index.vue')
@@ -26,6 +27,7 @@ const Personal = () => import('@/views/Person/personal.vue')
 const City =() =>import('@components/personal/City.vue')
 const RewardRecord = ()=> import('@/views/vip/RewardRecord.vue')
 const RechargeRecord = ()=> import('@/views/vip/RechargeRecord.vue')
+const SetLangs = () => import('@/views/vip/SetLangs.vue')
 
 
 // 避免同一个路由多次添加报错
@@ -145,6 +147,13 @@ const routes = [
               title: '充值记录'
             }
           },
+          {
+            path: 'SetLangs',
+            component: SetLangs,
+            meta: {
+              title: '语言'
+            }
+          },
          
         ]
       },
@@ -185,6 +194,7 @@ const routes = [
             meta: {
               title: '朋友圈'
             }
+            
           },
         ]
       },

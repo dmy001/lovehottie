@@ -65,29 +65,15 @@
         >
           给他惊喜
         </div>
-        <div class="like-topr mt-4 mr-8">
+        <div class="mt-4 mr-8">
           <span class="message"></span>
-          <span class="friends"
-            ><div
-              style="
-                width: 240px;
-                height: 100px;
-                background: url('https://statics.lovehottie.com/web-pc//images/user-help.png')
-                  no-repeat;
-                position: absolute;
-                left: -11px;
-                bottom: -28px;
-                padding-left: 88px;
-                font-size: 18px;
-                color: #fff;
-                z-index: 999999;
-                pointer-events: none;
-                display: none;
-              "
-            >
-              猛戳这里，添加好友
+          <span class="friends">
+            <div class="friendsImg" style="">猛戳这里，添加好友</div>
+            <div class="friend-tip">
+              <span class="text-white -ml-1.5 inline-block mt-1.5">
+                加为好友
+              </span>
             </div>
-            <div class="friend-tip">加为好友</div>
           </span>
           <span class="gift"></span>
         </div>
@@ -124,11 +110,23 @@
         </div>
         <div
           class="text-center relative"
-          style="line-height: 120px; background-color: rgb(238, 238, 238)"
+          style="
+            line-height: 120px;
+            background-color: rgb(238, 238, 238);
+            width: 100%;
+            overflow: hidden;
+            padding: 0px;
+            margin: 0px;
+            left: 0px;
+          "
         >
           <!-- 图片 -->
-          <dl class="">
-            <dt class="flex overflow-hidden">
+          <dl class="picul" style="">
+            <dt
+              class="flex overflow-hidden"
+              :class="inAnimation ? 'Anim' : ''"
+              @animationend="inAnimation = false"
+            >
               <img
                 style="
                   width: 123px;
@@ -140,6 +138,7 @@
                 v-for="(item, index) in images"
                 :key="index"
                 @click.stop="bigImage = true"
+                v-show="index >= imgItem && index <= imgItem + 6"
                 :src="item"
                 alt=""
               />
@@ -154,8 +153,10 @@
             </dt> -->
           </dl>
           <!-- 图片左右图标 -->
-          <a class="prev" href=""></a>
-          <a class="next" href=""></a>
+          <div class="">
+            <div class="prev" @click="prev()" href=""></div>
+            <div class="next" @click="nextImg()" href=""></div>
+          </div>
         </div>
       </div>
     </section>
@@ -192,66 +193,33 @@
               お会いできてうれしいです
             </p>
             <!-- 评论图片 -->
-            <div class="border mt-2 text-left flex">
-              <div class="imgboxs" style="width: 87px; height: 87px">
+            <div class="border mt-2 text-left flex" style="">
+              <div class="imgboxs" style="overflow: hidden">
                 <img
-                  src="https://images.gagahi.com/Z-2f71e8c7d56f487ca3debc5826268a59?imageView2/5/w/87/h/87"
+                  src="https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120"
+                  alt=""
+                  style="
+                    object-fit: cover;
+                    flex-shrink: 0;
+                    width: 87px;
+                    height: 87px;
+                  "
+                />
+              </div>
+              <!-- <div class="imgboxs">
+                <img
+                  src="https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120"
                   alt=""
                 />
               </div>
-              <div class="imgboxs" style="width: 87px; height: 87px">
+              <div class="imgboxs">
                 <img
-                  src="https://images.gagahi.com/Z-1c713d7c62b14b06be3b6e6dc3fd0642?imageView2/5/w/87/h/87"
+                  src="https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120"
                   alt=""
                 />
-              </div>
-              <div class="imgboxs" style="width: 87px; height: 87px">
-                <img
-                  src="https://images.gagahi.com/Z-9e6ecf0aff16423881d874c369032d15?imageView2/5/w/87/h/87"
-                  alt=""
-                />
-              </div>
+              </div> -->
             </div>
-            <!-- <div class="detail" @click.stop="openList">
-              <span class="text-gray-400">5</span>
-              <p
-                class="inlineblock ml-5"
-                @mousemove="mousemove"
-                @mouseleave="mouseLeave"
-              >
-                <i class="worldIcon border relative mt-2">
-                  <div
-                    class="border rounded-md transType mt-1"
-                    style="display: block"
-                    v-show="showLanguage"
-                  >
-                    <span class="ulBg"></span>
-                    <ul
-                      class="
-                        contentName
-                        flex flex-wrap
-                        text-sm text-black
-                        not-italic
-                        pl-3
-                        ml-1.5
-                        mr-1.5
-                        p-0
-                      "
-                      @mousemove="mousemove1"
-                      @mouseleave="mouseLeave1"
-                    >
-                      <li
-                        class="mt-1 px-1"
-                        v-for="(item, index) in country"
-                        :key="index"
-                      >
-                        {{ item }}
-                      </li>
-                    </ul>
-                  </div>
-                </i>
-              </p>
-            </div> -->
+
             <!-- 留言按钮和地球 -->
             <div class="ml-px15 mt-px15 dynamic_icon relative">
               <span
@@ -544,36 +512,27 @@ export default {
       ],
       redioVal: "",
       images: [
-        "https://images.gagahi.com/Z-2f71e8c7d56f487ca3debc5826268a59?imageView2/2/w/560/h/630",
-        "https://images.gagahi.com/Z-9e6ecf0aff16423881d874c369032d15?imageView2/2/w/560/h/630",
-        "https://images.gagahi.com/Z-9e6ecf0aff16423881d874c369032d15?imageView2/2/w/560/h/630",
-        "https://images.gagahi.com/Z-9e6ecf0aff16423881d874c369032d15?imageView2/2/w/560/h/630",
-        "https://images.gagahi.com/Z-9e6ecf0aff16423881d874c369032d15?imageView2/2/w/560/h/630",
-        "https://images.gagahi.com/Z-9e6ecf0aff16423881d874c369032d15?imageView2/2/w/560/h/630",
-        "https://images.gagahi.com/Z-9e6ecf0aff16423881d874c369032d15?imageView2/2/w/560/h/630",
-        "https://images.gagahi.com/Z-9e6ecf0aff16423881d874c369032d15?imageView2/2/w/560/h/630",
-        "https://images.gagahi.com/Z-9e6ecf0aff16423881d874c369032d15?imageView2/2/w/560/h/630",
-        "https://images.gagahi.com/Z-9e6ecf0aff16423881d874c369032d15?imageView2/2/w/560/h/630",
+        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
+        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
+        "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/123/h/120",
+        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
+        "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/123/h/120",
+        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
+        "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/123/h/120",
+        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
+        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
+        "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/123/h/120",
+        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
+        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
+        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
+        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
       ],
+
+      imgItem: 0,
+      inAnimation: true,
     };
   },
   methods: {
-    // mousemove() {
-    //   this.showLanguage = !this.showLanguage;
-    // },
-    // mouseLeave() {
-    //   this.showLanguage = !this.showLanguage;
-    // },
-    // mousemove1() {
-    //   this.mousemove();
-    // },
-    // mouseLeave1() {
-    //   this.mouseLeave();
-    // },
-    // inputText() {
-    //   this.onInput = !this.onInput;
-    //   this.onText = !this.onText;
-    // },
     mousemoveWarning() {
       this.showWarning = true;
     },
@@ -627,11 +586,24 @@ export default {
     close() {
       this.modal1 = !this.modal1;
     },
+    //关闭大图
+    closeImg() {
+      this.bigImage = !this.bigImage;
+    },
+    nextImg() {
+      console.log(1);
+      if (this.images.length >= 7) {
+        this.imgItem = this.imgItem + 1;
+        this.inAnimation = true;
+      }
+    },
+    prev() {
+      if (this.images.length >= 7) {
+        this.imgItem -= 1;
+      }
+    },
   },
-  //关闭大图
-  closeImg() {
-    this.bigImage = !this.bigImage;
-  },
+
   mounted() {
     document.addEventListener("click", this.closeSel);
     document.addEventListener("click", this.closeBigImage);
@@ -640,26 +612,75 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.like-topr .message {
+.message {
+  background: no-repeat url("../../assets/images/person/little1.png") -42px -457px;
   background-position-x: 0px;
   background-position-y: -529px;
-}
-.like-topr span {
   display: inline-block;
   width: 38px;
   height: 38px;
-  background: no-repeat url("../../assets/images/person/little1.png") -42px -457px;
   cursor: pointer;
   margin-left: 20px;
 }
-.like-topr .friends {
-  background-position-x: -1px;
+.message:hover {
+  background-position-x: -41px;
+  background-position-y: -527px;
+}
+
+.friends {
+  background: no-repeat url("../../assets/images/person/little1.png") -1px -280px;
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+.friends:hover {
+  background-position-x: -45px;
   background-position-y: -280px;
 }
 .friend-tip {
   display: none;
-  text-align: center;
+}
+.friends:hover .friend-tip {
+  background: no-repeat url("../../assets/images/person/little1.png") -0px -370px;
+  margin-left: -21px;
+  margin-top: -30px;
+  display: block;
+  position: absolute;
+  width: 120px;
+  height: 40px;
   font-size: 12px;
+  text-align: center;
+}
+.friendsImg {
+  width: 240px;
+  height: 100px;
+  background: url("https://statics.lovehottie.com/web-pc//images/user-help.png")
+    no-repeat;
+  background-position-x: -1px;
+  background-position-y: -280px;
+  position: absolute;
+  left: -11px;
+  bottom: -28px;
+  padding-left: 88px;
+  font-size: 18px;
+  color: #fff;
+  z-index: 999999;
+  pointer-events: none;
+  display: none;
+}
+.gift {
+  background: no-repeat url("../../assets/images/person/little1.png") -42px -457px;
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+.gift:hover {
+  background-position-x: 0px;
+  background-position-y: -457px;
 }
 .personInformation {
   height: 50px;
@@ -683,64 +704,7 @@ export default {
   cursor: pointer;
   float: left;
 }
-// .detail {
-//   background: url("~@images/person/dynamic.png") no-repeat;
-//   display: inline-block;
-//   background-position: -26px -48px;
-//   cursor: pointer;
-//   height: 16px;
-//   width: 19px;
-// }
 
-// .inlineblock {
-//   display: inline-block;
-//   vertical-align: middle;
-// }
-// .detailIcon {
-//   background: rgba(0, 0, 0, 0) url("../../assets/images/dynamic.png") no-repeat
-//     scroll 0 0;
-//   display: inline-block;
-//   margin-bottom: -3px;
-//   margin-right: 5px;
-//   cursor: pointer;
-//   background-position-x: -26px;
-//   background-position-y: -48px;
-//   height: 16px;
-//   width: 19px;
-// }
-// .worldIcon {
-//   cursor: pointer;
-//   height: 18px;
-//   width: 18px;
-//   background: rgba(0, 0, 0, 0) url("../../assets/images/dynamic.png") no-repeat
-//     scroll 0 0;
-//   background-position-x: -54px;
-//   background-position-y: -48px;
-//   display: inline-block;
-//   margin-bottom: -3px;
-//   margin-right: 5px;
-// }
-
-// .transType {
-//   width: 147px;
-//   height: 110px;
-//   background-color: inherit;
-//   left: -30px;
-//   top: 15px;
-//   padding-top: 6px;
-//   position: absolute;
-//   z-index: 1000;
-//   background: #fff;
-// }
-// .ulBg {
-//   width: 20px;
-//   height: 30px;
-//   position: absolute;
-//   left: 30px;
-//   top: -13px;
-//   z-index: 2;
-//   background: url("../../assets/images/person/IMicon.png") 0px -75px repeat;
-// }
 .bg_icon {
   background: url("~@images/person/dynamic.png") no-repeat;
   display: inline-block;
@@ -1136,5 +1100,17 @@ export default {
 .next:hover {
   background: url("../../assets/images/person/little1.png") -28px -599px
     no-repeat;
+}
+
+.Anim {
+  animation: showMsg 0.6s;
+}
+@keyframes showMsg {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 </style>
