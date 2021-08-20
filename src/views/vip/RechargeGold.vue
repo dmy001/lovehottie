@@ -1,12 +1,12 @@
 <template>
   <div class="RechargeGold">
-    <div class="header h-12  flex items-center pl-5">
+    <div class="header h-12 flex items-center pl-5">
       <span class="align-middle">您账户可用金币数:</span>
       <span class="text-red-500 font-bold align-middle ml-2 text-18px">0</span>
       <i class="inline-block align-middle m-2"></i>
     </div>
     <div class="content flex border w-full mt-5">
-      <div class="left  w-2/3">
+      <div class="left w-2/3">
         <div class="top flex flex-wrap">
           <div
             v-for="(item, index) in list"
@@ -15,19 +15,24 @@
             :class="{ active: index === currentIndex }"
             @click="changeColor(index)"
           >
-            <i class="inline-block mt-4"></i>
-            <p class="text-3xl ">{{ item.gold }}</p>
+            <i class="inline-block mt-4 gold"></i>
+            <i
+              class="inline-block absolute rightGb"
+              v-show="index === currentIndex"
+            ></i>
+
+            <p class="text-3xl">{{ item.gold }}</p>
             <p class="text-xs mt-2">{{ item.money }}</p>
-          <div class="select-btn mt-4" style="display: inline-block">
-            <span  class="sel-0" v-show="!(index === currentIndex)">选择</span>
-            <span  class="sel-1" >已选</span>
-          </div>
+            <div class="select-btn mt-4" style="display: inline-block">
+              <span class="sel-0" v-show="!(index === currentIndex)">选择</span>
+              <span class="sel-1">已选</span>
+            </div>
           </div>
         </div>
         <div class="bottom border flex flex-col pt-10 pb-8">
           <div class="flex mx-auto">
             <p>其他金额：</p>
-            <input class="border rounded-3xl" type="text" v-model="payPrice"/>
+            <input class="border rounded-3xl" type="text" v-model="payPrice" />
             <!-- @keyup.enter='search' @input='search($event)' -->
             <i class="inline-block ml-2"></i>
           </div>
@@ -35,9 +40,13 @@
         </div>
       </div>
 
-      <div class="right w-1/3 ">
+      <div class="right w-1/3">
         <h3>您可以用金币做很多事情：</h3>
-        <p v-for="(item, index) in message" :key="index" class="mt-5 ml-2 text-left">
+        <p
+          v-for="(item, index) in message"
+          :key="index"
+          class="mt-5 ml-2 text-left"
+        >
           <i class="inline-block"></i><span>{{ item }}</span>
         </p>
       </div>
@@ -81,7 +90,7 @@ export default {
   methods: {
     changeColor(index) {
       this.currentIndex = index;
-      this.currentPrice = this.list[index].gold
+      this.currentPrice = this.list[index].gold;
     },
     // search(event){
     //   console.log(event.currentTarget.value);
@@ -98,9 +107,8 @@ export default {
     width: 20px;
   }
   .header {
-        background: #fff8ef;
+    background: #fff8ef;
     i {
-
       background: url("~@images/person/little1.png") 2px -502px no-repeat;
     }
   }
@@ -112,13 +120,23 @@ export default {
         .content-item {
           width: 164px;
           height: 169px;
-          i {
+          position: relative;
+          .gold{
             background: url("~@images/person/little1.png") 0px -500px no-repeat;
+          }
+          .rightGb {
+              z-index: 1;
+              right: -10px;
+              top: -10px;
+              width: 21px;
+              height: 21px;
+              background: url("~@images/person/little1.png") 0 -201px no-repeat;
+            
           }
         }
       }
       .bottom {
-        input{
+        input {
           text-indent: 10px;
           outline: none;
         }

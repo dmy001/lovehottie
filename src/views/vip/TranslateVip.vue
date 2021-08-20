@@ -15,6 +15,7 @@
             :class="{ active: index === currentIndex }"
             @click="changeColor(index)"
           >
+            <i class="inline-block absolute" v-show="index === currentIndex"></i>
             <p class="text-28px text-orangeFont">{{ item.time }}</p>
             <p class="text-xl">min</p>
             <p class="text-20px text-orangeFont">节省{{ item.save }}%</p>
@@ -28,7 +29,11 @@
       </div>
 
       <div class="right w-2/5">
-        <p v-for="(item, index) in message" :key="index" class="mt-5 ml-2 text-left">
+        <p
+          v-for="(item, index) in message"
+          :key="index"
+          class="mt-5 ml-2 text-left"
+        >
           <i class="inline-block"></i><span>{{ item }}</span>
         </p>
       </div>
@@ -60,13 +65,12 @@ export default {
       ],
       currentIndex: 0,
       currentPrice: 0,
-
     };
   },
   methods: {
     changeColor(index) {
       this.currentIndex = index;
-      this.currentPrice = this.list[index].price
+      this.currentPrice = this.list[index].price;
     },
   },
 };
@@ -81,16 +85,16 @@ export default {
     .left {
       height: 250px;
       .top {
-        div {
+        .content-item {
           background: #fffcf6;
-        }
-
-        i {
+          i {
+            z-index: 1;
           right: -10px;
           top: -10px;
           width: 21px;
           height: 21px;
           background: url("~@images/person/little1.png") 0 -201px no-repeat;
+        }
         }
       }
     }
