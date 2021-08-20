@@ -7,7 +7,9 @@
            <div align="center"><img class="w-24" src="../../assets/images/nocoupon.png"/></div>
            <p class="mt-4 mb-2 ml-4 text-xs text-black">没有优惠券</p>
            <p class="mb-10 ml-4 text-xs text-black">去充值领券</p>
+       <router-link to="/home/vip/RechargeGold">
            <button class="w-36 h-10 ml-5 border rounded-3xl bg-red-400 text-white">去充值</button>
+      </router-link>
        </div>
        <div v-show="!isShowList" class="text-left text-gray-800 mt-16 pb-16">
            <div>

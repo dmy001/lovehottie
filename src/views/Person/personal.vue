@@ -12,7 +12,7 @@
       "
     >
       <span class="text-left mt-4 ml-5">设置</span>
-      <router-link to="PersonHome"
+      <router-link to="/home/PersonHome"
         ><button class="text-right text-gray-400 mt-4 mr-5">
           返回个人主页>>
         </button></router-link
@@ -668,6 +668,7 @@
         <button class="w-20 h-8 bg-red-400 rounded-2xl text-white">确定</button>
         <button
           class="w-20 h-8 rounded-2xl border border-solid border-gray-400"
+          @click="toSetCity=false"
         >
           取消
         </button>
@@ -804,10 +805,8 @@ export default {
   background-color: red;
 }
 .city span {
-  background-image: url(https://statics.lovehottie.com/web-pc/images/xld.png)
-    no-repeat;
+  background-image: url(https://statics.lovehottie.com/web-pc/images/xld.png) no-repeat;
   cursor: pointer;
-
   vertical-align: top;
 }
 </style>

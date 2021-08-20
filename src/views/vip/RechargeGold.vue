@@ -19,7 +19,7 @@
             <p class="text-3xl ">{{ item.gold }}</p>
             <p class="text-xs mt-2">{{ item.money }}</p>
           <div class="select-btn mt-4" style="display: inline-block">
-            <span  class="sel-0">选择</span>
+            <span  class="sel-0" v-show="!(index === currentIndex)">选择</span>
             <span  class="sel-1" >已选</span>
           </div>
           </div>
