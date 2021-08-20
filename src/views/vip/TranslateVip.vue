@@ -20,7 +20,7 @@
             <p class="text-20px text-orangeFont">节省{{ item.save }}%</p>
             <p class="text-18px mt-10">费用US${{ item.price }}</p>
             <div class="select-btn mt-3" style="display: inline-block">
-              <span class="sel-0">选择</span>
+              <span class="sel-0" v-show="!(index === currentIndex)">选择</span>
               <span class="sel-1">已选</span>
             </div>
           </div>

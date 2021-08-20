@@ -9,7 +9,9 @@
       <div class="topRight ml-px10">
         <div class="personName">
           可爱小怪咖
-          <router-link to="personal"><span class="inline-block cursor-pointer" ></span></router-link>
+          <router-link to="personal"
+            ><span class="inline-block cursor-pointer"></span
+          ></router-link>
         </div>
         <div>
           <span>女，</span>
@@ -51,8 +53,8 @@
           />
         </div>
       </div>
-      <div class="w-full p-5" style="min-height: 575px">
-        <div class="flex justify-between">
+      <div class="w-full p-5 bg-white" style="min-height: 575px">
+        <section class="flex justify-between">
           <div class="space-x-4">
             <button
               class="h-7 w-24 rounded-2xl border border-gray-400 text-black"
@@ -83,11 +85,134 @@
               删除
             </button>
           </div>
-        </div>
+        </section>
+        <section class="w-full ml-5 mt-5">
+          <div
+            v-for="(img, index) in iamgeList"
+            :key="index"
+            class="
+              imgs
+              bg-gray-400
+              object-contain
+              relative
+              float-left
+              mr-8
+              mt-5
+            "
+            style="max-width: 180px; max-height: 180px"
+          >
+            <span class="">
+              <img class="w-40" :src="img.imgUrl" />
+            </span>
+            <span
+              v-show="del"
+              :class="{showSelectImg:toSelectImg == true}"
+              class="
+                selectImg
+                w-40
+                h-8
+                top-0
+                absolute
+                flex
+                justify-end
+                cursor-pointer
+              "
+              @click="toSelectImg = true"
+            >
+            </span>
+            <span
+              class="
+                bgBlack
+                w-40
+                h-8
+                top-32
+                absolute
+                flex
+                justify-end
+                cursor-pointer
+              "
+            >
+              <div class="delImg mt-2 ml-32" @click="toDelImg = true"></div>
+            </span>
+          </div>
+        </section>
       </div>
     </div>
+    <!-- 我的好友 -->
+    <div v-show="showFriendsList" class="w-full">
+      <div class="top w-full h-10 bg-blue-100 mx-auto flex justify-between">
+        <div class="left ml-5 text-left text-base leading-10">
+          我的好友
+          <span class="text-gray-400 leading-10">(0)</span>
+        </div>
+        <div class="right text-right">
+          <img
+            src="../../assets/images/person/open.png"
+            alt=""
+            title="好友列表"
+            class="inline-block mt-3 mr-3 cursor-pointer"
+            @click="showFriends"
+          />
+        </div>
+      </div>
+      <section class="bg-white" style="min-height: 575px">
+        <div class="px-10">
+          <div
+            v-for="(person, i) in friendList"
+            :key="i"
+            class="friend w-36 h-48 rounded-lg mr-2 mt-5 float-left relative"
+            @mousemove="showEdit = true"
+            @mouseleave="showEdit = false"
+          >
+            <div class="w-36 flex flex-col justify-center space-y-3">
+              <span class="mx-auto mt-3">
+                <router-link to="otherCentre">
+                  <img
+                    class="w-20 rounded-full"
+                    src="https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/team-2-800x800.jpg"
+                  />
+                </router-link>
+              </span>
+              <span v-show="!isEdit" class="flex flex-row justify-center">
+                <router-link to="otherCentre"
+                  ><p
+                    class="
+                      editName
+                      w-12
+                      text-black
+                      overflow-hidden overflow-ellipsis
+                    "
+                  >
+                    s名字
+                  </p></router-link
+                >
+                <p class="icon_edit" @click.stop="isEdit = true"></p>
+              </span>
+              <span v-if="isEdit">
+                <input
+                  id="remarkName"
+                  class="w-36 h-5 border border-solid border-gray-400 px-1"
+                  type="text"
+                  maxlength="20"
+                />
+              </span>
+            </div>
+            <span
+              class="del w-36 flex justify-center"
+              @click.stop="toDelFriend = true"
+            >
+              <p class="delFriend absolute -bottom-4"></p>
+            </span>
+          </div>
+        </div>
+      </section>
+    </div>
 
-    <div v-show="!showImgs" class="photo">
+    <div
+      v-show="!showImgs"
+      :class="{ active: showFriendsList == true }"
+      class="photo"
+    >
       <div class="upload float-left" @click="modalPhoto = true">
         <img src="../../assets/images/person/upload.jpg" alt="" />
       </div>
@@ -102,28 +227,12 @@
         />
       </div>
     </div>
-    <div v-show="!showImgs" class="personContent mt-px15">
+    <div
+      v-show="!showImgs"
+      :class="{ active: showFriendsList == true }"
+      class="personContent mt-px15"
+    >
       <div class="shareList flex justify-between">
-        <!-- <div class="left relative">
-          <Input
-            v-model="value17"
-            maxlength="500"
-            show-word-limit
-            type="textarea"
-            :border="false"
-            placeholder="想和大家分享什么"
-            style="width: 240px; border: none"
-            class="leftText placeholder-gray-800"
-            :rows="9"
-          />
-          <div class="leftFoot">
-            <div class="footLeft">
-              <i class="bg_icon expression" @click="emojiShow = !emojiShow"></i>
-              <i class="bg_icon img_icon"></i>
-            </div>
-            <div class="footRight">发送</div>
-          </div>
-        </div> -->
         <editDynamic></editDynamic>
         <div class="content">
           <div class="content_top">礼物(0)</div>
@@ -131,13 +240,13 @@
         </div>
         <div class="right">
           <div class="content_top">好友(0)</div>
-          
-            <img
+
+          <img
             src="../../assets/images/person/open.png"
             alt=""
-            title="打开相册"
-            class="-mt-8 ml-56"
-            @click="openImg"
+            title="好友列表"
+            class="-mt-8 ml-56 cursor-pointer"
+            @click="showFriends"
           />
           <div class="content_bottom">还没有好友</div>
         </div>
@@ -175,7 +284,7 @@
                 class="bg_icon message_icon mr-px3"
                 @click.stop="openList"
               ></span
-              ><span class="text-gray-400">{{this.contentList.length}}</span>
+              ><span class="text-gray-400">{{ this.contentList.length }}</span>
               <div class="fanyi_circle">
                 <span class="bg_circle ml-px15"></span>
                 <div class="trans-type">
@@ -325,6 +434,64 @@
       </p>
       <imgUpload></imgUpload>
     </Modal>
+    <!-- 删除好友弹出框 -->
+    <Modal
+      v-model="toDelFriend"
+      :closable="false"
+      title="提示"
+      width="500"
+      footer-hide
+      styles="{height:100px}"
+    >
+      <p slot="header">
+        <span class="text-white">提示</span>
+        <span
+          class="closed w-9 h-9 rounded-full -top-2 -right-3 absolute"
+          @click="toDelFriend = false"
+        ></span>
+      </p>
+      <section>
+        <p class="text-xl font-medium text-black">确定要删除好友吗？</p>
+        <p>删除后你将从对方好友列表中消失，以后不再接收此人的消息。</p>
+      </section>
+      <section class="absolute bottom-10 w-full text-center space-x-5">
+        <button class="w-20 h-8 bg-red-400 rounded-2xl text-white">确定</button>
+        <button
+          class="w-20 h-8 rounded-2xl border border-solid border-gray-400"
+          @click="toDelFriend = false"
+        >
+          取消
+        </button>
+      </section>
+    </Modal>
+    <!-- 删除图片弹出框 -->
+    <Modal
+      v-model="toDelImg"
+      :closable="false"
+      title="提示"
+      width="500"
+      footer-hide
+    >
+      <p slot="header">
+        <span class="text-white">提示</span>
+        <span
+          class="closed w-9 h-9 rounded-full -top-2 -right-3 absolute"
+          @click="toDelImg = false"
+        ></span>
+      </p>
+      <section>
+        <p>该照片所在动态也会一并删除。</p>
+      </section>
+      <section class="absolute bottom-10 w-full text-center space-x-5">
+        <button class="w-20 h-8 bg-red-400 rounded-2xl text-white">确定</button>
+        <button
+          class="w-20 h-8 rounded-2xl border border-solid border-gray-400"
+          @click="toDelImg = false"
+        >
+          取消
+        </button>
+      </section>
+    </Modal>
   </div>
 </template>
 <script>
@@ -334,16 +501,21 @@ import imgUpload from "@components/uploadImg.vue";
 export default {
   data() {
     return {
+      showFriendsList: false,
       isDelete: false,
       mouseInner: false,
       mouseComment: false,
+      toSelectImg:false,
       select: "",
       del: false,
+      toDelFriend: false,
+      toDelImg: false,
       showImgs: false,
       modalPhoto: false,
       inputShow: false,
       value17: "",
       listShow: false,
+      isEdit: false,
       emojiShow: false,
       contentList: [
         {
@@ -363,6 +535,20 @@ export default {
           time: "03-03 12:12",
           content: "大风吹啊吹321321",
           number: 323,
+        },
+      ],
+      friendList: [
+        { adavaUrl: "~@images/index/qq.png", name: "sss" },
+        { adavaUrl: "~@images/index/qq.png", name: "sss" },
+      ],
+      iamgeList: [
+        {
+          imgUrl:
+            "https://sources.lovehottie.com/Z-46599cbc00cf4b6093ad83da14621ed7",
+        },
+        {
+          imgUrl:
+            "https://sources.lovehottie.com/Z-46599cbc00cf4b6093ad83da14621ed7",
         },
       ],
     };
@@ -385,9 +571,15 @@ export default {
     // 点击空白处关闭评论
     closeSel(event) {
       var currentCli = document.getElementById("sellineName");
+      var currentRemark = document.getElementById("remarkName");
+
       if (currentCli) {
         if (!currentCli.contains(event.target)) {
           this.inputShow = false;
+        }
+      } else if (currentRemark) {
+        if (!currentRemark.contains(event.target)) {
+          this.isEdit = false;
         }
       }
     },
@@ -401,6 +593,9 @@ export default {
     //批量管理显示删除按钮
     manage() {
       this.del = !this.del;
+    },
+    showFriends() {
+      this.showFriendsList = !this.showFriendsList;
     },
   },
   mounted() {
@@ -719,5 +914,77 @@ export default {
   background-position: -232px -3px;
   width: 10px;
   height: 10px;
+}
+.active {
+  display: none;
+}
+.icon_edit {
+  width: 20px;
+  height: 20px;
+  background: url(/img/little.c7c7e4e0.png) -27px -590px no-repeat;
+  vertical-align: middle;
+  cursor: pointer;
+  display: none;
+}
+.friend:hover {
+  border: solid 1px rgba(192, 190, 190, 0.712);
+}
+.friend:hover .editName {
+  //hover父元素改变子元素
+  font-size: larger;
+}
+.friend:hover .icon_edit {
+  //hover父元素改变子元素
+  display: block;
+}
+.delFriend {
+  width: 30px;
+  height: 31px;
+  background: url("~@images/person/little1.png") -2px -655px no-repeat;
+  cursor: pointer;
+  display: none;
+}
+.friend:hover .delFriend {
+  //hover父元素改变子元素
+  display: block;
+}
+.closed {
+  background: url("~@images/iconClosed.png") 0 -39px no-repeat;
+  cursor: pointer;
+  z-index: 20;
+}
+.closed:hover {
+  background: url("~@images/iconClosed.png") 0 0 no-repeat;
+  cursor: pointer;
+}
+.delImg {
+  width: 20px;
+  height: 18px;
+  background: url(~@images/person/little1.png) -78px -628px no-repeat;
+  display: none;
+}
+.bgBlack {
+  background: none;
+}
+.imgs:hover .delImg,
+.bgBlack {
+  display: block;
+}
+.imgs:hover .bgBlack {
+  background-color: rgba(3, 3, 3, 0.294);
+}
+.selectImg {
+  top: 5px;
+  left: 5px;
+  width: 30px;
+  height: 30px;
+  background: url(~@images/person/little1.png) -40px -759px no-repeat;
+}
+.showSelectImg{
+   top: 5px;
+  left: 5px;
+  width: 30px;
+  height: 30px;
+  background: url(~@images/person/little1.png) 0px -759px no-repeat;
 }
 </style>
