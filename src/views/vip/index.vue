@@ -25,7 +25,7 @@ export default {
         { name: "翻译VIP", path: "/home/vip/TranslateVip" },
         { name: "翻译包", path: "/home/vip/TransPackage" },
         { name: "充值记录", path: "RewardRecord" },
-        { name: "打赏记录", path: "/home/vip/RewardRecord" },
+        { name: "打赏记录", path: "/home/vip/RechargeRecord" },
         { name: "特权说明", path: "DetailsPrivilege" },
         { name: "优惠券", path: "Coupon" },
         { name: "帮助", path: "Help" },
