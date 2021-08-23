@@ -2,7 +2,11 @@
   <div class="UpgradeVip">
     <div class="flex flex-col">
       <VipHeader title="Mini会员" bgClassName="headerImg1" />
-      <VipContent priceType="Mini会员" @getPrice="getPrice2" :selected="selectedMini"   />
+      <MiniVip
+        :selectIndex="selectIndex"
+        @changeSelectId="changeSelectId"
+        @getPrice="getPrice2"
+      />
       <VipFooter
         :descrip="descrip"
         :descriptionList="descriptionList"
@@ -10,7 +14,13 @@
       />
 
       <VipHeader title="VIP会员" bgClassName="headerImg2" />
-      <VipContent priceType="VIP" :list="itemList" @getPrice="getPrice2" :selected="selectedVip" />
+      <VipContent
+        :selectIndex="selectIndex"
+        @changeSelectId="changeSelectId"
+        priceType="VIP"
+        :list="itemList"
+        @getPrice="getPrice2"
+      />
       <VipFooter
         :descrip="descrip1"
         :descriptionList="descriptionList1"
@@ -18,7 +28,13 @@
       />
 
       <VipHeader title="高级会员" bgClassName="headerImg3" />
-      <VipContent priceType="高级VIP" :list="itemList2" @getPrice="getPrice2" :selected="selectedTwoVip" />
+      <VipContent
+        :selectIndex="selectIndex"
+        @changeSelectId="changeSelectId"
+        priceType="高级VIP"
+        :list="itemList2"
+        @getPrice="getPrice2"
+      />
       <VipFooter
         :descrip="descrip2"
         :descriptionList="descriptionList2"
@@ -28,6 +44,16 @@
     <PayInfo />
     <Discount :price="currentPrice" />
     <payButton payType="立即充值" />
+
+    <!-- <i
+        v-if="priceType === 'VIP'"
+        class="absolute inline-block -left-5 -top-5"
+      ></i> -->
+    <!-- i {
+    width: 54px;
+    height: 54px;
+    background: url("../../../assets/images/person/little1.png") no-repeat -56px -1158px;
+  } -->
   </div>
 </template>
 
@@ -38,6 +64,7 @@ import payButton from "@components/vip/PayInfo/payButton.vue";
 import VipHeader from "@components/vip/VipPrice/VipHeader.vue";
 import VipContent from "@components/vip/VipPrice/VipContent.vue";
 import VipFooter from "@components/vip/VipPrice/VipFooter.vue";
+import MiniVip from "@components/vip/VipPrice/MiniVip.vue";
 export default {
   components: {
     VipHeader,
@@ -46,43 +73,40 @@ export default {
     VipFooter,
     PayInfo,
     Discount,
+    MiniVip,
   },
   data() {
     return {
-      
-      itemListMini: [{ id: 0,price:"9.9", }],
+      itemListMini: [{ id: 0, price: "9.9" }],
+      selectIndex: 0,
       itemList: [
         {
           id: 1,
           time: 12,
           price: "124.91",
           save: 40,
-          priceTotle: 1499,
-          Ischange: "选择",
+          priceTotle: "1499",
         },
         {
           id: 2,
           time: 6,
           price: "149.83",
           save: 30,
-          priceTotle: 999,
-          Ischange: "选择",
+          priceTotle: "999",
         },
         {
           id: 3,
           time: 3,
           price: "163.33",
           save: 20,
-          priceTotle: 499,
-          Ischange: "选择",
+          priceTotle: "499",
         },
         {
           id: 4,
           time: 1,
           price: "199.00",
           save: 5,
-          priceTotle: 199,
-          Ischange: "选择",
+          priceTotle: "199",
         },
       ],
       itemList2: [
@@ -91,7 +115,7 @@ export default {
           time: 12,
           price: "150",
           save: 40,
-          priceTotle: 150,
+          priceTotle: "150",
           Ischange: "选择",
         },
         {
@@ -99,7 +123,7 @@ export default {
           time: 6,
           price: "90",
           save: 30,
-          priceTotle: 90,
+          priceTotle: "90",
           Ischange: "选择",
         },
         {
@@ -107,7 +131,7 @@ export default {
           time: 3,
           price: "50",
           save: 20,
-          priceTotle: 50,
+          priceTotle: "50",
           Ischange: "选择",
         },
         {
@@ -115,7 +139,7 @@ export default {
           time: 1,
           price: "20",
           save: 5,
-          priceTotle: 20,
+          priceTotle: "20",
           Ischange: "选择",
         },
       ],
@@ -141,9 +165,7 @@ export default {
         "每月免费赠送5个虚拟礼物",
         "会员专属标识",
       ],
-      selectedMini:"false",
-      selectedVip:"false",
-      selectedTwoVip:"false",
+
       descriptionList: [
         {
           name: "每天50条聊天权限",
@@ -255,24 +277,11 @@ export default {
     };
   },
   methods: {
-    getPrice2(value,str) {
+    changeSelectId(id) {
+      this.selectIndex = id;
+    },
+    getPrice2(value) {
       this.currentPrice = value;
-      if(str=='selectedMini'){
-        this.selectedMini = 'true'
-        this.selectedVip = 'false'
-        this.selectedTwoVip = 'false'
-      }
-      else if(str=='selectedVip'){
-        this.selectedMini = 'false'
-        this.selectedVip = 'true'
-        this.selectedTwoVip = 'false'
-      }
-      else if(str=='selectedTwoVip'){
-        this.selectedMini = 'false'
-        this.selectedVip = 'false'
-        this.selectedTwoVip = 'true'
-      }
-
     },
   },
 };
