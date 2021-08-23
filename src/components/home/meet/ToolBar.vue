@@ -355,6 +355,79 @@ export default {
           value: "医生",
           label: "医生",
         },
+        {
+          value: "护士",
+          label: "护士",
+        },
+        {
+          value: "清洁工",
+          label: "清洁工",
+        },
+        {
+          value: "保安",
+          label: "保安",
+        },
+        {
+          value: "警察",
+          label: "警察",
+        },
+        {
+          value: "教练",
+          label: "教练",
+        },
+        {
+          value: "运动员",
+          label: "运动员",
+        },
+        {
+          value: "司机",
+          label: "司机",
+        },
+        {
+          value: "快递员",
+          label: "快递员",
+        },
+        {
+          value: "服务员",
+          label: "服务员",
+        },
+        {
+          value: "空姐",
+          label: "空姐",
+        },
+        {
+          value: "机长",
+          label: "机长",
+        },
+        {
+          value: "维修工",
+          label: "维修工",
+        },
+        {
+          value: "采购",
+          label: "采购",
+        },
+        {
+          value: "厨师",
+          label: "厨师",
+        },
+        {
+          value: "美食家",
+          label: "美食家",
+        },
+
+        {
+          value: "导游",
+          label: "导游",
+        },
+        {
+          value: "老师",
+          label: "老师",
+        },
+        {
+          value: "学生",
+          label: "学生",
+        },
       ],
 
       model1: "160cm—170cm",
