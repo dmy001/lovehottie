@@ -15,7 +15,9 @@
         class="border bg-no-repeat bg-left-top a"
         @click="changeColor(index)"
         :class="[
-          index === selectedIndex ? 'bg-yellow-100 shadow-2xl' : 'bg-white',
+          index === selectedIndex
+            ? 'bg-yellow-100 shadow-2xl border-l-0 border-t-0 border-yellow-300'
+            : 'bg-white',
         ]"
         :style="{
           backgroundImage:

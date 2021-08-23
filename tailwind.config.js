@@ -40,6 +40,7 @@ module.exports = {
       pink: colors.pink,
       buttonColor:'#f6f6f6',
       descrip:'#999999',
+      friendColor:'#ff625a',
       base: {
         color1: baseColor1,
         color2: baseColor2,
@@ -167,7 +168,7 @@ module.exports = {
       xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
       '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
       inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
-      none: 'none',
+      none: 'none', 
     },
     container: {},
     cursor: {
@@ -245,8 +246,6 @@ module.exports = {
       '14px': ['14px'],
       '28px':['28px'],
       '18px':['18px'],
-
-
     },
     fontWeight: {
       thin: '100',
@@ -764,6 +763,7 @@ module.exports = {
       'px120': '120px',
       'px860': '860px',
       'px30': '30px',
+      'px60':'60px'
     }),
     zIndex: {
       auto: 'auto',

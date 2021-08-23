@@ -94,7 +94,7 @@
           <span class="absolute info-num">1</span>
           <label class="inline-block w-full h-full"></label>
           <div class="absolute -bottom-full triangle-top"></div>
-          <div class="absolute info-panl space-y-5">
+          <div class="absolute info-panl">
             <p class="text-black text-left ml-5 mt-3">加好友申请</p>
             <p
               class="
@@ -108,15 +108,68 @@
             </p>
             <p class="text-black text-left ml-5">可能认识的人</p>
             <p
-              class="
-                text-gray-400
-                mt-5
-                border-b border-dashed border-gray-400
-                pb-5
-              "
+              v-if="haveFriend"
+              class="text-gray-400 border-b border-dashed border-gray-400"
             >
               暂无推荐的人
             </p>
+            <div v-if="!haveFriend" class="friends mt-2">
+              <p
+                v-for="(item, index) in friendsList"
+                :key="index"
+                class="
+                  friend
+                  text-gray-400
+                  flex
+                  items-center
+                  border-dashed border-b border-gray-200
+                  py-2
+                "
+              >
+                <!-- 动态图片 -->
+                <img
+                  class="rounded-full ml-2"
+                  :src="item.imgbaseurl + 'images/default/male.png'"
+                  alt=""
+                  width="30px"
+                  height="30px"
+                />
+                <span class="hover:text-friendColor">{{ item.name }}</span>
+                <button
+                  class="
+                    ml-auto
+                    border
+                    h-5
+                    w-px60
+                    text-sm
+                    rounded-xl
+                    border-friendColor
+                    text-friendColor
+                    hover:bg-friendColor
+                    hover:text-white
+                  "
+                >
+                  加好友
+                </button>
+                <button
+                  class="
+                    ml-2
+                    border
+                    h-5
+                    w-px60
+                    text-sm
+                    rounded-xl
+                    border-friendColor
+                    hover:bg-friendColor
+                    text-friendColor
+                    hover:text-white
+                  "
+                >
+                  忽略
+                </button>
+              </p>
+              <!-- </section> -->
+            </div>
           </div>
         </div>
         <div class="relative cursor-pointer set-info header-info ml-px15">
@@ -149,6 +202,45 @@ export default {
       upMoney: "充值",
       upGrade: "升级",
       // isMeetPage: true,
+      haveFriend: "",
+      friendsList: [
+        {
+          name: "aa",
+          imgbaseurl: "https://images.gagahi.com/",
+        },
+        {
+          name: "aa",
+          imgbaseurl: "https://images.gagahi.com/",
+        },
+        {
+          name: "aa",
+          imgbaseurl: "https://images.gagahi.com/",
+        },
+        {
+          name: "aa",
+          imgbaseurl: "https://images.gagahi.com/",
+        },
+        {
+          name: "aa",
+          imgbaseurl: "https://images.gagahi.com/",
+        },
+        {
+          name: "aa",
+          imgbaseurl: "https://images.gagahi.com/",
+        },
+        {
+          name: "aa",
+          imgbaseurl: "https://images.gagahi.com/",
+        },
+        {
+          name: "aa",
+          imgbaseurl: "https://images.gagahi.com/",
+        },
+        {
+          name: "aa",
+          imgbaseurl: "https://images.gagahi.com/",
+        },
+      ],
     };
   },
   components: {
@@ -256,6 +348,9 @@ input::placeholder {
     & > div {
       height: calc(100% - 16px);
       overflow-y: scroll;
+    }
+    .friends {
+      height: 250px;
     }
   }
   &:hover .triangle-top,
