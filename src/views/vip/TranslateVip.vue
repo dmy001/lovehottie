@@ -15,7 +15,10 @@
             :class="{ active: index === currentIndex }"
             @click="changeColor(index)"
           >
-            <i class="inline-block absolute" v-show="index === currentIndex"></i>
+            <i
+              class="inline-block absolute"
+              v-show="index === currentIndex"
+            ></i>
             <p class="text-28px text-orangeFont">{{ item.time }}</p>
             <p class="text-xl">min</p>
             <p class="text-20px text-orangeFont">节省{{ item.save }}%</p>
@@ -34,7 +37,7 @@
           :key="index"
           class="mt-5 ml-2 text-left"
         >
-          <i class="inline-block"></i><span>{{ item }}</span>
+          <i class="inline-block w-2 h-4"></i><span>{{ item }}</span>
         </p>
       </div>
     </div>
@@ -86,22 +89,19 @@ export default {
       height: 250px;
       .top {
         .content-item {
-          background: #fffcf6;
           i {
             z-index: 1;
-          right: -10px;
-          top: -10px;
-          width: 21px;
-          height: 21px;
-          background: url("~@images/person/little1.png") 0 -201px no-repeat;
-        }
+            right: -10px;
+            top: -10px;
+            width: 21px;
+            height: 21px;
+            background: url("~@images/person/little1.png") 0 -201px no-repeat;
+          }
         }
       }
     }
     .right {
       i {
-        width: 8px;
-        height: 16px;
         background: url("~@images/person/little1.png") -100px -1038px no-repeat;
       }
     }
