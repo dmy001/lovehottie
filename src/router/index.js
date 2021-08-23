@@ -24,7 +24,7 @@ const Coupon = () => import('@/views/vip/Coupon.vue')
 
 const TranslateVip = () => import('@/views/vip/TranslateVip.vue')
 const Personal = () => import('@/views/Person/personal.vue')
-const City =() =>import('@components/personal/City.vue')
+const Swpier =() =>import('@components/personal/Swpier.vue')
 const RewardRecord = ()=> import('@/views/vip/RewardRecord.vue')
 const RechargeRecord = ()=> import('@/views/vip/RechargeRecord.vue')
 const SetLangs = () => import('@/views/vip/SetLangs.vue')
@@ -216,8 +216,8 @@ const routes = [
         }
       },
       {
-        path:'/city',
-        component:City
+        path:'swpier',
+        component:Swpier
     },
     ]
   },
