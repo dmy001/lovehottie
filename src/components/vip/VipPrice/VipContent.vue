@@ -4,7 +4,11 @@
       v-if="priceType === 'Mini会员'"
       class="MiniVip flex border h-full items-center"
     >
-      <div class="left flex justify-between" :class="{active:selectedMini&&selected==='true'}" @click="emitPrice('9.9','selectedMini')">
+      <div
+        class="left flex justify-between"
+        :class="{ active: selectedMini && selected === 'true' }"
+        @click="emitPrice('9.9', 'selectedMini')"
+      >
         <div class="ml-12">
           <p>7天</p>
           <p class="text-xl whitespace-nowrap">
@@ -14,14 +18,25 @@
         <div class="ml-40 w-36">
           <p class="price">费用US$9.9</p>
           <div class="select-btn" style="display: inline-block">
-            
-            <span class="sel-0" v-show="!(selectedMini&&selected==='true')">选择</span>
+            <span class="sel-0" v-show="!(selectedMini && selected === 'true')"
+              >选择</span
+            >
             <span class="sel-1">已选</span>
             <!-- :class="{active:selectedMini&&selected==='true'}" -->
           </div>
         </div>
       </div>
-      <div class="right w-48 h-full border-l flex flex-col justify-center">
+      <div
+        class="
+          right
+          text-base-color4
+          w-48
+          h-full
+          border-l
+          flex flex-col
+          justify-center
+        "
+      >
         <p>LoveHottie会员</p>
         <p>畅爽体验</p>
       </div>
@@ -30,11 +45,14 @@
       v-if="priceType === 'VIP' || priceType === '高级VIP'"
       class="VIP flex relative"
     >
-      <i v-if="priceType === 'VIP'" class="absolute inline-block"></i>
+      <i
+        v-if="priceType === 'VIP'"
+        class="absolute inline-block -left-5 -top-5"
+      ></i>
       <div
         v-for="(item, index) in list"
         :key="index"
-        :class="{ active: index === currentIndex && selected==='true' }"
+        :class="{ active: index === currentIndex && selected === 'true' }"
         @click="changeColor(index)"
         class="border content-item"
       >
@@ -43,7 +61,11 @@
         <p class="text-28px">节省{{ item.save }}%</p>
         <p class="text-14px">费用US${{ item.priceTotle }}</p>
         <div class="select-btn" style="display: inline-block">
-          <span class="sel-0" v-show="!(index === currentIndex&&selected==='true')">选择</span>
+          <span
+            class="sel-0"
+            v-show="!(index === currentIndex && selected === 'true')"
+            >选择</span
+          >
           <span class="sel-1">已选</span>
         </div>
       </div>
@@ -61,27 +83,25 @@ export default {
     list: {
       type: Array,
     },
-    selected: String
+    selected: String,
   },
   data() {
     return {
       currentIndex: 0,
-      selectedMini:false
+      selectedMini: false,
     };
   },
   methods: {
     changeColor(index) {
       this.currentIndex = index;
-      if(this.priceType==='VIP')
-      this.$emit("getPrice", this.list[index].price,'selectedVip');
-      else if(this.priceType === '高级VIP')
-      this.$emit("getPrice", this.list[index].price,'selectedTwoVip');
-
+      if (this.priceType === "VIP")
+        this.$emit("getPrice", this.list[index].price, "selectedVip");
+      else if (this.priceType === "高级VIP")
+        this.$emit("getPrice", this.list[index].price, "selectedTwoVip");
     },
-    emitPrice(value,str) {
-      if(value=='9.9')
-      this.selectedMini = true
-      this.$emit("getPrice", value,str);
+    emitPrice(value, str) {
+      if (value == "9.9") this.selectedMini = true;
+      this.$emit("getPrice", value, str);
     },
   },
 };
@@ -89,7 +109,6 @@ export default {
 
 <style lang='scss' scoped>
 @import "@styles/vips.scss";
-
 .active {
   background-color: white !important;
   box-shadow: 0 0 10px #999;
@@ -101,23 +120,16 @@ export default {
     width: 567px;
     padding: 34px;
   }
-  .right {
-    background: #fffcf6;
-    color: #999999;
-  }
 }
 .VIP {
   i {
     width: 54px;
     height: 54px;
-    left: -20px;
-    top: -20px;
     background: url("../../../assets/images/person/little1.png") no-repeat -56px -1158px;
   }
   .content-item {
     width: 188px;
     height: 248px;
-    background: #fffcf6;
     p:nth-child(1) {
       margin-top: 20px;
       color: #ff8a00;
