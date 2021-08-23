@@ -9,6 +9,7 @@ const Home = () => import('@/views/home/Home.vue')
 
 const Meet = () => import('@/views/meet/Index.vue')
 const OtherCentre = () => import('@/views/meet/OtherCentre.vue')
+const Swiper = () => import('@/views/meet/swiper.vue')
 const Zone = () => import('@/views/zone/Index.vue')
 const ZoneRoom = () => import('@/views/zone/Room.vue')
 const ZoneFriend = () => import('@/views/zone/Friend.vue')
@@ -17,16 +18,16 @@ const Visitor = () => import('@/views/Visitor.vue')
 const Vip = () => import('@/views/vip/index.vue')
 const UpgradeVip = () => import('@/views/vip/UpgradeVip.vue')
 const RechargeGold = () => import('@/views/vip/RechargeGold.vue')
-const TransPackage = ()=> import('@/views/vip/TransPackage.vue')
+const TransPackage = () => import('@/views/vip/TransPackage.vue')
 const DetailsPrivilege = () => import('@/views/vip/DetailsPrivilege.vue')
 const Help = () => import('@/views/vip/Help.vue')
 const Coupon = () => import('@/views/vip/Coupon.vue')
 
 const TranslateVip = () => import('@/views/vip/TranslateVip.vue')
 const Personal = () => import('@/views/Person/personal.vue')
-const City =() =>import('@components/personal/City.vue')
-const RewardRecord = ()=> import('@/views/vip/RewardRecord.vue')
-const RechargeRecord = ()=> import('@/views/vip/RechargeRecord.vue')
+const City = () => import('@components/personal/City.vue')
+const RewardRecord = () => import('@/views/vip/RewardRecord.vue')
+const RechargeRecord = () => import('@/views/vip/RechargeRecord.vue')
 const SetLangs = () => import('@/views/vip/SetLangs.vue')
 
 
@@ -47,7 +48,7 @@ const routes = [
       title: '首页'
     }
   },
-  
+
   {
     path: '/about',
     name: 'About',
@@ -99,31 +100,31 @@ const routes = [
             }
           },
           {
-            path:'TransPackage',
-            component:TransPackage,
-            meta:{
-              title:'翻译包'
+            path: 'TransPackage',
+            component: TransPackage,
+            meta: {
+              title: '翻译包'
             }
           },
           {
-            path:'DetailsPrivilege',
-            component:DetailsPrivilege,
-            meta:{
-              title:'特权说明'
+            path: 'DetailsPrivilege',
+            component: DetailsPrivilege,
+            meta: {
+              title: '特权说明'
             }
           },
           {
-            path:'Help',
-            component:Help,
-            meta:{
-              title:'帮助'
+            path: 'Help',
+            component: Help,
+            meta: {
+              title: '帮助'
             }
           },
           {
-            path:'Coupon',
-            component:Coupon,
-            meta:{
-              title:'优惠券'
+            path: 'Coupon',
+            component: Coupon,
+            meta: {
+              title: '优惠券'
             }
           },
           {
@@ -154,7 +155,7 @@ const routes = [
               title: '语言'
             }
           },
-         
+
         ]
       },
       {
@@ -170,6 +171,13 @@ const routes = [
         component: OtherCentre,
         meta: {
           title: '他人主页'
+        }
+      },
+      {
+        path: 'swiper',
+        component: Swiper,
+        meta: {
+          title: '轮播'
         }
       },
 
@@ -194,7 +202,7 @@ const routes = [
             meta: {
               title: '朋友圈'
             }
-            
+
           },
         ]
       },
@@ -216,9 +224,9 @@ const routes = [
         }
       },
       {
-        path:'/city',
-        component:City
-    },
+        path: '/city',
+        component: City
+      },
     ]
   },
   {

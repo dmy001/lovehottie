@@ -97,6 +97,7 @@
     </section>
     <section>
       <div class="border">
+        <!-- 没有照片 -->
         <div
           v-if="haveImage"
           class="text-center"
@@ -108,6 +109,7 @@
         >
           对方尚无展示照片
         </div>
+        <!-- 有照片 -->
         <div
           class="text-center relative"
           style="
@@ -121,12 +123,8 @@
           "
         >
           <!-- 图片 -->
-          <dl class="picul" style="">
-            <dt
-              class="flex overflow-hidden"
-              :class="inAnimation ? 'Anim' : ''"
-              @animationend="inAnimation = false"
-            >
+          <dl style="">
+            <dt class="flex overflow-hidden">
               <img
                 style="
                   width: 123px;
@@ -138,24 +136,25 @@
                 v-for="(item, index) in images"
                 :key="index"
                 @click.stop="bigImage = true"
-                v-show="index >= imgItem && index <= imgItem + 6"
                 :src="item"
                 alt=""
               />
             </dt>
-            <!-- <dt>
-              <a href="javascript:void(0)" @click="openImgDialog()"
-                ><img
-                  :src="this.images"
-                  alt=""
-                  style="display: block; width: 123px; height: 120px"
-              /></a>
-            </dt> -->
           </dl>
           <!-- 图片左右图标 -->
           <div class="">
-            <div class="prev" @click="prev()" href=""></div>
-            <div class="next" @click="nextImg()" href=""></div>
+            <div
+              class="prev"
+              @click="prev()"
+              v-if="images.length >= 6"
+              href=""
+            ></div>
+            <div
+              class="next"
+              @click="nextImg()"
+              v-if="images.length >= 6"
+              href=""
+            ></div>
           </div>
         </div>
       </div>
@@ -225,8 +224,13 @@
               <span
                 class="bg_icon message_icon mr-px3"
                 @click.stop="openList"
+                @click="showIcon()"
+                :style="{
+                  backgroundPosition:
+                    showicon == true ? '-26px -48px' : '-26px -26px',
+                }"
               ></span>
-              <span class="text-gray-400">2</span>
+              <span class="text-gray-400">{{ contentList.length }}</span>
               <div class="fanyi_circle">
                 <span class="bg_circle ml-px15"></span>
                 <div class="trans-type">
@@ -285,6 +289,7 @@
                                 cursor-pointer
                               "
                               @click.stop="inputShow = true"
+                              @click="onMessage(item.name)"
                             ></i>
                           </div>
                           <div
@@ -335,6 +340,7 @@
                   @click.stop="inputShow = true"
                   v-if="inputShow == false"
                   placeholder="喜欢你有趣的点评~"
+                  @click="mineMessage()"
                 />
                 <div v-if="inputShow">
                   <textarea
@@ -344,7 +350,7 @@
                     name=""
                     class="textArea"
                     rows="2"
-                    placeholder="发布评论"
+                    :placeholder="this.placeholder"
                     style="outline: none"
                     maxlength="240"
                     show-word-limit
@@ -353,7 +359,7 @@
                     <span style="color: #999"
                       >{{ inputContent.length }}/240</span
                     >
-                    <div class="sendBtn">
+                    <div class="sendBtn" @click="sendBtn()">
                       <i class="senI"></i>
                     </div>
                   </div>
@@ -446,6 +452,51 @@
           </div>
         </div>
       </div>
+      <!-- 评论图片放大 -->
+      <div
+        class="imageTextBig left-1/3"
+        v-if="showTextImg"
+        style="
+          z-index: 19891023;
+          width: 560px;
+          height: 630px;
+          top: 145.5px ;rgba（0，0，0，0．7）;
+        "
+      >
+        <span
+          class="closedImg w-9 h-9 rounded-full -top-2 -right-3 absolute"
+          @click="closeImg()"
+        ></span>
+        <div class="imageBigContent" id="sellineImg">
+          <div class="imageBigDetail">
+            <div class="imageBigDetailImg">
+              <div class="imageBigDetailImgLeft"></div>
+              <div class="imageBigDetailImgRight"></div>
+              <div class="bigger">原始尺寸</div>
+              <div class="normal hide" data-url data-i>重置</div>
+              <div class="bd slide_bd">
+                <div
+                  class="slide_item"
+                  imgid="61163a5293d24eeba0605320b5ca5830"
+                >
+                  <div
+                    class="js_img_border"
+                    v-for="(item, index) in images"
+                    :key="index"
+                  >
+                    <img
+                      :src="item"
+                      class=""
+                      style="position: relative; margin: 0 auto"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -468,12 +519,13 @@ export default {
       haveImage: false,
       haveInformation: false,
       showLanguage: false,
-
+      placeholder: "发布评论",
+      inputContent: "",
+      showicon: true,
       bigImage: false,
       showWarning: false,
       modal1: false,
       inputShow: false,
-      inputContent: "",
       listShow: false,
       contentList: [
         {
@@ -483,13 +535,13 @@ export default {
           number: 323,
         },
         {
-          name: "可爱小怪咖",
+          name: "可爱小怪咖11",
           time: "03-03 12:12",
           content: "大风吹啊吹3213213",
           number: 323,
         },
         {
-          name: "可爱小怪咖",
+          name: "可爱小怪咖22",
           time: "03-03 12:12",
           content: "大风吹啊吹321321",
           number: 323,
@@ -524,12 +576,9 @@ export default {
         "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/123/h/120",
         "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
         "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
-        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
-        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
       ],
 
-      imgItem: 0,
-      inAnimation: true,
+      showTextImg: true,
     };
   },
   methods: {
@@ -590,17 +639,29 @@ export default {
     closeImg() {
       this.bigImage = !this.bigImage;
     },
-    nextImg() {
-      console.log(1);
-      if (this.images.length >= 7) {
-        this.imgItem = this.imgItem + 1;
-        this.inAnimation = true;
-      }
+
+    //评论
+    onMessage(name) {
+      this.placeholder = `回复：` + name;
     },
-    prev() {
-      if (this.images.length >= 7) {
-        this.imgItem -= 1;
+    mineMessage() {
+      this.placeholder = "发布评论";
+    },
+    sendBtn() {
+      const sendValue = document.getElementById("sellineName");
+      console.log(sendValue.value);
+      if (sendValue.value != "") {
+        this.contentList.push({
+          name: "可爱小怪咖333",
+          time: "03-03 12:12",
+          content: sendValue.value,
+          number: 323,
+        });
       }
+      this.inputContent = "";
+    },
+    showIcon() {
+      this.showicon = !this.showicon;
     },
   },
 
@@ -765,9 +826,22 @@ export default {
     height: 16px;
     width: 19px;
   }
+  // .message_icon:link {
+  //   background-position: -26px -26px;
+  // }
+  // .message_icon:visited {
+  //   background-position: -26px -26px;
+  // }
+  // .message_icon:focus {
+  //   background-position: -26px -26px;
+  // }
   .message_icon:hover {
-    background-position: -26px -26px;
+    background-position: -26px -26px !important;
   }
+  // .message_icon:active {
+  //   background-position: -26px -26px;
+  // }
+
   .bg_circle:hover {
     background-position: -54px -26px;
   }
@@ -1101,16 +1175,110 @@ export default {
   background: url("../../assets/images/person/little1.png") -28px -599px
     no-repeat;
 }
-
-.Anim {
-  animation: showMsg 0.6s;
-}
-@keyframes showMsg {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
+.imageTextBig {
+  animation-name: bounceIn;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  -webkit-background-clip: content;
+  box-shadow: 0px 0px 3px rgb(0 0 0 / 20%);
+  border-radius: 15px;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  position: absolute;
+  .imageBigContent {
+    position: relative;
+    padding: 10px 25px 25px 25px;
+    overflow: auto;
+    height: 630px;
+    .imageBigDetail {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 630px;
+      width: 100%;
+      background: #000;
+      border-radius: 15px;
+      .imageBigDetailImg {
+        left: 20px;
+        overflow: hidden;
+        background: #000;
+        position: relative;
+        width: 530px;
+        height: 630px;
+        border-radius: 15px;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        float: left;
+        .imageBigDetailImgLeft {
+          background: url("../../assets/images/dynamic.png") no-repeat;
+          display: inline-block;
+          background-position: -123px 0;
+          z-index: 3;
+          cursor: pointer;
+          position: absolute;
+          left: 20px;
+          top: 50%;
+          margin-top: -23px;
+          width: 32px;
+          height: 47px;
+        }
+        .imageBigDetailImgRight {
+          background: url("../../assets/images/dynamic.png") no-repeat;
+          display: inline-block;
+          background-position: -159px 0;
+          z-index: 3;
+          cursor: pointer;
+          width: 32px;
+          height: 47px;
+          position: absolute;
+          right: 20px;
+          top: 50%;
+          margin-top: -23px;
+        }
+        .bigger {
+          font-size: 16px;
+          color: #fff;
+          position: absolute;
+          bottom: 12px;
+          left: 15px;
+          z-index: 1;
+          text-shadow: 0px 0px 3px #000;
+          cursor: pointer;
+        }
+        .normal {
+          left: 27px;
+          font-size: 16px;
+          color: #fff;
+          position: absolute;
+          bottom: 12px;
+          left: 15px;
+          z-index: 1;
+          text-shadow: 0px 0px 3px #000;
+          cursor: pointer;
+        }
+        .hide {
+          display: none !important;
+        }
+        .slide_bd {
+          height: 630px;
+          width: 530px;
+          display: flex;
+          align-items: center;
+          text-align: center;
+          .slide_item {
+            width: 100%;
+            display: inline-block;
+            max-height: 630px;
+            .js_img_border {
+              display: inline;
+            }
+          }
+        }
+      }
+    }
   }
 }
 </style>
