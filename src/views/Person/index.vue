@@ -106,7 +106,6 @@
             </span>
             <span
               v-show="del"
-              :class="{showSelectImg:toSelectImg == true}"
               class="
                 selectImg
                 w-40
@@ -117,9 +116,26 @@
                 justify-end
                 cursor-pointer
               "
-              @click="toSelectImg = true"
+              @click="toSelectImg(index)"
             >
             </span>
+            <span
+              v-show="del"
+              v-if="option.includes(index)"
+              class="
+                showSelectImg
+                w-40
+                h-8
+                top-0
+                absolute
+                flex
+                justify-end
+                cursor-pointer
+              "
+              @click="toCancelImg(index)"
+            >
+            </span
+            ><!--  toSelectImg == index  toSelectImg != index -->
             <span
               class="
                 bgBlack
@@ -167,13 +183,10 @@
             <div class="w-36 flex flex-col justify-center space-y-3">
               <span class="mx-auto mt-3">
                 <router-link to="otherCentre">
-                  <img
-                    class="w-20 rounded-full"
-                    src="https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/team-2-800x800.jpg"
-                  />
+                  <img class="w-20 rounded-full" :src="person.adavaUrl" />
                 </router-link>
               </span>
-              <span v-show="!isEdit" class="flex flex-row justify-center">
+              <span v-show="isEdit != i" class="flex flex-row justify-center">
                 <router-link to="otherCentre"
                   ><p
                     class="
@@ -183,15 +196,15 @@
                       overflow-hidden overflow-ellipsis
                     "
                   >
-                    s名字
+                    {{ person.name }}
                   </p></router-link
                 >
-                <p class="icon_edit" @click.stop="isEdit = true"></p>
+                <p class="icon_edit" @click.stop="isEdit = i"></p>
               </span>
-              <span v-if="isEdit">
+              <span v-show="isEdit == i" @click.stop>
                 <input
                   id="remarkName"
-                  class="w-36 h-5 border border-solid border-gray-400 px-1"
+                  class="remarkName w-36 h-5 border border-solid border-gray-400 px-1"
                   type="text"
                   maxlength="20"
                 />
@@ -224,6 +237,8 @@
           title="打开相册"
           class="imgShow"
           @click="openImg"
+          absolute
+          z-10
         />
       </div>
     </div>
@@ -441,7 +456,6 @@
       title="提示"
       width="500"
       footer-hide
-      styles="{height:100px}"
     >
       <p slot="header">
         <span class="text-white">提示</span>
@@ -501,11 +515,12 @@ import imgUpload from "@components/uploadImg.vue";
 export default {
   data() {
     return {
+      bacShow:false,
       showFriendsList: false,
       isDelete: false,
       mouseInner: false,
       mouseComment: false,
-      toSelectImg:false,
+      option: [],
       select: "",
       del: false,
       toDelFriend: false,
@@ -515,7 +530,7 @@ export default {
       inputShow: false,
       value17: "",
       listShow: false,
-      isEdit: false,
+      isEdit: -1,
       emojiShow: false,
       contentList: [
         {
@@ -538,10 +553,36 @@ export default {
         },
       ],
       friendList: [
-        { adavaUrl: "~@images/index/qq.png", name: "sss" },
-        { adavaUrl: "~@images/index/qq.png", name: "sss" },
+        {
+          adavaUrl:
+            "https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/team-2-800x800.jpg",
+          name: "sss",
+        },
+        {
+          adavaUrl:
+            "https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/team-2-800x800.jpg",
+          name: "sss",
+        },
+        {
+          adavaUrl:
+            "https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/team-2-800x800.jpg",
+          name: "sss",
+        },
+        {
+          adavaUrl:
+            "https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/team-2-800x800.jpg",
+          name: "sss",
+        },
       ],
       iamgeList: [
+        {
+          imgUrl:
+            "https://sources.lovehottie.com/Z-46599cbc00cf4b6093ad83da14621ed7",
+        },
+        {
+          imgUrl:
+            "https://sources.lovehottie.com/Z-46599cbc00cf4b6093ad83da14621ed7",
+        },
         {
           imgUrl:
             "https://sources.lovehottie.com/Z-46599cbc00cf4b6093ad83da14621ed7",
@@ -571,15 +612,14 @@ export default {
     // 点击空白处关闭评论
     closeSel(event) {
       var currentCli = document.getElementById("sellineName");
-      var currentRemark = document.getElementById("remarkName");
-
+      var currentName = document.getElementById("remarkName");
       if (currentCli) {
         if (!currentCli.contains(event.target)) {
           this.inputShow = false;
         }
-      } else if (currentRemark) {
-        if (!currentRemark.contains(event.target)) {
-          this.isEdit = false;
+      }else if (currentName) {
+        if (!currentName.contains(event.target)) {
+          this.isEdit = -1;
         }
       }
     },
@@ -589,6 +629,12 @@ export default {
     //打开相册
     openImg() {
       this.showImgs = !this.showImgs;
+    },
+    toSelectImg(index) {
+      this.option.push(index);
+    },
+    toCancelImg(index) {
+      this.option.splice(this.option.indexOf(index), 1);
     },
     //批量管理显示删除按钮
     manage() {
@@ -603,6 +649,7 @@ export default {
   },
   beforeDestroy() {
     document.removeEventListener("click", this.bodyCloseMenus);
+   
   },
 };
 </script>
@@ -980,8 +1027,8 @@ export default {
   height: 30px;
   background: url(~@images/person/little1.png) -40px -759px no-repeat;
 }
-.showSelectImg{
-   top: 5px;
+.showSelectImg {
+  top: 5px;
   left: 5px;
   width: 30px;
   height: 30px;
