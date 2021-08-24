@@ -1,8 +1,8 @@
 <template>
   <div class="bg-white transPackage">
     <div class="w-11/12 h-9 bg-yellow-100 flex items-center pl-5">
-      剩余字符：<span class="text-yellow-500 font-bold">0个</span>字符
-      <div class="ml-4">VIP人物：</div>
+      您账户可用字符数：<span class="text-yellow-500 font-bold mr-1">0</span>字符
+      <div class="ml-4">VIP字符：</div>
       <span class="text-yellow-500 font-bold">0</span>
       <div class="ml-1">
         | 翻译包：<span class="text-yellow-500 font-bold">0</span>
@@ -28,7 +28,7 @@
       >
         <p :class="{ rightGb: index === selectedIndex }"></p>
         <p class="text-yellow-500 font-bold text-2xl mt-10">{{ item.glod }}</p>
-        <p class="mt-1 text-gray-500">人物</p>
+        <p class="mt-1 text-gray-500">字符</p>
         <p class="font-bold text-xl mt-2 mb-2 text-black">
           {{ item.money }}美元
         </p>
@@ -48,7 +48,7 @@
     <div>
       <PayInfo />
       <Discount :price="currentPrice" />
-      <payButton payType="现在买" />
+      <payButton payType="立即购买" />
     </div>
   </div>
 </template>
