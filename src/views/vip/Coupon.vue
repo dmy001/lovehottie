@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white">
+  <div class="bg-white coupon">
     <div class="w-11/12 text-right mt-9">
       <span :class="{ 'text-pink-600': isShowList }" @click="isShowList = true"
         >列表</span
@@ -18,9 +18,9 @@
       <p class="mt-4 mb-2 ml-4 text-xs text-black">没有优惠券</p>
       <p class="mb-10 ml-4 text-xs text-black">去充值领券</p>
       <router-link to="/home/vip/RechargeGold">
-        <button class="w-36 h-10 ml-5 border rounded-3xl bg-red-400 text-white">
+        <p class="recharge pt-1.5 border rounded-3xl text-white">
           去充值
-        </button>
+        </p>
       </router-link>
     </div>
     <div v-show="!isShowList" class="text-left text-gray-800 mt-16 pb-16">
@@ -87,3 +87,13 @@ export default {
   },
 };
 </script>
+<style lang='scss'>
+   .coupon{
+      .recharge{
+         width:158px;
+         height:36px;
+         margin-left:330px;
+         background-color:#FF625A ;
+      }
+   }
+</style>
