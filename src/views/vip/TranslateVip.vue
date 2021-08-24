@@ -5,7 +5,7 @@
       <span class="text-red-500 font-bold">0min</span>
       <i class="inline-block align-middle"></i>
     </div>
-    <div class="content flex border w-full mt-5">
+    <div class="content flex border  mt-5">
       <div class="left w-3/5 border">
         <div class="top flex h-full">
           <div
@@ -35,7 +35,7 @@
         <p
           v-for="(item, index) in message"
           :key="index"
-          class="mt-5 ml-2 text-left"
+          class="mt-5 ml-2 text-left p-2"
         >
           <i class="inline-block w-2 h-4"></i><span>{{ item }}</span>
         </p>
@@ -89,6 +89,7 @@ export default {
       height: 250px;
       .top {
         .content-item {
+          background: #FFFCF6;
           i {
             z-index: 1;
             right: -10px;

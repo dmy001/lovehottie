@@ -2,9 +2,11 @@
   <div style="overflow: hidden; position: relative; width: 100%">
     <ul class="flex" :style="[sliderActive]">
       <li v-for="(item, index) in images" :key="item.id + index">
-        <img  :src="item.url" alt="" srcset="" @click.stop="bigImg = index" />  
+        <img :src="item.url" alt="" srcset="" />
+        {{ item.id }}
       </li>
     </ul>
+
     <!-- 图片左右图标 -->
     <div class="">
       <div class="prev" @click="prev()" v-if="images.length >= 6" href=""></div>
@@ -15,13 +17,6 @@
         href=""
       ></div>
     </div>
-    <div v-if="bigImg == index">
-       <Modal>
-         <img src="../../assets/images/person/upload.jpg" alt="" />
-       </Modal>
-    </div>
-
-
   </div>
 
   <!-- </div> -->
@@ -31,7 +26,6 @@
 export default {
   data() {
     return {
-      bigImg:-1,
       index: 0,
       sliderActive: {
         transform: `translateX(-240px)`,
@@ -114,7 +108,7 @@ export default {
         // setTimeout(() => {
         this.index = this.images.length - 10;
         this.sliderActive = {
-          transform: `translateX(${(this.index + 2) * -123}px)`,
+          transform: `translateX(${(this.index + 2) * -120}px)`,
           transition: "transform 0s",
         };
         setTimeout(() => {
