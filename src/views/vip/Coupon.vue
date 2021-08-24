@@ -15,8 +15,8 @@
       <div align="center">
         <img class="w-24" src="../../assets/images/nocoupon.png" />
       </div>
-      <p class="mt-4 mb-2 ml-4 text-xs text-black">没有优惠券</p>
-      <p class="mb-10 ml-4 text-xs text-black">去充值领券</p>
+      <p class="mt-4 mb-2 ml-4 text-xs text-black">没有优惠券哦~</p>
+      <p class="mb-10 ml-4 text-xs text-black">去充值获取优惠券吧~</p>
       <router-link to="/home/vip/RechargeGold">
         <p class="recharge pt-1.5 border rounded-3xl text-white">
           去充值
@@ -25,43 +25,43 @@
     </div>
     <div v-show="!isShowList" class="text-left text-gray-800 mt-16 pb-16">
       <div>
-        <p class="text-gray-700 font-bold">优惠券使用说明：</p>
+        <p class="text-gray-700 font-bold">优惠券基本使用说明：</p>
         <div class="mt-4 mb-3 flex flex-row">
           <p class="w-5 h-5 bg-gray-200 rounded-full pl-1.5 mr-1">1</p>
-          <p>优惠券只能与LoveHottie中的金币一起使用。</p>
+          <p>优惠券在LoveHottie内仅限与金币搭配使用。</p>
         </div>
         <div class="flex flex-row">
           <p class="w-5 h-5 bg-gray-200 rounded-full pl-1.5 mr-1">2</p>
-          <p>每次购买，您只能使用一张优惠券。</p>
+          <p>每次购买只能够使用一张优惠券。</p>
         </div>
         <div class="mt-3 mb-3 flex flex-row">
           <p class="w-5 h-5 bg-gray-200 rounded-full pl-1.5 mr-1">3</p>
-          <p>优惠券只能用于购买相应的商品。</p>
+          <p>对应的优惠券只能够在购买对应的商品使用。</p>
         </div>
         <div class="flex flex-row">
           <p class="w-5 h-5 bg-gray-200 rounded-full pl-1.5 mr-1">4</p>
-          <p>如果商品价值低于优惠券价值，优惠券将直接被使用，无需更改。</p>
+          <p>商品的价值低于优惠券的价值，则直接使用优惠券而不找零</p>
         </div>
         <div class="mt-3 mb-3 flex flex-row">
           <p class="w-5 h-5 bg-gray-200 rounded-full pl-1.5 mr-1">5</p>
-          <p>在LoveHottie购买东西、参加活动或充值，都可以获得优惠券。</p>
+          <p>优惠券获取方式通过LoveHottie的买赠，活动参与，充值等形式获取</p>
         </div>
         <div class="flex flex-row">
           <p class="w-5 h-5 bg-gray-200 rounded-full pl-1.5 mr-1">6</p>
-          <p>优惠券过期无效，无法使用优惠券在LoveHottie购买商品。</p>
+          <p>优惠券过期作废，即不能够在购买LoveHottie内商品使用</p>
         </div>
       </div>
       <div class="mt-8">
-        <p class="text-gray-700 font-bold">各类优惠券使用规则：</p>
-        <button class="w-16 h-5 bg-gray-200 rounded-xl text-black mt-1 mb-1">
-          会员券
+        <p class="text-gray-700 font-bold">各类优惠券具体使用规则：</p>
+        <button class="w-20 h-5 bg-gray-200 rounded-xl text-black mt-1 mb-1">
+          会员优惠券
         </button>
-        <p class="mb-2">① 价值30金的VIP优惠券可用于购买VIP会员；</p>
-        <p>②价值3金的Senior优惠券可用于购买Senior会员；</p>
-        <button class="w-20 h-5 bg-gray-200 rounded-xl text-black mt-1 mb-2">
-          虚拟礼券
+        <p class="mb-2">① 价值为30金币的VIP会员优惠券可以购买任意VIP会员使用；</p>
+        <p>②价值3金币的高级会员优惠券可以购买任意高级会员使用；</p>
+        <button class="w-28 h-5 bg-gray-200 rounded-xl text-black mt-1 mb-2">
+          虚拟礼物优惠券
         </button>
-        <p>价值2金的虚拟礼券可用于购买价值4金或以上的虚拟礼品。</p>
+        <p>价值2金币的虚拟礼物优惠券，只能够在购买价值4金币以上虚拟礼物使用；</p>
       </div>
     </div>
   </div>
