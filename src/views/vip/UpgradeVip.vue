@@ -14,13 +14,16 @@
       />
 
       <VipHeader title="VIP会员" bgClassName="headerImg2" />
-      <VipContent
+      <div class="relative border VIP">
+      <VipContent 
         :selectIndex="selectIndex"
         @changeSelectId="changeSelectId"
-        priceType="VIP"
         :list="itemList"
         @getPrice="getPrice2"
       />
+       <i
+        class="absolute   inline-block -top-5 -left-5"
+      ></i></div>
       <VipFooter
         :descrip="descrip1"
         :descriptionList="descriptionList1"
@@ -31,7 +34,6 @@
       <VipContent
         :selectIndex="selectIndex"
         @changeSelectId="changeSelectId"
-        priceType="高级VIP"
         :list="itemList2"
         @getPrice="getPrice2"
       />
@@ -44,16 +46,6 @@
     <PayInfo />
     <Discount :price="currentPrice" />
     <payButton payType="立即充值" />
-
-    <!-- <i
-        v-if="priceType === 'VIP'"
-        class="absolute inline-block -left-5 -top-5"
-      ></i> -->
-    <!-- i {
-    width: 54px;
-    height: 54px;
-    background: url("../../../assets/images/person/little1.png") no-repeat -56px -1158px;
-  } -->
   </div>
 </template>
 
@@ -290,5 +282,14 @@ export default {
 <style lang='scss' scope>
 .UpgradeVip {
   width: 756px;
+  .VIP {
+          background: #FFFCF6;
+    i{
+    width: 54px;
+    height: 54px;
+    background: url("../../assets/images/person/little1.png") no-repeat -56px -1158px;
+    }
+  } 
 }
+
 </style>

@@ -14,7 +14,7 @@
       <div class="mr-5">
         <p class="text-right mt-8">订单金额：{{price}}</p>
         <p class="text-right mt-4 mb-8">
-          实付金额:<span class="text-orangeFont">{{price}}</span>
+          实付金额:   <span class="text-orangeFont">{{price}}</span>
         </p>
       </div>
       <hr />
