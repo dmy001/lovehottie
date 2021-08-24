@@ -11,7 +11,7 @@
         {{ item.name }}
       </div>
     </div>
-    <router-view class="ml-16 mt-5"></router-view>
+    <router-view class="ml-16 mt-5 mr-10"></router-view>
   </div>
 </template>
 

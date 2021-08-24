@@ -4,10 +4,7 @@
     <div
       class="VIP flex relative"
     >
-      <!-- <i
-        v-if="priceType === 'VIP'"
-        class="absolute inline-block -left-5 -top-5"
-      ></i> -->
+    
       <div
         v-for="(item, index) in list"
         :key="index"
