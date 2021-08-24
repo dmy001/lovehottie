@@ -80,7 +80,7 @@
     <div class="lf-lb flex flex-row cursor-pointer lkmLeft">
      <span id="leftLikeMeIndexImg" class="inline-block lkm"></span>
      <div id="leftLikeMeIndexText">
-       升级会员
+       {{$trans('升级会员')}}
      </div>
     </div>
     </router-link>
