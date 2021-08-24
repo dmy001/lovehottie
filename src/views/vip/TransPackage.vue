@@ -1,8 +1,8 @@
 <template>
   <div class="bg-white transPackage">
     <div class="w-11/12 h-9 bg-yellow-100 flex items-center pl-5">
-      剩余字符：<span class="text-yellow-500 font-bold">0个</span>字符
-      <div class="ml-4">VIP人物：</div>
+      您账户可用字符数：<span class="text-yellow-500 font-bold mr-1">0</span>字符
+      <div class="ml-4">VIP字符：</div>
       <span class="text-yellow-500 font-bold">0</span>
       <div class="ml-1">
         | 翻译包：<span class="text-yellow-500 font-bold">0</span>
@@ -12,7 +12,7 @@
       <div
         v-for="(item, index) in list"
         :key="index"
-        class="border bg-no-repeat bg-left-top a"
+        class="border bg-no-repeat bg-left-top site"
         @click="changeColor(index)"
         :class="[
           index === selectedIndex
@@ -28,13 +28,13 @@
       >
         <p :class="{ rightGb: index === selectedIndex }"></p>
         <p class="text-yellow-500 font-bold text-2xl mt-10">{{ item.glod }}</p>
-        <p class="mt-1 text-gray-500">人物</p>
+        <p class="mt-1 text-gray-500">字符</p>
         <p class="font-bold text-xl mt-2 mb-2 text-black">
           {{ item.money }}美元
         </p>
-        <p class="text-yellow-500 text-xl">{{ item.save }}</p>
-        <button
-          class="mt-6 mb-3 text-sm border border-yellow-500 w-16 h-7 rounded-xl"
+        <p class="text-yellow-500 text-xl mb-6">{{ item.save }}</p>
+        <p
+          class="choose pt-0.5 text-sm border border-yellow-500 rounded-xl"
           :class="[
             index === selectedIndex
               ? 'text-white bg-yellow-500'
@@ -42,13 +42,13 @@
           ]"
         >
           选择
-        </button>
+        </p>
       </div>
     </div>
     <div>
       <PayInfo />
       <Discount :price="currentPrice" />
-      <payButton payType="现在买" />
+      <payButton payType="立即购买" />
     </div>
   </div>
 </template>
@@ -87,7 +87,7 @@ export default {
 </script>
 <style lang='scss'>
 .transPackage {
-  .a {
+  .site {
     position: relative;
   }
   .rightGb {
@@ -98,6 +98,11 @@ export default {
     background: url("~@images/person/little1.png") 0 -201px no-repeat;
     top: -6px;
     right: -5px;
+  }
+  .choose{
+    width:60px;
+    height:28px;
+    margin:17px auto;
   }
 }
 </style>

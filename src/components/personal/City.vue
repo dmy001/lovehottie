@@ -23,21 +23,21 @@
         <li
           :class="{ actived: currentIndex == 1 }"
           class="w-12 rounded-full"
-          @click="currentIndex = 1"
+          @click="setCity(1)"
         >
           H-M
         </li>
         <li
           :class="{ actived: currentIndex == 2 }"
           class="w-12 rounded-full"
-          @click="currentIndex = 2"
+          @click="setCity(2)"
         >
           N-S
         </li>
         <li
           :class="{ actived: currentIndex == 3 }"
           class="w-12 rounded-full"
-          @click="currentIndex = 3"
+          @click="setCity(3)"
         >
           T-Z
         </li>

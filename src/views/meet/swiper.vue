@@ -1,91 +1,12 @@
 <template>
-  <!-- <div style="overflow: hidden; position: relative; width: 615px">
-    <div
-      style="
-        width: 1599px;
-        position: relative;
-        overflow: hidden;
-        padding: 0px;
-        margin: 0px;
-        left: -123px;
-        transition: 0.5s;
-      "
-      ref="container"
-    >
-      <img
-        src="https://images.gagahi.com/Z-bc97f4846aa84c07b3ca1cc2af5b4db9?imageView2/5/w/123/h/120"
-        alt=""
-      />
-      <img
-        src="https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/123/h/120"
-        alt=""
-      />
-      <img
-        src="https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120"
-        alt=""
-      />
-      <img
-        src="https://images.gagahi.com/Z-b697f292318d481caa2807f73af51b1d?imageView2/5/w/123/h/120"
-        alt=""
-      />
-      <img
-        src="https://images.gagahi.com/Z-bc97f4846aa84c07b3ca1cc2af5b4db9?imageView2/5/w/123/h/120"
-        alt=""
-      />
-      <img
-        src="https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/123/h/120"
-        alt=""
-      />
-      <img
-        src="https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120"
-        alt=""
-      />
-      <img
-        src="https://images.gagahi.com/Z-b697f292318d481caa2807f73af51b1d?imageView2/5/w/123/h/120"
-        alt=""
-      />
-      <img
-        src="https://images.gagahi.com/Z-bc97f4846aa84c07b3ca1cc2af5b4db9?imageView2/5/w/123/h/120"
-        alt=""
-      />
-    </div>
-    <p href="" @click="up">22222</p>
-    <p href="" @click="next">\></p> -->
   <div style="overflow: hidden; position: relative; width: 100%">
-    <div
-      class="text-center relative"
-      style="
-        line-height: 120px;
-        background-color: rgb(238, 238, 238);
-        width: 1599px;
-        overflow: hidden;
-        padding: 0px;
-        margin: 0px;
-        left: 0px;
-        transition: 0.5s;
-      "
-      ref="container"
-    >
-      <!-- 图片 -->
-      <dl>
-        <dt class="flex overflow-hidden">
-          <img
-            style="
-              width: 123px;
-              height: 120px;
-              cursor: pointer;
-              object-fit: cover;
-              flex-shrink: 0;
-            "
-            v-for="(item, index) in images"
-            :key="index"
-            @click.stop="bigImage = true"
-            :src="item"
-            alt=""
-          />
-        </dt>
-      </dl>
-    </div>
+    <ul class="flex" :style="[sliderActive]">
+      <li v-for="(item, index) in images" :key="item.id + index">
+        <img :src="item.url" alt="" srcset="" />
+        {{ item.id }}
+      </li>
+    </ul>
+
     <!-- 图片左右图标 -->
     <div class="">
       <div class="prev" @click="prev()" v-if="images.length >= 6" href=""></div>
@@ -105,45 +26,129 @@
 export default {
   data() {
     return {
-      index: 1,
+      index: 0,
+      sliderActive: {
+        transform: `translateX(-240px)`,
+        transition: "transform 0.5s",
+      },
       images: [
-        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
-        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
-        "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/123/h/120",
-        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
-        "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/123/h/120",
-        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
-        "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/123/h/120",
-        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
-        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
-        "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/123/h/120",
-        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
-        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
-        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
-        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
-        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
+        {
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          id: 1,
+        },
+        {
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          id: 2,
+        },
+        {
+          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/120/h/120",
+          id: 3,
+        },
+        {
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          id: 4,
+        },
+        {
+          id: 5,
+          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/120/h/120",
+        },
+        {
+          id: 6,
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+        },
+        {
+          id: 7,
+          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/120/h/120",
+        },
+        {
+          id: 8,
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+        },
+        {
+          id: 9,
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+        },
+        {
+          id: 10,
+          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/120/h/120",
+        },
+        {
+          id: 11,
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+        },
+        {
+          id: 12,
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+        },
+        {
+          id: 13,
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+        },
+        {
+          id: 14,
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+        },
+        {
+          id: 15,
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+        },
       ],
+      sliderImg: [],
     };
+  },
+  mounted() {
+    const pre = this.images.slice(-2);
+    const next = this.images.slice(0, 7);
+    this.images = [...pre, ...this.images, ...next];
   },
   methods: {
     prev() {
-      if (this.index == 1) {
-        this.index = 7;
-      } else this.index -= 1;
-      this.$refs.container.style.left = this.index * -123 + "px";
+      this.index -= 1;
+      if (this.index === -2) {
+        // setTimeout(() => {
+        this.index = this.images.length - 10;
+        this.sliderActive = {
+          transform: `translateX(${(this.index + 2) * -120}px)`,
+          transition: "transform 0s",
+        };
+        setTimeout(() => {
+          this.prev();
+        });
+        // }, 400);
+      } else {
+        this.sliderActive = {
+          transform: `translateX(${(this.index + 2) * -120}px)`,
+          transition: "transform 0.5s",
+        };
+      }
     },
     nextImg() {
-      if (this.index == 7) this.index = 1;
-      else this.index += 1;
-      this.$refs.container.style.left = this.index * -123 + "px";
+      this.index += 1;
+      if (this.index === 14) {
+        // setTimeout(() => {
+        this.index = -2;
+        this.sliderActive = {
+          transform: `translateX(${(this.index + 2) * -120}px)`,
+          transition: "transform 0s",
+        };
+        setTimeout(() => {
+          this.nextImg();
+        });
+        // }, 400);
+      } else {
+        this.sliderActive = {
+          transform: `translateX(${(this.index + 2) * -120}px)`,
+          transition: "transform 0.5s",
+        };
+      }
     },
   },
 };
 </script>
 <style lang= 'scss'  scoped>
-div > img {
+/* div > img {
   float: left;
-}
+} */
 .prev {
   width: 14px;
   height: 23px;
