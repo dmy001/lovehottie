@@ -105,34 +105,42 @@ export default {
     prev() {
       this.index -= 1;
       if (this.index === -2) {
+        // setTimeout(() => {
+        this.index = this.images.length - 10;
+        this.sliderActive = {
+          transform: `translateX(${(this.index + 2) * -120}px)`,
+          transition: "transform 0s",
+        };
         setTimeout(() => {
-          this.index = this.images.length - 11;
-          this.sliderActive = {
-            transform: `translateX(${(this.index + 2) * -120}px)`,
-            transition: "transform 0s",
-          };
-        }, 400);
+          this.prev();
+        });
+        // }, 400);
+      } else {
+        this.sliderActive = {
+          transform: `translateX(${(this.index + 2) * -120}px)`,
+          transition: "transform 0.5s",
+        };
       }
-      this.sliderActive = {
-        transform: `translateX(${(this.index + 2) * -120}px)`,
-        transition: "transform 0.5s",
-      };
     },
     nextImg() {
       this.index += 1;
       if (this.index === 14) {
+        // setTimeout(() => {
+        this.index = -2;
+        this.sliderActive = {
+          transform: `translateX(${(this.index + 2) * -120}px)`,
+          transition: "transform 0s",
+        };
         setTimeout(() => {
-          this.index = -1;
-          this.sliderActive = {
-            transform: `translateX(${(this.index + 2) * -120}px)`,
-            transition: "transform 0s",
-          };
-        }, 400);
+          this.nextImg();
+        });
+        // }, 400);
+      } else {
+        this.sliderActive = {
+          transform: `translateX(${(this.index + 2) * -120}px)`,
+          transition: "transform 0.5s",
+        };
       }
-      this.sliderActive = {
-        transform: `translateX(${(this.index + 2) * -120}px)`,
-        transition: "transform 0.5s",
-      };
     },
   },
 };
