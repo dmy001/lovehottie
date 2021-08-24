@@ -1,7 +1,7 @@
 <template>
   <div class="RechargeGold">
     <div class="header h-12 flex items-center pl-5">
-      <span class="align-middle">您账户可用金币数:</span>
+      <span class="align-middle"> </span>
       <span class="text-red-500 font-bold align-middle ml-2 text-18px">0</span>
       <i class="inline-block align-middle m-2"></i>
     </div>
@@ -11,7 +11,7 @@
           <div
             v-for="(item, index) in list"
             :key="index"
-            class="border content-item"
+            class="border content-item flex-auto"
             :class="{ active: index === currentIndex }"
             @click="changeColor(index)"
           >
@@ -39,7 +39,6 @@
           <p>需支付{{ payPrice }}美元</p>
         </div>
       </div>
-
       <div class="right w-1/3">
         <h3>您可以用金币做很多事情：</h3>
         <p
@@ -113,7 +112,6 @@ export default {
     }
   }
   .content {
-    width: 747px;
     height: 458px;
     .left {
       .top {
@@ -121,17 +119,16 @@ export default {
           width: 164px;
           height: 169px;
           position: relative;
-          .gold{
+          .gold {
             background: url("~@images/person/little1.png") 0px -500px no-repeat;
           }
           .rightGb {
-              z-index: 1;
-              right: -10px;
-              top: -10px;
-              width: 21px;
-              height: 21px;
-              background: url("~@images/person/little1.png") 0 -201px no-repeat;
-            
+            z-index: 1;
+            right: -10px;
+            top: -10px;
+            width: 21px;
+            height: 21px;
+            background: url("~@images/person/little1.png") 0 -201px no-repeat;
           }
         }
       }

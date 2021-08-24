@@ -80,7 +80,7 @@
     <div class="lf-lb flex flex-row cursor-pointer lkmLeft">
      <span id="leftLikeMeIndexImg" class="inline-block lkm"></span>
      <div id="leftLikeMeIndexText">
-       升级会员
+       {{$trans('升级会员')}}
      </div>
     </div>
     </router-link>
@@ -91,7 +91,7 @@
       <router-link to='/home/PersonHome'>我的动态</router-link> 
      </div>
     </div>
-    <router-link to="visitor">
+    <router-link to="/home/visitor">
      <div class="lf-lb flex flex-row cursor-pointer eachLeft">
      <span id="leftFriendIndexImg" class="inline-block each-lk"></span>
      <div id="leftFriendIndexText">
