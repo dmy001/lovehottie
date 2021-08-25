@@ -10,6 +10,10 @@ const SetLangs = () => import('@/views/setLangs/SetLangs.vue')
 const Meet = () => import('@/views/meet/Index.vue')
 const OtherCentre = () => import('@/views/meet/OtherCentre.vue')
 const Swiper = () => import('@/views/meet/swiper.vue')
+const Comment = () => import('@/components/home/othercentre/Comment.vue')
+const BigImage = () => import('@/components/home/othercentre/BigImage.vue')
+const CommentBigImg = () => import('@/components/home/othercentre/CommentBigImg.vue')
+const Report = () => import('@/components/home/othercentre/Report.vue')
 const Zone = () => import('@/views/zone/Index.vue')
 const ZoneRoom = () => import('@/views/zone/Room.vue')
 const ZoneFriend = () => import('@/views/zone/Friend.vue')
@@ -24,9 +28,9 @@ const Help = () => import('@/views/vip/Help.vue')
 const Coupon = () => import('@/views/vip/Coupon.vue')
 const TranslateVip = () => import('@/views/vip/TranslateVip.vue')
 const Personal = () => import('@/views/Person/personal.vue')
-const Swpier =() =>import('@components/personal/Swpier.vue')
-const RewardRecord = ()=> import('@/views/vip/RewardRecord.vue')
-const RechargeRecord = ()=> import('@/views/vip/RechargeRecord.vue')
+const Swpier = () => import('@components/personal/Swpier.vue')
+const RewardRecord = () => import('@/views/vip/RewardRecord.vue')
+const RechargeRecord = () => import('@/views/vip/RechargeRecord.vue')
 
 const City = () => import('@components/personal/City.vue')
 // const RechargeRecord = () => import('@/views/vip/RechargeRecord.vue')
@@ -59,9 +63,9 @@ const routes = [
     alias: 'setLangs/',
     component: SetLangs,
     meta: {
-   
+
       title: '语言'
-  }
+    }
 
   },
 
@@ -79,13 +83,13 @@ const routes = [
     }
   },
 
-{
+  {
     path: '/home',
     name: 'home',
     redirect: 'home/meet',
     component: Home,
     meta: {
-  
+
       title: '主页'
     },
     children: [
@@ -166,7 +170,7 @@ const routes = [
               title: '充值记录'
             }
           },
-          
+
           {
             path: 'SetLangs',
             component: SetLangs,
@@ -177,7 +181,7 @@ const routes = [
 
         ]
       },
-      
+
       {
         path: 'meet',
         component: Meet,
@@ -191,6 +195,38 @@ const routes = [
         component: OtherCentre,
         meta: {
           title: '他人主页'
+        },
+        children: [
+          {
+            path: 'bigImage',
+            component: BigImage,
+            meta: {
+              title: '大图'
+            }
+          },
+          {
+            path: 'commentBigImg',
+            component: CommentBigImg,
+            meta: {
+              title: '评论区大图'
+            }
+          },
+
+        ]
+
+      },
+      {
+        path: 'report',
+        component: Report,
+        meta: {
+          title: '举报'
+        }
+      },
+      {
+        path: 'comment',
+        component: Comment,
+        meta: {
+          title: '评论区'
         }
       },
       {
