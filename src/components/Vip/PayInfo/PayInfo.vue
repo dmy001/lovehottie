@@ -1,9 +1,9 @@
 <template>
   <div class="pay mt-5">
     <p class="text-left header">
-      选择支付方式:
+      {{$trans('选择支付方式')}}:
       <span class="text-orangeFont"
-        >（温馨提示：1金币仅需1美元，为避免到账延迟，请勿选择电子支票。）</span
+        >（{{$trans('温馨提示：1金币仅需1美元，为避免到账延迟，请勿选择电子支票。')}}）</span
       >
     </p>
     <hr />
@@ -15,7 +15,6 @@
         class="zfb border px-8 py-2 rounded-md relative"
         :class="{ active: currentIndex == index }"
         @click="changePay(index)"
-        
       >
         <img :src="item.src" alt="" />
         <i
@@ -38,7 +37,7 @@
           src="../../../assets/images/payLater.svg"
           alt=""
         />
-        <span class="text-base">Pay Later</span>
+        <span class="text-base">{{$trans('Pay Later')}}</span>
       </div>
       <div class="border">
         <img
@@ -46,10 +45,10 @@
           src="../../../assets/images/xinyongka.svg"
           alt=""
         />
-        <span class="text-base leading-10 align-middle">借记卡或信用卡</span>
+        <span class="text-base leading-10 align-middle">{{$trans('借记卡或信用卡')}}</span>
       </div>
       <div>
-        <span class="text-xs"> 技术支持提供方 ：</span
+        <span class="text-xs"> {{$trans('技术支持提供方')}}：</span
         ><img
           class="inline-block"
           src="../../../assets/images/PayPal.svg"
