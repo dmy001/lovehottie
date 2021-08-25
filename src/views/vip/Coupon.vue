@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white coupon">
-    <div class="w-11/12 text-right mt-9">
+    <div class="text-right mt-9">
       <span :class="{ 'text-pink-600': isShowList }" @click="isShowList = true"
         >列表</span
       >
@@ -18,9 +18,7 @@
       <p class="mt-4 mb-2 ml-4 text-xs text-black">没有优惠券哦~</p>
       <p class="mb-10 ml-4 text-xs text-black">去充值获取优惠券吧~</p>
       <router-link to="/home/vip/RechargeGold">
-        <p class="recharge pt-1.5 border rounded-3xl text-white">
-          去充值
-        </p>
+        <p class="recharge pt-1.5 border rounded-3xl text-white">去充值</p>
       </router-link>
     </div>
     <div v-show="!isShowList" class="text-left text-gray-800 mt-16 pb-16">
@@ -56,12 +54,16 @@
         <button class="w-20 h-5 bg-gray-200 rounded-xl text-black mt-1 mb-1">
           会员优惠券
         </button>
-        <p class="mb-2">① 价值为30金币的VIP会员优惠券可以购买任意VIP会员使用；</p>
-        <p>②价值3金币的高级会员优惠券可以购买任意高级会员使用；</p>
+        <p class="mb-2">
+          ① 价值为30金币的VIP会员优惠券可以购买任意VIP会员使用；
+        </p>
+        <p>② 价值3金币的高级会员优惠券可以购买任意高级会员使用；</p>
         <button class="w-28 h-5 bg-gray-200 rounded-xl text-black mt-1 mb-2">
           虚拟礼物优惠券
         </button>
-        <p>价值2金币的虚拟礼物优惠券，只能够在购买价值4金币以上虚拟礼物使用；</p>
+        <p>
+          价值2金币的虚拟礼物优惠券，只能够在购买价值4金币以上虚拟礼物使用；
+        </p>
       </div>
     </div>
   </div>
@@ -88,12 +90,12 @@ export default {
 };
 </script>
 <style lang='scss'>
-   .coupon{
-      .recharge{
-         width:158px;
-         height:36px;
-         margin-left:330px;
-         background-color:#FF625A ;
-      }
-   }
+.coupon {
+  .recharge {
+    width: 158px;
+    height: 36px;
+    margin-left: 310px;
+    background-color: #ff625a;
+  }
+}
 </style>
