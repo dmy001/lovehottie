@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 const Index = () => import('@/views/Index.vue')
 const About = () => import('@/views/About.vue')
 const Home = () => import('@/views/home/Home.vue')
-
+const SetLangs = () => import('@/views/setLangs/SetLangs.vue')
 const Meet = () => import('@/views/meet/Index.vue')
 const OtherCentre = () => import('@/views/meet/OtherCentre.vue')
 const Swiper = () => import('@/views/meet/swiper.vue')
@@ -24,11 +24,15 @@ const Help = () => import('@/views/vip/Help.vue')
 const Coupon = () => import('@/views/vip/Coupon.vue')
 const TranslateVip = () => import('@/views/vip/TranslateVip.vue')
 const Personal = () => import('@/views/Person/personal.vue')
+const Swpier =() =>import('@components/personal/Swpier.vue')
+const RewardRecord = ()=> import('@/views/vip/RewardRecord.vue')
+const RechargeRecord = ()=> import('@/views/vip/RechargeRecord.vue')
+
 const City = () => import('@components/personal/City.vue')
-const RechargeRecord = () => import('@/views/vip/RechargeRecord.vue')
-const Swpier = () => import('@components/personal/Swpier.vue')
-const RewardRecord = () => import('@/views/vip/RewardRecord.vue')
-const SetLangs = () => import('@/views/vip/SetLangs.vue')
+// const RechargeRecord = () => import('@/views/vip/RechargeRecord.vue')
+// const Swpier = () => import('@components/personal/Swpier.vue')
+// const RewardRecord = () => import('@/views/vip/RewardRecord.vue')
+// const SetLangs = () => import('@/views/vip/SetLangs.vue')
 
 
 // 避免同一个路由多次添加报错
@@ -50,6 +54,19 @@ const routes = [
   },
 
   {
+    path: '/setLangs',
+    name: 'setLangs',
+    alias: 'setLangs/',
+    component: SetLangs,
+    meta: {
+   
+      title: '语言'
+  }
+
+  },
+
+
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
@@ -61,13 +78,14 @@ const routes = [
       title: '关于'
     }
   },
-  {
+
+{
     path: '/home',
     name: 'home',
     redirect: 'home/meet',
     component: Home,
     meta: {
-      loginCheck: true,
+  
       title: '主页'
     },
     children: [
@@ -148,6 +166,7 @@ const routes = [
               title: '充值记录'
             }
           },
+          
           {
             path: 'SetLangs',
             component: SetLangs,
@@ -158,6 +177,7 @@ const routes = [
 
         ]
       },
+      
       {
         path: 'meet',
         component: Meet,

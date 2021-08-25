@@ -1,71 +1,186 @@
 <template>
-  <div >
-    <div
-      
-      class="imgs w-72 h-48 bg-gray-400 object-contain relative float-left mr-8 mt-5"
-      @click="scale = true"
-    >
-      <img class="w-40" :src="imageList[currentIndex]" />
+  <div style="overflow: hidden; position: relative; width: 100%">
+    <ul class="flex" :style="[sliderActive]">
+      <li v-for="(item, index) in images" :key="item.id + index">
+        <img  :src="item.url" alt="" srcset="" @click.stop="bigImg = index" />  
+      </li>
+    </ul>
+    <!-- 图片左右图标 -->
+    <div class="">
+      <div class="prev" @click="prev()" v-if="images.length >= 6" href=""></div>
+      <div
+        class="next"
+        @click="nextImg()"
+        v-if="images.length >= 6"
+        href=""
+      ></div>
     </div>
-    <div v-show="scale" v-if="this.imageList.length > 1">
-      <ul>
-        <li @click="gotoPage(prevIndex)">&lt;</li>
-        <li
-          v-for="(img, index) in imageList"
-          :key="index"
-          :class="{current:currentIndex == index}" 
-          @click="gotoPage(index)"
-        >
-          {{ index + 1 }}
-        </li>
-        <li @click="gotoPage(nextIndex)">&gt;</li>
-      </ul>
+    <div v-if="bigImg == index">
+       <Modal>
+         <img src="../../assets/images/person/upload.jpg" alt="" />
+       </Modal>
     </div>
+
+
   </div>
+
+  <!-- </div> -->
 </template>
+
 <script>
 export default {
   data() {
     return {
-      currentIndex: 0,
-      scale: false,
-      imageList: [
+      bigImg:-1,
+      index: 0,
+      sliderActive: {
+        transform: `translateX(-240px)`,
+        transition: "transform 0.5s",
+      },
+      images: [
         {
-          imgUrl:
-            "https://sources.lovehottie.com/Z-46599cbc00cf4b6093ad83da14621ed7",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          id: 1,
         },
         {
-          imgUrl:
-            "https://sources.lovehottie.com/Z-46599cbc00cf4b6093ad83da14621ed7",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          id: 2,
         },
         {
-          imgUrl:
-            "https://sources.lovehottie.com/Z-46599cbc00cf4b6093ad83da14621ed7",
+          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/120/h/120",
+          id: 3,
         },
         {
-          imgUrl:
-            "https://sources.lovehottie.com/Z-46599cbc00cf4b6093ad83da14621ed7",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          id: 4,
+        },
+        {
+          id: 5,
+          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/120/h/120",
+        },
+        {
+          id: 6,
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+        },
+        {
+          id: 7,
+          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/120/h/120",
+        },
+        {
+          id: 8,
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+        },
+        {
+          id: 9,
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+        },
+        {
+          id: 10,
+          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/120/h/120",
+        },
+        {
+          id: 11,
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+        },
+        {
+          id: 12,
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+        },
+        {
+          id: 13,
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+        },
+        {
+          id: 14,
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+        },
+        {
+          id: 15,
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
         },
       ],
+      sliderImg: [],
     };
   },
-  computed: {
-  //上一张
-  prevIndex() {
-    if(this.currentIndex == 0) {
-      return this.dataList.length - 1;
-    }else{
-      return this.currentIndex - 1;
-    }
+  mounted() {
+    const pre = this.images.slice(-2);
+    const next = this.images.slice(0, 7);
+    this.images = [...pre, ...this.images, ...next];
   },
-  //下一张
-  nextIndex() {
-    if(this.currentIndex == this.dataList.length - 1) {
-      return 0;
-    }else {
-      return this.currentIndex + 1;
-    }
-  }
-}
+  methods: {
+    prev() {
+      this.index -= 1;
+      if (this.index === -2) {
+        // setTimeout(() => {
+        this.index = this.images.length - 10;
+        this.sliderActive = {
+          transform: `translateX(${(this.index + 2) * -123}px)`,
+          transition: "transform 0s",
+        };
+        setTimeout(() => {
+          this.prev();
+        });
+        // }, 400);
+      } else {
+        this.sliderActive = {
+          transform: `translateX(${(this.index + 2) * -120}px)`,
+          transition: "transform 0.5s",
+        };
+      }
+    },
+    nextImg() {
+      this.index += 1;
+      if (this.index === 14) {
+        // setTimeout(() => {
+        this.index = -2;
+        this.sliderActive = {
+          transform: `translateX(${(this.index + 2) * -120}px)`,
+          transition: "transform 0s",
+        };
+        setTimeout(() => {
+          this.nextImg();
+        });
+        // }, 400);
+      } else {
+        this.sliderActive = {
+          transform: `translateX(${(this.index + 2) * -120}px)`,
+          transition: "transform 0.5s",
+        };
+      }
+    },
+  },
 };
 </script>
+<style lang= 'scss'  scoped>
+/* div > img {
+  float: left;
+} */
+.prev {
+  width: 14px;
+  height: 23px;
+  position: absolute;
+  top: 44px;
+  left: 8px;
+  z-index: 1;
+  cursor: pointer;
+  background: url("../../assets/images/person/little1.png") -80px -566px
+    no-repeat;
+}
+.prev:hover {
+  background: url("../../assets/images/person/little1.png") -42px -567px;
+}
+.next {
+  width: 14px;
+  height: 23px;
+  position: absolute;
+  top: 44px;
+  right: 8px;
+  z-index: 1;
+  cursor: pointer;
+  background: url("../../assets/images/person/little1.png") 0px -598px no-repeat;
+}
+.next:hover {
+  background: url("../../assets/images/person/little1.png") -28px -599px
+    no-repeat;
+}
+</style>

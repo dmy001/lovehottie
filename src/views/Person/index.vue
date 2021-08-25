@@ -86,6 +86,7 @@
             </button>
           </div>
         </section>
+        <!-- 照片列表 -->
         <section class="w-full ml-5 mt-5">
           <div
             v-for="(img, index) in iamgeList"
@@ -101,8 +102,8 @@
             "
             style="max-width: 180px; max-height: 180px"
           >
-            <span class="">
-              <img class="w-40" :src="img.imgUrl" />
+            <span class="" @click="bigImg = index">
+              <img class="w-40 cursor-pointer" :src="img.imgUrl"  />
             </span>
             <span
               v-show="del"
@@ -151,6 +152,11 @@
               <div class="delImg mt-2 ml-32" @click="toDelImg = true"></div>
             </span>
           </div>
+         <!-- 放大图片 -->
+          <div v-show="bigImg == index">
+             1231231313
+          </div>
+
         </section>
       </div>
     </div>
@@ -204,7 +210,13 @@
               <span v-show="isEdit == i" @click.stop>
                 <input
                   id="remarkName"
-                  class="remarkName w-36 h-5 border border-solid border-gray-400 px-1"
+                  class="
+                    remarkName
+                    w-36
+                    h-5
+                    border border-solid border-gray-400
+                    px-1
+                  "
                   type="text"
                   maxlength="20"
                 />
@@ -226,11 +238,19 @@
       :class="{ active: showFriendsList == true }"
       class="photo"
     >
-      <div class="upload float-left" @click="modalPhoto = true">
+      <!-- 轮播左移动 -->
+      <!-- <div class="prev"  href=""></div> -->
+      <!-- 展示照片 -->
+        <div class="">
+         <Swpier></Swpier>
+        </div>
+
+      <div class="upload float-left top-0 absolute" @click="modalPhoto = true">
         <img src="../../assets/images/person/upload.jpg" alt="" />
       </div>
       <div class="imgList float-left">
-        <p>尚无展示照片，挑选相册中的照片展示到这里吧</p>
+        
+        <!-- <p>尚无展示照片，挑选相册中的照片展示到这里吧</p> -->
         <img
           src="../../assets/images/person/open.png"
           alt=""
@@ -245,7 +265,7 @@
     <div
       v-show="!showImgs"
       :class="{ active: showFriendsList == true }"
-      class="personContent mt-px15"
+      class="personContent mt-px15  absolute"
     >
       <div class="shareList flex justify-between">
         <editDynamic></editDynamic>
@@ -456,6 +476,7 @@
       title="提示"
       width="500"
       footer-hide
+      class="delete"
     >
       <p slot="header">
         <span class="text-white">提示</span>
@@ -468,7 +489,7 @@
         <p class="text-xl font-medium text-black">确定要删除好友吗？</p>
         <p>删除后你将从对方好友列表中消失，以后不再接收此人的消息。</p>
       </section>
-      <section class="absolute bottom-10 w-full text-center space-x-5">
+      <section class="absolute bottom-5 w-full text-center space-x-5 ">
         <button class="w-20 h-8 bg-red-400 rounded-2xl text-white">确定</button>
         <button
           class="w-20 h-8 rounded-2xl border border-solid border-gray-400"
@@ -483,39 +504,47 @@
       v-model="toDelImg"
       :closable="false"
       title="提示"
-      width="500"
+      width="300"
       footer-hide
+      class="delete"
     >
-      <p slot="header">
-        <span class="text-white">提示</span>
-        <span
-          class="closed w-9 h-9 rounded-full -top-2 -right-3 absolute"
-          @click="toDelImg = false"
-        ></span>
-      </p>
-      <section>
-        <p>该照片所在动态也会一并删除。</p>
-      </section>
-      <section class="absolute bottom-10 w-full text-center space-x-5">
-        <button class="w-20 h-8 bg-red-400 rounded-2xl text-white">确定</button>
-        <button
-          class="w-20 h-8 rounded-2xl border border-solid border-gray-400"
-          @click="toDelImg = false"
-        >
-          取消
-        </button>
-      </section>
+      <div>
+        <p slot="header">
+          <span class="text-white">提示</span>
+          <span
+            class="closed w-9 h-9 rounded-full -top-2 -right-3 absolute"
+            @click="toDelImg = false"
+          ></span>
+        </p>
+        <div>
+          <section style="height: 100px; width: 100%">
+            <p>该照片所在动态也会一并删除。</p>
+          </section>
+          <section class="absolute bottom-10 w-full text-center space-x-5">
+            <button class="w-20 h-8 bg-red-400 rounded-2xl text-white">
+              确定
+            </button>
+            <button
+              class="w-20 h-8 rounded-2xl border border-solid border-gray-400"
+              @click="toDelImg = false"
+            >
+              取消
+            </button>
+          </section>
+        </div>
+      </div>
     </Modal>
   </div>
 </template>
 <script>
 import editDynamic from "@components/editDynamic.vue";
 import imgUpload from "@components/uploadImg.vue";
-
+import Swpier from "@components/personal/Swpier.vue";
 export default {
   data() {
     return {
-      bacShow:false,
+      bigImg:'',
+      bacShow: false,
       showFriendsList: false,
       isDelete: false,
       mouseInner: false,
@@ -597,6 +626,7 @@ export default {
   components: {
     imgUpload,
     editDynamic,
+    Swpier,
   },
   methods: {
     openList() {
@@ -617,7 +647,7 @@ export default {
         if (!currentCli.contains(event.target)) {
           this.inputShow = false;
         }
-      }else if (currentName) {
+      } else if (currentName) {
         if (!currentName.contains(event.target)) {
           this.isEdit = -1;
         }
@@ -649,11 +679,11 @@ export default {
   },
   beforeDestroy() {
     document.removeEventListener("click", this.bodyCloseMenus);
-   
   },
 };
 </script>
 <style lang="scss" >
+
 .topUser {
   width: 100%;
   background: #fff;
@@ -685,6 +715,7 @@ export default {
   height: 120px;
   margin: 0 auto;
   position: relative;
+  
   .imgList {
     height: 120px;
     width: 733px;
@@ -1033,5 +1064,22 @@ export default {
   width: 30px;
   height: 30px;
   background: url(~@images/person/little1.png) 0px -759px no-repeat;
+}
+.delete  .ivu-modal-content{
+  height:200px;
+}
+.prev {
+  width: 14px;
+  height: 23px;
+  position: absolute;
+  top: 44px;
+  left: 8px;
+  z-index: 1;
+  cursor: pointer;
+  background: url("../../assets/images/person/little1.png") -80px -566px
+    no-repeat;
+}
+.prev:hover {
+  background: url("../../assets/images/person/little1.png") -42px -567px;
 }
 </style>
