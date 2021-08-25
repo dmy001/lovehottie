@@ -36,23 +36,23 @@
       </p>
       <p>
         <a href="https://www.gagahi.com/Platform/abutUs" target="_blank"
-          >关于我们</a
+          >{{$trans("关于我们")}}</a
         >
         |
         <a href="https://www.gagahi.com/Platform/friendssafe" target="_blank"
-          >安全交友</a
+          >{{$trans("安全交友")}}</a
         >
         |
         <a href="https://www.gagahi.com/Platform/privacyclause" target="_blank"
-          >隐私条款</a
+          >{{$trans("隐私条款")}}</a
         >
         |
         <a href="https://www.gagahi.com/Platform/help" target="_blank"
-          >帮助中心</a
+          >{{$trans("帮助中心")}}</a
         >
         |
         <a href="https://www.gagahi.com/Platform/contactus" target="_blank"
-          >联系我们</a
+          >{{$trans("联系我们")}}</a
         >
       </p>
       <div class="top fixed right-0  cursor-pointer z-1000" style="width: auto; bottom: 85px">

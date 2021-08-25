@@ -36,7 +36,7 @@
           :class="{ 'bg-base-color3': !isZonePage }"
           @click="goMeetPage"
         >
-          偶遇
+          {{ $trans("偶遇") }}
         </div>
         <div
           class="
@@ -51,7 +51,7 @@
           :class="{ 'bg-base-color3': isZonePage }"
           @click="goZonePage"
         >
-          动态
+          {{$trans("动态")}}
         </div>
       </div>
 
@@ -69,7 +69,7 @@
           <input
             type="text"
             class="flex w-px120 search-input text-white font-bold text-px14"
-            placeholder="请输入昵称"
+            placeholder=" $trans('请输入昵称') "
           />
           <!-- <img src="~@images/little.png" /> -->
           <label class="flex search-icon m-px3" />
@@ -95,7 +95,7 @@
           <label class="inline-block w-full h-full"></label>
           <div class="absolute -bottom-full triangle-top"></div>
           <div class="absolute info-panl">
-            <p class="text-black text-left ml-5 mt-3">加好友申请</p>
+            <p class="text-black text-left ml-5 mt-3">{{$trans("加好友申请")}}</p>
             <p
               class="
                 text-gray-400
@@ -104,14 +104,14 @@
                 pb-5
               "
             >
-              没有新好友请求！
+              {{$trans("没有新好友请求")}}！
             </p>
-            <p class="text-black text-left ml-5">可能认识的人</p>
+            <p class="text-black text-left ml-5">{{$trans("可能认识的人")}}</p>
             <p
               v-if="haveFriend"
               class="text-gray-400 border-b border-dashed border-gray-400"
             >
-              暂无推荐的人
+              {{$trans("暂无推荐的人")}}
             </p>
             <div v-if="!haveFriend" class="friends mt-2">
               <p
@@ -149,7 +149,7 @@
                     hover:text-white
                   "
                 >
-                  加好友
+                  {{$trans("加好友")}}
                 </button>
                 <button
                   class="
@@ -165,7 +165,7 @@
                     hover:text-white
                   "
                 >
-                  忽略
+                  {{$trans("忽略")}}
                 </button>
               </p>
               <!-- </section> -->
@@ -178,13 +178,13 @@
           <div class="absolute -bottom-full triangle-top"></div>
           <div class="absolute info-pan leading-6">
             <a href="#information" @click="toSet()">
-              <p class="info-pan-list text-black mt-3">个人资料</p>
+              <p class="info-pan-list text-black mt-3">{{$trans("个人资料")}}</p>
             </a>
             <a href="#account" @click="toSet()">
-              <p class="info-pan-list text-black">账号设置</p>
+              <p class="info-pan-list text-black">{{$trans("账号设置")}}</p>
             </a>
 
-            <p class="info-pan-list text-black">退出</p>
+            <p class="info-pan-list text-black">{{$trans("退出")}}</p>
           </div>
         </div>
       </div>

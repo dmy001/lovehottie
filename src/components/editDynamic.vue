@@ -6,7 +6,7 @@
       show-word-limit
       type="textarea"
       :border="false"
-      placeholder="想和大家分享什么"
+      placeholder="$trans('想和大家分享什么')"
       style="width: 240px; border: none"
       class="leftText placeholder-gray-800"
       :rows="9"
@@ -36,16 +36,16 @@
         <div v-if="imgShow" class="upload_img flex items-start flex-col p-px3">
           <span class="z-1000 iocn icon_top"></span>
           <div class="w-full p-px10 flex justify-between">
-            本地上传
-            <i class="iocn close_icon" @click="imgShow=false"></i>
+            {{$trans("本地上传")}}
+            <i class="iocn close_icon" @click="imgShow = false"></i>
           </div>
 
           <div class="mt-px100 ml-px3">
             <span class="block text-12px mb-px10 text-base-color5 text-left"
-              >共{{ uploadList.length }}张，还能上传<span>{{
+              >{{$trans("共")}}{{ uploadList.length }}{{$trans("张，还能上传")}}<span>{{
                 9 - uploadList.length
               }}</span
-              >张</span
+              >{{$trans("张")}}</span
             >
             <Upload
               ref="upload"
@@ -95,7 +95,7 @@
           </div>
         </div>
       </div>
-      <div class="footRight">发送</div>
+      <div class="footRight">{{$trans("发送")}}</div>
     </div>
   </div>
 </template>
@@ -302,8 +302,8 @@ export default {
     background: #fff;
     border-radius: 5px;
     border: 1px solid #dcdcdc;
-    .iocn{
-       background: url("~@images/person/dynamic.png")  no-repeat;
+    .iocn {
+      background: url("~@images/person/dynamic.png") no-repeat;
     }
     .icon_top {
       position: absolute;
@@ -311,10 +311,9 @@ export default {
       left: 45px;
       width: 9px;
       height: 7px;
-      background-position:-270px 0
-     
+      background-position: -270px 0;
     }
-    .close_icon{
+    .close_icon {
       float: right;
       display: inline;
       cursor: pointer;
@@ -322,7 +321,7 @@ export default {
       width: 10px;
       height: 10px;
     }
-    .ivu-upload{
+    .ivu-upload {
       float: left;
       margin-right: 6px;
       margin-bottom: 2px;

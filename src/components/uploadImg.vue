@@ -4,8 +4,8 @@
         type="drag"
         action="//jsonplaceholder.typicode.com/posts/">
         <div style="padding: 20px 0">
-            <span type="ios-cloud-upload" class="chooseImg bg-base-color1 ">选择图片</span>
-            <p class="text-gray-400">或将照片拖到这里，单次最多可选9张</p>
+            <span type="ios-cloud-upload" class="chooseImg bg-base-color1 ">{{$trans("选择图片")}}</span>
+            <p class="text-gray-400">{{$trans("或将照片拖到这里，单次最多可选9张")}}</p>
         </div>
     </Upload>
 </template>

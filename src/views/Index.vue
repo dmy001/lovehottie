@@ -4,9 +4,13 @@
       <Header @showLogin="showLogin" @showRegister="showRegister" />
       <div class="content">
         <div class="titleBox">
-          <div class="title">跨越语言， 向世界SayHi</div>
-          <div class="titleText">GaGa拥有来自100多个国家的注册会员</div>
-          <div class="titleText">是聊天，交友，分享趣事的绝佳平台</div>
+          <div class="title">{{ $trans("跨越语言， 向世界") }}SayHi</div>
+          <div class="titleText">
+            GaGa{{ $trans("拥有来自100多个国家的注册会员") }}
+          </div>
+          <div class="titleText">
+            {{ $trans("是聊天，交友，分享趣事的绝佳平台") }}
+          </div>
         </div>
         <div class="bottom_index" @click="nextPage"></div>
       </div>
@@ -14,8 +18,10 @@
     <div class="sectionBox section2">
       <div class="content">
         <div class="titleBox">
-          <div class="title">很高兴认识你</div>
-          <div class="titleText">进入GaGaHi的世界，结识更多异国朋友……</div>
+          <div class="title">{{ $trans("很高兴认识你") }}</div>
+          <div class="titleText">
+            {{ $trans("进入GaGaHi的世界，结识更多异国朋友") }}……
+          </div>
         </div>
         <img
           :src="STATICBASEURI + '/images/new_index/page2_1.png'"
@@ -47,8 +53,10 @@
     <div class="sectionBox section3">
       <div class="content">
         <div class="titleBox">
-          <div class="title">让语言拉近彼此</div>
-          <div class="titleText">在线即时聊天，畅想国际化多语种沟通乐趣</div>
+          <div class="title">{{ $trans("让语言拉近彼此") }}</div>
+          <div class="titleText">
+            {{ $trans("在线即时聊天，畅想国际化多语种沟通乐趣") }}
+          </div>
         </div>
         <img
           :src="STATICBASEURI + '/images/new_index/page3_2.png'"
@@ -65,8 +73,8 @@
     <div class="sectionBox section4">
       <div class="content">
         <div class="titleBox">
-          <div class="title">让他们了解你</div>
-          <div class="titleText">朋友圈国际化、无限大，让世界变得触手可及</div>
+          <div class="title">{{$trans("让他们了解你")}}</div>
+          <div class="titleText">{{$trans("朋友圈国际化、无限大，让世界变得触手可及")}}</div>
         </div>
         <div class="swiper-container topBanner" ref="topBanner">
           <div class="swiper-wrapper">
@@ -132,8 +140,8 @@
     <div class="sectionBox section6">
       <div class="content">
         <div class="titleBox">
-          <div class="title">多元化体验</div>
-          <div class="titleText">甜蜜、开心、轻松邂逅你的Ta</div>
+          <div class="title">{{$trans("多元化体验")}}</div>
+          <div class="titleText">{{$trans("甜蜜、开心、轻松邂逅你的")}}Ta</div>
         </div>
         <div class="GaGa_box">
           <img
@@ -223,7 +231,7 @@
               style="margin-top: 10px; margin-left: 10px"
             />
           </div>
-          <div class="download_text">手机扫码下载</div>
+          <div class="download_text">{{$trans("手机扫码下载")}}</div>
           <a
             id="apkUrl"
             href="https://play.google.com/store/apps/details?id=com.zoneyet.lovehottie"
@@ -301,7 +309,7 @@ export default {
     // 轮播
     newbannerInit() {
       let self = this;
-      self.$nextTick(function() {
+      self.$nextTick(function () {
         const topSwiper = new window.Swiper(".topBanner", {
           autoplay: {
             delay: 1500,
@@ -422,7 +430,7 @@ export default {
     }
   }
   .section1 {
-    background: url($baseImgURI+"zh_CN_bg111.jpg") center center no-repeat;
+    background: url($baseImgURI + "zh_CN_bg111.jpg") center center no-repeat;
     background-size: 1920px 969px;
     .content {
       .titleBox {

@@ -7,7 +7,7 @@
         @mouseover="langListShow = true"
         @mouseleave="langListShow = false"
       >
-        <span class="inline-block p-px3">语言</span>
+        <span class="inline-block p-px3">{{ $trans("语言") }}</span>
         <i class="lang-arrow-icon"></i>
         <div v-if="langListShow" class="langList text-black">
           <div
