@@ -1,14 +1,15 @@
 <template>
   <div class="bg-white transPackage">
-    <div class="w-11/12 h-9 bg-yellow-100 flex items-center pl-5">
-      您账户可用字符数：<span class="text-yellow-500 font-bold mr-1">0</span>字符
-      <div class="ml-4">VIP字符：</div>
+    <div class="h-9 bg-yellow-100 flex items-center pl-5">
+      {{$trans('您账户可用字符数：')}}<span class="text-yellow-500 font-bold mr-1">0</span
+      >{{$trans('字符')}}
+      <div class="ml-4">VIP{{$trans('字符')}}：</div>
       <span class="text-yellow-500 font-bold">0</span>
       <div class="ml-1">
-        | 翻译包：<span class="text-yellow-500 font-bold">0</span>
+        | {{$trans('翻译包')}}：<span class="text-yellow-500 font-bold">0</span>
       </div>
     </div>
-    <div class="w-11/12 border mt-5 grid grid-cols-3">
+    <div class="border mt-5 grid grid-cols-3">
       <div
         v-for="(item, index) in list"
         :key="index"
@@ -27,13 +28,25 @@
         }"
       >
         <p :class="{ rightGb: index === selectedIndex }"></p>
-        <p class="text-yellow-500 font-bold text-2xl mt-10">{{ item.glod }}</p>
-        <p class="mt-1 text-gray-500">字符</p>
-        <p class="font-bold text-xl mt-2 mb-2 text-black">
-          {{ item.money }}美元
-        </p>
-        <p class="text-yellow-500 text-xl mb-6">{{ item.save }}</p>
+        <p class="text-yellow-500 font-bold text-2xl mt-10">{{ item.char }}</p>
+        <p class="mt-1 text-gray-500">{{$trans('字符')}}</p>
+        <p class="font-bold text-xl mt-2 mb-2 text-black">${{ item.money }}</p>
+        <p class="text-yellow-500 text-xl mb-6">{{$trans('节省')}}{{ item.save }}</p>
         <p
+          v-if="!(index === selectedIndex)"
+          class="
+            choose
+            pt-0.5
+            text-sm
+            border border-yellow-500
+            rounded-xl
+            text-yellow-500
+          "
+        >
+          选择
+        </p>
+        <p
+          v-else
           class="choose pt-0.5 text-sm border border-yellow-500 rounded-xl"
           :class="[
             index === selectedIndex
@@ -41,22 +54,22 @@
               : 'text-yellow-500',
           ]"
         >
-          选择
+          {{$trans('已选')}}
         </p>
       </div>
     </div>
     <div>
       <PayInfo />
       <Discount :price="currentPrice" />
-      <payButton payType="立即购买" />
+      <payButton :payType="$trans('立即购买')" />
     </div>
   </div>
 </template>
 
 <script>
-import PayInfo from "@components/vip/PayInfo/PayInfo.vue";
-import Discount from "@components/vip/PayInfo/Discount.vue";
-import payButton from "@components/vip/PayInfo/payButton.vue";
+import PayInfo from '@components/vip/PayInfo/PayInfo.vue';
+import Discount from '@components/vip/PayInfo/Discount.vue';
+import payButton from '@components/vip/PayInfo/payButton.vue';
 export default {
   components: {
     PayInfo,
@@ -66,12 +79,12 @@ export default {
   data() {
     return {
       list: [
-        { glod: "500", money: "19.99", save: "节省10%" },
-        { glod: "2,000", money: "69.99", save: "节省10%" },
-        { glod: "5,000", money: "169.99", save: "节省5%" },
-        { glod: "10,000", money: "299.99", save: "节省15%" },
-        { glod: "20,000", money: "599.99", save: "节省15%" },
-        { glod: "30,000", money: "799.99", save: "节省25%" },
+        { char: '500', money: 19.99, save: '10%'},
+        { char: '2,000', money: 69.99, save: '10%'},
+        { char: '5,000', money: 169.99, save: '5%' },
+        { char: '10,000', money: 299.99, save: '15%' },
+        { char: '20,000', money: 599.99, save: '15%' },
+        { char: '30,000', money: 799.99, save: '25%' },
       ],
       selectedIndex: 2,
       currentPrice: "",
@@ -99,10 +112,10 @@ export default {
     top: -6px;
     right: -5px;
   }
-  .choose{
-    width:60px;
-    height:28px;
-    margin:17px auto;
+  .choose {
+    width: 60px;
+    height: 28px;
+    margin: 17px auto;
   }
 }
 </style>
