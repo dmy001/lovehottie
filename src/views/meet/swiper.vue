@@ -1,29 +1,40 @@
 <template>
-  <div style="overflow: hidden; position: relative; width: 100%">
-    <ul class="flex" :style="[sliderActive]">
-      <li v-for="(item, index) in images" :key="item.id + index">
-        <img :src="item.url" alt="" srcset="" />
-        {{ item.id }}
-      </li>
-    </ul>
-
-    <!-- 图片左右图标 -->
-    <div class="">
-      <div class="prev" @click="prev()" v-if="images.length >= 6" href=""></div>
-      <div
-        class="next"
-        @click="nextImg()"
-        v-if="images.length >= 6"
-        href=""
-      ></div>
+  <section>
+    <div style="overflow: hidden; position: relative; width: 100%">
+      <ul class="flex" :style="[sliderActive]">
+        <li v-for="(item, index) in images" :key="item.id + index">
+          <img :src="item.url" style="width: 123px" alt="" srcset="" />
+          <!-- {{ item.id }} -->
+        </li>
+      </ul>
+      <!-- 图片左右图标 -->
+      <div class="">
+        <div
+          class="prev"
+          @click="prev()"
+          v-if="images.length >= 6"
+          href=""
+        ></div>
+        <div
+          class="next"
+          @click="nextImg()"
+          v-if="images.length >= 6"
+          href=""
+        ></div>
+      </div>
     </div>
-  </div>
-
+    <!-- 大图 -->
+    <BigImage></BigImage>
+  </section>
   <!-- </div> -->
 </template>
 
 <script>
+import BigImage from "@/components/home/othercentre/BigImage";
 export default {
+  components: {
+    BigImage,
+  },
   data() {
     return {
       index: 0,
@@ -93,7 +104,6 @@ export default {
           url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
         },
       ],
-      sliderImg: [],
     };
   },
   mounted() {
@@ -108,7 +118,7 @@ export default {
         // setTimeout(() => {
         this.index = this.images.length - 10;
         this.sliderActive = {
-          transform: `translateX(${(this.index + 2) * -120}px)`,
+          transform: `translateX(${(this.index + 2) * -123}px)`,
           transition: "transform 0s",
         };
         setTimeout(() => {
@@ -117,7 +127,7 @@ export default {
         // }, 400);
       } else {
         this.sliderActive = {
-          transform: `translateX(${(this.index + 2) * -120}px)`,
+          transform: `translateX(${(this.index + 2) * -123}px)`,
           transition: "transform 0.5s",
         };
       }
@@ -128,7 +138,7 @@ export default {
         // setTimeout(() => {
         this.index = -2;
         this.sliderActive = {
-          transform: `translateX(${(this.index + 2) * -120}px)`,
+          transform: `translateX(${(this.index + 2) * -123}px)`,
           transition: "transform 0s",
         };
         setTimeout(() => {
@@ -137,7 +147,7 @@ export default {
         // }, 400);
       } else {
         this.sliderActive = {
-          transform: `translateX(${(this.index + 2) * -120}px)`,
+          transform: `translateX(${(this.index + 2) * -123}px)`,
           transition: "transform 0.5s",
         };
       }
