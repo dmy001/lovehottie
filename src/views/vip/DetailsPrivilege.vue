@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white pb-4">
-    <table class="w-11/12 border mt-9">
+    <table class="w-full border mt-9">
       <tr class="h-10 bg-indigo-100">
         <td class="border border-gray-300" colspan="4" rowspan="2">特权名称</td>
         <td class="border border-gray-300" colspan="2">普通用户</td>
