@@ -22,7 +22,7 @@
           </p>
         </div>
         <div class="upArr text-center mt-5 -mb-5">
-          <p>{{trans('收起')}}</p>
+          <p>{{$trans('收起')}}</p>
           <i class="inline-block" @click="showInfo"></i>
         </div>
       </div>

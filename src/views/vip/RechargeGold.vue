@@ -12,29 +12,29 @@
             v-for="(item, index) in list"
             :key="index"
             class="border content-item flex-auto"
-            :class="{ active: index === currentIndex }"
+            :class="{ active: index === currentIndex&&inputCount===false }"
             @click="changeColor(index)"
           >
             <i class="inline-block mt-4 gold"></i>
             <i
               class="inline-block absolute rightGb"
-              v-show="index === currentIndex"
+              v-show="index === currentIndex&&inputCount===false"
             ></i>
-
             <p class="text-3xl">{{ item.gold }}</p>
             <p class="text-xs mt-2">{{ item.money }}</p>
             <div class="select-btn mt-4" style="display: inline-block">
-              <span class="sel-0" v-show="!(index === currentIndex)">{{
+              <span class="sel-0" v-show="!(index === currentIndex&&inputCount===false)">{{
                 $trans("选择")
               }}</span>
               <span class="sel-1">{{ $trans("已选") }}</span>
             </div>
           </div>
         </div>
-        <div class="bottom border flex flex-col pt-10 pb-8">
-          <div class="flex mx-auto">
+            
+        <div class="bottom border flex flex-col pt-10 pb-8" :class="{ active: inputCount===true }" @click="changeSelect" >
+          <div class="flex mx-auto "  >
             <p>{{ $trans("其他金额") }}：</p>
-            <input class="border rounded-3xl" type="text" v-model="payPrice" />
+            <input class="border rounded-3xl" type="text" v-model="payPrice" @input="payPrice = payPrice.replace(/[^\d]/g,'')" />
             <!-- @keyup.enter='search' @input='search($event)' -->
             <i class="inline-block ml-2"></i>
           </div>
@@ -85,6 +85,7 @@ export default {
         "出现在首页，让更多人看到您",
         "使用金币升级为会员，享受更多特权",
       ],
+      inputCount:false,
       currentIndex: 0,
       currentPrice: 0,
       payPrice: 1314,
@@ -93,9 +94,14 @@ export default {
   methods: {
     // 选择商品，
     changeColor(index) {    
+      this.inputCount = false
+
       this.currentIndex = index;
       this.currentPrice = this.list[index].gold;
     },
+    changeSelect(){
+      this.inputCount = true
+    }
     // search(event){
     //   console.log(event.currentTarget.value);
     // }

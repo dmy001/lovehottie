@@ -45,10 +45,10 @@
           src="../../../assets/images/xinyongka.svg"
           alt=""
         />
-        <span class="text-base leading-10 align-middle">{{$trans('借记卡或信用卡')}}</span>
+        <span class="text-base leading-10 align-middle xinyongka">{{$trans('借记卡或信用卡')}}</span>
       </div>
       <div>
-        <span class="text-xs"> {{$trans('技术支持提供方')}}：</span
+        <span class="text-xs "> {{$trans('技术支持提供方')}}：</span
         ><img
           class="inline-block"
           src="../../../assets/images/PayPal.svg"
@@ -119,5 +119,14 @@ export default {
 .active {
   background-color: rgb(255, 243, 217);
   border: 1px solid rgb(250, 188, 63);
+}
+.xinyongka{
+  position: static;
+  visibility: visible;
+  max-width: 0%;
+  opacity: 0;
+  overflow: hidden;
+  animation: show-text 1s 0s forwards;
+   
 }
 </style>
