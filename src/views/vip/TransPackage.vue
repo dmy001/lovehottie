@@ -31,7 +31,7 @@
         <p class="text-yellow-500 font-bold text-2xl mt-10">{{ item.char }}</p>
         <p class="mt-1 text-gray-500">{{$trans('字符')}}</p>
         <p class="font-bold text-xl mt-2 mb-2 text-black">${{ item.money }}</p>
-        <p class="text-yellow-500 text-xl mb-6">{{ item.save }}</p>
+        <p class="text-yellow-500 text-xl mb-6">{{$trans('节省')}}{{ item.save }}</p>
         <p
           v-if="!(index === selectedIndex)"
           class="
@@ -67,9 +67,9 @@
 </template>
 
 <script>
-import PayInfo from "@components/vip/PayInfo/PayInfo.vue";
-import Discount from "@components/vip/PayInfo/Discount.vue";
-import payButton from "@components/vip/PayInfo/payButton.vue";
+import PayInfo from '@components/vip/PayInfo/PayInfo.vue';
+import Discount from '@components/vip/PayInfo/Discount.vue';
+import payButton from '@components/vip/PayInfo/payButton.vue';
 export default {
   components: {
     PayInfo,
@@ -79,12 +79,12 @@ export default {
   data() {
     return {
       list: [
-        { char: '500', money: 19.99, save: '节省10%' },
-        { char: '2,000', money: 69.99, save: '节省10%'},
-        { char: '5,000', money: 169.99, save: '节省5%' },
-        { char: '10,000', money: 299.99, save: '节省15%' },
-        { char: '20,000', money: 599.99, save: '节省15%' },
-        { char: '30,000', money: 799.99, save: '节省25%' },
+        { char: '500', money: 19.99, save: '10%'},
+        { char: '2,000', money: 69.99, save: '10%'},
+        { char: '5,000', money: 169.99, save: '5%' },
+        { char: '10,000', money: 299.99, save: '15%' },
+        { char: '20,000', money: 599.99, save: '15%' },
+        { char: '30,000', money: 799.99, save: '25%' },
       ],
       selectedIndex: 2,
       currentPrice: "",
