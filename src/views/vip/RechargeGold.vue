@@ -93,9 +93,14 @@ export default {
   },
   methods: {
     // 选择商品，
+    /**
+    * 控制输入框的选中样式
+    * 改变下标
+    * 向支付组件发送价格
+    * @param {*} index 下标
+    */
     changeColor(index) {    
       this.inputCount = false
-
       this.currentIndex = index;
       this.currentPrice = this.list[index].gold;
     },

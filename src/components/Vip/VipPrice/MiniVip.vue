@@ -18,7 +18,6 @@
             <span class="sel-0" v-show="!(selectIndex === 0)"
               >{{ $trans('选择') }}</span
             >
-            <!-- 无 -->
             <span class="sel-1">{{ $trans('已选') }}</span>
           </div>
         </div>
@@ -43,14 +42,20 @@
 
 <script>
 export default {
-  props: {
-   
+  props: {   
     selectIndex: Number,
   },
   data(){
     return {}
   },
   methods:{
+    // 选择商品，
+    /**
+    * 发送mini会员的id
+    * 
+    * 向支付组件发送价格9.9
+    * @param {*} index 下标
+    */
     changeSelectId() {
       this.$emit("changeSelectId", 0);
       this.$emit("getPrice", "9.9");

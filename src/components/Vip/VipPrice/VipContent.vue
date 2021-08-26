@@ -37,6 +37,12 @@ export default {
     };
   },
   methods: {
+    /**
+    * 选中每项价格
+    * 向父组件发送id
+    * 向支付组件发送价格
+    * @param {*} item  子项
+    */
     changeSelectId(item) {
       this.$emit("changeSelectId", item.id);
       this.$emit("getPrice", item.priceTotle);

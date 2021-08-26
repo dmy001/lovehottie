@@ -59,11 +59,13 @@ export default {
   },
   data() {
     return {
+      // 价格列表
       list: [
         { time: 10, save: 10, price: 10 },
         { time: 30, save: 15, price: 20 },
         { time: 60, save: 25, price: 30 },
       ],
+      // 文章
       message: [
         "在翻译会员有效时长内可无限免费使用平台内翻译，包含聊天翻译、动态翻译、探索翻译等；",
         "翻译会员生效时间，以购买完成为开始，相应时长后结束。",
@@ -73,6 +75,12 @@ export default {
     };
   },
   methods: {
+    /**
+    * 改变下标
+    * 
+    * 向支付组件发送价格
+    * @param {*} index 下标
+    */
     changeColor(index) {
       this.currentIndex = index;
       this.currentPrice = this.list[index].price;

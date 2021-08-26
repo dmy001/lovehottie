@@ -91,6 +91,12 @@ export default {
     };
   },
   methods: {
+    /**
+    * 改变下标
+    * 
+    * 向支付组件发送价格
+    * @param {*} index 下标
+    */
     changeColor(index) {
       this.selectedIndex = index;
       this.currentPrice = this.list[index].money;
