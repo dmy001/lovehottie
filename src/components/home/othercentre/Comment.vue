@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="mt-4 border bg-white py-5 px-5">
+    <section class="mt-4 bg-white py-5 px-5">
       <div v-if="haveInformation" class="noInformation pb-12">
         <p></p>
       </div>
@@ -17,7 +17,7 @@
             @mousemove="mousemoveWarning"
             @mouseleave="mouseleaveWarning"
           >
-            <p class="text-left mt-1 border">
+            <p class="text-left mt-1">
               <span style="color: #90a0bc; font-family: Arial">Sandy</span>
               <span class="ml-2" style="color: #999; font-size: 12px"
                 >2019-05-13 12:05</span
@@ -29,15 +29,18 @@
                 class="talk_icon mr-px3 w-20"
               ></span>
             </p>
-            <p class="contentText border mt-2 text-left">
-              お会いできてうれしいです
-            </p>
+            <p class="contentText mt-2 text-left">お会いできてうれしいです</p>
             <!-- 评论图片 -->
-            <div class="border mt-2 text-left flex" style="">
-              <div class="imgboxs" style="overflow: hidden">
+            <div class="mt-2 text-left flex" style="">
+              <div
+                class="imgboxs"
+                style="overflow: hidden"
+                v-for="(item, index) in images"
+                :key="index"
+              >
                 <img
-                  @click.stop="bigCommentImage = true"
-                  src="https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120"
+                  @click.stop="openCommentImage(index)"
+                  :src="item.url"
                   alt=""
                   style="
                     object-fit: cover;
@@ -171,7 +174,7 @@
               <div class="textInput text-left">
                 <input
                   type="text"
-                  class="w-full py-1 pl-5 border"
+                  class="w-full py-1 pl-5"
                   style="
                     outline: none;
                     font-size: 12px;
@@ -217,6 +220,10 @@
       <CommentBigImg
         v-if="bigCommentImage"
         @func="closeCommentImg"
+        :images="images"
+        :imagesUrl="this.images[currentIndex].url + '?imageView2/2/w/560/h/630'"
+        @leftBtn="leftImage"
+        @rightBtn="rightImage"
       ></CommentBigImg>
     </section>
     <section>
@@ -244,6 +251,7 @@ export default {
       inputShow: false,
       bigCommentImage: false,
       modal: false,
+      currentIndex: -1,
       contentList: [
         {
           name: "可爱小怪咖",
@@ -264,6 +272,20 @@ export default {
           number: 323,
         },
       ],
+      images: [
+        {
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
+          id: 1,
+        },
+        {
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
+          id: 2,
+        },
+        {
+          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f",
+          id: 3,
+        },
+      ],
     };
   },
   methods: {
@@ -279,6 +301,11 @@ export default {
     },
     showIcon() {
       this.showicon = !this.showicon;
+    },
+    openCommentImage(index) {
+      this.bigCommentImage = true;
+      console.log(index);
+      this.currentIndex = index;
     },
     //评论显示
     openList() {
@@ -322,6 +349,21 @@ export default {
     },
     warning() {
       this.modal = !this.modal;
+    },
+    leftImage() {
+      --this.currentIndex;
+      if (this.currentIndex < 0) {
+        this.currentIndex = this.images.length - 1;
+      }
+      console.log(this.currentIndex);
+    },
+    rightImage() {
+      console.log(this.currentIndex);
+      if (this.currentIndex === this.images.length - 1) {
+        this.currentIndex = 0;
+      } else {
+        this.currentIndex += 1;
+      }
     },
   },
   mounted() {

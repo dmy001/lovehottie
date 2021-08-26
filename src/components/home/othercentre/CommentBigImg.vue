@@ -18,8 +18,8 @@
           <div class="imageBigContent">
             <div class="imageBigDetail">
               <div class="imageBigDetailImg">
-                <div class="imageBigDetailImgLeft"></div>
-                <div class="imageBigDetailImgRight"></div>
+                <div class="imageBigDetailImgLeft" @click="leftImage()"></div>
+                <div class="imageBigDetailImgRight" @click="rightImage()"></div>
                 <div class="bigger">原始尺寸</div>
                 <div class="normal hide" data-url data-i>重置</div>
                 <div class="bd slide_bd">
@@ -27,13 +27,9 @@
                     class="slide_item"
                     imgid="61163a5293d24eeba0605320b5ca5830"
                   >
-                    <div
-                      class="js_img_border"
-                      v-for="(item, index) in images"
-                      :key="index"
-                    >
+                    <div class="js_img_border">
                       <img
-                        :src="item"
+                        :src="imagesUrl"
                         class=""
                         style="position: relative; margin: 0 auto"
                         alt=""
@@ -290,9 +286,10 @@ export default {
   components: {
     Report,
   },
-  //   props: {
-  //     modal: Boolean,
-  //   },
+  props: {
+    images: Array,
+    imagesUrl: String,
+  },
   data() {
     return {
       commentShow: false,
@@ -307,9 +304,9 @@ export default {
           number: 323,
         },
       ],
-      images: [
-        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
-      ],
+      // images: [
+      //   "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
+      // ],
     };
   },
   methods: {
@@ -342,6 +339,12 @@ export default {
           this.commentShow = false;
         }
       }
+    },
+    leftImage() {
+      this.$emit("leftBtn");
+    },
+    rightImage() {
+      this.$emit("rightBtn");
     },
     //点击其他地方关闭大图
     // closeImgComment(event) {

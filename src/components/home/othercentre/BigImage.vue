@@ -7,6 +7,7 @@
           width: 600px;
           height: 630px;
           top: 145.5px ;rgba（0，0，0，0．7）;
+          
         "
     >
       <span
@@ -16,17 +17,13 @@
       <div class="imageBigContent" id="sellineImg">
         <div class="imageBigDetail">
           <div class="imageBigDetailImg">
-            <div class="imageBigDetailImgLeft"></div>
-            <div class="imageBigDetailImgRight"></div>
+            <div class="imageBigDetailImgLeft" @click="leftImage()"></div>
+            <div class="imageBigDetailImgRight" @click="rightImage()"></div>
             <div class="bigger">原始尺寸</div>
             <div class="normal hide" data-url data-i>重置</div>
             <div class="bd slide_bd">
               <div class="slide_item" imgid="61163a5293d24eeba0605320b5ca5830">
-                <div
-                  class="js_img_border"
-                  v-for="(item, index) in images"
-                  :key="index"
-                >
+                <div class="js_img_border">
                   <img
                     :src="imagesUrl"
                     class=""
@@ -45,18 +42,18 @@
 
 <script>
 export default {
-    props: {
-      images: Array,
-      imagesUrl:String,
-      bigImage:Boolean
-    },
-  // data() {
-  //   return {
-  //     images: [
-  //       "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
-  //     ],
-  //   };
-  // },
+  props: {
+    // images: Array,
+    imagesUrl: String,
+    bigImage: Boolean,
+  },
+  data() {
+    return {
+      // images: [
+      //   "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
+      // ],
+    };
+  },
   methods: {
     //点击其他地方关闭大图片
     closeBigImage(event) {
@@ -72,6 +69,12 @@ export default {
     closeImg() {
       this.bigImage = false;
       this.$emit("func", this.bigImage);
+    },
+    leftImage() {
+      this.$emit("leftBtn");
+    },
+    rightImage() {
+      this.$emit("rightBtn");
     },
   },
   mounted() {
@@ -107,6 +110,7 @@ export default {
       width: 100%;
       background: #000;
       border-radius: 15px;
+
       .imageBigDetailImg {
         left: 20px;
         overflow: hidden;

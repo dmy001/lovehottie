@@ -1,12 +1,15 @@
 <template>
   <div class="bg-white transPackage">
     <div class="h-9 bg-yellow-100 flex items-center pl-5">
-      {{$trans('您账户可用字符数：')}}<span class="text-yellow-500 font-bold mr-1">0</span
-      >{{$trans('字符')}}
-      <div class="ml-4">VIP{{$trans('字符')}}：</div>
+      {{ $trans("您账户可用字符数：")
+      }}<span class="text-yellow-500 font-bold mr-1">0</span
+      >{{ $trans("字符") }}
+      <div class="ml-4">VIP{{ $trans("字符") }}：</div>
       <span class="text-yellow-500 font-bold">0</span>
       <div class="ml-1">
-        | {{$trans('翻译包')}}：<span class="text-yellow-500 font-bold">0</span>
+        | {{ $trans("翻译包") }}：<span class="text-yellow-500 font-bold"
+          >0</span
+        >
       </div>
     </div>
     <div class="border mt-5 grid grid-cols-3">
@@ -29,9 +32,11 @@
       >
         <p :class="{ rightGb: index === selectedIndex }"></p>
         <p class="text-yellow-500 font-bold text-2xl mt-10">{{ item.char }}</p>
-        <p class="mt-1 text-gray-500">{{$trans('字符')}}</p>
+        <p class="mt-1 text-gray-500">{{ $trans("字符") }}</p>
         <p class="font-bold text-xl mt-2 mb-2 text-black">${{ item.money }}</p>
-        <p class="text-yellow-500 text-xl mb-6">{{$trans('节省')}}{{ item.save }}</p>
+        <p class="text-yellow-500 text-xl mb-6">
+          {{ $trans("节省") }}{{ item.save }}
+        </p>
         <p
           v-if="!(index === selectedIndex)"
           class="
@@ -54,14 +59,14 @@
               : 'text-yellow-500',
           ]"
         >
-          {{$trans('已选')}}
+          {{ $trans("已选") }}
         </p>
       </div>
     </div>
     <div>
       <PayInfo />
       <Discount :price="currentPrice" />
-      <PayButton payType="立即购买" />
+      <PayButton :payType="$trans('立即购买')" />
     </div>
   </div>
 </template>
@@ -79,12 +84,12 @@ export default {
   data() {
     return {
       list: [
-        { char: '500', money: 19.99, save: '10%'},
-        { char: '2,000', money: 69.99, save: '10%'},
-        { char: '5,000', money: 169.99, save: '5%' },
-        { char: '10,000', money: 299.99, save: '15%' },
-        { char: '20,000', money: 599.99, save: '15%' },
-        { char: '30,000', money: 799.99, save: '25%' },
+        { char: "500", money: 19.99, save: "10%" },
+        { char: "2,000", money: 69.99, save: "10%" },
+        { char: "5,000", money: 169.99, save: "5%" },
+        { char: "10,000", money: 299.99, save: "15%" },
+        { char: "20,000", money: 599.99, save: "15%" },
+        { char: "30,000", money: 799.99, save: "25%" },
       ],
       selectedIndex: 2,
       currentPrice: "",

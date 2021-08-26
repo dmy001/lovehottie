@@ -38,6 +38,7 @@
           inline-block
           mr-2
           mt-2
+          cursor-pointer
         "
         @click="checked($event)"
       >

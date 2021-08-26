@@ -3,7 +3,19 @@
     <div style="overflow: hidden; position: relative; width: 100%">
       <ul class="flex" :style="[sliderActive]">
         <li v-for="(item, index) in images" :key="item.id + index">
-          <img :src="item.url" style="width: 123px" alt="" srcset="" />
+          <img
+            :src="item.url"
+            style="
+              height: 120px;
+              width: 123px;
+              cursor: pointer;
+              object-fit: cover;
+              flex-shrink: 0;
+            "
+            alt=""
+            srcset=""
+            @click.stop="openImage(index)"
+          />
           <!-- {{ item.id }} -->
         </li>
       </ul>
@@ -24,7 +36,13 @@
       </div>
     </div>
     <!-- 大图 -->
-    <BigImage v-if="bigImg"></BigImage>
+    <BigImage
+      v-if="bigImg"
+      @func="closeBigImg"
+      :imagesUrl="this.images[currentIndex].url + '?imageView2/2/w/560/h/630'"
+      @leftBtn="leftImage()"
+      @rightBtn="rightImage()"
+    ></BigImage>
   </section>
   <!-- </div> -->
 </template>
@@ -39,78 +57,74 @@ export default {
     return {
       index: 0,
       bigImg: false,
+      currentIndex: -1,
       sliderActive: {
         transform: `translateX(-240px)`,
         transition: "transform 0.5s",
       },
       images: [
         {
-          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
           id: 1,
         },
         {
-          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
           id: 2,
         },
         {
-          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f",
           id: 3,
         },
         {
-          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
           id: 4,
         },
         {
           id: 5,
-          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f",
         },
         {
           id: 6,
-          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
         },
         {
           id: 7,
-          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f",
         },
         {
           id: 8,
-          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
         },
         {
           id: 9,
-          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
         },
         {
           id: 10,
-          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f",
         },
         {
           id: 11,
-          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
         },
         {
           id: 12,
-          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
         },
         {
           id: 13,
-          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
         },
         {
           id: 14,
-          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
         },
         {
           id: 15,
-          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
         },
       ],
     };
-  },
-  mounted() {
-    const pre = this.images.slice(-2);
-    const next = this.images.slice(0, 7);
-    this.images = [...pre, ...this.images, ...next];
   },
   methods: {
     prev() {
@@ -153,6 +167,33 @@ export default {
         };
       }
     },
+    closeBigImg(value) {
+      this.bigImg = value;
+    },
+    openImage(index) {
+      this.bigImg = true;
+      console.log(index);
+      this.currentIndex = index;
+    },
+    leftImage() {
+      --this.currentIndex;
+      if (this.currentIndex === 0) {
+        this.currentIndex = this.images.length - 9;
+      }
+      console.log(this.currentIndex);
+    },
+    rightImage() {
+      this.currentIndex += 1;
+      if (this.currentIndex === this.images.length - 9) {
+        this.currentIndex = 0;
+      }
+      console.log(this.currentIndex);
+    },
+  },
+  mounted() {
+    const pre = this.images.slice(-2);
+    const next = this.images.slice(0, 7);
+    this.images = [...pre, ...this.images, ...next];
   },
 };
 </script>

@@ -9,8 +9,8 @@
       <div class="topRight ml-px10">
         <div class="personName">
           可爱小怪咖
-          <router-link to="personal"
-            ><span class="inline-block cursor-pointer"></span
+          <router-link to="/home/personal">
+            <span class="inline-block cursor-pointer"></span
           ></router-link>
         </div>
         <div>
@@ -48,7 +48,7 @@
             src="../../assets/images/person/open.png"
             alt=""
             title="打开相册"
-            class="inline-block -mt-12 mr-3"
+            class="inline-block -mt-12 mr-3 cursor-pointer"
             @click="openImg"
           />
         </div>
@@ -102,7 +102,7 @@
               mt-5
             "
             style="max-width: 180px; max-height: 180px"
-            @click="toBigImg(it)"
+            @click.stop="toBigImg(it)"
           >
             <span class="">
               <!-- <a :href="img.imgUrl + '?imageView2/2/w/560/h/630'" target="_self"></a> -->
@@ -139,7 +139,7 @@
               @click.stop="toCancelImg(it)"
             >
             </span
-            ><!--  toSelectImg == index  toSelectImg != index -->
+            >
             <span
               class="
                 bgBlack
@@ -156,12 +156,15 @@
             </span>
           </div>
           <!-- 放大图片 -->
-          <div v-show="big != -1">
-            <img
-              :src="this.iamgeList[currentIndex] + '?imageView2/2/w/560/h/630'"
-              alt=""
-            />
-          </div>
+            <BigImage
+              v-show="openBigImg"
+              :images="iamgeList"
+              :imagesUrl="
+                this.iamgeList[currentIndex] + '?imageView2/2/w/560/h/630'
+              "
+              @func="closeBigImg"
+              
+            ></BigImage>
         </section>
       </div>
     </div>
@@ -244,12 +247,16 @@
       class="photo"
     >
       <!-- 展示照片 -->
-      <div >
-        <Swpier ></Swpier>
+      <div>
+        <Swpier></Swpier>
       </div>
 
-      <div class="upload float-left top-0  absolute"   @click="modalPhoto = true">
-        <img style="width: 126px" src="../../assets/images/person/upload.jpg" alt="" />
+      <div class="upload float-left top-0 absolute" @click="modalPhoto = true">
+        <img
+          style="width: 126px"
+          src="../../assets/images/person/upload.jpg"
+          alt=""
+        />
       </div>
       <div class="imgList float-left">
         <!-- <p>尚无展示照片，挑选相册中的照片展示到这里吧</p> -->
@@ -288,10 +295,9 @@
           <div class="content_bottom">还没有好友</div>
         </div>
       </div>
-
-      <div class="mt-px15 bg-white w-full pb-10">
+<!-- 评论区 -->
+      <!-- <div class="mt-px15 bg-white w-full pb-10">
         <div class="dynamic">
-          <!--v-show="isDelete == true"-->
           <div class="dynamic_left float-left">
             <img
               :src="STATICBASEURI + '/images/default/female.png'"
@@ -341,7 +347,7 @@
             </div>
 
             <div class="dynamic_input mt-px15">
-              <!-- 评论列表 -->
+              评论列表
               <div v-if="listShow">
                 <div
                   class="comment_list"
@@ -429,7 +435,7 @@
                 </div>
               </div>
 
-              <!-- 评论 -->
+              评论
               <p
                 class="dynamic_p cursor-pointer"
                 @click.stop="inputShow = true"
@@ -456,7 +462,8 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
+      <Comment></Comment>
     </div>
     <!-- 图片弹出框 -->
     <Modal
@@ -511,30 +518,32 @@
       footer-hide
       class="delete"
     >
-        <p slot="header">
-          <span class="text-white">提示</span>
-          <span
-            class="closed w-9 h-9 rounded-full -top-2 -right-3 absolute"
+      <p slot="header">
+        <span class="text-white">提示</span>
+        <span
+          class="closed w-9 h-9 rounded-full -top-2 -right-3 absolute"
+          @click="delImg = false"
+        ></span>
+      </p>
+      <div>
+        <section style="height: 100px; width: 100%">
+          <p>该照片所在动态也会一并删除。</p>
+        </section>
+        <section class="absolute bottom-10 w-full text-center space-x-5">
+          <button
+            class="w-20 h-8 bg-red-400 rounded-2xl text-white"
+            @click="delEnsure()"
+          >
+            确定
+          </button>
+          <button
+            class="w-20 h-8 rounded-2xl border border-solid border-gray-400"
             @click="delImg = false"
-          ></span>
-        </p>
-        <div>
-          <section style="height: 100px; width: 100%">
-            <p>该照片所在动态也会一并删除。</p>
-          </section>
-          <section class="absolute bottom-10 w-full text-center space-x-5">
-            <button class="w-20 h-8 bg-red-400 rounded-2xl text-white" @click="delEnsure()">
-              确定
-            </button>
-            <button
-              class="w-20 h-8 rounded-2xl border border-solid border-gray-400"
-              @click="delImg = false"
-            >
-              取消
-            </button>
-          </section>
-        </div>
-      
+          >
+            取消
+          </button>
+        </section>
+      </div>
     </Modal>
   </div>
 </template>
@@ -542,11 +551,14 @@
 import editDynamic from "@components/editDynamic.vue";
 import imgUpload from "@components/uploadImg.vue";
 import Swpier from "@components/personal/Swpier.vue";
+import BigImage from "@/components/home/othercentre/BigImage";
+import Comment from "@components/personal/Comment.vue";
 export default {
   data() {
     return {
+      openBigImg:false,
       currentIndex: -1,
-      modalIndex:-1,
+      modalIndex: -1,
       big: -1,
       bacShow: false,
       showFriendsList: false,
@@ -619,6 +631,8 @@ export default {
     imgUpload,
     editDynamic,
     Swpier,
+    BigImage,
+    Comment
   },
   methods: {
     openList() {
@@ -652,37 +666,48 @@ export default {
     openImg() {
       this.showImgs = !this.showImgs;
     },
+    // 选中
     toSelectImg(it) {
       this.option.push(it);
     },
+    // 取消选中
     toCancelImg(it) {
       this.option.splice(this.option.indexOf(it), 1);
     },
-    delImgs(){
-      console.log(...this.option)
-      let arr = []
-      for(var i = 0 ;i<this.option.length;i++){
-         let num = this.option[i]
-         arr.push(this.iamgeList[num])
+    // 批量删除
+    delImgs() {
+      console.log(...this.option);
+      let arr = [];
+      for (var i = 0; i < this.option.length; i++) {
+        let num = this.option[i];
+        arr.push(this.iamgeList[num]);
         // this.iamgeList.splice(this.option[i],1)
       }
-      this.iamgeList=this.iamgeList.filter(item => !arr.some(ele=>ele===item))
+      this.iamgeList = this.iamgeList.filter(
+        (item) => !arr.some((ele) => ele === item)
+      );
       // console.log(arr)
-      this.option=[]
-
+      this.option = [];
     },
-    toDelImg(it){
-       this.modalIndex =it;
-       this.delImg =true;
+    // 单项删除照片
+    toDelImg(it) {
+      this.modalIndex = it;
+      this.delImg = true;
     },
+    // 相册点击照片显示大图
     toBigImg(it) {
       console.log(it);
-      this.big = it;
+      this.openBigImg = true;
+      console.log(this.openBigImg);
       this.currentIndex = it;
     },
-    delEnsure(){
-      this.iamgeList.splice(this.modalIndex,1)
-      this.delImg =false;
+    closeBigImg(value){
+       this.openBigImg = value;
+    },
+    //确定按钮
+    delEnsure() {
+      this.iamgeList.splice(this.modalIndex, 1);
+      this.delImg = false;
     },
     //批量管理显示删除按钮
     manage() {
@@ -1085,18 +1110,5 @@ export default {
 .delete .ivu-modal-content {
   height: 200px;
 }
-.prev {
-  width: 14px;
-  height: 23px;
-  position: absolute;
-  top: 44px;
-  left: 8px;
-  z-index: 1;
-  cursor: pointer;
-  background: url("../../assets/images/person/little1.png") -80px -566px
-    no-repeat;
-}
-.prev:hover {
-  background: url("../../assets/images/person/little1.png") -42px -567px;
-}
+
 </style>
