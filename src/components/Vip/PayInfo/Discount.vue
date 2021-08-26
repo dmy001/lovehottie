@@ -7,7 +7,7 @@
         <i class="w-5 h-5 rounded-full inline-block align-middle"></i
         ><span>{{$trans('无可用优惠券')}}</span
         ><span class="text-orangeFont align-middle"
-          >{{$trans('(会员优惠券仅限金币支付使用)')}}</span
+          >{{$trans('（会员优惠券仅限金币支付使用）')}}</span
         >
       </div>
       <hr />

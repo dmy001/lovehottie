@@ -12,7 +12,7 @@ import zh_tw from './langs/zh_tw.json'
 import Vue from 'vue'
 window.Vue = Vue 
 const i18n = new VueI18n({
-    locale: 'ja-jp',
+    locale: 'ru-ru',
     messages: {
         'en-us': en,
         'es-es': es_es,
