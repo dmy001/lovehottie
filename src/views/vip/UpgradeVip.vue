@@ -108,7 +108,6 @@ export default {
           price: "150",
           save: 40,
           priceTotle: "150",
-          Ischange: "选择",
         },
         {
           id: 6,
@@ -116,7 +115,6 @@ export default {
           price: "90",
           save: 30,
           priceTotle: "90",
-          Ischange: "选择",
         },
         {
           id: 7,
@@ -124,7 +122,6 @@ export default {
           price: "50",
           save: 20,
           priceTotle: "50",
-          Ischange: "选择",
         },
         {
           id: 8,
@@ -132,12 +129,11 @@ export default {
           price: "20",
           save: 5,
           priceTotle: "20",
-          Ischange: "选择",
         },
       ],
 
       descrip: [
-        "每天50条聊天权限 ",
+        "每天50条聊天权限",
         "会员专属标识",
         "每月免费查看3张模糊图",
         "价值30金币的VIP会员优惠券",
@@ -181,7 +177,7 @@ export default {
         },
         {
           name: "阅后即焚免费无限使用",
-          descrip: "消息、国际圈等均可免费无限使用阅后即焚功能。",
+          descrip: "消息、国际圈等均可免费无限使用阅后即焚功能",
         },
       ],
       descriptionList1: [
@@ -210,7 +206,7 @@ export default {
         {
           name: "无限发消息",
           descrip:
-            "消息不受限，想发多少随你定。（消息翻译若超过1500字符则另收费）",
+            "发送消息不受限，想发多少看你心情。（信息若需翻译则另收费）",
         },
         {
           name: "主页可无限制展示照片",
@@ -233,7 +229,7 @@ export default {
         {
           name: "无限发消息",
           descrip:
-            "消息不受限，想发多少随你定。（消息翻译若超过1500字符则另收费）",
+            "发送消息不受限，想发多少看你心情。（信息若需翻译则另收费）",
         },
         {
           name: "优惠券",

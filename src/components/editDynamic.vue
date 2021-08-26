@@ -36,17 +36,13 @@
         <div v-if="imgShow" class="upload_img flex items-start flex-col p-px3">
           <span class="z-1000 iocn icon_top"></span>
           <div class="w-full p-px10 flex justify-between">
-            本地上传
+           {{$trans("本地上传")}} 
             <i class="iocn close_icon" @click="imgShow=false"></i>
           </div>
 
           <div class="mt-px100 ml-px3">
             <span class="block text-12px mb-px10 text-base-color5 text-left"
-              >共{{ uploadList.length }}张，还能上传<span>{{
-                9 - uploadList.length
-              }}</span
-              >张</span
-            >
+              > {{$trans(`共${ uploadList.length }张，还能上传${9 - uploadList.length}张`)}}</span>
             <Upload
               ref="upload"
               :show-upload-list="false"
@@ -95,7 +91,7 @@
           </div>
         </div>
       </div>
-      <div class="footRight">发送</div>
+      <div class="footRight">{{$trans('发送')}}</div>
     </div>
   </div>
 </template>

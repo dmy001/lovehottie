@@ -6,12 +6,12 @@
         :key="index"
         :class="{ active: selectIndex === item.id }"
         @click="changeSelectId(item)"
-        class="border content-item"
+        class="border content-item flex-auto"
       >
         <p class="text-base">{{ item.time }}</p>
         <p class="text-20px">US${{ item.price }}/{{ $trans("月") }}</p>
         <p class="text-28px">{{ $trans("节省") }}{{ item.save }}%</p>
-        <p class="text-14px">{{ $trans("费用US") }}${{ item.priceTotle }}</p>
+        <p class="text-14px">{{ $trans("费用") }}US${{ item.priceTotle }}</p>
         <div class="select-btn" style="display: inline-block">
           <span class="sel-0" v-show="!(selectIndex === item.id)">{{
             $trans("选择")
