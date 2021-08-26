@@ -1,7 +1,7 @@
 <template>
   <div class="RechargeGold">
     <div class="header h-12 flex items-center pl-5">
-      <span class="align-middle"> {{ $trans("您账户可用金币数:") }} </span>
+      <span class="align-middle"> {{ $trans("您账户可用金币数") }}: </span>
       <span class="text-red-500 font-bold align-middle ml-2 text-18px">0</span>
       <i class="inline-block align-middle m-2"></i>
     </div>
@@ -42,7 +42,7 @@
         </div>
       </div>
       <div class="right w-1/3">
-        <h3>{{ $trans("您可以用金币做很多事情") }}：</h3>
+        <h3>{{ $trans("您可以用金币做很多事情：") }}</h3>
         <p
           v-for="(item, index) in message"
           :key="index"

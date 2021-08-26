@@ -1,7 +1,7 @@
 <template>
   <div class="VipFooter relative border">
     <div class="text-left ml-4">
-      <h3 class="font-bold py-4">{{ $trans("成为") }}{{ $trans(title) }}{{ $trans("会员，您可享受很多特权") }} :</h3>
+      <h3 class="font-bold py-4">{{ $trans(`成为${title}，您可享受很多特权`) }} :</h3>
       <!-- <transition name="fade"> -->
         <div v-show="flag" class="down">
           <span v-for="(item, index) in descrip" :key="index" class="ml-6">
@@ -16,7 +16,7 @@
       <!-- </transition> -->
       <div v-show="!flag" class="up">
         <div v-for="(item, index) in descriptionList" :key="index" class="mt-2">
-          <p class="text-px14">{{ item.name }}</p>
+          <p class="text-px14">{{ $trans(item.name) }}</p>
           <p class="text-px14 text-descrip">
             {{ $trans(item.descrip) }}
           </p>

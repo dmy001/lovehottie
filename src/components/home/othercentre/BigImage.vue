@@ -28,7 +28,7 @@
                   :key="index"
                 >
                   <img
-                    :src="item"
+                    :src="imagesUrl"
                     class=""
                     style="position: relative; margin: 0 auto"
                     alt=""
@@ -45,16 +45,18 @@
 
 <script>
 export default {
-  //   props: {
-  //     bigImage: Boolean,
-  //   },
-  data() {
-    return {
-      images: [
-        "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
-      ],
-    };
-  },
+    props: {
+      images: Array,
+      imagesUrl:String,
+      bigImage:Boolean
+    },
+  // data() {
+  //   return {
+  //     images: [
+  //       "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120",
+  //     ],
+  //   };
+  // },
   methods: {
     //点击其他地方关闭大图片
     closeBigImage(event) {

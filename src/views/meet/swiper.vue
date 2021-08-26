@@ -24,7 +24,7 @@
       </div>
     </div>
     <!-- 大图 -->
-    <BigImage></BigImage>
+    <BigImage v-if="bigImg"></BigImage>
   </section>
   <!-- </div> -->
 </template>
@@ -38,6 +38,7 @@ export default {
   data() {
     return {
       index: 0,
+      bigImg: false,
       sliderActive: {
         transform: `translateX(-240px)`,
         transition: "transform 0.5s",

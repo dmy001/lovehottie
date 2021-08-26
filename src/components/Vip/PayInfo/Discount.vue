@@ -7,14 +7,14 @@
         <i class="w-5 h-5 rounded-full inline-block align-middle"></i
         ><span>{{$trans('无可用优惠券')}}</span
         ><span class="text-orangeFont align-middle"
-          >{{$trans('会员优惠券仅限金币支付使用')}}</span
+          >{{$trans('（会员优惠券仅限金币支付使用）')}}</span
         >
       </div>
       <hr />
       <div class="mr-5">
-        <p class="text-right mt-8">{{$trans('订单金额')}}:{{$trans(price)}}</p>
+        <p class="text-right mt-8">{{$trans('订单金额：')}}{{$trans(price)}}</p>
         <p class="text-right mt-4 mb-8">
-          {{$trans('实付金额')}}:   <span class="text-orangeFont">{{$trans(price)}}</span>
+          {{$trans('实付金额：')}}<span class="text-orangeFont">{{$trans(price)}}</span>
         </p>
       </div>
       <hr />
