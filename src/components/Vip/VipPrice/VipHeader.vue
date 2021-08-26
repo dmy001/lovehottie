@@ -1,7 +1,7 @@
 <template>
   <div class="align-middle mt-10 mb-5">
       <i ref="bg" :class="bgClassName" class=" w-8 h-8 inline-block align-middle "></i>
-      <span class="text-2xl align-middle">{{title}}</span>
+      <span class="text-2xl align-middle">{{$trans(title)}}</span>
   </div>
 </template>
 

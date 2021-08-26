@@ -1,11 +1,11 @@
 <template>
   <div class="translateVip">
     <div class="header h-9 bg-yellow-100 flex items-center pl-5">
-      <span class="align-middle">您账户可用翻译VIP: </span>
-      <span class="text-red-500 font-bold">0min</span>
+      <span class="align-middle">{{ $trans("您账户可用翻译VIP") }}: </span>
+      <span class="text-red-500 font-bold">0 min</span>
       <i class="inline-block align-middle"></i>
     </div>
-    <div class="content flex border  mt-5">
+    <div class="content flex border mt-5">
       <div class="left w-3/5 border">
         <div class="top flex h-full">
           <div
@@ -21,11 +21,13 @@
             ></i>
             <p class="text-28px text-orangeFont">{{ item.time }}</p>
             <p class="text-xl">min</p>
-            <p class="text-20px text-orangeFont">节省{{ item.save }}%</p>
-            <p class="text-18px mt-10">费用US${{ item.price }}</p>
+            <p class="text-20px text-orangeFont">
+              {{ $trans("节省") }}{{ item.save }}%
+            </p>
+            <p class="text-18px mt-10"> {{ $trans("费用") }}US${{ item.price }}</p>
             <div class="select-btn mt-3" style="display: inline-block">
-              <span class="sel-0" v-show="!(index === currentIndex)">选择</span>
-              <span class="sel-1">已选</span>
+              <span class="sel-0" v-show="!(index === currentIndex)">{{ $trans("选择") }}</span>
+              <span class="sel-1">{{ $trans("已选") }}</span>
             </div>
           </div>
         </div>
@@ -37,37 +39,37 @@
           :key="index"
           class="mt-5 ml-2 text-left p-2"
         >
-          <i class="inline-block w-2 h-4"></i><span>{{ item }}</span>
+          <i class="inline-block w-2 h-4"></i><span>{{ $trans(item) }}</span>
         </p>
       </div>
     </div>
     <PayInfo />
-    <payButton payType="立即充值" />
+    <PayButton payType="立即充值" />
   </div>
 </template>
 
 <script>
-import PayInfo from "@components/vip/PayInfo/PayInfo.vue";
-import payButton from "@components/vip/PayInfo/payButton.vue";
+import PayInfo from "@components/Vip/PayInfo/PayInfo.vue";
+import PayButton from "@components/Vip/PayInfo/payButton.vue";
 
 export default {
   components: {
     PayInfo,
-    payButton,
+    PayButton,
   },
   data() {
     return {
       list: [
-        { time: 10, save: 10, price: 10, Ischange: "选择" },
-        { time: 30, save: 15, price: 20, Ischange: "选择" },
-        { time: 60, save: 25, price: 30, Ischange: "选择" },
+        { time: 10, save: 10, price: 10 },
+        { time: 30, save: 15, price: 20 },
+        { time: 60, save: 25, price: 30 },
       ],
       message: [
         "在翻译会员有效时长内可无限免费使用平台内翻译，包含聊天翻译、动态翻译、探索翻译等；",
         "翻译会员生效时间，以购买完成为开始，相应时长后结束。",
       ],
       currentIndex: 0,
-      currentPrice: 0,
+      currentPrice: 0, 
     };
   },
   methods: {
@@ -89,7 +91,7 @@ export default {
       height: 250px;
       .top {
         .content-item {
-          background: #FFFCF6;
+          background: #fffcf6;
           i {
             z-index: 1;
             right: -10px;

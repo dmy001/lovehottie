@@ -1,6 +1,6 @@
 <template>
   <div>
-      <button class=" w-32 h-10 text-base my-16">{{payType}}</button>
+      <button class=" w-32 h-10 text-base my-16">{{$trans(payType)}}</button>
   </div>
 </template>
 

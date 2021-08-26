@@ -61,20 +61,20 @@
     <div>
       <PayInfo />
       <Discount :price="currentPrice" />
-      <payButton :payType="$trans('立即购买')" />
+      <PayButton payType="立即购买" />
     </div>
   </div>
 </template>
 
 <script>
-import PayInfo from '@components/vip/PayInfo/PayInfo.vue';
-import Discount from '@components/vip/PayInfo/Discount.vue';
-import payButton from '@components/vip/PayInfo/payButton.vue';
+import PayInfo from "@components/Vip/PayInfo/PayInfo.vue";
+import Discount from "@components/Vip/PayInfo/Discount.vue";
+import PayButton from "@components/Vip/PayInfo/payButton.vue";
 export default {
   components: {
     PayInfo,
     Discount,
-    payButton,
+    PayButton,
   },
   data() {
     return {

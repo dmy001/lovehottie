@@ -45,22 +45,22 @@
     </div>
     <PayInfo />
     <Discount :price="currentPrice" />
-    <payButton payType="立即充值" />
+    <PayButton payType="立即充值" />
   </div>
 </template>
 
 <script>
-import PayInfo from "@components/vip/PayInfo/PayInfo.vue";
-import Discount from "@components/vip/PayInfo/Discount.vue";
-import payButton from "@components/vip/PayInfo/payButton.vue";
-import VipHeader from "@components/vip/VipPrice/VipHeader.vue";
-import VipContent from "@components/vip/VipPrice/VipContent.vue";
-import VipFooter from "@components/vip/VipPrice/VipFooter.vue";
-import MiniVip from "@components/vip/VipPrice/MiniVip.vue";
+import PayInfo from "@components/Vip/PayInfo/PayInfo.vue";
+import Discount from "@components/Vip/PayInfo/Discount.vue";
+import PayButton from "@components/Vip/PayInfo/payButton.vue";
+import VipHeader from "@components/Vip/VipPrice/VipHeader.vue";
+import VipContent from "@components/Vip/VipPrice/VipContent.vue";
+import VipFooter from "@components/Vip/VipPrice/VipFooter.vue";
+import MiniVip from "@components/Vip/VipPrice/MiniVip.vue";
 export default {
   components: {
     VipHeader,
-    payButton,
+    PayButton,
     VipContent,
     VipFooter,
     PayInfo,
