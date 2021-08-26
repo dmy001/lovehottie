@@ -1,5 +1,5 @@
 <template>
-  <div class="footer relative bg-base-bgFooterColor">
+  <div class="footer fixed  z-10 w-full bg-base-bgFooterColor">
     <div class="w-px1200 mx-auto pt-px15">
       <p>
         <a href="https://www.gagahi.com/Global/changeLanguage?lang=en-us"

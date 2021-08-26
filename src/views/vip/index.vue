@@ -41,7 +41,6 @@ export default {
       this.$router.push(path);
     },
   },
-  
 };
 </script>
 
@@ -50,6 +49,7 @@ export default {
   .nav{
     div:nth-child(9){
       margin-left: auto;
+      margin-right: 30px;
     }
   }
 }

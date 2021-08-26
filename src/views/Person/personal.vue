@@ -13,7 +13,7 @@
     >
       <span class="text-left mt-4 ml-5">设置</span>
       <router-link to="/home/PersonHome"
-        ><button class="text-right text-gray-400 mt-4 mr-5">
+        ><button class="text-right text-gray-400 mt-4 mr-5 focus:outline-none">
           返回个人主页>>
         </button></router-link
       >
@@ -75,7 +75,9 @@
                   ml-1
                   border border-solid border-gray-300
                   rounded-2xl
+                  focus:outline-none
                 "
+                @click="editHeader = true"
               >
                 编辑照片
               </button>
@@ -91,6 +93,7 @@
                   rounded-2xl
                   border border-solid border-gray-300
                   p-4
+                  focus:outline-none
                 "
                 type="text"
                 maxlength="16"
@@ -107,6 +110,7 @@
                   rounded-2xl
                   border border-solid border-gray-300
                   p-4
+                  focus:outline-none
                 "
                 type="text"
               />
@@ -149,7 +153,7 @@
           </li>
           <li
             class="city flex justify-between text-sm mt-5 cursor-pointer"
-            @click="toSetCity=true"
+            @click="toSetCity = true"
           >
             <span class="w-1/4 text-right text-gray-400 pr-2">国家:</span>
             <label class="w-3/4 text-left">
@@ -160,15 +164,13 @@
                   rounded-2xl
                   border border-solid border-gray-300
                   p-4
+                  focus:outline-none
                   cursor-pointer
                 "
                 type="text"
               />
               <span class="w-1/2 flex justify-end">
-                <img
-                  class="h-2 -mt-5 mr-5"
-                  src="~@images/xld.png"
-                />
+                <img class="h-2 -mt-5 mr-5" src="~@images/xld.png" />
               </span>
             </label>
           </li>
@@ -195,6 +197,7 @@
                   rounded-2xl
                   border border-solid border-gray-300
                   p-4
+                  focus:outline-none
                 "
                 type="text"
                 maxlength="16"
@@ -212,6 +215,7 @@
                   rounded-2xl
                   border border-solid border-gray-300
                   p-4
+                  focus:outline-none
                 "
                 type="text"
                 maxlength="16"
@@ -229,6 +233,7 @@
                   rounded-2xl
                   border border-solid border-gray-300
                   p-4
+                  focus:outline-none
                 "
                 value=""
               />
@@ -269,6 +274,7 @@
                   text-center
                   leading-7
                   ml-24
+                  focus:outline-none
                 "
               >
                 充值
@@ -289,6 +295,7 @@
                   text-center
                   leading-7
                   ml-12
+                  focus:outline-none
                 "
               >
                 升级
@@ -309,6 +316,7 @@
                   rounded-2xl
                   border border-solid border-gray-300
                   p-4
+                  focus:outline-none
                 "
                 type="text"
                 name="email"
@@ -324,6 +332,7 @@
                   rounded-2xl
                   border border-solid border-gray-300
                   p-4
+                  focus:outline-none
                 "
                 type="text"
                 name="phone"
@@ -339,6 +348,7 @@
                   rounded-2xl
                   border border-solid border-gray-300
                   p-4
+                  focus:outline-none
                 "
                 type="text"
             /></label>
@@ -353,6 +363,7 @@
                   rounded-2xl
                   border border-solid border-gray-300
                   p-4
+                  focus:outline-none
                 "
                 type="text"
             /></label>
@@ -367,6 +378,7 @@
                   rounded-2xl
                   border border-solid border-gray-300
                   p-4
+                  focus:outline-none
                 "
                 type="password"
             /></label>
@@ -397,6 +409,8 @@
               float-left
               ml-2
               rounded-l-full
+              p-4
+              focus:outline-none
               border-solid border border-gray-400
             "
             type="text"
@@ -473,24 +487,21 @@
               type="radio"
               name="personalFiles"
               value="1"
-              
-              class="mt-1 ml-1"
+              class="mt-1 ml-1 focus:outline-none"
             />
             <label class="ml-2">民众 </label>
             <input
               type="radio"
               name="personalFiles"
               value="1"
-             
-              class="mt-1 ml-7"
+              class="mt-1 ml-7 focus:outline-none"
             />
             <label class="ml-2">朋友们</label>
             <input
               type="radio"
               name="personalFiles"
               value="1"
-              
-              class="mt-1 ml-7"
+              class="mt-1 ml-7 focus:outline-none"
             />
             <label class="ml-2">限制自己</label>
           </li>
@@ -500,16 +511,14 @@
               type="radio"
               name="friendRequest"
               value="1"
-              
-              class="mt-1 ml-1"
+              class="mt-1 ml-1 focus:outline-none"
             />
             <label class="ml-2">允许大家加我为好友</label><br />
             <input
               type="radio"
               name="friendRequest"
               value="1"
-              
-              class="mt-1 ml-7"
+              class="mt-1 ml-7 focus:outline-none"
             />
             <label class="ml-2">需要验证才能加我为好友</label>
           </li>
@@ -521,16 +530,14 @@
               type="radio"
               name="myPreferences"
               value="1"
-              
-              class="mt-1 ml-1"
+              class="mt-1 ml-1 focus:outline-none"
             />
             <label class="ml-2">民众</label><br />
             <input
               type="radio"
               name="myPreferences"
               value="1"
-              
-              class="mt-1 ml-7"
+              class="mt-1 ml-7 focus:outline-none"
             />
             <label class="ml-2">限制自己</label>
           </li>
@@ -542,16 +549,14 @@
               type="radio"
               name="myComments"
               value="1"
-              
-              class="mt-1 ml-1"
+              class="mt-1 ml-1 focus:outline-none"
             />
             <label class="ml-2">民众</label><br />
             <input
               type="radio"
               name="myComments"
               value="1"
-              
-              class="mt-1 ml-7"
+              class="mt-1 ml-7 focus:outline-none"
             />
             <label class="ml-2">限制自己</label>
           </li>
@@ -598,7 +603,7 @@
             >
             <label class="w-3/4 text-left"
               ><input
-                class="loveMe"
+                class="loveMe focus:outline-none"
                 type="checkbox"
                 v-model="picked"
                 value="loveMe"
@@ -610,7 +615,7 @@
             >
             <label class="w-3/4 text-left"
               ><input
-                class="visitor"
+                class="visitor focus:outline-none"
                 type="checkbox"
                 v-model="picked"
                 value="visitor"
@@ -622,7 +627,7 @@
             >
             <label class="w-3/4 text-left"
               ><input
-                class="receiveGifts"
+                class="receiveGifts focus:outline-none"
                 type="checkbox"
                 v-model="picked"
                 value="receiveGifts"
@@ -648,7 +653,7 @@
         </div>
       </div>
     </section>
-
+    <!-- 选择国家 -->
     <Modal
       v-model="toSetCity"
       title="选择国家"
@@ -660,15 +665,181 @@
         <span class="text-white">选择国家</span>
         <span
           class="closed w-9 h-9 rounded-full -top-2 -right-3 absolute"
-          @click="toSetCity=false"
+          @click="toSetCity = false"
         ></span>
       </p>
       <City></City>
       <section class="absolute bottom-10 w-full text-center space-x-5">
-        <button class="w-20 h-8 bg-red-400 rounded-2xl text-white">确定</button>
         <button
-          class="w-20 h-8 rounded-2xl border border-solid border-gray-400"
-          @click="toSetCity=false"
+          class="w-20 h-8 focus:outline-none bg-red-400 rounded-2xl text-white"
+        >
+          确定
+        </button>
+        <button
+          class="
+            w-20
+            h-8
+            focus:outline-none
+            rounded-2xl
+            border border-solid border-gray-400
+          "
+          @click="toSetCity = false"
+        >
+          取消
+        </button>
+      </section>
+    </Modal>
+    <!-- 上传头像 -->
+    <Modal
+      v-model="editHeader"
+      footer-hide
+      width="500"
+      title="修改头像信息"
+      :closable="false"
+      class="modify"
+    >
+      <p slot="header">
+        <span class="text-white">修改头像信息</span>
+        <span
+          class="closed w-9 h-9 rounded-full -top-2 -right-3 absolute"
+          @click="editHeader = false"
+        ></span>
+      </p>
+      <section style="height: 375px">
+        <div class="h-10 border-b border-solid border-gray-400 mx-5">
+          <span
+            class="
+              h-10
+              leading-10
+              border-b-2 border-solid border-blue-500
+              cursor-pointer
+              inline-block
+            "
+            >本地上传</span
+          >
+        </div>
+        <div class="w-full relative top-20">
+          <Upload
+            class="flex justify-center"
+            :show-upload-list="false"
+            :on-success="handleSuccess"
+            :format="['jpg', 'jpeg', 'png']"
+            :max-size="2048"
+            :on-format-error="handleFormatError"
+            :on-exceeded-size="handleMaxSize"
+            action="//jsonplaceholder.typicode.com/posts/"
+          >
+            <div
+              class="
+                w-28
+                h-10
+                rounded-3xl
+                bg-red-400
+                text-white text-base
+                leading-10
+                text-center
+                mx-auto
+                cursor-pointer
+              "
+              @click="editHeader = false"
+            >
+              选择图片
+            </div>
+          </Upload>
+          <p class="text-gray-400 text-center mt-3">
+            支持JPG,JPEG,PNG,BMP,GIF格式，且文件小于5M
+          </p>
+          <p class="mx-5 mt-5">
+            注意：您的头像必须是您本人清晰可辨的单人照，让人看清您的样子，并符合您的年龄和性别，不可包含裸露内容。
+          </p>
+        </div>
+      </section>
+    </Modal>
+    <!-- 编辑头像缩略图 -->
+    <Modal
+      v-model="editSmallHeader"
+      title="编辑缩略图"
+      width="600"
+      footer-hide
+      :closable="false"
+    >
+      <p slot="header">
+        <span class="text-white">编辑缩略图</span>
+        <span
+          class="closed w-9 h-9 rounded-full -top-2 -right-3 absolute"
+          @click="editSmallHeader = false"
+        ></span>
+      </p>
+      <section class="mx-5 flex justify-between mt-5">
+        <div
+          class="relative"
+          style="
+            width: 410px;
+            height: 300px;
+            border: 1px solid #ccc;
+            float: left;
+          "
+        >
+          <img src=" " alt="" />
+        </div>
+        <div
+          class="relative right-5 flex flex-col justify-between text-center"
+          style="width: 60px"
+        >
+          预览：
+          <div class="mx-auto">
+            <img
+              style="
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                object-fit: contain;
+              "
+              src="https://sources.lovehottie.com/A-564afb62ef7045b2857f817aa1ce6cad?imageMogr2/thumbnail/410x300"
+            />
+          </div>
+          <p class="mb15 tc">60*60</p>
+          <div class="mx-auto">
+            <img
+              style="
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                object-fit: contain;
+              "
+              src="https://sources.lovehottie.com/A-564afb62ef7045b2857f817aa1ce6cad?imageMogr2/thumbnail/410x300"
+            />
+          </div>
+          <p class="mb15 tc">45*45</p>
+          <div class="mx-auto">
+            <img
+              style="
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                object-fit: contain;
+              "
+              src="https://sources.lovehottie.com/A-564afb62ef7045b2857f817aa1ce6cad?imageMogr2/thumbnail/410x300"
+            />
+          </div>
+          <p class="tc">30*30</p>
+        </div>
+      </section>
+      <section class="absolute bottom-10 w-full text-center space-x-5">
+        <button
+          class="w-20 h-8 focus:outline-none bg-red-400 rounded-2xl text-white"
+        >
+          保存
+        </button>
+        <button
+          class="
+            w-20
+            h-8
+            focus:outline-none
+            rounded-2xl
+            border border-solid border-gray-400
+          "
+          @click="editSmallHeader = false"
         >
           取消
         </button>
@@ -686,6 +857,8 @@ import SaveButton from "@components/personal/SaveButton.vue";
 export default {
   data() {
     return {
+      editHeader: false,
+      editSmallHeader: false,
       showEmail: false,
       mailboxFilling: [],
       picked: [],
@@ -752,7 +925,6 @@ export default {
   methods: {
     writeInformation() {
       this.show = !this.show;
-      
     },
     close() {
       this.showModal = !this.showModal;
@@ -774,6 +946,27 @@ export default {
       if (this.mailboxFilling === "") {
         this.showEmail = true;
       }
+    },
+    handleSuccess(res, file) {
+      file.url =
+        "https://o5wwk8baw.qnssl.com/7eb99afb9d5f317c912f08b5212fd69a/avatar";
+      file.name = "7eb99afb9d5f317c912f08b5212fd69a";
+      this.editSmallHeader = true;
+    },
+    handleFormatError(file) {
+      this.$Notice.warning({
+        title: "The file format is incorrect",
+        desc:
+          "File format of " +
+          file.name +
+          " is incorrect, please select jpg or png.",
+      });
+    },
+    handleMaxSize(file) {
+      this.$Notice.warning({
+        title: "Exceeding file size limit",
+        desc: "File  " + file.name + " is too large, no more than 2M.",
+      });
     },
   },
 };
@@ -805,8 +998,12 @@ export default {
   background-color: red;
 }
 .city span {
-  background-image: url(https://statics.lovehottie.com/web-pc/images/xld.png) no-repeat;
+  background-image: url(https://statics.lovehottie.com/web-pc/images/xld.png)
+    no-repeat;
   cursor: pointer;
   vertical-align: top;
+}
+.modify .ivu-modal-content {
+  height: 375px;
 }
 </style>

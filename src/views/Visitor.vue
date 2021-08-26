@@ -2,9 +2,9 @@
   <div class="w-full">
     <div class="w-full bg-white border border-opacity-0 pl-5">
       <div class="text-left mt-5">
-        <span> 总浏览量: <span class="text-red-500 ml-2">8</span> </span>
+        <span> {{$trans('总浏览量')}}: <span class="text-red-500 ml-2">8</span> </span>
         <span class="ml-10">
-          今日浏览量:<span class="text-red-500 ml-2">16</span></span
+         {{$trans('今日浏览量')}} :<span class="text-red-500 ml-2">16</span></span
         >
       </div>
       <div class="mt-10">
@@ -35,6 +35,7 @@
 export default {
   data() {
     return {
+      // 懒加载
       list: [
         {
           data: "2021.08.09",
