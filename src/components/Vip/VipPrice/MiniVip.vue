@@ -7,7 +7,7 @@
         @click="changeSelectId()"
       >
         <div class="ml-12">
-          <p>{{ $trans('7天') }}</p>
+          <p>7{{ $trans('天') }}</p>
           <p class="text-xl whitespace-nowrap">
             <strong> US$1.4<span class="text-sm">/{{ $trans('天') }}</span></strong>
           </p>
@@ -18,6 +18,7 @@
             <span class="sel-0" v-show="!(selectIndex === 0)"
               >{{ $trans('选择') }}</span
             >
+            <!-- 无 -->
             <span class="sel-1">{{ $trans('已选') }}</span>
           </div>
         </div>
