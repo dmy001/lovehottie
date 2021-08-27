@@ -16,7 +16,7 @@
       <div
         v-for="(item, index) in list"
         :key="index"
-        class="border bg-no-repeat bg-left-top site"
+        class="border bg-no-repeat bg-left-top site cursor-pointer"
         @click="changeColor(index)"
         :class="[
           index === selectedIndex
@@ -48,7 +48,7 @@
             text-yellow-500
           "
         >
-          选择
+          {{ $trans("选择") }}
         </p>
         <p
           v-else
@@ -97,11 +97,11 @@ export default {
   },
   methods: {
     /**
-    * 改变下标
-    * 
-    * 向支付组件发送价格
-    * @param {*} index 下标
-    */
+     * 改变下标
+     *
+     * 向支付组件发送价格
+     * @param {*} index 下标
+     */
     changeColor(index) {
       this.selectedIndex = index;
       this.currentPrice = this.list[index].money;

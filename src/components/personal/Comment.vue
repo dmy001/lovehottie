@@ -24,14 +24,36 @@
             ><img class="w-5 cursor-pointer" src="~@images/error.png"
           /></span>
         </p>
-        <p class="content_text">
-          我不知道啊 不知道
-          <img
+        <section class="content_text flex-col flex">
+          <p class="">我不知道啊 不知道</p>
+
+          <!-- <img
             style="width: 262px; object-fit: contain; cursor: pointer"
             @click.stop="bigCommentImage = true"
             src="https://sources.lovehottie.com/A-564afb62ef7045b2857f817aa1ce6cad"
-          />
-        </p>
+          /> -->
+          <div class="flex flex-row">
+            <div
+              class="imgboxs  mt-2  mr-2"
+              style="object-fit: cover;
+                    flex-shrink: 0;overflow: hidden; width: 262px; height:262px;min-height: 87px;min-width: 87px;"
+              v-for="(item, index) in images"
+              :key="index"
+            >
+              <img
+                @click.stop="openCommentImage(index)"
+                :src="item"
+                alt=""
+                style="
+                  width: 262px;
+                  height:262px;
+                  object-fit: cover;
+                  cursor: pointer; 
+                "
+              />
+            </div>
+          </div>
+        </section>
 
         <div class="ml-px15 mt-px15 dynamic_icon relative">
           <span
@@ -174,6 +196,10 @@
       <CommentBigImg
         v-if="bigCommentImage"
         @func="closeCommentImg"
+        :images="images"
+        :imagesUrl="this.images[currentIndex] + '?imageView2/2/w/560/h/630'"
+        @leftBtn="leftImage"
+        @rightBtn="rightImage"
       ></CommentBigImg>
     </section>
   </div>
@@ -186,7 +212,8 @@ export default {
   },
   data() {
     return {
-      bigCommentImage:false,
+      currentIndex: -1,
+      bigCommentImage: false,
       inputShow: false,
       value17: "",
       listShow: false,
@@ -213,6 +240,12 @@ export default {
           number: 323,
         },
       ],
+      images: [
+        "https://sources.lovehottie.com/Z-7941c6ea659d4e04b1f4e7e816eea308",
+        "https://images.gagahi.com/",
+        "https://images.gagahi.com/A-614b46d091d84696bf32bb34ef16e943",
+        "https://sources.gagahi.com/ac4b849baad14bcdbd6fe80940f09a10",
+      ],
     };
   },
   methods: {
@@ -234,8 +267,28 @@ export default {
     deleteComment() {
       this.contentList.splice(this.index, 1);
     },
+    openCommentImage(index) {
+      this.bigCommentImage = true;
+      console.log(index);
+      this.currentIndex = index;
+    },
     closeCommentImg(value) {
       this.bigCommentImage = value;
+    },
+    leftImage() {
+      --this.currentIndex;
+      if (this.currentIndex < 0) {
+        this.currentIndex = this.images.length - 1;
+      }
+      console.log(this.currentIndex);
+    },
+    rightImage() {
+      console.log(this.currentIndex);
+      if (this.currentIndex === this.images.length - 1) {
+        this.currentIndex = 0;
+      } else {
+        this.currentIndex += 1;
+      }
     },
   },
 };
@@ -251,11 +304,11 @@ export default {
     border-radius: 50%;
   }
   .content_text {
-    width: 262px;
+    width: 722px;
     margin-top: 4px;
     line-height: 24px;
-    min-height: 87px;
-    min-width: 87px;
+    
+    
   }
   .dynamic_icon {
     height: 20px;
