@@ -39,15 +39,15 @@
           href=""
         ></div>
       </div>
-
-      <!-- 大图 -->
-      <BigImage
-        v-if="bigImg"
-        @func="closeBigImg"
-        :imagesUrl="this.images[currentIndex].url + '?imageView2/2/w/560/h/630'"
-      ></BigImage>
     </div>
-
+    <!-- 大图 -->
+    <BigImage
+      v-if="bigImg"
+      @func="closeBigImg"
+      :imagesUrl="this.images[currentIndex].url + '?imageView2/2/w/560/h/630'"
+      @leftBtn="leftImage()"
+      @rightBtn="rightImage()"
+    ></BigImage>
     <!-- 删除图片 -->
     <Modal
       v-model="delImg"
@@ -228,20 +228,20 @@ export default {
       console.log(index);
       this.currentIndex = index;
     },
-    // leftImage() {
-    //   --this.currentIndex;
-    //   if (this.currentIndex === 0) {
-    //     this.currentIndex = this.images.length - 9;
-    //   }
-    //   console.log(this.currentIndex);
-    // },
-    // rightImage() {
-    //   this.currentIndex += 1;
-    //   if (this.currentIndex === this.images.length - 9) {
-    //     this.currentIndex = 0;
-    //   }
-    //   console.log(this.currentIndex);
-    // },
+    leftImage() {
+      --this.currentIndex;
+      if (this.currentIndex === 0) {
+        this.currentIndex = this.images.length - 9;
+      }
+      console.log(this.currentIndex);
+    },
+    rightImage() {
+      this.currentIndex += 1;
+      if (this.currentIndex === this.images.length - 9) {
+        this.currentIndex = 0;
+      }
+      console.log(this.currentIndex);
+    },
   },
   mounted() {
     const pre = this.images.slice(-2);

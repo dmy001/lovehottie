@@ -20,8 +20,10 @@
               <div class="imageBigDetailImg">
                 <div class="imageBigDetailImgLeft" @click="leftImage()"></div>
                 <div class="imageBigDetailImgRight" @click="rightImage()"></div>
-                <div class="bigger">原始尺寸</div>
-                <div class="normal hide" data-url data-i>重置</div>
+                <div class="bigger">{{ $trans("原始尺寸") }}</div>
+                <div class="normal hide" data-url data-i>
+                  {{ $trans("重置") }}
+                </div>
                 <div class="bd slide_bd">
                   <div
                     class="slide_item"
@@ -96,7 +98,7 @@
                       <a
                         class="imgRight align-text-top"
                         @click="warning()"
-                        title="举报"
+                        :title="$trans('举报')"
                       ></a>
                     </div>
                   </div>

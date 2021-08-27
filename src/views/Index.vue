@@ -301,7 +301,7 @@ export default {
     // 轮播
     newbannerInit() {
       let self = this;
-      self.$nextTick(function() {
+      self.$nextTick(function () {
         const topSwiper = new window.Swiper(".topBanner", {
           autoplay: {
             delay: 1500,
@@ -422,7 +422,7 @@ export default {
     }
   }
   .section1 {
-    background: url($baseImgURI+"zh_CN_bg111.jpg") center center no-repeat;
+    background: url($baseImgURI + "zh_CN_bg111.jpg") center center no-repeat;
     background-size: 1920px 969px;
     .content {
       .titleBox {
