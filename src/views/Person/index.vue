@@ -138,8 +138,7 @@
               "
               @click.stop="toCancelImg(it)"
             >
-            </span
-            >
+            </span>
             <span
               class="
                 bgBlack
@@ -156,15 +155,16 @@
             </span>
           </div>
           <!-- 放大图片 -->
-            <BigImage
-              v-show="openBigImg"
-              :images="iamgeList"
-              :imagesUrl="
-                this.iamgeList[currentIndex] + '?imageView2/2/w/560/h/630'
-              "
-              @func="closeBigImg"
-              
-            ></BigImage>
+          <BigImage
+            v-show="openBigImg"
+            :images="iamgeList"
+            :imagesUrl="
+              this.iamgeList[currentIndex] + '?imageView2/2/w/560/h/630'
+            "
+            @func="closeBigImg"
+            @leftBtn="leftImage"
+            @rightBtn="rightImage"
+          ></BigImage>
         </section>
       </div>
     </div>
@@ -295,7 +295,7 @@
           <div class="content_bottom">还没有好友</div>
         </div>
       </div>
-<!-- 评论区 -->
+      <!-- 评论区 -->
       <!-- <div class="mt-px15 bg-white w-full pb-10">
         <div class="dynamic">
           <div class="dynamic_left float-left">
@@ -556,7 +556,7 @@ import Comment from "@components/personal/Comment.vue";
 export default {
   data() {
     return {
-      openBigImg:false,
+      openBigImg: false,
       currentIndex: -1,
       modalIndex: -1,
       big: -1,
@@ -632,7 +632,7 @@ export default {
     editDynamic,
     Swpier,
     BigImage,
-    Comment
+    Comment,
   },
   methods: {
     openList() {
@@ -701,8 +701,23 @@ export default {
       console.log(this.openBigImg);
       this.currentIndex = it;
     },
-    closeBigImg(value){
-       this.openBigImg = value;
+    leftImage() {
+      --this.currentIndex;
+      if (this.currentIndex < 0) {
+        this.currentIndex = this.iamgeList.length - 1;
+      }
+      console.log(this.currentIndex);
+    },
+    rightImage() {
+      console.log(this.currentIndex);
+      if (this.currentIndex === this.iamgeList.length - 1) {
+        this.currentIndex = 0;
+      } else {
+        this.currentIndex += 1;
+      }
+    },
+    closeBigImg(value) {
+      this.openBigImg = value;
     },
     //确定按钮
     delEnsure() {
@@ -1110,5 +1125,4 @@ export default {
 .delete .ivu-modal-content {
   height: 200px;
 }
-
 </style>
