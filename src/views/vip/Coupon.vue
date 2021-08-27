@@ -2,12 +2,14 @@
   <div class="bg-white coupon">
     <div class="text-right mt-9">
       <span
+        class="cursor-pointer"
         :class="{ 'text-pink-600': isShowList }"
         @click="isShowList = true"
         >{{ $trans("列表") }}</span
       >
       |
       <span
+        class="cursor-pointer"
         :class="{ 'text-pink-600': !isShowList }"
         @click="isShowList = false"
         >{{ $trans("使用规则") }}</span
