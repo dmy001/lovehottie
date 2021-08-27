@@ -26,17 +26,18 @@
         </p>
         <section class="content_text flex-col flex">
           <p class="">我不知道啊 不知道</p>
-
-          <!-- <img
-            style="width: 262px; object-fit: contain; cursor: pointer"
-            @click.stop="bigCommentImage = true"
-            src="https://sources.lovehottie.com/A-564afb62ef7045b2857f817aa1ce6cad"
-          /> -->
-          <div class="flex flex-row">
+          <div class="px-5">
             <div
-              class="imgboxs  mt-2  mr-2"
-              style="object-fit: cover;
-                    flex-shrink: 0;overflow: hidden; width: 262px; height:262px;min-height: 87px;min-width: 87px;"
+              class="imgboxs mt-2 mr-2"
+              style="
+                object-fit: cover;
+                flex-shrink: 0;
+                width: 262px;
+                height: 262px;
+                min-height: 87px;
+                min-width: 87px;
+                float:left;
+              "
               v-for="(item, index) in images"
               :key="index"
             >
@@ -45,10 +46,10 @@
                 :src="item"
                 alt=""
                 style="
-                  width: 262px;
-                  height:262px;
                   object-fit: cover;
-                  cursor: pointer; 
+                  width: 262px;
+                  height: 262px;
+                  cursor: pointer;
                 "
               />
             </div>
@@ -245,6 +246,8 @@ export default {
         "https://images.gagahi.com/",
         "https://images.gagahi.com/A-614b46d091d84696bf32bb34ef16e943",
         "https://sources.gagahi.com/ac4b849baad14bcdbd6fe80940f09a10",
+        "https://sources.lovehottie.com/Z-7941c6ea659d4e04b1f4e7e816eea308",
+        "https://images.gagahi.com/",
       ],
     };
   },
@@ -306,9 +309,6 @@ export default {
   .content_text {
     width: 722px;
     margin-top: 4px;
-    line-height: 24px;
-    
-    
   }
   .dynamic_icon {
     height: 20px;
