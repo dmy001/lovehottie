@@ -119,18 +119,19 @@
           <li class="flex justify-between text-sm mt-5">
             <span class="w-1/4 text-right text-gray-400 pr-2">年龄:</span>
             <label class="w-3/4 text-left space-x-3">
-              <Select class="w-28 h-8">
-                <Option v-for="(it, index) in years" :value="it" :key="index">
-                </Option>
+              <Select class="w-28 h-8"  v-model="year">
+                <Option v-for="(it, index) in years" :value="it"  :key="index">
+                {{it}}</Option>
               </Select>
-              <Select class="w-28 h-8">
-                <Option v-for="(it, index) in years" :value="it" :key="index">
-                </Option>
+              <Select class="w-28 h-8" v-model="month">
+                <Option v-for="(it, index) in months" :value="it"  :key="index">
+               {{it}} </Option>
               </Select>
-              <Select class="w-28 h-8">
-                <Option v-for="(it, index) in years" :value="it" :key="index">
-                </Option>
+              <Select class="w-28 h-8" v-model="day">
+                 <Option v-for="(it, index) in days" :value="it"  :key="index">
+               {{it}} </Option>
               </Select>
+              
             </label>
           </li>
           <li class="flex justify-between text-sm mt-5">
@@ -264,6 +265,7 @@
             <span class="w-1/4 text-right text-gray-400">金币：</span>
             <span class="w-3/4 text-left text-sm -mt-1">
               0
+              <router-link to="/home/vip/RechargeGold">
               <button
                 class="
                   w-16
@@ -279,12 +281,14 @@
               >
                 充值
               </button>
+              </router-link>
             </span>
           </li>
           <li class="flex justify-between text-sm">
             <span class="w-1/4 text-right text-gray-400">会员级别：</span>
             <span class="w-3/4 text-left text-sm -mt-1">
               普通会员
+                <router-link to="/home/vip/UpgradeVip">
               <button
                 class="
                   w-16
@@ -300,6 +304,8 @@
               >
                 升级
               </button>
+              </router-link>
+
             </span>
           </li>
           <li class="flex justify-between text-sm">
@@ -886,7 +892,13 @@ export default {
         { title: "手机号码", value: " " },
         { title: "密码", value: "****" },
       ],
-      years: [2003, 2002, 2001, 2000, 1999, 1998, 1997, 1996],
+      year:0,
+      month:0,
+      day:1,
+      years: Array.from({length:100},(item, index)=> index+1910).reverse(),
+      months:Array.from({length:12},(item, index)=> index+1),
+      
+      
       job: [
         "文案",
         "客户经理",
@@ -914,6 +926,15 @@ export default {
       self: false,
       notice: false,
     };
+  },
+  computed:{
+    
+    days:{
+      get:function(){
+        return Array.from({length:new Date(this.year,this.month,0).getDate()},(item, index)=> index+1)
+      },
+      
+    }
   },
   components: {
     SetUpHeader,
@@ -969,6 +990,7 @@ export default {
       });
     },
   },
+  
 };
 </script>
 <style lang="scss" scoped>
