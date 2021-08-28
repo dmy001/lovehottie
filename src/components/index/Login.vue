@@ -43,11 +43,11 @@
       </div>
       <div class="w-full flex justify-center mb-px15">
         <div>
-          <span class="text-base-color4">没有账号?</span>
+          <span class="text-base-color4">{{ $trans("没有账号") }}?</span>
           <span
             class="text-base-color2 cursor-pointer ml-px10"
             @click="$emit('changeBox')"
-            >立即注册</span
+            >{{$trans("立即注册")}}</span
           >
         </div>
       </div>
@@ -77,7 +77,7 @@ export default {
       this.$emit("closeBox");
     },
     async toLogin() {
-      this.loginBtn = "登录中";
+      this.loginBtn = " $trans('登录中')" ;
       const res = await this.$api.login({
         userName: this.userNumber,
         passWord: this.password,
@@ -91,7 +91,7 @@ export default {
         this.$router.push("home");
       } else {
         alert(data.msg);
-        this.loginBtn = "登录";
+        this.loginBtn = "$trans('登录')";
       }
     },
   },

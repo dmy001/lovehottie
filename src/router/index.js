@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 const Index = () => import('@/views/Index.vue')
 const About = () => import('@/views/About.vue')
 const Home = () => import('@/views/home/Home.vue')
-const SetLangs = () => import('@/views/setLangs/SetLangs.vue')
+
 const Meet = () => import('@/views/meet/Index.vue')
 const OtherCentre = () => import('@/views/meet/OtherCentre.vue')
 const Swiper = () => import('@/views/meet/swiper.vue')
@@ -66,7 +66,6 @@ const routes = [
       title: '语言'
     }
 
-  },
 
 
   {

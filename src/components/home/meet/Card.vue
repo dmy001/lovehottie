@@ -10,7 +10,7 @@
         />
       </div>
       <div class="mt-px15 text-base-color2">Sherry</div>
-      <div class="text-base-color4">19,中国</div>
+      <div class="text-base-color4">19,{{$trans("中国")}}</div>
     </div>
   </router-link>
 </template>
