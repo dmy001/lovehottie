@@ -87,25 +87,25 @@
         <td class="border" colspan="2">{{ $trans("不限") }}</td>
       </tr>
     </table>
-    <div class="mt-9">
-      <p class="flex justify-start">{{ $trans("备注") }}：</p>
-      <p class="flex justify-start mt-3 mb-3">
+    <div class="mt-9 text-left">
+      <p>{{ $trans("备注") }}：</p>
+      <p class="mt-3 mb-3">
         <span class="text-pink-600">{{ $trans("翻译字符") }}：</span
         >{{ $trans("仅对vip开放，超出字符数：1金币/100字符") }}
       </p>
-      <p class="flex justify-start">
+      <p>
         <span class="text-pink-600">{{ $trans("翻译VIP") }}：</span
         >{{ $trans("vip会员可免费使用3次10min翻译vip") }}
       </p>
-      <p class="flex justify-start mt-3 mb-3">
+      <p class="mt-3 mb-3">
         <span class="text-pink-600">{{ $trans("查看谁喜欢我") }}：</span
         >{{ $trans("仅对vip会员开放") }}
       </p>
-      <p class="flex justify-start mb-3">
+      <p class="mb-3">
         <span class="text-pink-600">{{ $trans("信息是否已读") }}：</span
         >{{ $trans("仅对vip会员开放") }}
       </p>
-      <p class="flex justify-start">
+      <p>
         <span class="text-pink-600">{{ $trans("虚拟礼物") }}：</span
         >{{
           $trans(

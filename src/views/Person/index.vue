@@ -790,7 +790,7 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss"  scoped>
 .topUser {
   width: 100%;
   background: #fff;

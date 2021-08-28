@@ -30,7 +30,7 @@
               ></span>
             </p>
             <p
-              class="contentText mt-2 text-left"
+              class="mt-2 text-left"
               style="word-break: break-all; word-wrap: break-word"
             >
               お会いできてうれしいです
@@ -38,7 +38,7 @@
             <!-- 评论图片 -->
             <div class="mt-2 text-left flex" style="">
               <div
-                class="imgboxs relative cursor-pointer float-left"
+                class="relative cursor-pointer float-left"
                 style="overflow: hidden"
                 v-for="(item, index) in images"
                 :key="index"
@@ -57,7 +57,8 @@
               </div>
             </div>
             <!-- 留言按钮和地球 -->
-            <div class="dynamic_icon h-5 ml-px15 mt-px15 relative">
+            <div class="flex items-center h-5 ml-px15 mt-px15 relative">
+              <!-- 留言 -->
               <span
                 class="bg_icon inline-block cursor-pointer h-4 w-5 mr-px3"
                 @click.stop="openList"
@@ -69,28 +70,11 @@
               >
               </span>
               <span class="text-gray-400">{{ contentList.length }}</span>
-              <div class="fanyi_circle" style="line-height: 10px">
-                <span
-                  class="bg_circle ml-px15 inline-block cursor-pointer w-5 h-5"
-                >
-                </span>
-                <div class="trans-type1 w-36 h-28 absolute hidden left-4 top-6">
-                  <span class="ul_bg1 w-5 h-7 absolute left-7 -top-3"></span>
-                  <ul>
-                    <li data-type="en">English</li>
-                    <li data-type="zh">简体中文</li>
-                    <li data-type="cht">繁體中文</li>
-                    <li data-type="kor">한국어</li>
-                    <li data-type="ru">Pусский</li>
-                    <li data-type="de">Deutsch</li>
-                    <li data-type="spa">Español</li>
-                    <li data-type="jp">日本語</li>
-                  </ul>
-                </div>
-              </div>
+              <!-- 地球 -->
+              <EarthImg class="mt-1"></EarthImg>
             </div>
             <div
-              class="dynamic_input mt-2 w-full overflow-hidden px-5 py-5"
+              class="mt-2 w-full overflow-hidden px-5 py-5"
               style="border-top: 1px solid #e7e7e7; background: #fafafa"
             >
               <!-- 评论列表 -->
@@ -101,7 +85,7 @@
                   :key="index"
                 >
                   <div class="comment_content">
-                    <div class="content_left float-left">
+                    <div class="float-left">
                       <img
                         class="w-9 h-9 rounded-full"
                         :src="STATICBASEURI + '/images/default/female.png'"
@@ -118,7 +102,7 @@
                         }}</span>
                         <span class="text-12px">{{ item.time }}</span>
                       </p>
-                      <div class="right_text mt-1 mb-2.5">
+                      <div class="mt-1 mb-2.5">
                         <span class="text-12px mr-px15">
                           {{ item.content }}
                         </span>
@@ -198,7 +182,7 @@
                 </div>
               </div>
               <!-- 评论 -->
-              <div class="textInput text-left">
+              <div class="pl-5 pr-5 text-left" style="background: #fafafa">
                 <input
                   type="text"
                   class="w-full py-1 pl-5"
@@ -217,10 +201,21 @@
                 <div v-if="inputShow">
                   <textarea
                     v-model="inputContent"
+                    class="
+                      textArea
+                      px-1.5
+                      py-1.5
+                      w-full
+                      h-full
+                      rounded-lg
+                      mx-0
+                      my-0
+                      inline-block
+                      cursor-text
+                    "
                     id="sellineName"
                     autofocus="autofocus"
                     name=""
-                    class="textArea"
                     rows="2"
                     :placeholder="this.placeholder"
                     style="outline: none"
@@ -231,8 +226,26 @@
                     <span style="color: #999"
                       >{{ inputContent.length }}/240</span
                     >
-                    <div class="sendBtn" @click="sendBtn()">
-                      <i class="senI"></i>
+                    <div
+                      class="
+                        text-white
+                        cursor-pointer
+                        text-xs
+                        h-8
+                        leading-6
+                        text-center
+                        pr-4
+                        pl-4
+                        pb-1.5
+                        mr-5
+                      "
+                      style="
+                        border-radius: 30px;
+                        background: #ff625a none repeat scroll 0 0;
+                      "
+                      @click="sendBtn()"
+                    >
+                      <i class="senI h-6 w-3.5 inline-block -mb-0.5"></i>
                     </div>
                   </div>
                 </div>
@@ -262,10 +275,12 @@
 <script>
 import CommentBigImg from "@/components/home/othercentre/CommentBigImg";
 import Report from "@/components/home/othercentre/Report";
+import EarthImg from "@/components/home/othercentre/EarthImg";
 export default {
   components: {
     CommentBigImg,
     Report,
+    EarthImg,
   },
   data() {
     return {
@@ -413,118 +428,73 @@ export default {
 .talk_icon:hover {
   background-position: -25px -735px;
 }
-.contentText {
+.bg_icon {
+  background: url("~@images/dynamic.png") no-repeat;
+  background-position: -26px -48px;
 }
-.imgboxs {
+.bg_icon:hover {
+  background-position: -26px -26px !important;
 }
-.dynamic_icon {
-  @apply flex items-center;
-  .bg_icon {
-    background: url("~@images/person/dynamic.png") no-repeat;
-    background-position: -26px -48px;
-  }
-  .bg_icon:hover {
-    background-position: -26px -26px !important;
-  }
-  .bg_circle {
-    background: url("~@images/dynamic.png") no-repeat;
-    background-position: -54px -48px;
-  }
-  .bg_circle:hover {
-    background-position: -54px -26px;
-  }
-  .trans-type1 {
-    z-index: 998;
-    .ul_bg1 {
-      z-index: 2;
-      background: url("~@images/person/IMicon.png") 0px -75px repeat;
-    }
-    ul {
-      height: 101px;
-      background-color: #fff;
-      border: solid 1px #dcdcdc;
-      border-radius: 4px;
-      padding: 7px 0 0 5px;
-      li {
-        margin-bottom: 0;
-        width: 66px;
-        line-height: 20px;
-        height: 24px;
-        color: #333;
-        @apply text-center float-left cursor-pointer;
-      }
-      li:hover {
-        color: $fontColor1;
-      }
-    }
-  }
-  .fanyi_circle:hover .trans-type1 {
-    display: block;
+.bg_circle {
+  background: url("~@images/dynamic.png") no-repeat;
+  background-position: -54px -48px;
+}
+.bg_circle:hover {
+  background-position: -54px -26px;
+}
+.trans-type1 {
+  .ul_bg1 {
+    background: url("~@images/person/IMicon.png") 0px -75px repeat;
   }
 }
-.dynamic_input {
-  .comment_list {
-    @apply w-full;
-    .content_left img {
+
+ul {
+  height: 101px;
+  background-color: #fff;
+  border: solid 1px #dcdcdc;
+  border-radius: 4px;
+  padding: 7px 0 0 5px;
+  li {
+    margin-bottom: 0;
+    width: 66px;
+    line-height: 20px;
+    height: 24px;
+    color: #333;
+    @apply text-center float-left cursor-pointer;
+  }
+  li:hover {
+    color: $fontColor1;
+  }
+}
+.comment_list {
+  @apply w-full;
+  .icon_content {
+    .message_iconSmall {
+      background: url("~@images/person/little1.png") -20px -632px no-repeat;
     }
-    .right_text {
-      .icon_content {
-        .message_iconSmall {
-          background: url("~@images/person/little1.png") -20px -632px no-repeat;
-        }
-        .message_iconSmall:hover {
-          background-position: -58px -632px;
-        }
-        .bg_circleSmall {
-          background: url("~@images/person/little1.png") -2px -631px no-repeat;
-        }
-        .bg_circleSmall:hover {
-          background-position: -40px -631px;
-        }
-        .trans-type2 {
-          z-index: 998;
-          .ul_bg2 {
-            z-index: 2;
-            background: url("~@images/person/IMicon.png") 0px -75px repeat;
-          }
-          ul {
-            height: 101px;
-            background-color: #fff;
-            border: solid 1px #dcdcdc;
-            border-radius: 4px;
-            padding: 7px 0 0 5px;
-            li {
-              margin-bottom: 0;
-              width: 66px;
-              line-height: 20px;
-              height: 24px;
-              color: #333;
-              @apply text-center float-left cursor-pointer;
-            }
-            li:hover {
-              color: $fontColor1;
-            }
-          }
-        }
-        .bg_circleSmall:hover .trans-type2 {
-          display: block;
-        }
+    .message_iconSmall:hover {
+      background-position: -58px -632px;
+    }
+    .bg_circleSmall {
+      background: url("~@images/person/little1.png") -2px -631px no-repeat;
+    }
+    .bg_circleSmall:hover {
+      background-position: -40px -631px;
+    }
+    .trans-type2 {
+      z-index: 998;
+      .ul_bg2 {
+        z-index: 2;
+        background: url("~@images/person/IMicon.png") 0px -75px repeat;
       }
     }
-  }
-  .textInput {
-    background: #fafafa;
-    padding-left: 20px;
-    padding-right: 20px;
+    .bg_circleSmall:hover .trans-type2 {
+      display: block;
+    }
   }
 }
 .textArea {
-  padding: 5px;
   border: 1px solid rgb(204, 204, 204);
-  width: 100%;
-  height: 100%;
-  border-radius: 9px;
-  margin: 0px;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   text-rendering: auto;
   color: -internal-light-dark(black, white);
@@ -533,42 +503,22 @@ export default {
   text-transform: none;
   text-indent: 0px;
   text-shadow: none;
-  display: inline-block;
-  text-align: start;
   appearance: auto;
   background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
   -webkit-rtl-ordering: logical;
   flex-direction: column;
   resize: auto;
-  cursor: text;
   white-space: pre-wrap;
   overflow-wrap: break-word;
   column-count: initial !important;
   font: 400 13.3333px Arial;
 }
-.sendBtn {
-  background: #ff625a none repeat scroll 0 0;
-  color: #fff;
-  cursor: pointer;
-  font-size: 12px;
-  height: 30px;
-  line-height: 24px;
-  text-align: center;
-  border-radius: 30px;
-  padding-right: 15px;
-  padding-left: 15px;
-  padding-bottom: 5px;
-  margin-right: 20px;
-}
+
 .senI {
-  height: 24px;
-  width: 14px;
   background: rgba(0, 0, 0, 0) url("../../../assets/images/dynamic.png")
     no-repeat scroll 0 0;
   background-position-x: -251px;
   background-position-y: 6px;
-  display: inline-block;
-  margin-bottom: -2px;
   vertical-align: middle;
 }
 </style>
