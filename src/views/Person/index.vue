@@ -158,7 +158,6 @@
             </span>
           </div>
           <!-- 放大图片 -->
-          <div v-show="bigImg == index">1231231313</div>
           <div v-show="big != -1">
             <img
               :src="this.iamgeList[currentIndex] + '?imageView2/2/w/560/h/630'"
@@ -621,10 +620,7 @@ export default {
       modalIndex: -1,
       big: -1,
       bacShow: false,
-      showFriendsList: false,
-      isDelete: false,
-      mouseInner: false,
-      mouseComment: false,
+      showFriendsList: false,    
       option: [],
       select: "",
       del: false,
@@ -632,9 +628,6 @@ export default {
       delImg: false,
       showImgs: false,
       modalPhoto: false,
-      inputShow: false,
-      value17: "",
-      listShow: false,
       isEdit: -1,
       emojiShow: false,
       contentList: [
@@ -697,8 +690,7 @@ export default {
   },
   methods: {
     cancelAddPhoto(){
-       this.modalPhoto = false;
-       
+       this.modalPhoto = false;  
     },
     completeAddPhoto() {
       this.modalPhoto = false;
@@ -707,32 +699,18 @@ export default {
         this.$Message.success("Success");
       }, 1500);
     },
-    openList() {
-      if (this.contentList.length > 0) {
-        this.listShow = !this.listShow;
-      } else {
-        this.inputShow = true;
-      }
-    },
     cancel() {
       //  this.$Message.info('')
     },
     // 点击空白处关闭评论
     closeSel(event) {
-      var currentCli = document.getElementById("sellineName");
+    
       var currentName = document.getElementById("remarkName");
-      if (currentCli) {
-        if (!currentCli.contains(event.target)) {
-          this.inputShow = false;
-        }
-      } else if (currentName) {
+       if (currentName) {
         if (!currentName.contains(event.target)) {
           this.isEdit = -1;
         }
       }
-    },
-    deleteComment() {
-      this.contentList.splice(this.index, 1);
     },
     //打开相册
     openImg() {
@@ -812,7 +790,7 @@ export default {
   },
 };
 </script>
-<style lang="scss" >
+<style lang="scss" scoped>
 .topUser {
   width: 100%;
   background: #fff;
