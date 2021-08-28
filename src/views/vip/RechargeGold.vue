@@ -12,29 +12,42 @@
             v-for="(item, index) in list"
             :key="index"
             class="border content-item flex-auto"
-            :class="{ active: index === currentIndex&&inputCount===false }"
+            :class="{ active: index === currentIndex && inputCount === false }"
             @click="changeColor(index)"
           >
             <i class="inline-block mt-4 gold"></i>
             <i
               class="inline-block absolute rightGb"
-              v-show="index === currentIndex&&inputCount===false"
+              v-show="index === currentIndex && inputCount === false"
             ></i>
             <p class="text-3xl">{{ item.gold }}</p>
             <p class="text-xs mt-2">{{ item.money }}</p>
             <div class="select-btn mt-4" style="display: inline-block">
-              <span class="sel-0" v-show="!(index === currentIndex&&inputCount===false)">{{
-                $trans("选择")
+              <span
+                class="sel-0"
+                v-show="!(index === currentIndex && inputCount === false)"
+                >{{ $trans("选择") }}</span
+              >
+              <span class="sel-1" v-show="index === currentIndex&& inputCount === false">{{
+                $trans("已选")
               }}</span>
-              <span class="sel-1">{{ $trans("已选") }}</span>
             </div>
           </div>
         </div>
-            
-        <div class="bottom border flex flex-col pt-10 pb-8" :class="{ active: inputCount===true }" @click="changeSelect" >
-          <div class="flex mx-auto "  >
+
+        <div
+          class="bottom border flex flex-col pt-10 pb-8"
+          :class="{ active: inputCount === true }"
+          @click="changeSelect"
+        >
+          <div class="flex mx-auto">
             <p>{{ $trans("其他金额") }}：</p>
-            <input class="border rounded-3xl" type="text" v-model="payPrice" @input="payPrice = payPrice.replace(/[^\d]/g,'')" />
+            <input
+              class="border rounded-3xl"
+              type="text"
+              v-model="payPrice"
+              @input="payPrice = payPrice.replace(/[^\d]/g, '')"
+            />
             <!-- @keyup.enter='search' @input='search($event)' -->
             <i class="inline-block ml-2"></i>
           </div>
@@ -53,8 +66,8 @@
       </div>
     </div>
     <section class="bottom">
-    <PayInfo isDaller="false" />
-    <PayButton payType="立即充值" />
+      <PayInfo isDaller="false" />
+      <PayButton payType="立即充值" />
     </section>
   </div>
 </template>
@@ -80,12 +93,12 @@ export default {
       ],
       message: [
         "给您喜欢的人赠送一份精美礼物",
-        "发送翻译私信，让您和ta畅聊无阻, 让您和ta无障碍嗨聊",
+        "发送翻译私信，让您和ta畅聊无阻",
         "发送金币红包，给对方一个惊喜",
         "出现在首页，让更多人看到您",
         "使用金币升级为会员，享受更多特权",
       ],
-      inputCount:false,
+      inputCount: false,
       currentIndex: 0,
       currentPrice: 0,
       payPrice: 1314,
@@ -94,19 +107,19 @@ export default {
   methods: {
     // 选择商品，
     /**
-    * 控制输入框的选中样式
-    * 改变下标
-    * 向支付组件发送价格
-    * @param {*} index 下标
-    */
-    changeColor(index) {    
-      this.inputCount = false
+     * 控制输入框的选中样式
+     * 改变下标
+     * 向支付组件发送价格
+     * @param {*} index 下标
+     */
+    changeColor(index) {
+      this.inputCount = false;
       this.currentIndex = index;
       this.currentPrice = this.list[index].gold;
     },
-    changeSelect(){
-      this.inputCount = true
-    }
+    changeSelect() {
+      this.inputCount = true;
+    },
     // search(event){
     //   console.log(event.currentTarget.value);
     // }
