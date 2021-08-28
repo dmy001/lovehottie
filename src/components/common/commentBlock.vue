@@ -56,7 +56,7 @@ export default {
   data() {
     return {
       commentText: "",
-      showCommentList: false,
+      showCommentList: true,
       showReplyList: false,
       showCommentBtn: true,
       replyCmtHolder: "回复: ",

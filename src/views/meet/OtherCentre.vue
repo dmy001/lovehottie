@@ -53,7 +53,7 @@
           <span
             class="message w-10 h-10 ml-5 inline-block cursor-pointer"
           ></span>
-          <span class="friends w-10 h-10 ml-5 inline-block">
+          <span class="friends w-10 h-10 ml-5 inline-block cursor-pointer">
             <div
               class="
                 friendsImg
@@ -162,13 +162,13 @@ export default {
 
 <style lang="scss" scoped>
 .message {
-  background: no-repeat url("../../assets/images/person/little1.png") -42px -457px;
+  background: no-repeat url("../../assets/images/person/little1.png");
   background-position-x: 0px;
-  background-position-y: -529px;
+  background-position-y: -528px;
 }
 .message:hover {
   background-position-x: -41px;
-  background-position-y: -527px;
+  background-position-y: -526px;
 }
 .friends {
   background: no-repeat url("../../assets/images/person/little1.png") -1px -280px;
