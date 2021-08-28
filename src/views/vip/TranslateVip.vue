@@ -27,7 +27,7 @@
             <p class="text-18px mt-10"> {{ $trans("费用") }}US${{ item.price }}</p>
             <div class="select-btn mt-3" style="display: inline-block">
               <span class="sel-0" v-show="!(index === currentIndex)">{{ $trans("选择") }}</span>
-              <span class="sel-1">{{ $trans("已选") }}</span>
+              <span class="sel-1" v-show="(index === currentIndex)">{{ $trans("已选") }}</span>
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@ export default {
 </script>
 
 
-<style lang='scss'>
+<style lang='scss' scoped>
 @import "@styles/vips.scss";
 
 .translateVip {

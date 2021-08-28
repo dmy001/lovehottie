@@ -12,16 +12,16 @@ import zh_tw from './langs/zh_tw.json'
 import Vue from 'vue'
 window.Vue = Vue 
 const i18n = new VueI18n({
-    locale: 'zh-cn',
+    locale: 'es-es',
     messages: {
-        'en-us': en,
-        'es-es': es_es,
-        'de-de': de_de,
-        'ja-jp': ja_jp,
-        'ko-kr': ko_kr,
-        'ru-ru': ru_ru,
-        'zh-cn': zh_cn,
-        'zh_tw': zh_tw,
+        'en-us': en,     //英文  
+        'es-es': es_es,   // 西班牙 12
+        'de-de': de_de,    //德语 12
+        'ja-jp': ja_jp,  // 日文
+        'ko-kr': ko_kr,  //韩文
+        'ru-ru': ru_ru,  //俄语 12
+        'zh-cn': zh_cn,  //简体
+        'zh_tw': zh_tw,  //繁体
     }
     // something vue-i18n options here ...
 })

@@ -4,6 +4,8 @@
       <div class="flex justify-center items-center text-px14">
         <img :src="STATICBASEURI + '/images/oy1.jpg'" />
         <span
+          >{{ $trans("已经有")
+          }}<span class="text-base-color2 font-bold">100</span
           >已经有<span class="text-base-color2 font-bold">100</span
           >{{ $trans("多个国家的用户") }}</span
         >
@@ -66,8 +68,8 @@
             >
               {{ $trans(item) }}
             </li>
-            <!-- <li class="title"><a href="#">在线</a></li>
-            <li class="title"><a href="#">最新</a></li> -->
+            <!-- <li class="title"><a href="#">{{$trans("在线")}}</a></li>
+            <li class="title"><a href="#">{{$trans("最新")}}</a></li> -->
           </ul>
         </div>
       </div>
@@ -82,6 +84,7 @@
                 type="radio"
                 name="country"
                 id="om"
+                value="$trans('欧美')"
                 :value="$trans('欧美')"
                 v-model="selCountry"
               />
@@ -92,6 +95,10 @@
                 type="radio"
                 name="country"
                 id="zga"
+                value="$trans('中港澳')"
+                v-model="selCountry"
+              />
+              <label for="zga">{{ $trans("中港澳") }}</label>
                 :value="$trans('中港台')"
                 v-model="selCountry"
               />
@@ -102,6 +109,7 @@
                 type="radio"
                 name="country"
                 id="rh"
+                value="$trans('日韩')"
                 :value="$trans('日韩')"
                 v-model="selCountry"
               />
@@ -112,6 +120,7 @@
                 type="radio"
                 name="country"
                 id="qt"
+                value="$trans('其他')"
                 :value="$trans('其他')"
                 v-model="selCountry"
               />
@@ -124,6 +133,18 @@
           <div class="sex-list">
             <div class="sex-list-item">
               <input type="radio" id="sexA" value="unlimit" v-model="selSex" />
+              <label for="sexA">{{$trans('不限')}}</label>
+            </div>
+            <div class="sex-list-item">
+              <input type="radio" id="sexB" value="male" v-model="selSex" />
+              <label for="sexB">{{$trans('男')}}</label>
+            </div>
+            <div class="sex-list-item">
+              <input type="radio" id="sexC" value="female" v-model="selSex" />
+              <label for="sexC">{{$trans('女')}}</label>
+            </div>
+          </div>
+          <span class="filter-item-title">{{$trans('年龄')}}</span>
               <label for="sexA">{{ $trans("不限") }}</label>
             </div>
             <div class="sex-list-item">
@@ -141,6 +162,7 @@
           </div>
         </div>
         <div class="flex-1">
+          <span class="filter-item-title">{{$trans('语言')}}</span>
           <span class="filter-item-title">{{ $trans("语言") }}</span>
           <div class="lang-list">
             <div class="flex flex-wrap">
@@ -169,6 +191,7 @@
           style="cursor: pointer"
         >
           <div class="text-red-500 flex">
+            <span class="mr-2">{{$trans('高级选项')}}</span>
             <span class="mr-2">{{ $trans("高级选项") }}</span>
             <img
               class="mt-2"
@@ -215,6 +238,10 @@
         </div>
         <div class="flex justify-center mt-6">
           <button class="bg-red-400 text-white rounded-3xl px-6 py-2">
+            {{$trans('重新搜索')}}
+          </button>
+          <button class="ml-6 bg-gray-200 text-black rounded-3xl px-6 py-2">
+            {{$trans('取消')}}
             {{ $trans("重新搜索") }}
           </button>
           <button class="ml-6 bg-gray-200 text-black rounded-3xl px-6 py-2">

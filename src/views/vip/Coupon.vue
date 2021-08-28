@@ -75,7 +75,7 @@
         <p class="text-gray-700 font-bold">
           {{ $trans("各类优惠券具体使用规则：") }}
         </p>
-        <button class="w-20 h-5 bg-gray-200 rounded-xl text-black mt-1 mb-1">
+        <button class="pl-1.5 pr-1.5 h-5 bg-gray-200 rounded-xl text-black mt-1 mb-1">
           {{ $trans("会员优惠券") }}
         </button>
         <p class="mb-2">
@@ -85,7 +85,7 @@
           ②
           {{ $trans("价值为3金币的高级会员优惠券可以购买任意高级会员使用；") }}
         </p>
-        <button class="w-28 h-5 bg-gray-200 rounded-xl text-black mt-1 mb-2">
+        <button class="pl-1.5 pr-1.5 h-5 bg-gray-200 rounded-xl text-black mt-1 mb-2">
           {{ $trans("虚拟礼物优惠券") }}
         </button>
         <p>
