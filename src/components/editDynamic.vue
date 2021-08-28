@@ -6,7 +6,7 @@
       show-word-limit
       type="textarea"
       :border="false"
-      placeholder="想和大家分享什么"
+      :placeholder="$trans('想和大家分享什么')"
       style="width: 240px; border: none"
       class="leftText placeholder-gray-800"
       :rows="9"
@@ -36,18 +36,18 @@
         <div v-if="imgShow" class="upload_img flex items-start flex-col p-px3">
           <span class="z-1000 iocn icon_top"></span>
           <div class="w-full p-px10 flex justify-between">
-            {{ $trans("本地上传") }}
+            {{$trans("本地上传")}}
             <i class="iocn close_icon" @click="imgShow = false"></i>
           </div>
 
           <div class="mt-px100 ml-px3">
-            <span class="block text-12px mb-px10 text-base-color5 text-left">
-              {{
-                $trans(
-                  `共${uploadList.length}张，还能上传${9 - uploadList.length}张`
-                )
+            <span class="block text-12px mb-px10 text-base-color5 text-left"
+              >{{$trans("共")}}{{ uploadList.length }}{{$trans("张，还能上传")}}<span>{{
+                9 - uploadList.length
               }}</span
-            >
+              >{{$trans("张")}}
+              </span>
+            
             <Upload
               ref="upload"
               :show-upload-list="false"
@@ -96,7 +96,8 @@
           </div>
         </div>
       </div>
-      <div class="footRight">{{ $trans("发送") }}</div>
+      <div class="footRight">{{$trans("发送")}}</div>
+      
     </div>
   </div>
 </template>

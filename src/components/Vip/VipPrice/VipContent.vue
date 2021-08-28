@@ -16,7 +16,7 @@
           <span class="sel-0" v-show="!(selectIndex === item.id)">{{
             $trans("选择")
           }}</span>
-          <span class="sel-1">{{ $trans("已选") }}</span>
+         <span class="sel-1" v-show="(selectIndex === item.id)">{{ $trans("已选") }}</span>
         </div>
       </div>
     </div>

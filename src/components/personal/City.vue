@@ -4,7 +4,7 @@
         class="h-12 rounded-t-2xl flex justify-between pl-3"
         style="background-color: #e63561"
       >
-        <p class="text-left mt-3 text-white">选择国家</p>
+        <p class="text-left mt-3 text-white">{{$trans('选择国家')}}</p>
         <span
           class="closed w-9 h-9 rounded-full -mt-3 -mr-1"
           @click="close()"

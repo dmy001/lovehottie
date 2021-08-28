@@ -8,13 +8,13 @@
             <span
               @click="meRecharge"
               :class="{ 'text-red-500': rechargePage == false }"
-              >我的打赏</span
+              >{{$trans("我的打赏")}}</span
             >
             <span>/</span>
             <span
               @click="receiveRecharge"
               :class="{ 'text-red-500': rechargePage == true }"
-              >收到的打赏</span
+              >{{$trans("收到的打赏")}}</span
             >
           </div>
           <!-- 我的打赏头部 -->
@@ -22,10 +22,10 @@
             <thead class="tableSize">
               <!-- 表格头部 -->
               <tr class="rechargeformtop">
-                <th class="transactionNumber">交易编号</th>
-                <th class="rechargeAmount">充值金额</th>
-                <th class="status">地位</th>
-                <th class="rechargeTradingTime">交易时间</th>
+                <th class="transactionNumber">{{$trans("交易编号")}}</th>
+                <th class="rechargeAmount">{{$trans("充值金额")}}</th>
+                <th class="status">{{$trans("地位")}}</th>
+                <th class="rechargeTradingTime">{{$trans("交易时间")}}</th>
               </tr>
             </thead>
 
@@ -47,9 +47,9 @@
             <thead class="tableSize">
               <!-- 表格头部 -->
               <tr class="rechargeformtop">
-                <th class="explanation">解释</th>
-                <th class="consumptionAmount">消费金额</th>
-                <th class="consumpionTradingTime">交易时间</th>
+                <th class="explanation">{{$trans("解释")}}</th>
+                <th class="consumptionAmount">{{$trans("消费金额")}}</th>
+                <th class="consumpionTradingTime">{{$trans("交易时间")}}</th>
               </tr>
             </thead>
 
@@ -66,7 +66,7 @@
           </table>
           <!-- 没有数据 -->
           <div class="noData">
-  <span>没有数据</span>
+  <span>{{$trans("没有数据")}}</span>
  </div>
         </div>
       </div>

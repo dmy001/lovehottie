@@ -1,14 +1,16 @@
 <template>
   <div class="bg-white vip">
-    <div class="nav flex w-full bg-white rounded-px8 mt-px15 h-10  border-b">
-      <div   
+    <div
+      class="nav flex w-full bg-white rounded-px8 mt-px15 text-sm border-b"
+    >
+      <div
         v-for="(item, index) in list"
         :key="index"
-        class="text-sm leading-10 ml-2"
-        :class="{active:index === currentIndex }"
+        class="nav-item ml-2"
+        :class="{ active: index === currentIndex,'text-xs':textlitle,'text-sm':textlitle}"
         @click="goClick(index, item.path)"
       >
-      <!-- 多语言 根据语言选择字号 不定宽度 -->
+  <!-- 多语言  根据语言选择不同的字体大小 宽度不固定 -->
         {{ $trans(item.name) }}
       </div>
     </div>
@@ -17,6 +19,8 @@
 </template>
 
 <script>
+import i18n from "../../i18n";
+
 export default {
   data() {
     return {
@@ -31,29 +35,41 @@ export default {
         { name: "优惠券", path: "Coupon" },
         { name: "帮助", path: "Help" },
       ],
-      currentIndex:0,
+      currentIndex: 0,
+      textlitle:false,
+      textbig:false
     };
   },
   methods: {
-    goClick(index, path){
+    goClick(index, path) {
       console.log(path);
-      this.currentIndex = index
+      this.currentIndex = index;
       this.$router.push(path);
     },
+  },
+  mounted() {
+    // <!-- 多语言 根据语言选择字号  -->
+    if (i18n.locale === "es-es"||i18n.locale === "de-de"||i18n.locale === "ruru") {
+      this.textlitle = true
+    } else this.textbig = true;
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.vip{
-  .nav{
-    div:nth-child(9){
+.vip {
+  .nav {
+    .nav-item {
+      height: 48px;
+      line-height: 48px;
+    }
+    div:nth-child(9) {
       margin-left: auto;
       margin-right: 30px;
     }
   }
 }
-.active{
-border-bottom:2px solid #e63561 ;
+.active {
+  border-bottom: 2px solid #e63561;
 }
 </style>
