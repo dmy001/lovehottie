@@ -6,7 +6,7 @@
       show-word-limit
       type="textarea"
       :border="false"
-      placeholder="$trans('想和大家分享什么')"
+      :placeholder="$trans('想和大家分享什么')"
       style="width: 240px; border: none"
       class="leftText placeholder-gray-800"
       :rows="9"

@@ -69,7 +69,7 @@
           <input
             type="text"
             class="flex w-px120 search-input text-white font-bold text-px14"
-            placeholder=" $trans('请输入昵称') "
+            :placeholder=" $trans('请输入昵称') "
           />
           <!-- <img src="~@images/little.png" /> -->
           <label class="flex search-icon m-px3" />

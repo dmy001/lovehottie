@@ -106,6 +106,7 @@
           >
             <span class="" @click="bigImg = index">
               <img class="w-40 cursor-pointer" :src="img.imgUrl" />
+            </span>
             <span class="">
               <!-- <a :href="img.imgUrl + '?imageView2/2/w/560/h/630'" target="_self"></a> -->
               <img class="w-40 h-40 object-contain cursor-pointer" :src="img" />
@@ -258,10 +259,6 @@
       <!-- 展示照片 -->
       <div class="">
         <Swpier></Swpier>
-      <div >
-        <Swpier ></Swpier>
-      <div>
-        <Swpier></Swpier>
       </div>
 
       <div
@@ -310,11 +307,6 @@
           <img
             src="../../assets/images/person/open.png"
             alt=""
-            title="$trans('好友列表')"
-            class="-mt-8 ml-56 cursor-pointer"
-            @click="showFriends"
-          />
-          <div class="content_bottom">{{ $trans("还没有好友") }}</div>
             :title="$trans('好友列表')"
             class="-mt-8 ml-56 cursor-pointer"
             @click="showFriends"
@@ -572,10 +564,8 @@
             <p>{{$trans('该照片所在动态也会一并删除。')}}</p>
           </section>
           <section class="absolute bottom-10 w-full text-center space-x-5">
-            <button class="w-20 h-8 bg-red-400 rounded-2xl text-white">
-              {{$trans('确定')}}
             <button class="w-20 h-8 bg-red-400 rounded-2xl text-white" @click="delEnsure()">
-              确定
+             {{$trans('确定')}}
             </button>
             <button
               class="w-20 h-8 rounded-2xl border border-solid border-gray-400"
@@ -823,32 +813,32 @@ export default {
 };
 </script>
 <style lang="scss" >
-// // .topUser {
-// //   width: 100%;
-// //   background: #fff;
-// //   height: 100px;
-// //   padding: 20px;
-// //   @apply flex flex-row items-center;
-// //   .avatar {
-// //     width: 60px;
-// //     height: 60px;
-// //     @apply rounded-1/2;
-// //   }
-//   .topRight {
-//     font-size: 14px;
-//     @apply flex flex-col  text-left text-black;
-//     .personName {
-//       font-size: 16px;
-//       @apply text-base-color1;
-//       span {
-//         width: 20px;
-//         height: 20px;
-//         background: url("~@images/index/little.png") 0 -616px no-repeat;
-//         vertical-align: middle;
-//       }
-//     }
-//   }
-// }
+.topUser {
+  width: 100%;
+  background: #fff;
+  height: 100px;
+  padding: 20px;
+  @apply flex flex-row items-center;
+  .avatar {
+    width: 60px;
+    height: 60px;
+    @apply rounded-1/2;
+  }
+  .topRight {
+    font-size: 14px;
+    @apply flex flex-col  text-left text-black;
+    .personName {
+      font-size: 16px;
+      @apply text-base-color1;
+      span {
+        width: 20px;
+        height: 20px;
+        background: url("~@images/index/little.png") 0 -616px no-repeat;
+        vertical-align: middle;
+      }
+    }
+  }
+}
 .photo {
   width: 856px;
   height: 120px;
@@ -891,9 +881,9 @@ export default {
       line-height: 40px;
       background: #f9f9f9;
     }
-    // .content_bottom {
-    //   @apply mt-px15;
-    // }
+    .content_bottom {
+      @apply mt-px15;
+    }
   }
   .dynamic {
     padding: 20px;
