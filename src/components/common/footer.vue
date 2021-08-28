@@ -1,5 +1,5 @@
 <template>
-  <div class="footer relative bg-base-bgFooterColor">
+  <div class="footer fixed z-10 w-full bg-base-bgFooterColor">
     <div class="w-px1200 mx-auto pt-px15">
       <p>
         <a href="https://www.gagahi.com/Global/changeLanguage?lang=en-us"
@@ -55,7 +55,10 @@
           >{{$trans("联系我们")}}</a
         >
       </p>
-      <div class="top fixed right-0  cursor-pointer z-1000" style="width: auto; bottom: 85px">
+      <div
+        class="top fixed right-0 cursor-pointer z-1000"
+        style="width: auto; bottom: 85px"
+      >
         <div class="scroll_t" style="width: auto; height: auto; border: none">
           <img src="https://s.gagahi.com/web-pc//images/icon_up.png" />
         </div>
@@ -76,15 +79,15 @@ export default {
   line-height: 30px;
 }
 .footer a {
-    color: #282e3c;
-    margin: 0 5px;
-    font-family: "瀹嬩綋";
-    font-size: 13px;
+  color: #282e3c;
+  margin: 0 5px;
+  font-family: "瀹嬩綋";
+  font-size: 13px;
 }
 a:hover {
-  color:rgb(49,80,152)
+  color: rgb(49, 80, 152);
 }
-.top{
-    width: 55px;
+.top {
+  width: 55px;
 }
 </style>

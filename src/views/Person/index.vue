@@ -18,6 +18,16 @@
           <span>18，</span>
           <span>{{ $trans("中国") }}，</span>
           <span>GaGaID:40473864</span>
+         {{$trans("可爱小怪咖")}}
+          <router-link to="/home/personal">
+            <span class="inline-block cursor-pointer"></span
+          ></router-link>
+        </div>
+        <div>
+          <span>{{$trans("女")}}，</span>
+          <span>{{$trans("18")}}，</span>
+          <span>{{$trans("中国")}}，</span>
+          <span>{{$trans("GaGaID:40473864")}}</span>
         </div>
       </div>
     </div>
@@ -26,6 +36,7 @@
       <div class="top w-full h-10 bg-blue-100 mx-auto flex justify-between">
         <div class="left ml-5 text-left text-base leading-10">
           {{ $trans("我的照片") }}
+          {{$trans("我的照片")}}
           <span class="text-gray-400 leading-10">(0)</span>
         </div>
         <div class="right text-right">
@@ -43,12 +54,15 @@
             "
           >
             {{ $trans("升级会员") }}
+            {{$trans("升级会员")}}
           </div>
           <img
             src="../../assets/images/person/open.png"
             alt=""
             title="$trans('打开相册')"
             class="inline-block -mt-12 mr-3"
+            title="打开相册"
+            class="inline-block -mt-12 mr-3 cursor-pointer"
             @click="openImg"
           />
         </div>
@@ -61,6 +75,7 @@
               @click="modalPhoto = true"
             >
               {{ $trans("上传照片") }}
+              {{$trans("上传照片")}}
             </button>
             <button
               v-show="!del"
@@ -69,6 +84,7 @@
               @click="manage"
             >
               {{ $trans("批量管理") }}
+              {{$trans("批量管理")}}
             </button>
             <button
               v-show="del"
@@ -77,6 +93,7 @@
               @click="manage"
             >
               {{ $trans("取消批量管理") }}
+              {{$trans("取消批量管理")}}
             </button>
             <button
               v-show="del"
@@ -84,6 +101,7 @@
               @click="delImgs"
             >
               {{ $trans("删除") }}
+              {{$trans("删除")}}
             </button>
           </div>
         </section>
@@ -102,7 +120,7 @@
               mt-5
             "
             style="max-width: 180px; max-height: 180px"
-            @click="toBigImg(it)"
+            @click.stop="toBigImg(it)"
           >
             <span class="" @click="bigImg = index">
               <img class="w-40 cursor-pointer" :src="img.imgUrl" />
@@ -140,8 +158,7 @@
               "
               @click.stop="toCancelImg(it)"
             >
-            </span
-            ><!--  toSelectImg == index  toSelectImg != index -->
+            </span>
             <span
               class="
                 bgBlack
@@ -165,6 +182,16 @@
               alt=""
             />
           </div>
+          <BigImage
+            v-show="openBigImg"
+            :images="iamgeList"
+            :imagesUrl="
+              this.iamgeList[currentIndex] + '?imageView2/2/w/560/h/630'
+            "
+            @func="closeBigImg"
+            @leftBtn="leftImage"
+            @rightBtn="rightImage"
+          ></BigImage>
         </section>
       </div>
     </div>
@@ -173,6 +200,7 @@
       <div class="top w-full h-10 bg-blue-100 mx-auto flex justify-between">
         <div class="left ml-5 text-left text-base leading-10">
           {{ $trans("我的好友") }}
+          {{$trans("我的好友")}}
           <span class="text-gray-400 leading-10">(0)</span>
         </div>
         <div class="right text-right">
@@ -180,6 +208,7 @@
             src="../../assets/images/person/open.png"
             alt=""
             title="$trans('好友列表')"
+            :title="$trans('好友列表')"
             class="inline-block mt-3 mr-3 cursor-pointer"
             @click="showFriends"
           />
@@ -251,10 +280,17 @@
         <Swpier></Swpier>
       <div >
         <Swpier ></Swpier>
+      <div>
+        <Swpier></Swpier>
       </div>
 
-      <div class="upload float-left top-0  absolute"   @click="modalPhoto = true">
-        <img style="width: 126px" src="../../assets/images/person/upload.jpg" alt="" />
+      <div class="upload float-left top-0 absolute bg-gray-500" @click="modalPhoto = true">
+        <img
+          style="width: 123px；height：120px;object-fit: cover;
+                flex-shrink: 0; cursor: pointer;"
+          src="../../assets/images/person/upload.jpg"
+          alt=""
+        />
       </div>
       <div class="imgList float-left">
         <!-- <p>{{$trans('尚无展示照片，挑选相册中的照片展示到这里吧')}}</p> -->
@@ -263,6 +299,7 @@
           src="../../assets/images/person/open.png"
           alt=""
           title="$trans('打开相册')"
+          :title="$trans('打开相册')"
           class="imgShow"
           @click="openImg"
           absolute
@@ -283,6 +320,11 @@
         </div>
         <div class="right">
           <div class="content_top">{{ $trans("好友") }}(0)</div>
+          <div class="content_top">{{$trans("礼物(0)")}}</div>
+          <div class="content_bottom">{{$trans("还未收到礼物")}}</div>
+        </div>
+        <div class="right">
+          <div class="content_top">{{$trans("好友(0)")}}</div>
 
           <img
             src="../../assets/images/person/open.png"
@@ -292,12 +334,16 @@
             @click="showFriends"
           />
           <div class="content_bottom">{{ $trans("还没有好友") }}</div>
+            :title="$trans('好友列表')"
+            class="-mt-8 ml-56 cursor-pointer"
+            @click="showFriends"
+          />
+          <div class="content_bottom">{{$trans("还没有好友")}}</div>
         </div>
       </div>
-
-      <div class="mt-px15 bg-white w-full pb-10">
+      <!-- 评论区 -->
+      <!-- <div class="mt-px15 bg-white w-full pb-10">
         <div class="dynamic">
-          <!--v-show="isDelete == true"-->
           <div class="dynamic_left float-left">
             <img
               :src="STATICBASEURI + '/images/default/female.png'"
@@ -349,7 +395,7 @@
             </div>
 
             <div class="dynamic_input mt-px15">
-              <!-- 评论列表 -->
+              评论列表
               <div v-if="listShow">
                 <div
                   class="comment_list"
@@ -437,7 +483,7 @@
                 </div>
               </div>
 
-              <!-- 评论 -->
+              评论
               <p
                 class="dynamic_p cursor-pointer"
                 @click.stop="inputShow = true"
@@ -464,18 +510,25 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
+      <Comment></Comment>
     </div>
     <!-- 图片弹出框 -->
     <Modal
       v-model="modalPhoto"
-      title="上传图片"
+      :closable="false"
+      :title="$trans('上传图片')"
       width="600"
       footer-hide
       @on-cancel="cancel"
     >
       <p slot="header">
         <span class="text-white">{{ $trans("上传图片") }}</span>
+        <span class="text-white">{{$trans("上传图片")}}</span>
+        <span
+          class="closed w-9 h-9 rounded-full -top-2 -right-3 absolute"
+          @click="modalPhoto = false"
+        ></span>
       </p>
       <imgUpload></imgUpload>
     </Modal>
@@ -490,6 +543,7 @@
     >
       <p slot="header">
         <span class="text-white">{{ $trans("提示") }}</span>
+        <span class="text-white">{{$trans("提示")}}</span>
         <span
           class="closed w-9 h-9 rounded-full -top-2 -right-3 absolute"
           @click="toDelFriend = false"
@@ -510,11 +564,17 @@
           {{ $trans("确定") }}
         </button>
         <button class="w-20 h-8 bg-red-400 rounded-2xl text-white">确定</button>
+        <p class="text-xl font-medium text-black">{{$trans("确定要删除好友吗？")}}</p>
+        <p>{{$trans("删除后你将从对方好友列表中消失，以后不再接收此人的消息。")}}</p>
+      </section>
+      <section class="absolute bottom-5 w-full text-center space-x-5">
+        <button class="w-20 h-8 bg-red-400 rounded-2xl text-white">{{$trans("确定")}}</button>
         <button
           class="w-20 h-8 rounded-2xl border border-solid border-gray-400"
           @click="toDelFriend = false"
         >
           {{ $trans("取消") }}
+          {{$trans("取消")}}
         </button>
       </section>
     </Modal>
@@ -554,6 +614,32 @@
           </section>
         </div>
       
+      <p slot="header">
+        <span class="text-white">{{$trans("提示")}}</span>
+        <span
+          class="closed w-9 h-9 rounded-full -top-2 -right-3 absolute"
+          @click="delImg = false"
+        ></span>
+      </p>
+      <div>
+        <section style="height: 100px; width: 100%">
+          <p>{{$trans("该照片所在动态也会一并删除。")}}</p>
+        </section>
+        <section class="absolute bottom-10 w-full text-center space-x-5">
+          <button
+            class="w-20 h-8 bg-red-400 rounded-2xl text-white"
+            @click="delEnsure()"
+          >
+            {{$trans("确定")}}
+          </button>
+          <button
+            class="w-20 h-8 rounded-2xl border border-solid border-gray-400"
+            @click="delImg = false"
+          >
+           {{$trans(" 取消")}}
+          </button>
+        </section>
+      </div>
     </Modal>
   </div>
 </template>
@@ -561,12 +647,15 @@
 import editDynamic from "@components/editDynamic.vue";
 import imgUpload from "@components/uploadImg.vue";
 import Swpier from "@components/personal/Swpier.vue";
+import BigImage from "@/components/home/othercentre/BigImage";
+import Comment from "@components/personal/Comment.vue";
 export default {
   data() {
     return {
       bigImg: "",
+      openBigImg: false,
       currentIndex: -1,
-      modalIndex:-1,
+      modalIndex: -1,
       big: -1,
       bacShow: false,
       showFriendsList: false,
@@ -639,6 +728,8 @@ export default {
     imgUpload,
     editDynamic,
     Swpier,
+    BigImage,
+    Comment,
   },
   methods: {
     openList() {
@@ -672,37 +763,63 @@ export default {
     openImg() {
       this.showImgs = !this.showImgs;
     },
+    // 选中
     toSelectImg(it) {
       this.option.push(it);
     },
+    // 取消选中
     toCancelImg(it) {
       this.option.splice(this.option.indexOf(it), 1);
     },
-    delImgs(){
-      console.log(...this.option)
-      let arr = []
-      for(var i = 0 ;i<this.option.length;i++){
-         let num = this.option[i]
-         arr.push(this.iamgeList[num])
+    // 批量删除
+    delImgs() {
+      console.log(...this.option);
+      let arr = [];
+      for (var i = 0; i < this.option.length; i++) {
+        let num = this.option[i];
+        arr.push(this.iamgeList[num]);
         // this.iamgeList.splice(this.option[i],1)
       }
-      this.iamgeList=this.iamgeList.filter(item => !arr.some(ele=>ele===item))
+      this.iamgeList = this.iamgeList.filter(
+        (item) => !arr.some((ele) => ele === item)
+      );
       // console.log(arr)
-      this.option=[]
-
+      this.option = [];
     },
-    toDelImg(it){
-       this.modalIndex =it;
-       this.delImg =true;
+    // 单项删除照片
+    toDelImg(it) {
+      this.modalIndex = it;
+      this.delImg = true;
     },
+    // 相册点击照片显示大图
     toBigImg(it) {
       console.log(it);
-      this.big = it;
+      this.openBigImg = true;
+      console.log(this.openBigImg);
       this.currentIndex = it;
     },
-    delEnsure(){
-      this.iamgeList.splice(this.modalIndex,1)
-      this.delImg =false;
+    leftImage() {
+      --this.currentIndex;
+      if (this.currentIndex < 0) {
+        this.currentIndex = this.iamgeList.length - 1;
+      }
+      console.log(this.currentIndex);
+    },
+    rightImage() {
+      console.log(this.currentIndex);
+      if (this.currentIndex === this.iamgeList.length - 1) {
+        this.currentIndex = 0;
+      } else {
+        this.currentIndex += 1;
+      }
+    },
+    closeBigImg(value) {
+      this.openBigImg = value;
+    },
+    //确定按钮
+    delEnsure() {
+      this.iamgeList.splice(this.modalIndex, 1);
+      this.delImg = false;
     },
     //批量管理显示删除按钮
     manage() {
@@ -760,6 +877,7 @@ export default {
     background-color: rgb(238, 238, 238);
   }
   .imgShow {
+    
     position: absolute;
     top: 10px;
     right: 10px;
@@ -1104,19 +1222,5 @@ export default {
 }
 .delete .ivu-modal-content {
   height: 200px;
-}
-.prev {
-  width: 14px;
-  height: 23px;
-  position: absolute;
-  top: 44px;
-  left: 8px;
-  z-index: 1;
-  cursor: pointer;
-  background: url("../../assets/images/person/little1.png") -80px -566px
-    no-repeat;
-}
-.prev:hover {
-  background: url("../../assets/images/person/little1.png") -42px -567px;
 }
 </style>

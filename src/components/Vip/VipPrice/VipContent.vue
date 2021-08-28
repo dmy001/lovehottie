@@ -1,24 +1,22 @@
 <template>
   <div>
-    
-    <div
-      class="VIP flex relative"
-    >
-    
+    <div class="VIP flex relative">
       <div
         v-for="(item, index) in list"
         :key="index"
         :class="{ active: selectIndex === item.id }"
         @click="changeSelectId(item)"
-        class="border content-item"
+        class="border content-item flex-auto"
       >
         <p class="text-base">{{ item.time }}</p>
-        <p class="text-20px">US${{ item.price }}/月</p>
-        <p class="text-28px">节省{{ item.save }}%</p>
-        <p class="text-14px">费用US${{ item.priceTotle }}</p>
+        <p class="text-20px">US${{ item.price }}/{{ $trans("月") }}</p>
+        <p class="text-28px">{{ $trans("节省") }}{{ item.save }}%</p>
+        <p class="text-14px">{{ $trans("费用") }}US${{ item.priceTotle }}</p>
         <div class="select-btn" style="display: inline-block">
-          <span class="sel-0" v-show="!(selectIndex === item.id)">选择</span>
-          <span class="sel-1">已选</span>
+          <span class="sel-0" v-show="!(selectIndex === item.id)">{{
+            $trans("选择")
+          }}</span>
+          <span class="sel-1">{{ $trans("已选") }}</span>
         </div>
       </div>
     </div>
@@ -39,6 +37,12 @@ export default {
     };
   },
   methods: {
+    /**
+    * 选中每项价格
+    * 向父组件发送id
+    * 向支付组件发送价格
+    * @param {*} item  子项
+    */
     changeSelectId(item) {
       this.$emit("changeSelectId", item.id);
       this.$emit("getPrice", item.priceTotle);

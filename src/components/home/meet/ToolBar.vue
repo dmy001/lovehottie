@@ -6,6 +6,7 @@
         <span
           >{{ $trans("已经有")
           }}<span class="text-base-color2 font-bold">100</span
+          >已经有<span class="text-base-color2 font-bold">100</span
           >{{ $trans("多个国家的用户") }}</span
         >
         <a class="ml-px15 text-base-color2 cursor-pointer"
@@ -40,7 +41,7 @@
             @mouseover="mouseOver"
             @mouseleave="mouseLeave"
           >
-            {{ value }}
+            {{ $trans(value) }}
             <img
               class="ml-2"
               src="../../../assets/images/index/xld.png"
@@ -65,7 +66,7 @@
               :key="index"
               @click="changeValue(item)"
             >
-              {{ item }}
+              {{ $trans(item) }}
             </li>
             <!-- <li class="title"><a href="#">{{$trans("在线")}}</a></li>
             <li class="title"><a href="#">{{$trans("最新")}}</a></li> -->
@@ -84,6 +85,7 @@
                 name="country"
                 id="om"
                 value="$trans('欧美')"
+                :value="$trans('欧美')"
                 v-model="selCountry"
               />
               <label for="om">{{ $trans("欧美") }}</label>
@@ -97,6 +99,10 @@
                 v-model="selCountry"
               />
               <label for="zga">{{ $trans("中港澳") }}</label>
+                :value="$trans('中港台')"
+                v-model="selCountry"
+              />
+              <label for="zga">{{ $trans("中港台") }}</label>
             </div>
             <div class="country-list-item">
               <input
@@ -104,6 +110,7 @@
                 name="country"
                 id="rh"
                 value="$trans('日韩')"
+                :value="$trans('日韩')"
                 v-model="selCountry"
               />
               <label for="rh">{{ $trans("日韩") }}</label>
@@ -114,6 +121,7 @@
                 name="country"
                 id="qt"
                 value="$trans('其他')"
+                :value="$trans('其他')"
                 v-model="selCountry"
               />
               <label for="qt">{{ $trans("其他") }}</label>
@@ -137,12 +145,25 @@
             </div>
           </div>
           <span class="filter-item-title">{{$trans('年龄')}}</span>
+              <label for="sexA">{{ $trans("不限") }}</label>
+            </div>
+            <div class="sex-list-item">
+              <input type="radio" id="sexB" value="male" v-model="selSex" />
+              <label for="sexB">{{ $trans("男") }}</label>
+            </div>
+            <div class="sex-list-item">
+              <input type="radio" id="sexC" value="female" v-model="selSex" />
+              <label for="sexC">{{ $trans("女") }}</label>
+            </div>
+          </div>
+          <span class="filter-item-title">{{ $trans("年龄") }}</span>
           <div class="flex">
             <Slider v-model="sliderRange" range class="flex-1"></Slider>
           </div>
         </div>
         <div class="flex-1">
           <span class="filter-item-title">{{$trans('语言')}}</span>
+          <span class="filter-item-title">{{ $trans("语言") }}</span>
           <div class="lang-list">
             <div class="flex flex-wrap">
               <div
@@ -171,6 +192,7 @@
         >
           <div class="text-red-500 flex">
             <span class="mr-2">{{$trans('高级选项')}}</span>
+            <span class="mr-2">{{ $trans("高级选项") }}</span>
             <img
               class="mt-2"
               style="height: 100%"
@@ -220,6 +242,10 @@
           </button>
           <button class="ml-6 bg-gray-200 text-black rounded-3xl px-6 py-2">
             {{$trans('取消')}}
+            {{ $trans("重新搜索") }}
+          </button>
+          <button class="ml-6 bg-gray-200 text-black rounded-3xl px-6 py-2">
+            {{ $trans("取消") }}
           </button>
         </div>
       </div>

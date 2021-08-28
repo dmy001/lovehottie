@@ -37,6 +37,7 @@
           <span class="z-1000 iocn icon_top"></span>
           <div class="w-full p-px10 flex justify-between">
             {{$trans("本地上传")}}
+            {{ $trans("本地上传") }}
             <i class="iocn close_icon" @click="imgShow = false"></i>
           </div>
 
@@ -46,6 +47,12 @@
                 9 - uploadList.length
               }}</span
               >{{$trans("张")}}</span
+            <span class="block text-12px mb-px10 text-base-color5 text-left">
+              {{
+                $trans(
+                  `共${uploadList.length}张，还能上传${9 - uploadList.length}张`
+                )
+              }}</span
             >
             <Upload
               ref="upload"
@@ -96,6 +103,7 @@
         </div>
       </div>
       <div class="footRight">{{$trans("发送")}}</div>
+      <div class="footRight">{{ $trans("发送") }}</div>
     </div>
   </div>
 </template>

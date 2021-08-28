@@ -1,16 +1,18 @@
 <template>
-  <div class="bg-base-bgColor">
-    <Header />
-    <div class="flex w-px1200 mx-auto">
-      <div class="min-h-810 mt-px50">
-        <Left></Left>
-        <div class="m-px15 w-px860 ml-px260">
-          <router-view></router-view>
+  <section>
+    <div class="bg-base-bgColor">
+      <Header />
+      <div class="flex w-px1200 mx-auto">
+        <div class="min-h-810 mt-px50">
+          <Left></Left>
+          <div class="m-px15 w-px860 ml-px260">
+            <router-view></router-view>
+          </div>
         </div>
       </div>
     </div>
     <Footer></Footer>
-  </div>
+  </section>
 </template>
 
 <script>

@@ -45,22 +45,22 @@
     </div>
     <PayInfo />
     <Discount :price="currentPrice" />
-    <payButton payType="立即充值" />
+    <PayButton payType="立即充值" />
   </div>
 </template>
 
 <script>
-import PayInfo from "@components/vip/PayInfo/PayInfo.vue";
-import Discount from "@components/vip/PayInfo/Discount.vue";
-import payButton from "@components/vip/PayInfo/payButton.vue";
-import VipHeader from "@components/vip/VipPrice/VipHeader.vue";
-import VipContent from "@components/vip/VipPrice/VipContent.vue";
-import VipFooter from "@components/vip/VipPrice/VipFooter.vue";
-import MiniVip from "@components/vip/VipPrice/MiniVip.vue";
+import PayInfo from "@components/Vip/PayInfo/PayInfo.vue";
+import Discount from "@components/Vip/PayInfo/Discount.vue";
+import PayButton from "@components/Vip/PayInfo/payButton.vue";
+import VipHeader from "@components/Vip/VipPrice/VipHeader.vue";
+import VipContent from "@components/Vip/VipPrice/VipContent.vue";
+import VipFooter from "@components/Vip/VipPrice/VipFooter.vue";
+import MiniVip from "@components/Vip/VipPrice/MiniVip.vue";
 export default {
   components: {
     VipHeader,
-    payButton,
+    PayButton,
     VipContent,
     VipFooter,
     PayInfo,
@@ -108,7 +108,6 @@ export default {
           price: "150",
           save: 40,
           priceTotle: "150",
-          Ischange: "选择",
         },
         {
           id: 6,
@@ -116,7 +115,6 @@ export default {
           price: "90",
           save: 30,
           priceTotle: "90",
-          Ischange: "选择",
         },
         {
           id: 7,
@@ -124,7 +122,6 @@ export default {
           price: "50",
           save: 20,
           priceTotle: "50",
-          Ischange: "选择",
         },
         {
           id: 8,
@@ -132,18 +129,17 @@ export default {
           price: "20",
           save: 5,
           priceTotle: "20",
-          Ischange: "选择",
         },
       ],
 
       descrip: [
-        "每天50条聊天权限 ",
+        "每天50条聊天权限",
         "会员专属标识",
         "每月免费查看3张模糊图",
-        "价值30金币的VIP会员优惠券",
+        "赠送一张价值30金币VIP优惠券",
       ],
       descrip1: [
-        "1500/天免费翻译字符 ",
+        "1500/天免费翻译字符",
         "3个10min翻译vip",
         "vip专属表情包",
         "无限免费查看模糊图",
@@ -151,8 +147,8 @@ export default {
         "消息已读通知",
       ],
       descrip2: [
-        "无限聊天权限 ",
-        "价值30金币的VIP会员优惠券",
+        "无限发消息",
+        "赠送一张价值30金币VIP优惠券",
         "每月免费查看10张模糊图",
         "每月免费赠送5个虚拟礼物",
         "会员专属标识",
@@ -181,7 +177,7 @@ export default {
         },
         {
           name: "阅后即焚免费无限使用",
-          descrip: "消息、国际圈等均可免费无限使用阅后即焚功能。",
+          descrip: "消息、国际圈等均可免费无限使用阅后即焚功能",
         },
       ],
       descriptionList1: [
@@ -210,7 +206,7 @@ export default {
         {
           name: "无限发消息",
           descrip:
-            "消息不受限，想发多少随你定。（消息翻译若超过1500字符则另收费）",
+            "发送消息不受限，想发多少看你心情。（信息若需翻译则另收费）",
         },
         {
           name: "主页可无限制展示照片",
@@ -233,12 +229,12 @@ export default {
         {
           name: "无限发消息",
           descrip:
-            "消息不受限，想发多少随你定。（消息翻译若超过1500字符则另收费）",
+            "发送消息不受限，想发多少看你心情。（信息若需翻译则另收费）",
         },
         {
           name: "优惠券",
           descrip:
-            "赠送一张价值30金币VIP优惠券：购买高级会员赠送价值30金币VIP优惠券一张，帮助你节省购买会员的费用。",
+            "赠送一张价值30金币VIP优惠券：购买高级会员会员赠送价值30金币VIP优惠券一张，帮助你节省购买会员的费用。",
         },
         {
           name: "优先推荐",
@@ -262,7 +258,7 @@ export default {
         },
         {
           name: "阅后即焚免费无限使用",
-          descrip: "消息、国际圈等均可免费无限使用阅后即焚功能。",
+          descrip: "消息、国际圈等均可免费无限使用阅后即焚功能",
         },
       ],
       currentPrice: "",

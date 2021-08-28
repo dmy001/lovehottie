@@ -1,40 +1,54 @@
 <template>
-  <div style="overflow: hidden; position: relative; width: 100%">
-    <ul class="flex" :style="[sliderActive]">
-      <li v-for="(item, index) in images" :key="item.id + index" class="imgs">
-        <div>
+  <section>
+    <div style="overflow: hidden; position: relative; width: 100%">
+      <ul class="flex" :style="[sliderActive]">
+        <li v-for="(item, index) in images" :key="item.id + index" class="imgs">
           <img
             :src="item.url"
+            style="
+              height: 120px;
+              width: 123px;
+              cursor: pointer;
+              object-fit: cover;
+              flex-shrink: 0;
+            "
             alt=""
             srcset=""
-            style="width: 123px"
-            @click.stop="bigImg = index"
+            @click.stop="openImage(index)"
           />
-        </div>
+          <div
+            class="h-8 w-full bottom-0 absolute z-10 cursor-pointer bgBlack"
+            style="width: 123px"
+          >
+            <div class="delImg mt-2 ml-24" @click="toDelImg(index)"></div>
+          </div>
+        </li>
+      </ul>
+      <!-- 图片左右图标 -->
+      <div class="">
         <div
-          class="h-8 w-full bottom-0 absolute z-10 bgBlack"
-          style="width: 123px"
-        >
-          <div class="delImg mt-2 ml-24" @click="toDelImg(index)"></div>
-        </div>
-      </li>
-    </ul>
-    <!-- 图片左右图标 -->
-    <div class="">
-      <div class="prev" @click="prev()" v-if="images.length >= 6" href=""></div>
-      <div
-        class="next"
-        @click="nextImg()"
-        v-if="images.length >= 6"
-        href=""
-      ></div>
+          class="prev"
+          @click="prev()"
+          v-if="images.length >= 6"
+          href=""
+        ></div>
+        <div
+          class="next"
+          @click="nextImg()"
+          v-if="images.length >= 6"
+          href=""
+        ></div>
+      </div>
     </div>
-    <!-- <div v-if="bigImg == index">
-       <Modal>
-         <img src="../../assets/images/person/upload.jpg" alt="" />
-       </Modal>
-    </div> -->
-    <!-- 删除图片弹出框 -->
+    <!-- 大图 -->
+    <BigImage
+      v-if="bigImg"
+      @func="closeBigImg"
+      :imagesUrl="this.images[currentIndex].url + '?imageView2/2/w/560/h/630'"
+      @leftBtn="leftImage()"
+      @rightBtn="rightImage()"
+    ></BigImage>
+    <!-- 删除图片 -->
     <Modal
       v-model="delImg"
       :closable="false"
@@ -47,7 +61,7 @@
         <span class="text-white">提示</span>
         <span
           class="closed w-9 h-9 rounded-full -top-2 -right-3 absolute"
-          @click="delImg = false"
+          @click.stop="delImg = false"
         ></span>
       </p>
       <div>
@@ -57,106 +71,115 @@
         <section class="absolute bottom-10 w-full text-center space-x-5">
           <button
             class="w-20 h-8 bg-red-400 rounded-2xl text-white"
-            @click="ensureDel()"
+            @click.stop="ensureDel()"
           >
             确定
           </button>
           <button
             class="w-20 h-8 rounded-2xl border border-solid border-gray-400"
-            @click="delImg = false"
+            @click.stop="delImg = false"
           >
             取消
           </button>
         </section>
       </div>
     </Modal>
-  </div>
-
+  </section>
   <!-- </div> -->
 </template>
 
 <script>
+import BigImage from "@/components/home/othercentre/BigImage";
 export default {
+  components: {
+    BigImage,
+  },
   data() {
     return {
-      delImg: false,
-      modalIndex: -1,
       index: 0,
+      modalIndex: false,
+      delImg: false,
+      bigImg: false,
+      currentIndex: -1,
       sliderActive: {
         transform: `translateX(-240px)`,
         transition: "transform 0.5s",
       },
       images: [
         {
-          url: "https://sources.lovehottie.com/P-ecf39e7946db4e50b5f7e8df863f1d59?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
           id: 1,
         },
         {
-          url: "https://sources.lovehottie.com/P-5b83e8434cb84aa7b555f1b91aaf0941?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
           id: 2,
         },
         {
-          url: "https://sources.lovehottie.com/P-b3984da4e4074588878612991d09653b?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f",
           id: 3,
         },
         {
-          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
           id: 4,
         },
         {
           id: 5,
-          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f",
         },
         {
           id: 6,
-          url: "https://sources.lovehottie.com/P-0827986d1e324fa0bca23f1ef1f7eebe?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
         },
         {
           id: 7,
-          url: "https://sources.lovehottie.com/P-260c00a478c7474a93e9aa73b881324d?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f",
         },
         {
           id: 8,
-          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
         },
         {
           id: 9,
-          url: "https://sources.lovehottie.com/P-7616ac1a327b4e9182bf203571414491?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
         },
         {
           id: 10,
-          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f",
         },
         {
           id: 11,
-          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
         },
         {
           id: 12,
-          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
         },
         {
           id: 13,
-          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
         },
         {
           id: 14,
-          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
         },
         {
           id: 15,
-          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/120/h/120",
+          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
         },
       ],
-      sliderImg: [],
     };
   },
-  mounted() {
-    const pre = this.images.slice(-2);
-    const next = this.images.slice(0, 7);
-    this.images = [...pre, ...this.images, ...next];
-  },
   methods: {
+    toDelImg(index) {
+      console.log(index);
+      this.modalIndex = index;
+      this.delImg = true;
+    },
+    ensureDel() {
+      console.log(this.modalIndex);
+      this.images.splice(this.modalIndex, 1);
+      this.delImg = false;
+    },
     prev() {
       this.index -= 1;
       if (this.index === -2) {
@@ -183,7 +206,7 @@ export default {
         // setTimeout(() => {
         this.index = -2;
         this.sliderActive = {
-          transform: `translateX(${(this.index + 2) * -120}px)`,
+          transform: `translateX(${(this.index + 2) * -123}px)`,
           transition: "transform 0s",
         };
         setTimeout(() => {
@@ -192,21 +215,38 @@ export default {
         // }, 400);
       } else {
         this.sliderActive = {
-          transform: `translateX(${(this.index + 2) * -120}px)`,
+          transform: `translateX(${(this.index + 2) * -123}px)`,
           transition: "transform 0.5s",
         };
       }
     },
-    toDelImg(index) {
-      console.log(index)
-      this.modalIndex = index;
-      this.delImg = true;
+    closeBigImg(value) {
+      this.bigImg = value;
     },
-    ensureDel() {
-      console.log(this.modalIndex)
-      this.images.splice(this.modalIndex, 1);
-      this.delImg = false;
+    openImage(index) {
+      this.bigImg = true;
+      console.log(index);
+      this.currentIndex = index;
     },
+    leftImage() {
+      --this.currentIndex;
+      if (this.currentIndex === 0) {
+        this.currentIndex = this.images.length - 9;
+      }
+      console.log(this.currentIndex);
+    },
+    rightImage() {
+      this.currentIndex += 1;
+      if (this.currentIndex === this.images.length - 9) {
+        this.currentIndex = 0;
+      }
+      console.log(this.currentIndex);
+    },
+  },
+  mounted() {
+    const pre = this.images.slice(-2);
+    const next = this.images.slice(0, 7);
+    this.images = [...pre, ...this.images, ...next];
   },
 };
 </script>

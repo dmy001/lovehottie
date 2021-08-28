@@ -1,14 +1,15 @@
 <template>
   <div class="bg-white vip">
-    <div class="nav flex w-full bg-white rounded-px8 mt-px15 h-10 leading-10 border-b">
+    <div class="nav flex w-full bg-white rounded-px8 mt-px15 h-10  border-b">
       <div   
         v-for="(item, index) in list"
         :key="index"
-        class="ml-5 w-16  text-base leading-10"
-        :class="{active:index == currentIndex }"
+        class="text-sm leading-10 ml-2"
+        :class="{active:index === currentIndex }"
         @click="goClick(index, item.path)"
       >
-        {{ item.name }}
+      <!-- 多语言 根据语言选择字号 不定宽度 -->
+        {{ $trans(item.name) }}
       </div>
     </div>
     <router-view class="ml-16 mt-5 mr-10"></router-view>
@@ -29,7 +30,6 @@ export default {
         { name: "特权说明", path: "DetailsPrivilege" },
         { name: "优惠券", path: "Coupon" },
         { name: "帮助", path: "Help" },
-
       ],
       currentIndex:0,
     };
@@ -41,7 +41,6 @@ export default {
       this.$router.push(path);
     },
   },
-  
 };
 </script>
 
@@ -50,6 +49,7 @@ export default {
   .nav{
     div:nth-child(9){
       margin-left: auto;
+      margin-right: 30px;
     }
   }
 }
