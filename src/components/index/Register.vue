@@ -101,11 +101,11 @@
       </div>
       <div class="w-full flex justify-center mb-px15">
         <div>
-          <span class="text-base-color4">已有账号?</span>
+          <span class="text-base-color4">{{$trans("已有账号")}}?</span>
           <span
             class="text-base-color2 cursor-pointer ml-px10"
             @click="$emit('changeBox')"
-            >立即登录</span
+            >{{$trans("立即登录")}}</span
           >
         </div>
       </div>

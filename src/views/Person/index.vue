@@ -1,5 +1,5 @@
 <template>
-  <div class="relative">
+  <div class="relative flex flex-col bg-gray-100">
     <div class="topUser">
       <img
         :src="STATICBASEURI + '/images/default/female.png'"
@@ -47,7 +47,7 @@
           <img
             src="../../assets/images/person/open.png"
             alt=""
-            title="打开相册"
+            title="$trans('打开相册')"
             class="inline-block -mt-12 mr-3 cursor-pointer"
             @click="openImg"
           />
@@ -104,6 +104,9 @@
             style="max-width: 180px; max-height: 180px"
             @click.stop="toBigImg(it)"
           >
+            <span class="" @click="bigImg = index">
+              <img class="w-40 cursor-pointer" :src="img.imgUrl" />
+            </span>
             <span class="">
               <!-- <a :href="img.imgUrl + '?imageView2/2/w/560/h/630'" target="_self"></a> -->
               <img class="w-40 h-40 object-contain cursor-pointer" :src="img" />
@@ -155,6 +158,13 @@
             </span>
           </div>
           <!-- 放大图片 -->
+          <div v-show="bigImg == index">1231231313</div>
+          <div v-show="big != -1">
+            <img
+              :src="this.iamgeList[currentIndex] + '?imageView2/2/w/560/h/630'"
+              alt=""
+            />
+          </div>
           <BigImage
             v-show="openBigImg"
             :images="iamgeList"
@@ -247,7 +257,7 @@
       class="photo"
     >
       <!-- 展示照片 -->
-      <div>
+      <div class="">
         <Swpier></Swpier>
       </div>
 
@@ -267,6 +277,7 @@
         />
       </div>
       <div class="imgList float-left">
+        <!-- <p>{{$trans('尚无展示照片，挑选相册中的照片展示到这里吧')}}</p> -->
         <!-- <p>尚无展示照片，挑选相册中的照片展示到这里吧</p> -->
         <img
           src="../../assets/images/person/open.png"
@@ -282,7 +293,7 @@
     <div
       v-show="!showImgs"
       :class="{ active: showFriendsList == true }"
-      class="personContent mt-px15 absolute"
+      class="personContent   mt-5"
     >
       <div class="shareList flex justify-between">
         <editDynamic></editDynamic>
@@ -320,7 +331,9 @@
             @mouseleave="mouseInner = false"
           >
             <p class="flex flex-row">
-              <span class="mr-px15 text-base-color1">可爱小怪咖</span>
+              <span class="mr-px15 text-base-color1">{{
+                $trans("可爱小怪咖")
+              }}</span>
               <span class="text-xs">03-03 13:12</span>
               <span
                 v-show="mouseInner"
@@ -329,7 +342,7 @@
                 ><img class="w-5 cursor-pointer" src="~@images/error.png"
               /></span>
             </p>
-            <p class="content_text">我不知道啊 不知道</p>
+            <p class="content_text">{{ $trans("我不知道啊 不知道") }}</p>
             <div class="ml-px15 mt-px15 dynamic_icon relative">
               <span
                 class="bg_icon message_icon mr-px3"
@@ -449,7 +462,7 @@
                 @click.stop="inputShow = true"
                 v-if="inputShow == false"
               >
-                喜欢你有趣的点评～
+                {{ $trans("喜欢你有趣的点评～") }}
               </p>
               <div v-if="inputShow" class="dynamic_btn">
                 <Input
@@ -458,7 +471,7 @@
                   maxlength="240"
                   show-word-limit
                   type="textarea"
-                  placeholder="发布评论"
+                  placeholder="$trans('发布评论')"
                   style="width: 100%; height: 100px"
                   class="leftText placeholder-gray-800"
                   :rows="2"
@@ -473,7 +486,7 @@
       </div> -->
       <Comment></Comment>
     </div>
-    <!-- 图片弹出框 -->
+    
     <Modal
       v-model="modalPhoto"
       :closable="false"
@@ -486,16 +499,16 @@
         <span class="text-white">{{ $trans("上传图片") }}</span>
         <span
           class="closed w-9 h-9 rounded-full -top-2 -right-3 absolute"
-          @click="modalPhoto = false"
+          @click="cancelAddPhoto"
         ></span>
       </p>
-      <imgUpload></imgUpload>
+      <imgUpload v-show="modalPhoto"  @closeModalPhoto="completeAddPhoto"></imgUpload>
     </Modal>
     <!-- 删除好友弹出框 -->
     <Modal
       v-model="toDelFriend"
       :closable="false"
-      title="提示"
+      title="$trans('提示')"
       width="500"
       footer-hide
       class="delete"
@@ -534,11 +547,35 @@
       v-model="delImg"
       on-ok="ok"
       :closable="false"
-      title="提示"
+      title="$trans('提示')"
       width="300"
       footer-hide
       class="delete"
     >
+        <p slot="header">
+          <span class="text-white">{{$trans('提示')}}</span>
+          <span
+            class="closed w-9 h-9 rounded-full -top-2 -right-3 absolute"
+            @click="delImg = false"
+          ></span>
+        </p>
+        <div>
+          <section style="height: 100px; width: 100%">
+            <p>{{$trans('该照片所在动态也会一并删除。')}}</p>
+          </section>
+          <section class="absolute bottom-10 w-full text-center space-x-5">
+            <button class="w-20 h-8 bg-red-400 rounded-2xl text-white" @click="delEnsure()">
+             {{$trans('确定')}}
+            </button>
+            <button
+              class="w-20 h-8 rounded-2xl border border-solid border-gray-400"
+              @click="delImg = false"
+            >
+              {{$trans('取消')}}
+            </button>
+          </section>
+        </div>
+      
       <p slot="header">
         <span class="text-white">{{ $trans("提示") }}</span>
         <span
@@ -569,6 +606,7 @@
   </div>
 </template>
 <script>
+
 import editDynamic from "@components/editDynamic.vue";
 import imgUpload from "@components/uploadImg.vue";
 import Swpier from "@components/personal/Swpier.vue";
@@ -577,6 +615,7 @@ import Comment from "@components/personal/Comment.vue";
 export default {
   data() {
     return {
+      bigImg: "",
       openBigImg: false,
       currentIndex: -1,
       modalIndex: -1,
@@ -654,8 +693,20 @@ export default {
     Swpier,
     BigImage,
     Comment,
+    
   },
   methods: {
+    cancelAddPhoto(){
+       this.modalPhoto = false;
+       
+    },
+    completeAddPhoto() {
+      this.modalPhoto = false;
+      setTimeout(() => {
+        this.file = null;
+        this.$Message.success("Success");
+      }, 1500);
+    },
     openList() {
       if (this.contentList.length > 0) {
         this.listShow = !this.listShow;
@@ -794,12 +845,12 @@ export default {
   margin: 0 auto;
   position: relative;
 
-  .imgList {
-    height: 120px;
-    width: 733px;
-    line-height: 120px;
-    background-color: rgb(238, 238, 238);
-  }
+  // .imgList {
+  //   height: 120px;
+  //   width: 733px;
+  //   line-height: 120px;
+  //   background-color: rgb(238, 238, 238);
+  // }
   .imgShow {
     position: absolute;
     top: 10px;
@@ -850,7 +901,7 @@ export default {
     }
     .dynamic_icon {
       height: 20px;
-      @apply flex items-center;
+      // @apply flex items-center;
 
       .bg_circle {
         background: url("~@images/dynamic.png") no-repeat;
@@ -891,7 +942,7 @@ export default {
             line-height: 20px;
             height: 24px;
             color: #333;
-            @apply text-center float-left cursor-pointer;
+            // @apply text-center float-left cursor-pointer;
           }
           li:hover {
             color: $fontColor1;
@@ -927,7 +978,7 @@ export default {
       padding: 20px;
       .comment_list {
         overflow: hidden;
-        @apply w-full;
+        // @apply w-full;
         .content_left img {
           width: 36px;
           height: 36px;
@@ -993,7 +1044,7 @@ export default {
                   line-height: 20px;
                   height: 24px;
                   color: #333;
-                  @apply text-center float-left cursor-pointer;
+                  // @apply text-center float-left cursor-pointer;
                 }
                 li:hover {
                   color: $fontColor1;
@@ -1040,7 +1091,7 @@ export default {
         background: $baseColor2 none repeat scroll 0 0;
         color: #fff;
         font-size: 12px;
-        @apply cursor-pointer absolute text-center;
+        // @apply cursor-pointer absolute text-center;
         .send_i {
           background-position: -251px 8px;
           height: 24px;

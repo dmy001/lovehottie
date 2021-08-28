@@ -1,35 +1,127 @@
 <template>
-  <div class="imageBigBg h-screen">
+  <div
+    class="fixed top-0 left-0 bottom-0 right-0 w-full h-full"
+    style="z-index: 1000; background-color: rgba(0, 0, 0, 0.3)"
+  >
     <div
-      class="imageBig left-1/3"
+      class="left-1/3 m-0 p-0 bg-white rounded-2xl fixed"
       style="
           z-index: 19891023;
           width: 600px;
           height: 630px;
           top: 145.5px ;rgba（0，0，0，0．7）;
-          
+          box-shadow: 0px 0px 3px rgb(0 0 0 / 20%);
+          -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+          -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
         "
     >
       <span
-        class="closedImg w-9 h-9 rounded-full -top-2 -right-3 absolute"
+        class="
+          closedImg
+          w-9
+          h-9
+          rounded-full
+          -top-2
+          -right-3
+          absolute
+          cursor-pointer
+        "
+        style="z-index: 20"
         @click="closeImg()"
       ></span>
-      <div class="imageBigContent" id="sellineImg">
-        <div class="imageBigDetail">
-          <div class="imageBigDetailImg">
-            <div class="imageBigDetailImgLeft" @click="leftImage()"></div>
-            <div class="imageBigDetailImgRight" @click="rightImage()"></div>
-            <div class="bigger">原始尺寸</div>
-            <div class="normal hide" data-url data-i>重置</div>
-            <div class="bd slide_bd">
-              <div class="slide_item" imgid="61163a5293d24eeba0605320b5ca5830">
-                <div class="js_img_border">
-                  <img
-                    :src="imagesUrl"
-                    class=""
-                    style="position: relative; margin: 0 auto"
-                    alt=""
-                  />
+      <div
+        class="relative pt-2.5 pb-6 px-6 overflow-auto"
+        style="height: 630px"
+        id="sellineImg"
+      >
+        <div
+          class="absolute left-0 top-0 w-full bg-black rounded-2xl"
+          style="height: 630px"
+        >
+          <div
+            class="
+              left-5
+              overflow-hidden
+              bg-black
+              relative
+              rounded-2xl
+              float-left
+            "
+            style="width: 560px; height: 630px"
+          >
+            <div
+              class="
+                imageBigDetailImgLeft
+                inline-block
+                cursor-pointer
+                absolute
+                left-5
+                top-1/2
+                -mt-6
+                w-8
+                h-12
+              "
+              style="z-index: 3"
+              @click="leftImage()"
+            ></div>
+            <div
+              class="
+                imageBigDetailImgRight
+                inline-block
+                absolute
+                cursor-pointer
+                w-8
+                h-12
+                right-5
+                top-1/2
+                -mt-6
+              "
+              style="z-index: 3"
+              @click="rightImage()"
+            ></div>
+            <div
+              class="
+                text-base text-white
+                absolute
+                bottom-3
+                left-4
+                cursor-pointer
+              "
+              style="text-shadow: 0px 0px 3px #000; z-index: 1"
+            >
+              {{ $trans("原始尺寸") }}
+            </div>
+            <div
+              class="
+                left-7
+                text-base text-white
+                absolute
+                bottom-3
+                cursor-pointer
+              "
+              style="
+                z-index: 1;
+                text-shadow: 0px 0px 3px #000;
+                display: none !important;
+              "
+              data-url
+              data-i
+            >
+              {{ $trans("重置") }}
+            </div>
+            <div
+              class="bd flex items-center text-center"
+              style="height: 630px; width: 560px"
+            >
+              <div
+                class="w-full inline-block"
+                style="max-height: 630px"
+                imgid="61163a5293d24eeba0605320b5ca5830"
+              >
+                <div class="inline">
+                  <img :src="imagesUrl" class="relative my-0 mx-auto" alt="" />
                 </div>
               </div>
             </div>
@@ -61,7 +153,7 @@ export default {
       if (currentCli) {
         if (!currentCli.contains(event.target)) {
           this.bigImage = false;
-          this.$emit("func", this.bigImage);
+          this.$emit("func1", this.bigImage);
         }
       }
     },
@@ -84,131 +176,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.imageBig {
-  animation-name: bounceIn;
-  margin: 0;
-  padding: 0;
-  background-color: #fff;
-  -webkit-background-clip: content;
-  box-shadow: 0px 0px 3px rgb(0 0 0 / 20%);
-  border-radius: 15px;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-  -webkit-animation-duration: 0.3s;
-  animation-duration: 0.3s;
-  position: fixed;
-  .imageBigContent {
-    position: relative;
-    padding: 10px 25px 25px 25px;
-    overflow: auto;
-    height: 630px;
-    .imageBigDetail {
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 630px;
-      width: 100%;
-      background: #000;
-      border-radius: 15px;
-
-      .imageBigDetailImg {
-        left: 20px;
-        overflow: hidden;
-        background: #000;
-        position: relative;
-        width: 560px;
-        height: 630px;
-        border-radius: 15px;
-        border-bottom-right-radius: 0;
-        border-top-right-radius: 0;
-        float: left;
-        .imageBigDetailImgLeft {
-          background: url("../../../assets/images/dynamic.png") no-repeat;
-          display: inline-block;
-          background-position: -123px 0;
-          z-index: 3;
-          cursor: pointer;
-          position: absolute;
-          left: 20px;
-          top: 50%;
-          margin-top: -23px;
-          width: 32px;
-          height: 47px;
-        }
-        .imageBigDetailImgRight {
-          background: url("../../../assets/images/dynamic.png") no-repeat;
-          display: inline-block;
-          background-position: -159px 0;
-          z-index: 3;
-          cursor: pointer;
-          width: 32px;
-          height: 47px;
-          position: absolute;
-          right: 20px;
-          top: 50%;
-          margin-top: -23px;
-        }
-        .bigger {
-          font-size: 16px;
-          color: #fff;
-          position: absolute;
-          bottom: 12px;
-          left: 15px;
-          z-index: 1;
-          text-shadow: 0px 0px 3px #000;
-          cursor: pointer;
-        }
-        .normal {
-          left: 27px;
-          font-size: 16px;
-          color: #fff;
-          position: absolute;
-          bottom: 12px;
-          left: 15px;
-          z-index: 1;
-          text-shadow: 0px 0px 3px #000;
-          cursor: pointer;
-        }
-        .hide {
-          display: none !important;
-        }
-        .slide_bd {
-          height: 630px;
-          width: 560px;
-          display: flex;
-          align-items: center;
-          text-align: center;
-          .slide_item {
-            width: 100%;
-            display: inline-block;
-            max-height: 630px;
-            .js_img_border {
-              display: inline;
-            }
-          }
-        }
-      }
-    }
-  }
+.imageBigDetailImgLeft {
+  background: url("../../../assets/images/dynamic.png") no-repeat;
+  background-position: -123px 0;
+}
+.imageBigDetailImgRight {
+  background: url("../../../assets/images/dynamic.png") no-repeat;
+  background-position: -159px 0;
 }
 .closedImg {
   background: url("~@images/iconClosed.png") -46px 1px no-repeat;
-  cursor: pointer;
-  z-index: 20;
 }
 .closedImg:hover {
   background: url("~@images/iconClosed.png") -46px -38px no-repeat;
   cursor: pointer;
-}
-.imageBigBg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 1000;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
 }
 </style>

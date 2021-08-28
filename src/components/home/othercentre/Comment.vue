@@ -26,14 +26,19 @@
                 style="float: right"
                 v-show="showWarning"
                 @click="warning()"
-                class="talk_icon mr-px3 w-20"
+                class="talk_icon mr-px3 inline-block cursor-pointer h-4 w-5"
               ></span>
             </p>
-            <p class="contentText mt-2 text-left">お会いできてうれしいです</p>
+            <p
+              class="contentText mt-2 text-left"
+              style="word-break: break-all; word-wrap: break-word"
+            >
+              お会いできてうれしいです
+            </p>
             <!-- 评论图片 -->
             <div class="mt-2 text-left flex" style="">
               <div
-                class="imgboxs"
+                class="imgboxs relative cursor-pointer float-left"
                 style="overflow: hidden"
                 v-for="(item, index) in images"
                 :key="index"
@@ -50,36 +55,27 @@
                   "
                 />
               </div>
-              <!-- <div class="imgboxs">
-                <img
-                  src="https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120"
-                  alt=""
-                />
-              </div>
-              <div class="imgboxs">
-                <img
-                  src="https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc?imageView2/5/w/123/h/120"
-                  alt=""
-                />
-              </div> -->
             </div>
-
             <!-- 留言按钮和地球 -->
-            <div class="dynamic_icon ml-px15 mt-px15 relative">
+            <div class="dynamic_icon h-5 ml-px15 mt-px15 relative">
               <span
-                class="bg_icon message_icon mr-px3"
+                class="bg_icon inline-block cursor-pointer h-4 w-5 mr-px3"
                 @click.stop="openList"
                 @click="showIcon()"
                 :style="{
                   backgroundPosition:
                     showicon == true ? '-26px -48px' : '-26px -26px',
                 }"
-              ></span>
+              >
+              </span>
               <span class="text-gray-400">{{ contentList.length }}</span>
-              <div class="fanyi_circle">
-                <span class="bg_circle ml-px15"></span>
-                <div class="trans-type">
-                  <span class="ul_bg"></span>
+              <div class="fanyi_circle" style="line-height: 10px">
+                <span
+                  class="bg_circle ml-px15 inline-block cursor-pointer w-5 h-5"
+                >
+                </span>
+                <div class="trans-type1 w-36 h-28 absolute hidden left-4 top-6">
+                  <span class="ul_bg1 w-5 h-7 absolute left-7 -top-3"></span>
                   <ul>
                     <li data-type="en">English</li>
                     <li data-type="zh">简体中文</li>
@@ -93,17 +89,21 @@
                 </div>
               </div>
             </div>
-            <div class="dynamic_input mt-2">
+            <div
+              class="dynamic_input mt-2 w-full overflow-hidden px-5 py-5"
+              style="border-top: 1px solid #e7e7e7; background: #fafafa"
+            >
               <!-- 评论列表 -->
               <div class="text-left" v-if="listShow">
                 <div
-                  class="comment_list"
+                  class="comment_list overflow-hidden"
                   v-for="(item, index) in contentList"
                   :key="index"
                 >
                   <div class="comment_content">
                     <div class="content_left float-left">
                       <img
+                        class="w-9 h-9 rounded-full"
                         :src="STATICBASEURI + '/images/default/female.png'"
                         alt=""
                       />
@@ -118,11 +118,23 @@
                         }}</span>
                         <span class="text-12px">{{ item.time }}</span>
                       </p>
-                      <div class="right_text">
+                      <div class="right_text mt-1 mb-2.5">
                         <span class="text-12px mr-px15">
                           {{ item.content }}
                         </span>
-                        <div class="inline max-w-full icon_content absolute">
+                        <div
+                          class="
+                            icon_content
+                            px-0
+                            py-0
+                            bg-none
+                            h-5
+                            inline
+                            max-w-full
+                            absolute
+                          "
+                          style="color: #999"
+                        >
                           <div
                             class="inline-block align-middle"
                             style="margin-left: 20px"
@@ -132,6 +144,8 @@
                                 message_iconSmall
                                 inline-block
                                 cursor-pointer
+                                w-3.5
+                                h-3
                               "
                               @click.stop="inputShow = true"
                               @click="onMessage(item.name)"
@@ -148,9 +162,22 @@
                                 inline-block
                                 cursor-pointer
                               "
+                              style="width: 13px; height: 13px"
                             >
-                              <div class="trans-type">
-                                <span class="ul_bg"></span>
+                              <div
+                                class="
+                                  trans-type2
+                                  w-36
+                                  h-28
+                                  absolute
+                                  hidden
+                                  top-5
+                                "
+                                style="left: -30px"
+                              >
+                                <span
+                                  class="ul_bg2 w-5 h-7 absolute left-7 -top-3"
+                                ></span>
                                 <ul>
                                   <li data-type="en">English</li>
                                   <li data-type="zh">简体中文</li>
@@ -382,50 +409,33 @@ export default {
 }
 .talk_icon {
   background: url("../../../assets/images/person/little1.png") no-repeat -1px -735px;
-  display: inline-block;
-  cursor: pointer;
-  height: 16px;
-  width: 21px;
 }
 .talk_icon:hover {
   background-position: -25px -735px;
 }
 .contentText {
-  word-break: break-all;
-  word-wrap: break-word;
 }
 .imgboxs {
-  position: relative;
-  cursor: pointer;
-  float: left;
 }
 .dynamic_icon {
-  height: 20px;
   @apply flex items-center;
+  .bg_icon {
+    background: url("~@images/person/dynamic.png") no-repeat;
+    background-position: -26px -48px;
+  }
+  .bg_icon:hover {
+    background-position: -26px -26px !important;
+  }
   .bg_circle {
     background: url("~@images/dynamic.png") no-repeat;
-    display: inline-block;
     background-position: -54px -48px;
-    cursor: pointer;
-    height: 18px;
-    width: 18px;
   }
-
-  .trans-type {
-    width: 147px;
-    height: 110px;
-    background-color: inherit;
-    position: absolute;
-    display: none;
-    left: 16px;
-    top: 24px;
+  .bg_circle:hover {
+    background-position: -54px -26px;
+  }
+  .trans-type1 {
     z-index: 998;
-    .ul_bg {
-      width: 20px;
-      height: 30px;
-      position: absolute;
-      left: 30px;
-      top: -12px;
+    .ul_bg1 {
       z-index: 2;
       background: url("~@images/person/IMicon.png") 0px -75px repeat;
     }
@@ -448,94 +458,32 @@ export default {
       }
     }
   }
-
-  .message_icon {
-    background-position: -26px -48px;
-    cursor: pointer;
-    height: 16px;
-    width: 19px;
-  }
-  .message_icon:hover {
-    background-position: -26px -26px !important;
-  }
-
-  .bg_circle:hover {
-    background-position: -54px -26px;
-  }
-  .fanyi_circle {
-    line-height: 10px;
-  }
-
-  .fanyi_circle:hover .trans-type {
+  .fanyi_circle:hover .trans-type1 {
     display: block;
   }
 }
-.bg_icon {
-  background: url("~@images/person/dynamic.png") no-repeat;
-  display: inline-block;
-}
 .dynamic_input {
-  width: 100%;
-  overflow: hidden;
-  border-top: 1px solid #e7e7e7;
-  background: #fafafa;
-  padding: 20px;
-  .textInput {
-    background: #fafafa;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
   .comment_list {
-    overflow: hidden;
     @apply w-full;
     .content_left img {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
     }
     .right_text {
-      margin-top: 4px;
-      margin-bottom: 10px;
       .icon_content {
-        padding: 0;
-        background: none;
-        color: #999;
-        height: 20px;
         .message_iconSmall {
-          display: inline-block;
-          width: 14px;
-          height: 12px;
           background: url("~@images/person/little1.png") -20px -632px no-repeat;
         }
         .message_iconSmall:hover {
           background-position: -58px -632px;
         }
         .bg_circleSmall {
-          width: 13px;
-          height: 13px;
           background: url("~@images/person/little1.png") -2px -631px no-repeat;
         }
         .bg_circleSmall:hover {
           background-position: -40px -631px;
         }
-        .bg_circleSmall:hover .trans-type {
-          display: block;
-        }
-        .trans-type {
-          width: 147px;
-          height: 110px;
-          background-color: inherit;
-          position: absolute;
-          left: -30px;
-          display: none;
-          top: 19px;
+        .trans-type2 {
           z-index: 998;
-          .ul_bg {
-            width: 20px;
-            height: 30px;
-            position: absolute;
-            left: 30px;
-            top: -12px;
+          .ul_bg2 {
             z-index: 2;
             background: url("~@images/person/IMicon.png") 0px -75px repeat;
           }
@@ -558,8 +506,16 @@ export default {
             }
           }
         }
+        .bg_circleSmall:hover .trans-type2 {
+          display: block;
+        }
       }
     }
+  }
+  .textInput {
+    background: #fafafa;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 .textArea {

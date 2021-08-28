@@ -3,7 +3,7 @@
     <div class="foot">
       <div class="jz w995">
         <p>
-          关注GaGaHi
+          {{$trans("关注GaGaHi")}}
           <a
             title="Twitter"
             href="https://twitter.com/GaGaHi01"
@@ -21,32 +21,32 @@
         </p>
         <p>
           <a href="https://www.gagahi.com/Platform/abutUs" target="_blank"
-            >关于我们</a
+            >{{$trans("关于我们")}}</a
           >
           |
           <a href="https://www.gagahi.com/Platform/friendssafe" target="_blank"
-            >安全交友</a
+            >{{$trans("安全交友")}}</a
           >
           |
           <a
             href="https://www.gagahi.com/Platform/privacyclause"
             target="_blank"
-            >隐私条款</a
+            >{{$trans("隐私条款")}}</a
           >
           |
           <a href="https://www.gagahi.com/Platform/help" target="_blank"
-            >帮助中心</a
+            >{{$trans("帮助中心")}}</a
           >
           |
           <a href="https://www.gagahi.com/Platform/contactus" target="_blank"
-            >联系我们</a
+            >{{$trans("联系我们")}}</a
           ><br />
           <span class="copy-words"
-            >©<span class="year">2021</span> 郑州中业科技股份有限公司
-            &nbsp;&nbsp;增值电信业务经营许可证：豫B2-20190716&nbsp;&nbsp;<a
+            >©<span class="year">2021</span> {{$trans("郑州中业科技股份有限公司")}}
+            &nbsp;&nbsp;{{$trans("增值电信业务经营许可证：豫")}}B2-20190716&nbsp;&nbsp;<a
               href="https://beian.miit.gov.cn"
               target="_blank"
-              >豫ICP备11032422号-7</a
+              >{{$trans("豫ICP备11032422号")}}-7</a
             ><br
           /></span>
           <span class="copy-words"
@@ -58,7 +58,7 @@
             ><a
               href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41019702002081"
               target="_blank"
-              >豫公网安备 41019702002081号</a
+              >{{$trans("豫公网安备 41019702002081号")}}</a
             ><img
               src="https://s.gagahi.com/web-pc//images/wenhuajingying.png"
               alt=""
@@ -66,11 +66,11 @@
             /><a
               href="http://sq.ccm.gov.cn/ccnt/sczr/service/business/emark/toDetail/444d25ed5fea4d5f84b803881b80426a"
               target="_blank"
-              >豫网文〔2018〕10602-157号</a
+              >{{$trans("豫网文〔2018〕10602-157号")}}</a
             ><a
               href="https://images.gagahi.com/acf9340148144e639a576cc13eb2fb7f.png"
               target="_blank"
-              >&nbsp;&nbsp;|&nbsp;营业执照</a
+              >&nbsp;&nbsp;|&nbsp;{{$trans("营业执照")}}</a
             ></span
           >
         </p>

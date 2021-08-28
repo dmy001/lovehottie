@@ -1,14 +1,14 @@
 <template>
   <section>
-    <div style="overflow: hidden; position: relative; width: 100%">
+    <div class="overflow-hidden relative w-full">
       <ul class="flex" :style="[sliderActive]">
         <li v-for="(item, index) in images" :key="item.id + index">
           <img
+            class="cursor-pointer"
             :src="item.url"
             style="
               height: 120px;
               width: 123px;
-              cursor: pointer;
               object-fit: cover;
               flex-shrink: 0;
             "
@@ -22,13 +22,13 @@
       <!-- 图片左右图标 -->
       <div class="">
         <div
-          class="prev"
+          class="prev absolute cursor-pointer"
           @click="prev()"
           v-if="images.length >= 6"
           href=""
         ></div>
         <div
-          class="next"
+          class="next absolute cursor-pointer"
           @click="nextImg()"
           v-if="images.length >= 6"
           href=""
@@ -39,6 +39,7 @@
     <BigImage
       v-if="bigImg"
       @func="closeBigImg"
+      @func1="closeBigImg1"
       :imagesUrl="this.images[currentIndex].url + '?imageView2/2/w/560/h/630'"
       @leftBtn="leftImage()"
       @rightBtn="rightImage()"
@@ -170,6 +171,9 @@ export default {
     closeBigImg(value) {
       this.bigImg = value;
     },
+    closeBigImg1(value) {
+      this.bigImg = value;
+    },
     openImage(index) {
       this.bigImg = true;
       console.log(index);
@@ -204,11 +208,9 @@ export default {
 .prev {
   width: 14px;
   height: 23px;
-  position: absolute;
   top: 44px;
   left: 8px;
   z-index: 1;
-  cursor: pointer;
   background: url("../../assets/images/person/little1.png") -80px -566px
     no-repeat;
 }
@@ -218,11 +220,9 @@ export default {
 .next {
   width: 14px;
   height: 23px;
-  position: absolute;
   top: 44px;
   right: 8px;
   z-index: 1;
-  cursor: pointer;
   background: url("../../assets/images/person/little1.png") 0px -598px no-repeat;
 }
 .next:hover {
