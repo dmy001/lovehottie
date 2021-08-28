@@ -19,25 +19,15 @@
         </p>
       </div>
     </Upload>
-    <div v-show="addImg" class="mt-20  ">
+    <div v-show="addImg" class="py-10 px-4 pb-10">
       <div
         v-for="(item, index) in imgList"
         :key="index"
-        class="bg-gray-400
-               
-              float-left
-              px-4 
-              mr-2
-              mb-2"
-        
+        class="bg-gray-400 float-left mr-2 mb-2"
       >
-        <img
-          v-if="base64Img"
-          :src="item"
-          class="w-32 h-32 object-cover  "
-        />
+        <img v-if="base64Img" :src="item" class="w-28 h-28 object-cover" />
       </div>
-      <div>
+      <button :disabled="disabledSubmit" class="outline-none">
         <Upload
           multiple
           :before-upload="handleUpload"
@@ -46,22 +36,31 @@
           :max-size="2048"
           action="//jsonplaceholder.typicode.com/posts/"
         >
-          <img src="~@images/person/more.jpg" class="cursor-pointer" />
+          <img
+            :disabled="disabledSubmit"
+            src="~@images/person/more.jpg"
+            class="cursor-pointer"
+          />
         </Upload>
+      </button>
 
-      </div>
-        
-      <p class="text-black">共{{ this.imgList.length }},还能上传{{ 9 - this.imgList.length }}张。</p>
+      <p class="text-black">
+        共{{ this.imgList.length }},还能上传{{ 9 - this.imgList.length }}张。
+      </p>
       <div class="absolute bottom-5 w-full text-center">
-        <span class="chooseImg   bg-red-500">一键上传</span>
+        <span class="chooseImg bg-red-500" @click="upload">一键上传</span>
       </div>
     </div>
   </div>
 </template>
 <script>
 export default {
+  props:{
+     uploadImgList:Array
+  },
   data() {
     return {
+      disabledSubmit: true,
       addImg: false,
       selectImg: true,
       imgList: [],
@@ -69,7 +68,6 @@ export default {
       base64Img: null,
     };
   },
-
   methods: {
     handleSuccess() {
       // console.log(file);
@@ -92,6 +90,18 @@ export default {
         // console.log(...this.imgList)
       };
       // return false;
+      if (this.imgList.length >= 9) {
+        this.disabledSubmit = false;
+        this.$Notice.warning({
+          title: "提醒",
+          desc: "只能9张",
+        });
+      }
+    },
+    upload() {
+      this.selectImg=!this.selectImg
+      this.addImg = !this.addImg;
+      this.$emit('closeModalPhoto')
     },
   },
 };

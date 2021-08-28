@@ -119,19 +119,21 @@
           <li class="flex justify-between text-sm mt-5">
             <span class="w-1/4 text-right text-gray-400 pr-2">年龄:</span>
             <label class="w-3/4 text-left space-x-3">
-              <Select class="w-28 h-8"  v-model="year">
-                <Option v-for="(it, index) in years" :value="it"  :key="index">
-                {{it}}</Option>
+              <Select class="w-28 h-8" v-model="year">
+                <Option v-for="(it, index) in years" :value="it" :key="index">
+                  {{ it }}</Option
+                >
               </Select>
               <Select class="w-28 h-8" v-model="month">
-                <Option v-for="(it, index) in months" :value="it"  :key="index">
-               {{it}} </Option>
+                <Option v-for="(it, index) in months" :value="it" :key="index">
+                  {{ it }}
+                </Option>
               </Select>
               <Select class="w-28 h-8" v-model="day">
-                 <Option v-for="(it, index) in days" :value="it"  :key="index">
-               {{it}} </Option>
+                <Option v-for="(it, index) in days" :value="it" :key="index">
+                  {{ it }}
+                </Option>
               </Select>
-              
             </label>
           </li>
           <li class="flex justify-between text-sm mt-5">
@@ -266,21 +268,21 @@
             <span class="w-3/4 text-left text-sm -mt-1">
               0
               <router-link to="/home/vip/RechargeGold">
-              <button
-                class="
-                  w-16
-                  h-7
-                  px-2
-                  border border-solid border-gray-400
-                  rounded-2xl
-                  text-center
-                  leading-7
-                  ml-24
-                  focus:outline-none
-                "
-              >
-                充值
-              </button>
+                <button
+                  class="
+                    w-16
+                    h-7
+                    px-2
+                    border border-solid border-gray-400
+                    rounded-2xl
+                    text-center
+                    leading-7
+                    ml-24
+                    focus:outline-none
+                  "
+                >
+                  充值
+                </button>
               </router-link>
             </span>
           </li>
@@ -288,24 +290,23 @@
             <span class="w-1/4 text-right text-gray-400">会员级别：</span>
             <span class="w-3/4 text-left text-sm -mt-1">
               普通会员
-                <router-link to="/home/vip/UpgradeVip">
-              <button
-                class="
-                  w-16
-                  h-7
-                  px-2
-                  border border-solid border-gray-400
-                  rounded-2xl
-                  text-center
-                  leading-7
-                  ml-12
-                  focus:outline-none
-                "
-              >
-                升级
-              </button>
+              <router-link to="/home/vip/UpgradeVip">
+                <button
+                  class="
+                    w-16
+                    h-7
+                    px-2
+                    border border-solid border-gray-400
+                    rounded-2xl
+                    text-center
+                    leading-7
+                    ml-12
+                    focus:outline-none
+                  "
+                >
+                  升级
+                </button>
               </router-link>
-
             </span>
           </li>
           <li class="flex justify-between text-sm">
@@ -702,7 +703,7 @@
       width="500"
       title="修改头像信息"
       :closable="false"
-      class="modify"
+      
     >
       <p slot="header">
         <span class="text-white">修改头像信息</span>
@@ -711,7 +712,7 @@
           @click="editHeader = false"
         ></span>
       </p>
-      <section style="height: 375px">
+      <section>
         <div class="h-10 border-b border-solid border-gray-400 mx-5">
           <span
             class="
@@ -728,6 +729,7 @@
           <Upload
             class="flex justify-center"
             :show-upload-list="false"
+            :before-upload="handleUpload"
             :on-success="handleSuccess"
             :format="['jpg', 'jpeg', 'png']"
             :max-size="2048"
@@ -778,7 +780,7 @@
       </p>
       <section class="mx-5 flex justify-between mt-5">
         <div
-          class="relative"
+          class="relative flex justify-center items-center"
           style="
             width: 410px;
             height: 300px;
@@ -786,7 +788,11 @@
             float: left;
           "
         >
-          <img src=" " alt="" />
+          <img
+            v-if="base64Img"
+            class="w-3/4 h-4/5 object-contain"
+            :src="base64Img"
+          />
         </div>
         <div
           class="relative right-5 flex flex-col justify-between text-center"
@@ -801,7 +807,7 @@
                 border-radius: 50%;
                 object-fit: contain;
               "
-              src="https://sources.lovehottie.com/A-564afb62ef7045b2857f817aa1ce6cad?imageMogr2/thumbnail/410x300"
+              :src="base64Img"
             />
           </div>
           <p class="mb15 tc">60*60</p>
@@ -813,7 +819,7 @@
                 border-radius: 50%;
                 object-fit: contain;
               "
-              src="https://sources.lovehottie.com/A-564afb62ef7045b2857f817aa1ce6cad?imageMogr2/thumbnail/410x300"
+              :src="base64Img"
             />
           </div>
           <p class="mb15 tc">45*45</p>
@@ -825,7 +831,7 @@
                 border-radius: 50%;
                 object-fit: contain;
               "
-              src="https://sources.lovehottie.com/A-564afb62ef7045b2857f817aa1ce6cad?imageMogr2/thumbnail/410x300"
+              :src="base64Img"
             />
           </div>
           <p class="tc">30*30</p>
@@ -834,6 +840,7 @@
       <section class="absolute bottom-10 w-full text-center space-x-5">
         <button
           class="w-20 h-8 focus:outline-none bg-red-400 rounded-2xl text-white"
+          @click="upload"
         >
           保存
         </button>
@@ -870,6 +877,10 @@ export default {
       picked: [],
       showModal: false,
       toSetCity: false,
+
+      file: null,
+      loadingStatus: false,
+      base64Img: null,
       informations: [
         { title: "昵称", value: "嘟嘟" },
         { title: "ID号", value: "1354635" },
@@ -892,13 +903,15 @@ export default {
         { title: "手机号码", value: " " },
         { title: "密码", value: "****" },
       ],
-      year:0,
-      month:0,
-      day:1,
-      years: Array.from({length:100},(item, index)=> index+1910).reverse(),
-      months:Array.from({length:12},(item, index)=> index+1),
-      
-      
+      year: 0,
+      month: 0,
+      day: 1,
+      years: Array.from(
+        { length: 100 },
+        (item, index) => index + 1910
+      ).reverse(),
+      months: Array.from({ length: 12 }, (item, index) => index + 1),
+
       job: [
         "文案",
         "客户经理",
@@ -927,14 +940,15 @@ export default {
       notice: false,
     };
   },
-  computed:{
-    
-    days:{
-      get:function(){
-        return Array.from({length:new Date(this.year,this.month,0).getDate()},(item, index)=> index+1)
+  computed: {
+    days: {
+      get: function () {
+        return Array.from(
+          { length: new Date(this.year, this.month, 0).getDate() },
+          (item, index) => index + 1
+        );
       },
-      
-    }
+    },
   },
   components: {
     SetUpHeader,
@@ -968,11 +982,34 @@ export default {
         this.showEmail = true;
       }
     },
+    handleUpload(file) {
+      this.editSmallHeader = true;
+
+      this.file = file;
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const _base64 = reader.result;
+        this.base64Img = _base64;
+        // console.log(_base64);
+
+        // console.log(...this.imgList)
+      };
+      // return false;
+    },
+    upload() {
+      // this.loadingStatus = true;
+      this.editSmallHeader = false;
+      setTimeout(() => {
+        this.file = null;
+        // this.loadingStatus = false;
+        this.$Message.success("Success");
+      }, 1500);
+    },
     handleSuccess(res, file) {
       file.url =
         "https://o5wwk8baw.qnssl.com/7eb99afb9d5f317c912f08b5212fd69a/avatar";
       file.name = "7eb99afb9d5f317c912f08b5212fd69a";
-      this.editSmallHeader = true;
     },
     handleFormatError(file) {
       this.$Notice.warning({
@@ -990,7 +1027,6 @@ export default {
       });
     },
   },
-  
 };
 </script>
 <style lang="scss" scoped>
@@ -1025,7 +1061,7 @@ export default {
   cursor: pointer;
   vertical-align: top;
 }
-.modify .ivu-modal-content {
-  height: 375px;
+.ivu-modal-content {
+  height: 200px;
 }
 </style>
