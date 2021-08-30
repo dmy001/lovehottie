@@ -13,7 +13,6 @@
     "key_25": "days",
     "key_26": "No coupons available",
     "key_27": "(membership coupons are only for gold payment)",
-    "key_28": "",
     "key_29": "Jumping...",
     "key_30": "Choose Payment Method",
     "key_31": "Tips：1 Gold only need $1, to avoid delayed payment, please do not select electronic check.",
@@ -171,5 +170,10 @@
     "key_183": "Original size",
     "key_184": "Reset",
     "key_185": "Report",
-    "key_186": "Go to recharge and get coupons"
+    "key_186": "Go to recharge and get coupons",
+    "key_187": "Add friends",
+    "key_188": "ignore",
+    "key_189": "People you may know",
+    "key_190": "No friend requests",
+    "key_191": "Friend Requests"
 }

@@ -50,6 +50,8 @@ module.exports = {
       .set("@assets", path.resolve(__dirname, "src/assets"))
       .set("@images", path.resolve(__dirname, "./src/assets/images"))
       .set("@components", path.resolve(__dirname, "./src/components/"))
-      .set("@styles", path.resolve(__dirname, "./src/styles/"));
+      .set("@styles", path.resolve(__dirname, "./src/styles/"))
+      .set("@api", path.resolve(__dirname, "./src/api/"));
+
   },
 };
