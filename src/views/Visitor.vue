@@ -10,7 +10,7 @@
       <div class="mt-10">
         <div v-for="(items, index) in list" :key="index">
           <div class="time-content border-dashed w-24 border rounded-3xl">
-            {{ items.data }}
+            {{ items.dvisiDatetime }}
           </div>
           <div class="flex border-l-2 ml-12 flex-wrap">
             <div
@@ -19,9 +19,9 @@
               class="visitors"
             >
               <div class="w-20 ml-10">
-                <img class="h-20 w-20 rounded-full" :src="item.imgsrc" alt="" />
-                <span>{{ item.name }}</span>
-                <p>{{ item.time }}</p>
+                <img class="h-20 w-20 rounded-full" :src="item.member.membBigimg" alt="" />
+                <span>{{ item.member.membNickname }}</span>
+                <p>{{ item.visiDatetime }}</p>
               </div>
             </div>
           </div>
@@ -32,50 +32,48 @@
 </template>
 
 <script>
+import {getVisitor} from '../../src/api/vip/getVisitor.js'
 export default {
   data() {
     return {
+      endDay:'2021-08-28',
+      page:1,
       // 懒加载
       list: [
         {
-          data: "2021.08.09",
-          arr: [
-            {
-              name: "zrj",
-              time: "09:45",
-              imgsrc: "https://sources.lovehottie.com/images/default/male.png",
-            },
-            {
-              name: "zrj",
-              time: "09:45",
-              imgsrc: "https://sources.lovehottie.com/images/default/male.png",
-            },
-          ],
+          visiGagaid: 60015820,
+          visiDatetime: "Aug 28, 2021, 2:50:28 PM",
+          member: {
+            membGagano: "60017173",
+            membGagaid: 60015820,
+            membNickname: "Jeff",
+            membEmail: "6summerfun@gmail.com",
+            membBigimg:
+              "https://sources.lovehottie.com/a972a0eeb7c248d8852c3ba89095762c",
+            online: 0,
+            showweight: 0,
+            showheight: 0,
+            isagainlogin: 0,
+            ispaypalreg: 0,
+            age: 0,
+          },
+          showDate: 1630162228000,
         },
-        {
-          data: "2021.08.18",
-          arr: [
-            {
-              name: "zrj",
-              time: "09:45",
-              imgsrc: "https://sources.lovehottie.com/images/default/male.png",
-            },
-          ],
-        },
-        {
-          data: "2021.08.18",
-          arr: [
-            {
-              name: "zrj",
-              time: "09:45",
-              imgsrc: "https://sources.lovehottie.com/images/default/male.png",
-            },
-          ],
-        },
+     
       ],
     };
   },
-};
+  methods:{
+    async getVisitors(){
+      const res = await getVisitor(this.endDay,this.page);
+      console.log(res);
+    }
+    },
+    mounted(){
+      this.getVisitors()
+    }
+
+  }
 </script>
 
 <style lang="scss">
