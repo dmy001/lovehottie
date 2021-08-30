@@ -13,7 +13,6 @@
     "key_25": "Tage",
     "key_26": "Keine Gutscheine verf gbar",
     "key_27": "(Mitgliedsgutscheine sind nur für Goldzahlung)",
-    "key_28": "",
     "key_29": "Springen...",
     "key_30": "Wählen Sie die Zahlungsart",
     "key_31": "Tipps\\:1 Goldmünze braucht nur 1 Dollar, Um verspätete Ankünfte zu vermeiden, wählen Sie keine elektronischen Schecks",
@@ -171,5 +170,10 @@
     "key_183": "originale Größe",
     "key_184": "erneut stellen",
     "key_185": "melden",
-    "key_186": "Lade Sie auf, um Gutscheine zu erhalten~"
+    "key_186": "Lade Sie auf, um Gutscheine zu erhalten~",
+    "key_187": "Freunde hinzufügen",
+    "key_188": "ignorieren",
+    "key_189": "Erkennten moglich",
+    "key_190": "keine neue Freundschaftsanfrage",
+    "key_191": "Freundenschaftanfrage"
 }

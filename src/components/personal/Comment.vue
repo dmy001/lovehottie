@@ -45,6 +45,7 @@
                 @click.stop="openCommentImage(index)"
                 :src="item"
                 alt=""
+                class="w-32 object-fit: cover;cursor: pointer;"
                 style="
                   object-fit: cover;
                   width: 262px;
@@ -295,8 +296,8 @@ export default {
     },
   },
 };
-</script>
-<style lang="scss">
+</script >
+<style lang="scss" scoped>
 .dynamic {
   padding: 20px;
   overflow: hidden;

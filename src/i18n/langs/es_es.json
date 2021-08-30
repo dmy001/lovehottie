@@ -13,7 +13,6 @@
     "key_25": "dias",
     "key_26": "No hay cupones disponibles",
     "key_27": "Cupones de membresía sólo para el pago de monedas de oro",
-    "key_28": "",
     "key_29": "Saltando...",
     "key_30": "Seleccionar método de pago",
     "key_31": "\\ Consejos\\: sólo hace falta pagar 1 dólar para 1 oro, Para evitar llegadas tardías, no elija cheques electrónicos",
@@ -171,5 +170,10 @@
     "key_183": "Medida original",
     "key_184": "Configurar",
     "key_185": "Bloquear",
-    "key_186": "vaya a recargar y obtener el boleto de preferencia"
+    "key_186": "vaya a recargar y obtener el boleto de preferencia",
+    "key_187": "Agregar a amigo",
+    "key_188": "Ignorar",
+    "key_189": "Es posible conocer",
+    "key_190": "No hay nueva solicitación de agregar a amigo",
+    "key_191": "Solicitud de agregar a amigo"
 }

@@ -64,26 +64,6 @@
           >
             {{ it }}
           </span>
-      
-        <!-- <span
-          v-for="(it, index) in cityList"
-          :key="index"
-          class="
-            w-28
-            cursor-pointer
-            leading-8
-            text-sm
-            inline-block
-            text-left
-            float-left
-            
-            mx-5
-            mt-2
-          "
-          @click="checked($event)"
-        >
-          {{ it }}
-        </span> -->
       </div>
     </section>
   </div>
