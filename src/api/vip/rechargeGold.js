@@ -7,7 +7,17 @@ import axios from '../axios.config'
   * 
   * 
   * @return {*} 
+  * {
+    "success": true,
+    "msg": "操作成功",
+    "obj": 0.00,
+    "attributes": {
+        "bag35": 0,
+        "charbag": 0
+    }
+    }
   */
+ 
 export const getGold = async (_) => {
     const res = await axios.get("im/getMemberGold", {
         _
