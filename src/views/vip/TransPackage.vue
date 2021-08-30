@@ -12,6 +12,7 @@
         >
       </div>
     </div>
+    <!-- 选择翻译字符列表开始部分 -->
     <div class="border mt-5 grid grid-cols-3">
       <div
         v-for="(item, index) in list"
@@ -63,6 +64,7 @@
         </p>
       </div>
     </div>
+    <!-- 选择翻译字符列表结束部分 -->
     <div>
       <PayInfo />
       <Discount :price="currentPrice" />

@@ -169,6 +169,11 @@ export default {
       ],
     };
   },
+  mounted() {
+    const pre = this.images.slice(-2);
+    const next = this.images.slice(0, 7);
+    this.images = [...pre, ...this.images, ...next];
+  },
   methods: {
     toDelImg(index) {
       console.log(index);
@@ -243,11 +248,7 @@ export default {
       console.log(this.currentIndex);
     },
   },
-  mounted() {
-    const pre = this.images.slice(-2);
-    const next = this.images.slice(0, 7);
-    this.images = [...pre, ...this.images, ...next];
-  },
+ 
 };
 </script>
 <style lang= 'scss'  scoped>

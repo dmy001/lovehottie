@@ -34,7 +34,6 @@
             </div>
           </div>
         </div>
-
         <div
           class="bottom border flex flex-col pt-10 pb-8"
           :class="{ active: inputCount === true }"
@@ -46,8 +45,9 @@
               class="border rounded-3xl"
               type="text"
               v-model="payPrice"
-              @input="payPrice = payPrice.replace(/[^\d]/g, '')"
+              @input="payPrice = payPrice.slice(0,4).replace(/[^\d]/g, '')"
             />
+              <!-- 最多输入4位，限制非数字的输入 -->
             <!-- @keyup.enter='search' @input='search($event)' -->
             <i class="inline-block ml-2"></i>
           </div>

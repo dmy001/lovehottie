@@ -51,7 +51,7 @@
           :class="{ 'bg-base-color3': isZonePage }"
           @click="goZonePage"
         >
-          {{$trans("动态")}}
+          {{ $trans("动态") }}
         </div>
       </div>
 
@@ -69,17 +69,21 @@
           <input
             type="text"
             class="flex w-px120 search-input text-white font-bold text-px14"
-            :placeholder=" $trans('请输入昵称') "
+            :placeholder="$trans('请输入昵称')"
           />
           <!-- <img src="~@images/little.png" /> -->
           <label class="flex search-icon m-px3" />
         </div>
-        <button class="header-btn ml-px15 text-base-color1">
-          {{ upMoney }}
-        </button>
-        <button class="header-btn ml-px15 text-base-color1">
-          {{ upGrade }}
-        </button>
+        <router-link to="/home/vip/RechargeGold">
+          <button class="header-btn ml-px15 text-base-color1">
+            {{ upMoney }}
+          </button>
+        </router-link>
+        <router-link to="/home/vip/UpgradeVip">
+          <button class="header-btn ml-px15 text-base-color1">
+            {{ upGrade }}
+          </button>
+        </router-link>
         <div class="relative cursor-pointer msg-info header-info ml-px15">
           <span class="absolute info-num">1</span>
           <label class="inline-block w-full h-full"></label>
@@ -95,7 +99,9 @@
           <label class="inline-block w-full h-full"></label>
           <div class="absolute -bottom-full triangle-top"></div>
           <div class="absolute info-panl">
-            <p class="text-black text-left ml-5 mt-3">{{$trans("加好友申请")}}</p>
+            <p class="text-black text-left ml-5 mt-3">
+              {{ $trans("加好友申请") }}
+            </p>
             <p
               class="
                 text-gray-400
@@ -104,14 +110,16 @@
                 pb-5
               "
             >
-              {{$trans("没有新好友请求")}}！
+              {{ $trans("没有新好友请求") }}！
             </p>
-            <p class="text-black text-left ml-5">{{$trans("可能认识的人")}}</p>
+            <p class="text-black text-left ml-5">
+              {{ $trans("可能认识的人") }}
+            </p>
             <p
               v-if="haveFriend"
               class="text-gray-400 border-b border-dashed border-gray-400"
             >
-              {{$trans("暂无推荐的人")}}
+              {{ $trans("暂无推荐的人") }}
             </p>
             <div v-if="!haveFriend" class="friends mt-2">
               <p
@@ -149,7 +157,7 @@
                     hover:text-white
                   "
                 >
-                  {{$trans("加好友")}}
+                  {{ $trans("加好友") }}
                 </button>
                 <button
                   class="
@@ -165,7 +173,7 @@
                     hover:text-white
                   "
                 >
-                  {{$trans("忽略")}}
+                  {{ $trans("忽略") }}
                 </button>
               </p>
               <!-- </section> -->
@@ -178,13 +186,15 @@
           <div class="absolute -bottom-full triangle-top"></div>
           <div class="absolute info-pan leading-6">
             <a href="#information" @click="toSet()">
-              <p class="info-pan-list text-black mt-3">{{$trans("个人资料")}}</p>
+              <p class="info-pan-list text-black mt-3">
+                {{ $trans("个人资料") }}
+              </p>
             </a>
             <a href="#account" @click="toSet()">
-              <p class="info-pan-list text-black">{{$trans("账号设置")}}</p>
+              <p class="info-pan-list text-black">{{ $trans("账号设置") }}</p>
             </a>
 
-            <p class="info-pan-list text-black">{{$trans("退出")}}</p>
+            <p class="info-pan-list text-black">{{ $trans("退出") }}</p>
           </div>
         </div>
       </div>
@@ -264,7 +274,7 @@ export default {
     },
     //跳转账号设置页
     toSet() {
-      this.$router.push("personal");
+      this.$router.push("/home/personal");
     },
   },
   created() {

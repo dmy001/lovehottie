@@ -1,5 +1,6 @@
 <template>
   <div class="bg-white pb-4">
+    <!-- 特权说明表开始部分 -->
     <table class="w-full border mt-9">
       <tr class="h-10 bg-indigo-100">
         <td class="border border-gray-300" colspan="4" rowspan="2">
@@ -87,6 +88,7 @@
         <td class="border" colspan="2">{{ $trans("不限") }}</td>
       </tr>
     </table>
+    <!-- 特权说明表结束部分 -->
     <div class="mt-9 text-left">
       <p>{{ $trans("备注") }}：</p>
       <p class="mt-3 mb-3">

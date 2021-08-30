@@ -45,6 +45,7 @@
                 @click.stop="openCommentImage(index)"
                 :src="item"
                 alt=""
+                class="w-32 object-fit: cover;cursor: pointer;"
                 style="
                   object-fit: cover;
                   width: 262px;
@@ -106,8 +107,6 @@
                     <span class="text-12px">{{ item.time }}</span>
                   </p>
                   <div
-                    @mousemove="mouseComment = true"
-                    @mouseleave="mouseComment = false"
                     class="right_text"
                   >
                     <span class="text-12px mr-px15">
@@ -151,12 +150,11 @@
                         </i>
                       </div>
                       <div
-                        v-show="mouseComment"
-                        class="relative inline-block align-middle"
+                        class=" relative inline-block align-middle"
                         style="margin-left: 6px"
                         @click="deleteComment"
                       >
-                        <i class="icon close_icon -mt-0.5"></i>
+                        <i class="icon close_icon delComment -mt-0.5"></i>
                       </div>
                     </div>
                   </div>
@@ -295,8 +293,8 @@ export default {
     },
   },
 };
-</script>
-<style lang="scss">
+</script >
+<style lang="scss" scoped>
 .dynamic {
   padding: 20px;
   overflow: hidden;
@@ -510,6 +508,12 @@ export default {
     }
   }
   .fanyi_circle:hover .trans-type {
+    display: block;
+  }
+  .delComment{
+    display: none;
+  }
+  .right_text:hover .delComment{
     display: block;
   }
 }
