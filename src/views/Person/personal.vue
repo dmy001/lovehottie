@@ -13,7 +13,7 @@
     >
       <span class="text-left mt-4 ml-5">{{ $trans("设置") }}</span>
       <router-link to="/home/PersonHome"
-        ><button class="text-right text-gray-400 mt-4 mr-5 outline-none">
+        ><button class="text-right text-gray-400 mt-4 mr-5 focus:outline-none">
           {{ $trans("返回个人主页") }}
         </button></router-link
       >
@@ -30,7 +30,7 @@
           <img
             class="
               w-16
-              mt-5
+              mt-10
               shadow
               rounded-full
               max-w-full
@@ -38,7 +38,7 @@
               align-middle
               border-none
             "
-            src="https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/team-2-800x800.jpg"
+            src="https://images.gagahi.com/?imageView2/2/w/560/h/630"
             alt=""
           />
         </div>
@@ -640,7 +640,7 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss" >
 .set-information {
   width: 20px;
   height: 20px;

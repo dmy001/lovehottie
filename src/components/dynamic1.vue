@@ -1,20 +1,16 @@
 <template>
   <div class="left relative">
-    <label>
-      <Input
-        v-model="value17"
-        maxlength="500"
-        show-word-limit
-        type="textarea"
-        :border="false"
-        :placeholder="$trans('想和大家分享什么')"
-        style="width: 240px; border: none"
-        class="leftText placeholder-gray-800"
-        :rows="9"
-      />
-      
-    </label>
-
+    <Input
+      v-model="value17"
+      maxlength="500"
+      show-word-limit
+      type="textarea"
+      :border="false"
+      :placeholder="$trans('想和大家分享什么')"
+      style="width: 240px; border: none"
+      class="leftText placeholder-gray-800"
+      :rows="9"
+    />
     <div class="leftFoot">
       <div class="footLeft">
         <i class="bg_icon expression" @click="emojiShow = !emojiShow"></i>
@@ -32,7 +28,6 @@
                 alt
                 srcset
                 class="emoji-item"
-                @click="selectEmoji(emojiIndex)"
               />
             </div>
           </div>
@@ -41,18 +36,18 @@
         <div v-if="imgShow" class="upload_img flex items-start flex-col p-px3">
           <span class="z-1000 iocn icon_top"></span>
           <div class="w-full p-px10 flex justify-between">
-            {{ $trans("本地上传") }}
+            {{$trans("本地上传")}}
             <i class="iocn close_icon" @click="imgShow = false"></i>
           </div>
 
           <div class="mt-px100 ml-px3">
             <span class="block text-12px mb-px10 text-base-color5 text-left"
-              >{{ $trans("共") }}{{ uploadList.length
-              }}{{ $trans("张，还能上传")
-              }}<span>{{ 9 - uploadList.length }}</span
-              >{{ $trans("张") }}
-            </span>
-
+              >{{$trans("共")}}{{ uploadList.length }}{{$trans("张，还能上传")}}<span>{{
+                9 - uploadList.length
+              }}</span
+              >{{$trans("张")}}
+              </span>
+            
             <Upload
               ref="upload"
               :show-upload-list="false"
@@ -78,11 +73,11 @@
             </Upload>
             <div
               class="demo-upload-list"
-              v-for="(item, index) in uploadList"
-              :key="index"
+              v-for="item in uploadList"
+              :key="item.name"
             >
-              <template v-if="!showProgress">
-                <img :src="item" />
+              <template v-if="item.status === 'finished'">
+                <img :src="item.url" />
                 <div class="demo-upload-list-cover">
                   <Icon
                     type="ios-trash-outline"
@@ -92,8 +87,8 @@
               </template>
               <template v-else>
                 <Progress
-                  v-if="showProgress"
-                  :percent="percentage"
+                  v-if="item.showProgress"
+                  :percent="item.percentage"
                   hide-info
                 ></Progress>
               </template>
@@ -101,7 +96,8 @@
           </div>
         </div>
       </div>
-      <div class="footRight">{{ $trans("发送") }}</div>
+      <div class="footRight">{{$trans("发送")}}</div>
+      
     </div>
   </div>
 </template>
@@ -109,8 +105,6 @@
 export default {
   data() {
     return {
-      showProgress: false,
-      percentage: null,
       emojiShow: false,
       value17: "",
       currentStickerId: 0,
@@ -119,19 +113,11 @@ export default {
       imgName: "",
       visible: false,
       uploadList: [],
-      photoList: [],
-      file: null,
     };
   },
   methods: {
     // 选中emoji
-    selectEmoji(emojiIndex) {
-      this.emojiShow=false;
-      let imgEmo=`<img src="https://statics.gagahi.com/IM/img/qqFace/${
-                  emojiIndex - 1
-                }.gif">`
-        return this.value17 + imgEmo
-    },
+    selectEmoji() {},
     handleView(name) {
       this.imgName = name;
       this.visible = true;
@@ -160,39 +146,28 @@ export default {
         desc: "File  " + file.name + " is too large, no more than 2M.",
       });
     },
-    handleBeforeUpload(file) {
+    handleBeforeUpload() {
       const check = this.uploadList.length < 5;
       if (!check) {
         this.$Notice.warning({
           title: "Up to five pictures can be uploaded.",
         });
       }
-      // return check;
-      this.file = file;
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        const _base64 = reader.result;
-        this.base64Img = _base64;
-        // console.log(_base64);
-
-        this.uploadList.push(this.base64Img);
-        // console.log(...this.imgList)
-      };
+      return check;
     },
-    handleProgress() {
-      // console.log("上传中", event); // 继承了原生函数的 event 事件
-      // console.log("上传中 file", file); // 上传的文件
-      // console.log("上传中 fileList", fileList); // 上传文件列表包含file
-      // // this.uploadList=fileList
-      // // console.log(...this.uploadList)
-      // event.target.onprogress = (event) => {
-      //   let uploadPercent = parseFloat(
-      //     ((event.loaded / event.total) * 100).toFixed(2)
-      //   );
-      //   this.showProgress = true;
-      //   this.percentage = uploadPercent;
-      // };
+    handleProgress(event, file, fileList) {
+      console.log("上传中", event); // 继承了原生函数的 event 事件
+      console.log("上传中 file", file); // 上传的文件
+      console.log("上传中 fileList", fileList); // 上传文件列表包含file
+      this.uploadList = fileList;
+      event.target.onprogress = (event) => {
+        let uploadPercent = parseFloat(
+          ((event.loaded / event.total) * 100).toFixed(2)
+        );
+        file.showProgress = true;
+        file.percentage = uploadPercent;
+      };
+      // console.log(file.showProgress);
     },
   },
   mounted() {
