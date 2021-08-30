@@ -9,13 +9,15 @@
      
     </div>
     <!-- 图片弹出框 -->
+     <!-- v-model="modalPhoto" -->
     <Modal
-      v-model="modalPhoto"
+
       title="上传图片"
       width="600"
       footer-hide
-      @on-cancel="cancel"
+   
     >
+     <!-- @on-cancel="cancel"   -->
       <p slot="header">
         <span class="text-white">上传图片</span>
       </p>
