@@ -3,19 +3,18 @@
     <div>
       <ul>
         <li class="flex flex-row">
-          <div class="w-1/4 flex justify-end">
+          <div class="w-1/4 flex justify-end object-cover">
             <img
               class="
                 w-16
+                h-16
                 mt-5
-                shadow
                 rounded-full
-                max-w-full
-                h-auto
+                object-cover
                 align-middle
-                border-none
+                
               "
-              src="https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/team-2-800x800.jpg"
+              :src="base64Img"
               alt=""
             />
           </div>
@@ -539,7 +538,7 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss" >
 .closed {
   background: url("~@images/iconClosed.png") 0 -39px no-repeat;
   cursor: pointer;

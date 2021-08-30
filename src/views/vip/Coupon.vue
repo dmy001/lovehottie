@@ -15,6 +15,7 @@
         >{{ $trans("使用规则") }}</span
       >
     </div>
+    <!-- 列表开始部分 -->
     <div v-show="isShowList" class="mt-36 pb-72">
       <div align="center">
         <img class="w-24" src="../../assets/images/nocoupon.png" />
@@ -31,6 +32,9 @@
         </p>
       </router-link>
     </div>
+    <!-- 列表结束部分 -->
+
+    <!-- 使用规则开始部分 -->
     <div v-show="!isShowList" class="text-left text-gray-800 mt-16 pb-16">
       <div>
         <p class="text-gray-700 font-bold">
@@ -75,7 +79,9 @@
         <p class="text-gray-700 font-bold">
           {{ $trans("各类优惠券具体使用规则：") }}
         </p>
-        <button class="pl-1.5 pr-1.5 h-5 bg-gray-200 rounded-xl text-black mt-1 mb-1">
+        <button
+          class="pl-1.5 pr-1.5 h-5 bg-gray-200 rounded-xl text-black mt-1 mb-1"
+        >
           {{ $trans("会员优惠券") }}
         </button>
         <p class="mb-2">
@@ -85,7 +91,9 @@
           ②
           {{ $trans("价值为3金币的高级会员优惠券可以购买任意高级会员使用；") }}
         </p>
-        <button class="pl-1.5 pr-1.5 h-5 bg-gray-200 rounded-xl text-black mt-1 mb-2">
+        <button
+          class="pl-1.5 pr-1.5 h-5 bg-gray-200 rounded-xl text-black mt-1 mb-2"
+        >
           {{ $trans("虚拟礼物优惠券") }}
         </button>
         <p>
@@ -97,6 +105,7 @@
         </p>
       </div>
     </div>
+    <!-- 使用规则结束部分 -->
   </div>
 </template>
 

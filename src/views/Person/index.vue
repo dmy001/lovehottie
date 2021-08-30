@@ -501,7 +501,7 @@
           @click="cancelAddPhoto"
         ></span>
       </p>
-      <imgUpload v-show="modalPhoto"  @closeModalPhoto="completeAddPhoto"></imgUpload>
+      <imgUpload v-if="modalPhoto"  @closeModalPhoto="completeAddPhoto"></imgUpload>
     </Modal>
     <!-- 删除好友弹出框 -->
     <Modal
@@ -790,7 +790,7 @@ export default {
   },
 };
 </script>
-<style lang="scss"  scoped>
+<style lang="scss">
 .topUser {
   width: 100%;
   background: #fff;

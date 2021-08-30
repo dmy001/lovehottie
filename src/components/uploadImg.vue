@@ -27,9 +27,9 @@
       >
         <img v-if="base64Img" :src="item" class="w-28 h-28 object-cover" />
       </div>
-      <button :disabled="disabledSubmit" class="outline-none">
         <Upload
           multiple
+          :disabled="disabledSubmit"
           :before-upload="handleUpload"
           :show-upload-list="false"
           :format="['jpg', 'jpeg', 'png']"
@@ -37,12 +37,10 @@
           action="//jsonplaceholder.typicode.com/posts/"
         >
           <img
-            :disabled="disabledSubmit"
             src="~@images/person/more.jpg"
             class="cursor-pointer"
           />
         </Upload>
-      </button>
 
       <p class="text-black">
         共{{ this.imgList.length }},还能上传{{ 9 - this.imgList.length }}张。
@@ -55,12 +53,12 @@
 </template>
 <script>
 export default {
-  props:{
-     uploadImgList:Array
+  props: {
+    uploadImgList: Array,
   },
   data() {
     return {
-      disabledSubmit: true,
+      disabledSubmit: false,
       addImg: false,
       selectImg: true,
       imgList: [],
@@ -90,8 +88,10 @@ export default {
         // console.log(...this.imgList)
       };
       // return false;
-      if (this.imgList.length >= 9) {
-        this.disabledSubmit = false;
+      console.log(this.imgList.length)
+      if (this.imgList.length >7) {
+        
+        this.disabledSubmit = true;
         this.$Notice.warning({
           title: "提醒",
           desc: "只能9张",
@@ -99,9 +99,9 @@ export default {
       }
     },
     upload() {
-      this.selectImg=!this.selectImg
+      this.selectImg = !this.selectImg;
       this.addImg = !this.addImg;
-      this.$emit('closeModalPhoto')
+      this.$emit("closeModalPhoto");
     },
   },
 };
