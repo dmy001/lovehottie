@@ -36,23 +36,19 @@
               お会いできてうれしいです
             </p>
             <!-- 评论图片 -->
-            <div class="mt-2 text-left flex" style="">
+            <div class="mt-2 text-left flex flex-wrap" style="width: 262px">
               <div
-                class="relative cursor-pointer float-left"
-                style="overflow: hidden"
+                class="relative cursor-pointer float-left overflow-hidden"
+                style=""
                 v-for="(item, index) in images"
                 :key="index"
               >
                 <img
                   @click.stop="openCommentImage(index)"
                   :src="item.url"
+                  :style="[imagesRule]"
                   alt=""
-                  style="
-                    object-fit: cover;
-                    flex-shrink: 0;
-                    width: 87px;
-                    height: 87px;
-                  "
+                  style="object-fit: cover; flex-shrink: 0"
                 />
               </div>
             </div>
@@ -261,7 +257,12 @@
         v-if="bigCommentImage"
         @func="closeCommentImg"
         :images="images"
-        :imagesUrl="this.images[currentIndex].url + '?imageView2/2/w/560/h/630'"
+        :imagesUrl="
+          this.images[currentIndex].url.replace(
+            /w\/[\d]+\/h\/[\d]+/g,
+            'w/560/h/630'
+          )
+        "
         @leftBtn="leftImage"
         @rightBtn="rightImage"
       ></CommentBigImg>
@@ -284,16 +285,28 @@ export default {
   },
   data() {
     return {
+      //他人主页中没有动态显示为空图
       haveInformation: false,
+      //控制评论列表显示
       listShow: false,
+      //控制举报图标显示
       showWarning: false,
+      //留言图标显示
       showicon: true,
+      //默认textarea显示的文本
       placeholder: "发布评论",
+      //textarea的文本内容
       inputContent: "",
+      //默认textarea为关闭
       inputShow: false,
+      //评论区大图默认为关闭
       bigCommentImage: false,
+      //举报画面默认关闭
       modal: false,
+      //点击图片的下标
       currentIndex: -1,
+      //控制显示评论区中的图片宽高
+      imagesRule: { width: "", height: "" },
       contentList: [
         {
           name: "可爱小怪咖",
@@ -320,12 +333,37 @@ export default {
           id: 1,
         },
         {
-          url: "https://images.gagahi.com/Z-298ee8d8262c451e80eedf09c8d0dabc",
-          id: 2,
+          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f",
+          id: 1,
         },
         {
-          url: "https://images.gagahi.com/Z-fdfa8c4ef0654815a24c272ec6a7048f",
-          id: 3,
+          url: "https://sources.lovehottie.com/Z-46bf8472037348108d79df0ff38d6472",
+          id: 1,
+        },
+
+        {
+          url: "https://sources.lovehottie.com/Z-7ede8c79f7aa4b5395aee84366610c3b",
+          id: 1,
+        },
+        {
+          url: "https://sources.lovehottie.com/Z-a63fc13ceaf5455ab658e46616de5832",
+          id: 1,
+        },
+        {
+          url: "https://sources.lovehottie.com/Z-7674e1dffc174fca9644795bf136dcfc",
+          id: 1,
+        },
+        {
+          url: "https://sources.lovehottie.com/Z-3a361d75db074a8c901935d2cd6065c2",
+          id: 1,
+        },
+        {
+          url: "https://sources.lovehottie.com/Z-aa6a10a7a8484303aad13b0ac850dab4",
+          id: 1,
+        },
+        {
+          url: "https://sources.lovehottie.com/9f62e7940110484b9d638c544ed82a18",
+          id: 1,
         },
       ],
     };
@@ -335,15 +373,18 @@ export default {
       console.log(value);
       this.modal = value;
     },
+    //鼠标移入移除事件
     mousemoveWarning() {
       this.showWarning = true;
     },
     mouseleaveWarning() {
       this.showWarning = false;
     },
+    // 点击评论图片原图关闭
     showIcon() {
       this.showicon = !this.showicon;
     },
+    // 点击评论区图片展示大图
     openCommentImage(index) {
       this.bigCommentImage = true;
       console.log(index);
@@ -366,6 +407,7 @@ export default {
         }
       }
     },
+    //点击显示评论区
     mineMessage() {
       this.placeholder = "发布评论";
     },
@@ -373,6 +415,7 @@ export default {
     onMessage(name) {
       this.placeholder = `回复：` + name;
     },
+    //点击发送添加留言
     sendBtn() {
       const sendValue = document.getElementById("sellineName");
       console.log(sendValue.value);
@@ -386,12 +429,15 @@ export default {
       }
       this.inputContent = "";
     },
+    //关闭大图
     closeCommentImg(value) {
       this.bigCommentImage = value;
     },
+    // 点击举报打开页面
     warning() {
       this.modal = !this.modal;
     },
+    // 大图翻页
     leftImage() {
       --this.currentIndex;
       if (this.currentIndex < 0) {
@@ -408,8 +454,62 @@ export default {
       }
     },
   },
+  // computed: {
+  //   imagesRule() {
+  //     let a = this.images.length;
+  //     if (a > 9) {
+  //       alert("图片不能大于9张");
+  //     }
+  //     if (a == 1) {
+  //       this.images[0].url = this.images[0].url + `?imageView2/2/w/262/h/262`;
+  //     }
+  //     return 0;
+  //   },
+  // },
+
   mounted() {
     document.addEventListener("click", this.closeSel);
+    //判断图片大小
+    /**
+     * 图片等于1张宽高为262
+     */
+    let a = this.images.length;
+    if (a > 9) {
+      alert("图片不能大于9张");
+    }
+    if (a == 1) {
+      this.imagesRule = {
+        width: "262px",
+        height: "262px",
+      };
+      this.images[0].url = this.images[0].url + `?imageView2/2/w/262/h/262`;
+    }
+    /**
+     * 图片等于2张或者等于4张宽高为131
+     */
+    if (a == 2 || a == 4) {
+      this.imagesRule = {
+        width: "131px",
+        height: "131px",
+      };
+      this.images.forEach((item, index) => {
+        this.images[index].url = item.url + `?imageView2/2/w/131/h/131`;
+        console.log(this.images[index]);
+      });
+    }
+
+    /**
+     * 图片大于5张或者等于三张宽高为87
+     */
+    if (a == 3 || a >= 5) {
+      this.imagesRule = {
+        width: "87px",
+        height: "87px",
+      };
+      this.images.forEach((item, index) => {
+        this.images[index].url = item.url + `?imageView2/2/w/87/h/87`;
+      });
+    }
   },
 };
 </script>

@@ -137,7 +137,7 @@ export default {
   props: {
     // images: Array,
     imagesUrl: String,
-    bigImage: Boolean,
+    // bigImage: Boolean,
   },
   data() {
     return {
@@ -152,14 +152,12 @@ export default {
       const currentCli = document.getElementById("sellineImg");
       if (currentCli) {
         if (!currentCli.contains(event.target)) {
-          this.bigImage = false;
           this.$emit("func1", this.bigImage);
         }
       }
     },
     //关闭大图
     closeImg() {
-      this.bigImage = false;
       this.$emit("func", this.bigImage);
     },
     leftImage() {
