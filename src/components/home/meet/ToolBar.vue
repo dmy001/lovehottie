@@ -464,11 +464,8 @@ export default {
     },
 
     getRadioVal() {
-      console.log(this.redioVal);
     },
-    change(e) {
-      console.log(e.target.value);
-    },
+   
     showTitle() {
       this.isShow = !this.isShow;
       this.showImg = !this.showImg;
