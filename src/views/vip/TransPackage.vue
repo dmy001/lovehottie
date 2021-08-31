@@ -77,6 +77,7 @@
 import PayInfo from "@components/Vip/PayInfo/PayInfo.vue";
 import Discount from "@components/Vip/PayInfo/Discount.vue";
 import PayButton from "@components/Vip/PayInfo/payButton.vue";
+import {getTranslatebagList} from "@api/vip/transPackage";
 export default {
   components: {
     PayInfo,
@@ -109,6 +110,9 @@ export default {
       this.currentPrice = this.list[index].money;
     },
   },
+  async mounted(){
+   await getTranslatebagList();
+  }
 };
 </script>
 <style lang='scss'>

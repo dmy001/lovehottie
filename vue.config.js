@@ -13,15 +13,26 @@ module.exports = {
     proxy: {
       "/": {
         // 线上老接口
-        target: "http://localhost:8088/", // 后台接口域名
+        target: "http://172.16.1.69:8081", // 后台接口域名
         ws: false, //如果要代理 websocket，配置这个参数
         secure: false, // 如果是https接口，需要配置这个参数
         changeOrigin: true, //是否跨域
-        pathRewrite: {
-          "^/": "", // 替换
-        },
+        // pathRewrite: {
+        //   "^/": "", // 替换
+        // },
         historyApiFallback: true, // 开启单页应用
       },
+      // "/pay": {
+      //   // 线上老接口
+      //   target: "https://www.lovehottie.com/", // 后台接口域名
+      //   ws: false, //如果要代理 websocket，配置这个参数
+      //   secure: true, // 如果是https接口，需要配置这个参数
+      //   changeOrigin: true, //是否跨域
+      //   pathRewrite: {
+      //     "^/pay": "/pay", // 替换
+      //   },
+      //   historyApiFallback: true, // 开启单页应用
+      // },
     },
   },
   outputDir: "buildPackage",
@@ -52,6 +63,5 @@ module.exports = {
       .set("@components", path.resolve(__dirname, "./src/components/"))
       .set("@styles", path.resolve(__dirname, "./src/styles/"))
       .set("@api", path.resolve(__dirname, "./src/api/"));
-
   },
 };

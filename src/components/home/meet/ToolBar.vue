@@ -20,7 +20,12 @@
               items-center
               text-base-color4 text-px14
               toolbar-btn
+              ml-2
+              rounded-2xl
+              px-3
+              py-1
             "
+            style="outline: none; border: 1px solid $lineColor1"
             @click="btnSelect()"
           >
             {{ $trans("精确筛选") }}
@@ -33,9 +38,13 @@
               flex
               justify-center
               items-center
-              text-base-color4 text-px14
               toolbar-btn
+              ml-2
+              rounded-2xl
+              px-3
+              py-1
             "
+            style="outline: none; border: 1px solid $lineColor1"
             @mouseover="mouseOver"
             @mouseleave="mouseLeave"
           >
@@ -75,7 +84,7 @@
     <div class="w-full mt-px3" v-show="showSelect">
       <div class="flex flex-row p-px15 bg-white text-left">
         <div class="flex-1">
-          <span class="filter-item-title">{{ $trans("国家") }}</span>
+          <span class="filter-item-title text-base">{{ $trans("国家") }}</span>
           <div class="country-list">
             <div class="country-list-item">
               <input
@@ -120,7 +129,7 @@
           </div>
         </div>
         <div class="flex-1">
-          <span class="filter-item-title">{{ $trans("性别") }}</span>
+          <span class="filter-item-title text-base">{{ $trans("性别") }}</span>
           <div class="sex-list">
             <div class="sex-list-item">
               <input type="radio" id="sexA" value="unlimit" v-model="selSex" />
@@ -135,13 +144,13 @@
               <label for="sexC">{{ $trans("女") }}</label>
             </div>
           </div>
-          <span class="filter-item-title">{{ $trans("年龄") }}</span>
+          <span class="filter-item-title text-base">{{ $trans("年龄") }}</span>
           <div class="flex">
             <Slider v-model="sliderRange" range class="flex-1"></Slider>
           </div>
         </div>
         <div class="flex-1">
-          <span class="filter-item-title">{{ $trans("语言") }}</span>
+          <span class="filter-item-title text-base">{{ $trans("语言") }}</span>
           <div class="lang-list">
             <div class="flex flex-wrap">
               <div
@@ -475,16 +484,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.toolbar-btn {
-  outline: none;
-  width: 88px;
-  height: 32px;
-  margin-left: 8px;
-  border: 1px solid $lineColor1;
-  border-radius: 16px;
-}
 .filter-item-title {
-  font-size: 16px;
   color: #333;
 }
 .country-list,

@@ -11,7 +11,7 @@
           <div class="flex w-full justify-between">
             <div class="flex flex-col text-12px">
               <span class="text-base-color2">Jack</span>
-              <span class="text-base-color4">中国</span>
+              <span class="text-base-color4"  @click="qwer">中国</span>
             </div>
             <a
               v-show="showWarning"
@@ -26,59 +26,73 @@
           </div>
         </div>
         <div>
-          <p class="m-px10 mt-0 text-left" :class="{ textWord: showText }">
-            Speak out when you love Speak out when you love Speak out when you
-            love Speak out when you love Speak out when you love Speak out when
-            you loveSpeak out when you love Speak out when you love Speak out
-            when you love Speak out when you love Speak out when you love Speak
-            out when you loveSpeak out when you love Speak out when you love
-            Speak out when you love Speak out when you love Speak out when you
-            love Speak out when you loveSpeak out when you love Speak out when
-            you love Speak out when you love Speak out when you love Speak out
-            when you love Speak out when you loveSpeak out when you love Speak
-            out when you love Speak out when you love Speak out when you love
-            Speak out when you love Speak out when you love
-          </p>
-          <img :src="imgsrc" class="max-w-full" />
-          <div
-            v-show="showMoreWord1"
-            @click="showMore1"
-            style="float: right"
-            class="flex mt-4 items-center"
-          >
-            <div
-              class="mr-1 cursor-pointer"
-              style="color: #696969; font-size: 14px"
-            >
-              查看更多
-            </div>
-            <div class="">
-              <img
-                class="w-3 h-3 mr-2"
-                src="../../../assets/images/top2.png"
-                alt=""
-              />
+          <div class="">
+            <p class="m-px10 mt-0 text-left" :class="{ textWord: showText }">
+              Speak out when you love Speak out when you love Speak out when you
+              love Speak out when you love Speak out when you love Speak out
+              when you loveSpeak out when you love Speak out when you love Speak
+              out when you love Speak out when you love Speak out when you love
+              Speak out when you loveSpeak out when you love Speak out when you
+              love Speak out when you love Speak out when you love Speak out
+              when you love Speak out when you loveSpeak out when you love Speak
+              out when you love Speak out when you love Speak out when you love
+              Speak out when you love Speak out when you loveSpeak out when you
+              love Speak out when you love Speak out when you love Speak out
+              when you love Speak out when you love Speak out when you love
+              
+            </p>
+            <div class="flex-row inline-block ml-40">
+              <div
+                v-show="showMoreWord1"
+                @click="showMore1"
+                class="flex items-center"
+              >
+                <div
+                  class="mr-1 cursor-pointer"
+                  style="color: #696969; font-size: 14px"
+                >
+                  查看更多
+                </div>
+                <div class="">
+                  <img
+                    class="w-3 h-3 mr-2"
+                    src="../../../assets/images/top2.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div
+                v-show="showMoreWord2"
+                @click="showMore2"
+                style="float: right"
+                class="flex mt-0 items-center"
+              >
+                <div
+                  class="mr-1 cursor-pointer"
+                  style="color: #696969; font-size: 14px"
+                >
+                  收起
+                </div>
+                <div class="">
+                  <img
+                    class="w-3 h-3 mr-2"
+                    src="../../../assets/images/top1.png"
+                    alt=""
+                  />
+                </div>
+              </div>
             </div>
           </div>
           <div
-            v-show="showMoreWord2"
-            @click="showMore2"
-            style="float: right"
-            class="flex mt-4 items-center"
+            v-for="(it, index) in srcec"
+            :key="index"
+            class="bg-gray-800 inline-block grid-cols-3 justify-center"
+           
           >
-            <div
-              class="mr-1 cursor-pointer"
-              style="color: #696969; font-size: 14px"
-            >
-              收起
-            </div>
-            <div class="">
-              <img
-                class="w-3 h-3 mr-2"
-                src="../../../assets/images/top1.png"
-                alt=""
-              />
-            </div>
+          
+
+            <!-- 64 1张  20 6张  24 4张 -->
+            <img :src="it.url"  class="  bg-gray-600" :class="it.width" @click="imgViewComments(index)" />
           </div>
         </div>
         <!-- 评论  翻译图标 -->
@@ -101,11 +115,18 @@
     </div>
     <!-- 举报 -->
     <Report v-if="showReport"></Report>
+    <!-- 显示大图 -->
+    <BigImage v-if="showBigImg"
+      :imagesUrl="this.vaule"
+      >
+
+    </BigImage>
   </section>
   <!-- </div> -->
 </template>
 
 <script>
+import BigImage from "@/components/home/othercentre/BigImage"
 import CommentBlock from "@components/common/commentBlock.vue";
 import Report from "@/components/home/othercentre/Report";
 import EarthImg from "@/components/home/othercentre/EarthImg";
@@ -114,8 +135,9 @@ export default {
     "comment-block": CommentBlock,
     Report,
     EarthImg,
+    BigImage
   },
-  props: ["imgsrc"],
+
   data() {
     return {
       isShowCmtBtn: true,
@@ -125,6 +147,20 @@ export default {
       showText: true,
       showMoreWord1: true,
       showMoreWord2: false,
+      item: {},
+      showBigImg:false,
+      // imgWidthtwo:["w-24"],
+      // imgWidtsix:["w-20"],
+      // imgWidthone:["w-full"],
+      srcec: [
+        {url:"https://images.gagahi.com/A-942e2ce4e071d89e7d2afc0ab59d9416",width:''},
+         {url:"https://images.gagahi.com/A-942e2ce4e071d89e7d2afc0ab59d9416",width:''},
+          {url:"https://images.gagahi.com/A-942e2ce4e071d89e7d2afc0ab59d9416",width:''},
+          {url:"https://images.gagahi.com/A-942e2ce4e071d89e7d2afc0ab59d9416",width:''},
+         {url:"https://images.gagahi.com/A-942e2ce4e071d89e7d2afc0ab59d9416",width:''},
+          {url:"https://images.gagahi.com/A-942e2ce4e071d89e7d2afc0ab59d9416",width:''},
+          
+      ],
     };
   },
   methods: {
@@ -149,6 +185,33 @@ export default {
       this.showMoreWord1 = !this.showMoreWord1;
       this.showMoreWord2 = !this.showMoreWord2;
       this.showText = !this.showText;
+    },
+
+    //点击图片显示查看评论
+   imgViewComments(value){
+   console.log(value)
+        },
+    //图片判断显示9宫格
+    qwer() {
+      console.log(this.srcec);
+      if (this.srcec.length  <2) {
+        this.srcec = this.srcec.map((it)=>{
+          it.width = 'w-full';
+          return it;  
+        })
+      }else if(this.srcec.length>1&&this.srcec.length<6&&this.srcec.length != 3){
+         this.srcec = this.srcec.map((it)=>{
+          it.width = 'w-24';
+           return it; 
+           })
+      }else{
+        this.srcec = this.srcec.map((it)=>{
+          it.width = 'w-20'
+          return it; 
+          })
+      }
+
+      console.log(this.srcec)
     },
   },
 };
