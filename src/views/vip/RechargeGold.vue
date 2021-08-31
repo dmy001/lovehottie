@@ -75,6 +75,7 @@
 <script>
 import PayInfo from "@components/Vip/PayInfo/PayInfo.vue";
 import PayButton from "@components/Vip/PayInfo/payButton.vue";
+import { getGold } from "../../api/vip/rechargeGold.js";
 
 export default {
   components: {
@@ -123,6 +124,13 @@ export default {
     // search(event){
     //   console.log(event.currentTarget.value);
     // }
+  async getGoldCount() {
+      const {attributes} = await getGold(1630393216268);
+      console.log('attributes:'+attributes);
+    },
+  },
+  mounted() {
+    this.getGoldCount();
   },
 };
 </script>
