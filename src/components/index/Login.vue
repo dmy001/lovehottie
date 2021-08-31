@@ -47,7 +47,7 @@
           <span
             class="text-base-color2 cursor-pointer ml-px10"
             @click="$emit('changeBox')"
-            >{{$trans("立即注册")}}</span
+            >{{ $trans("立即注册") }}</span
           >
         </div>
       </div>
@@ -77,7 +77,7 @@ export default {
       this.$emit("closeBox");
     },
     async toLogin() {
-      this.loginBtn = " $trans('登录中')" ;
+      this.loginBtn = " $trans('登录中')";
       const res = await this.$api.login({
         userName: this.userNumber,
         passWord: this.password,

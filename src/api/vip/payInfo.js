@@ -2,7 +2,12 @@ import axios from '../axios.config'
 /**  获得优惠券
 *
   * 
-  * 
+  {
+    "success": true,
+    "msg": "SUCCESS",
+    "obj": 0,
+    "attributes": null
+}
   * 
   * @return {*} 
   */
@@ -31,14 +36,14 @@ export /**
  */
   const SendPayInfo = async (couponsId, total_fell, paid, mfstRelevel, time, types, femaleid, mid, productId) => {
     const res = await axios.get('pay/subgoldpay', {
-      couponsId, 
-      total_fell, 
-      paid, 
-      mfstRelevel, 
+      couponsId,
+      total_fell,
+      paid,
+      mfstRelevel,
       time,
       types,
-      femaleid, 
-      mid, 
+      femaleid,
+      mid,
       productId
     })
     return res;

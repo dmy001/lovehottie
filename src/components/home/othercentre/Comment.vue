@@ -294,7 +294,7 @@ export default {
       //留言图标显示
       showicon: true,
       //默认textarea显示的文本
-      placeholder: "发布评论",
+      placeholder: this.$trans("发布评论"),
       //textarea的文本内容
       inputContent: "",
       //默认textarea为关闭
@@ -340,7 +340,6 @@ export default {
           url: "https://sources.lovehottie.com/Z-46bf8472037348108d79df0ff38d6472",
           id: 1,
         },
-
         {
           url: "https://sources.lovehottie.com/Z-7ede8c79f7aa4b5395aee84366610c3b",
           id: 1,

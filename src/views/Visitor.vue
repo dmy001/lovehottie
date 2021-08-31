@@ -94,8 +94,8 @@ export default {
   },
   methods: {
     async getVisitors() {
-      const res = await getVisitor(this.endDay, this.page);
-      console.log(res);
+      await getVisitor(this.endDay, this.page);
+      
     },
   },
   mounted() {
