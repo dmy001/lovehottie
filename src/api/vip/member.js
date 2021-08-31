@@ -20,10 +20,10 @@ export /**获取信息通知
 ]
     success: true
  */
-    const getNotice = async () => {
-        const res = await axios.get("Member/Notice/ajaxnotice");
-        return res
-    }
+  const getNotice = async () => {
+    const res = await axios.get("Member/Notice/ajaxnotice");
+    return res
+  }
 
 
 export  /** 获取加好友信息
@@ -35,10 +35,15 @@ export  /** 获取加好友信息
     1: {gid: "bf7c9a9bf23b4489833ce4e62de74e49",…}
     success: true
    *
+    attributes: null
+    msg: "操作过于频繁"
+    obj: 210
+    success: false
+
    * @return {*} 
    */
-    const getFriendNotice = async () => {
-        const res = await axios.get("Member/Friend/ajaxfriend");
-        return res
-    }
+  const getFriendNotice = async () => {
+    const res = await axios.get("Member/Friend/ajaxfriend");
+    return res
+  }
 
