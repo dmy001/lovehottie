@@ -32,11 +32,15 @@
         }"
       >
         <p :class="{ rightGb: index === selectedIndex }"></p>
-        <p class="text-yellow-500 font-bold text-2xl mt-10">{{ item.char }}</p>
+        <p class="text-yellow-500 font-bold text-2xl mt-10">
+          {{ item.max_amount }}
+        </p>
         <p class="mt-1 text-gray-500">{{ $trans("字符") }}</p>
-        <p class="font-bold text-xl mt-2 mb-2 text-black">${{ item.money }}</p>
+        <p class="font-bold text-xl mt-2 mb-2 text-black">
+          ${{ item.currency_price }}
+        </p>
         <p class="text-yellow-500 text-xl mb-6">
-          {{ $trans("节省") }}{{ item.save }}
+          {{ $trans("节省") }}{{ item.jiesheng }}
         </p>
         <p
           v-if="!(index === selectedIndex)"
@@ -77,7 +81,7 @@
 import PayInfo from "@components/Vip/PayInfo/PayInfo.vue";
 import Discount from "@components/Vip/PayInfo/Discount.vue";
 import PayButton from "@components/Vip/PayInfo/payButton.vue";
-import {getTranslatebagList} from "@api/vip/transPackage";
+import { getTranslatebagList } from "@api/vip/transPackage";
 export default {
   components: {
     PayInfo,
@@ -87,12 +91,12 @@ export default {
   data() {
     return {
       list: [
-        { char: "500", money: 19.99, save: "10%" },
-        { char: "2,000", money: 69.99, save: "10%" },
-        { char: "5,000", money: 169.99, save: "5%" },
-        { char: "10,000", money: 299.99, save: "15%" },
-        { char: "20,000", money: 599.99, save: "15%" },
-        { char: "30,000", money: 799.99, save: "25%" },
+        // { char: "500", money: 19.99, save: "10%" },
+        // { char: "2,000", money: 69.99, save: "10%" },
+        // { char: "5,000", money: 169.99, save: "5%" },
+        // { char: "10,000", money: 299.99, save: "15%" },
+        // { char: "20,000", money: 599.99, save: "15%" },
+        // { char: "30,000", money: 799.99, save: "25%" },
       ],
       selectedIndex: 2,
       currentPrice: "",
@@ -107,12 +111,14 @@ export default {
      */
     changeColor(index) {
       this.selectedIndex = index;
-      this.currentPrice = this.list[index].money;
+      this.currentPrice = this.list[index].currency_price;
     },
   },
-  async mounted(){
-   await getTranslatebagList();
-  }
+  async mounted() {
+    const { obj } = await getTranslatebagList();
+    this.list = obj;
+    console.log(obj);
+  },
 };
 </script>
 <style lang='scss'>
