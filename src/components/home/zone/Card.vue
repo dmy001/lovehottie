@@ -11,7 +11,7 @@
           <div class="flex w-full justify-between">
             <div class="flex flex-col text-12px">
               <span class="text-base-color2">Jack</span>
-              <span class="text-base-color4"  @click="qwer">中国</span>
+              <span class="text-base-color4" @click="qwer">中国</span>
             </div>
             <a
               v-show="showWarning"
@@ -28,18 +28,17 @@
         <div>
           <div class="">
             <p class="m-px10 mt-0 text-left" :class="{ textWord: showText }">
+              out when you love Speak out when you love Speak out when you love
               Speak out when you love Speak out when you love Speak out when you
-              love Speak out when you love Speak out when you love Speak out
+              loveSpeak out when you love Speak out when you love Speak out when
+              you love Speak out when you love Speak out when you love Speak out
+              out when you love Speak out when you love Speak out when you love
+              Speak out when you love Speak out when you love Speak out when you
+              loveSpeak out when you love Speak out when you love Speak out when
+              you love Speak out when you love Speak out when you love Speak out
               when you loveSpeak out when you love Speak out when you love Speak
               out when you love Speak out when you love Speak out when you love
-              Speak out when you loveSpeak out when you love Speak out when you
-              love Speak out when you love Speak out when you love Speak out
-              when you love Speak out when you loveSpeak out when you love Speak
-              out when you love Speak out when you love Speak out when you love
-              Speak out when you love Speak out when you loveSpeak out when you
-              love Speak out when you love Speak out when you love Speak out
-              when you love Speak out when you love Speak out when you love
-              
+              Speak out when you lovewhen you loveSpeak Speak
             </p>
             <div class="flex-row inline-block ml-40">
               <div
@@ -87,12 +86,15 @@
             v-for="(it, index) in srcec"
             :key="index"
             class="bg-gray-800 inline-block grid-cols-3 justify-center"
-           
           >
-          
-
             <!-- 64 1张  20 6张  24 4张 -->
-            <img :src="it.url"  class="  bg-gray-600" :class="it.width" @click="imgViewComments(index)" />
+            <img
+              :src="it.url"
+              class="bg-gray-600 cursor-pointer"
+              style="width: 262px; height: 262px"
+              :class="it.width"
+              @click="imgViewComments(index)"
+            />
           </div>
         </div>
         <!-- 评论  翻译图标 -->
@@ -116,17 +118,20 @@
     <!-- 举报 -->
     <Report v-if="showReport"></Report>
     <!-- 显示大图 -->
-    <BigImage v-if="showBigImg"
-      :imagesUrl="this.vaule"
-      >
-
-    </BigImage>
+    <CommentBigImg
+      v-if="showBigImg"
+      :imagesUrl="this.srcec[currentIndex].url + `?imageView2/2/w/560/h/630`"
+      @func="closeBIgImage()"
+      @leftBtn="leftBtn()"
+      @rightBtn="rightBtn()"
+    >
+    </CommentBigImg>
   </section>
   <!-- </div> -->
 </template>
 
 <script>
-import BigImage from "@/components/home/othercentre/BigImage"
+import CommentBigImg from "@/components/home/othercentre/CommentBigImg";
 import CommentBlock from "@components/common/commentBlock.vue";
 import Report from "@/components/home/othercentre/Report";
 import EarthImg from "@/components/home/othercentre/EarthImg";
@@ -135,7 +140,7 @@ export default {
     "comment-block": CommentBlock,
     Report,
     EarthImg,
-    BigImage
+    CommentBigImg,
   },
 
   data() {
@@ -148,18 +153,20 @@ export default {
       showMoreWord1: true,
       showMoreWord2: false,
       item: {},
-      showBigImg:false,
+      showBigImg: false,
+      currentIndex: -1,
       // imgWidthtwo:["w-24"],
       // imgWidtsix:["w-20"],
       // imgWidthone:["w-full"],
       srcec: [
-        {url:"https://images.gagahi.com/A-942e2ce4e071d89e7d2afc0ab59d9416",width:''},
-         {url:"https://images.gagahi.com/A-942e2ce4e071d89e7d2afc0ab59d9416",width:''},
-          {url:"https://images.gagahi.com/A-942e2ce4e071d89e7d2afc0ab59d9416",width:''},
-          {url:"https://images.gagahi.com/A-942e2ce4e071d89e7d2afc0ab59d9416",width:''},
-         {url:"https://images.gagahi.com/A-942e2ce4e071d89e7d2afc0ab59d9416",width:''},
-          {url:"https://images.gagahi.com/A-942e2ce4e071d89e7d2afc0ab59d9416",width:''},
-          
+        {
+          url: "https://sources.lovehottie.com/Z-a63fc13ceaf5455ab658e46616de5832",
+          width: "",
+        },
+        {
+          url: "https://images.gagahi.com/A-942e2ce4e071d89e7d2afc0ab59d9416",
+          width: "",
+        },
       ],
     };
   },
@@ -188,30 +195,56 @@ export default {
     },
 
     //点击图片显示查看评论
-   imgViewComments(value){
-   console.log(value)
-        },
+    imgViewComments(value) {
+      console.log(value);
+      this.showBigImg = true;
+      this.currentIndex = value;
+    },
     //图片判断显示9宫格
     qwer() {
       console.log(this.srcec);
-      if (this.srcec.length  <2) {
-        this.srcec = this.srcec.map((it)=>{
-          it.width = 'w-full';
-          return it;  
-        })
-      }else if(this.srcec.length>1&&this.srcec.length<6&&this.srcec.length != 3){
-         this.srcec = this.srcec.map((it)=>{
-          it.width = 'w-24';
-           return it; 
-           })
-      }else{
-        this.srcec = this.srcec.map((it)=>{
-          it.width = 'w-20'
-          return it; 
-          })
+      if (this.srcec.length < 2) {
+        this.srcec = this.srcec.map((it) => {
+          it.width = "w-full";
+          return it;
+        });
+      } else if (
+        this.srcec.length > 1 &&
+        this.srcec.length < 6 &&
+        this.srcec.length != 3
+      ) {
+        this.srcec = this.srcec.map((it) => {
+          it.width = "w-24";
+          return it;
+        });
+      } else {
+        this.srcec = this.srcec.map((it) => {
+          it.width = "w-20";
+          return it;
+        });
       }
 
-      console.log(this.srcec)
+      console.log(this.srcec);
+    },
+    //点击×关闭大图
+    closeBIgImage(value) {
+      this.showBigImg = value;
+    },
+    //点击左右翻页换照片
+    leftBtn() {
+      --this.currentIndex;
+      if (this.currentIndex < 0) {
+        this.currentIndex = this.srcec.length - 1;
+      }
+      console.log(this.currentIndex);
+    },
+    rightBtn() {
+      console.log(this.currentIndex);
+      if (this.currentIndex === this.srcec.length - 1) {
+        this.currentIndex = 0;
+      } else {
+        this.currentIndex += 1;
+      }
     },
   },
 };

@@ -1,10 +1,10 @@
 <template>
   <div class="w-full">
     <div class="flex justify-between items-center p-px15 w-full bg-white">
-      <div class="flex justify-center items-center text-px14">
+      <div class="flex justify-center items-center text-px14 flex-wrap">
         <img :src="STATICBASEURI + '/images/oy1.jpg'" />
         <span
-          >已经有<span class="text-base-color2 font-bold">100</span
+          >已经有<span class="text-base-color2 font-bold"> 100 </span
           >{{ $trans("多个国家的用户") }}</span
         >
         <a class="ml-px15 text-base-color2 cursor-pointer"
@@ -15,17 +15,17 @@
         <div>
           <button
             class="
+              btnBorder
               flex
               justify-center
               items-center
               text-base-color4 text-px14
-              toolbar-btn
               ml-2
               rounded-2xl
               px-3
               py-1
             "
-            style="outline: none; border: 1px solid $lineColor1"
+            style="outline: none"
             @click="btnSelect()"
           >
             {{ $trans("精确筛选") }}
@@ -34,15 +34,15 @@
         <div class="menu">
           <button
             class="
-              menuBtn
+              btnBorder
               flex
               justify-center
               items-center
-              toolbar-btn
               ml-2
               rounded-2xl
               px-3
               py-1
+              w-32
             "
             style="outline: none; border: 1px solid $lineColor1"
             @mouseover="mouseOver"
@@ -63,20 +63,18 @@
             />
           </button>
           <ul
-            class="menuContent absolute ml-2"
+            class="menuContent absolute ml-2 w-32"
             @mouseover="mouseOver1"
             @mouseleave="mouseLeave1"
           >
             <li
-              class="mt-1"
+              class="py-1 px-5 w-32"
               v-for="(item, index) in menuSelect"
               :key="index"
               @click="changeValue(item)"
             >
               {{ $trans(item) }}
             </li>
-            <!-- <li class="title"><a href="#">在线</a></li>
-            <li class="title"><a href="#">最新</a></li> -->
           </ul>
         </div>
       </div>
@@ -173,12 +171,14 @@
       </div>
       <div class="p-px15 bg-white text-left">
         <div
-          class="border border-red-500 w-32 rounded-3xl px-6 py-2"
+          class="border border-red-500 rounded-3xl px-6 py-2 inline-block"
           @click="showTitle()"
           style="cursor: pointer"
         >
           <div class="text-red-500 flex">
-            <span class="mr-2">{{ $trans("高级选项") }}</span>
+            <div class="mr-2 whitespace-nowrap">
+              {{ $trans("高级选项") }}
+            </div>
             <img
               class="mt-2"
               style="height: 100%"
@@ -266,9 +266,7 @@ export default {
       showSelect: false,
       showText: true,
       showText1: false,
-
       value: "推荐",
-
       heightList: [
         {
           value: "150cm—160cm",
@@ -484,6 +482,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.btnBorder {
+  border: 1px solid $lineColor1;
+}
 .filter-item-title {
   color: #333;
 }
@@ -525,7 +526,6 @@ ul li:hover {
   border-radius: 18px;
   background: #fff;
   padding: 13px 0;
-  width: 5.5rem;
 }
 
 .menu:hover .menuContent {

@@ -79,9 +79,7 @@
                   </div>
                 </div>
                 <!-- 说说内容 -->
-                <div class="pt-2 text-left">
-                  Hello. I am new here.welcome to chat
-                </div>
+                <div class="pt-2 text-left">我是李承阳的老婆</div>
                 <!-- 说说和举报图标 -->
                 <div class="pl-2 pr-2" style="padding: 10px">
                   <div class="flex justify-between">
@@ -302,7 +300,7 @@ export default {
         {
           name: "XiongCB",
           time: "2019-05-12 15:18",
-          content: "来郑州玩 ",
+          content: "真漂亮",
           number: 323,
         },
       ],
