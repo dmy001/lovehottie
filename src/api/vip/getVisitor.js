@@ -65,7 +65,7 @@ import axios from '../axios.config.js'
   * @return {*} 
   */
 export const getVisitor = async (endDay, page) => {
-    const res = await axios.get("Member/Visitor/getVisitor", {
+    const res = await axios.post("Member/Visitor/getVisitor", {
         endDay,
         page
     });
