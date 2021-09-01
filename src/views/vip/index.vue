@@ -1,16 +1,18 @@
 <template>
   <div class="bg-white vip">
-    <div
-      class="nav flex w-full bg-white rounded-px8 mt-px15 text-sm border-b"
-    >
+    <div class="nav flex w-full bg-white rounded-px8 mt-px15 text-sm border-b">
       <div
         v-for="(item, index) in list"
         :key="index"
         class="nav-item ml-2"
-        :class="{ active: index === currentIndex,'text-xs':textlitle,'text-sm':textlitle}"
+        :class="{
+          active: index === currentIndex,
+          'text-xs': textlitle,
+          'text-sm': textlitle,
+        }"
         @click="goClick(index, item.path)"
       >
-  <!-- 多语言  根据语言选择不同的字体大小 宽度不固定 -->
+        <!-- 多语言  根据语言选择不同的字体大小 宽度不固定 -->
         {{ $trans(item.name) }}
       </div>
     </div>
@@ -36,8 +38,8 @@ export default {
         { name: "帮助", path: "Help" },
       ],
       currentIndex: 0,
-      textlitle:false,
-      textbig:false
+      textlitle: false,
+      textbig: false,
     };
   },
   methods: {
@@ -49,8 +51,12 @@ export default {
   },
   mounted() {
     // <!-- 多语言 根据语言选择字号  -->
-    if (i18n.locale === "es-es"||i18n.locale === "de-de"||i18n.locale === "ruru") {
-      this.textlitle = true
+    if (
+      i18n.locale === "es-es" ||
+      i18n.locale === "de-de" ||
+      i18n.locale === "ruru"
+    ) {
+      this.textlitle = true;
     } else this.textbig = true;
   },
 };
