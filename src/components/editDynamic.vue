@@ -2,6 +2,7 @@
   <div class="left relative">
     <label>
       <Input
+        id="textarea"
         v-model="value17"
         maxlength="500"
         show-word-limit
@@ -9,10 +10,9 @@
         :border="false"
         :placeholder="$trans('想和大家分享什么')"
         style="width: 240px; border: none"
-        class="leftText placeholder-gray-800"
+        class=" leftText placeholder-gray-800"
         :rows="9"
       />
-      
     </label>
 
     <div class="leftFoot">
@@ -101,11 +101,14 @@
           </div>
         </div>
       </div>
-      <div class="footRight">{{ $trans("发送") }}</div>
+      <div class="footRight">
+        {{ $trans("发送") }}
+      </div>
     </div>
   </div>
 </template>
 <script>
+import  emoji from '../utils/emoji.js';
 export default {
   data() {
     return {
@@ -121,16 +124,15 @@ export default {
       uploadList: [],
       photoList: [],
       file: null,
+      EmojiList:emoji,
     };
   },
   methods: {
     // 选中emoji
     selectEmoji(emojiIndex) {
-      this.emojiShow=false;
-      let imgEmo=`<img src="https://statics.gagahi.com/IM/img/qqFace/${
-                  emojiIndex - 1
-                }.gif">`
-        return this.value17 + imgEmo
+      this.emojiShow = false;
+      this.value17 = this.value17 + this.EmojiList[emojiIndex - 1] 
+
     },
     handleView(name) {
       this.imgName = name;
