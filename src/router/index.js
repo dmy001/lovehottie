@@ -14,7 +14,6 @@ const Comment = () => import('@/components/home/othercentre/Comment.vue')
 const BigImage = () => import('@/components/home/othercentre/BigImage.vue')
 const CommentBigImg = () => import('@/components/home/othercentre/CommentBigImg.vue')
 const EarthImg = () => import('../components/home/othercentre/EarthImg.vue')
-const Select = () => import('../components/home/othercentre/Select.vue')
 const Report = () => import('@/components/home/othercentre/Report.vue')
 const Zone = () => import('@/views/zone/Index.vue')
 const ZoneRoom = () => import('@/views/zone/Room.vue')
@@ -201,13 +200,7 @@ const routes = [
           title: '地球图标'
         }
       },
-      {
-        path: 'select',
-        component: Select,
-        meta: {
-          title: '选择'
-        }
-      },
+
       {
         path: 'report',
         component: Report,
