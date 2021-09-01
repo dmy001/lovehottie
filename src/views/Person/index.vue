@@ -108,7 +108,6 @@
               <img class="w-40 cursor-pointer" :src="img.imgUrl" />
             </span>
             <span class="">
-              <!-- <a :href="img.imgUrl + '?imageView2/2/w/560/h/630'" target="_self"></a> -->
               <img class="w-40 h-40 object-contain cursor-pointer" :src="img" />
             </span>
             <span
@@ -259,9 +258,8 @@
       <div class="">
         <Swpier></Swpier>
       </div>
-
       <div
-        class="upload float-left top-0 absolute bg-gray-500"
+        class="upload float-left top-0 absolute bg-gray-400"
         @click="modalPhoto = true"
       >
         <img
@@ -485,7 +483,7 @@
       </div> -->
       <Comment></Comment>
     </div>
-    
+    <!-- 上传图片弹出框-->
     <Modal
       v-model="modalPhoto"
       :closable="false"
@@ -574,33 +572,6 @@
             </button>
           </section>
         </div>
-      
-      <p slot="header">
-        <span class="text-white">{{ $trans("提示") }}</span>
-        <span
-          class="closed w-9 h-9 rounded-full -top-2 -right-3 absolute"
-          @click="delImg = false"
-        ></span>
-      </p>
-      <div>
-        <section style="height: 100px; width: 100%">
-          <p>{{ $trans("该照片所在动态也会一并删除。") }}</p>
-        </section>
-        <section class="absolute bottom-10 w-full text-center space-x-5">
-          <button
-            class="w-20 h-8 bg-red-400 rounded-2xl text-white"
-            @click="delEnsure()"
-          >
-            {{ $trans("确定") }}
-          </button>
-          <button
-            class="w-20 h-8 rounded-2xl border border-solid border-gray-400"
-            @click="delImg = false"
-          >
-            {{ $trans(" 取消") }}
-          </button>
-        </section>
-      </div>
     </Modal>
   </div>
 </template>
@@ -612,6 +583,14 @@ import Swpier from "@components/personal/Swpier.vue";
 import BigImage from "@/components/home/othercentre/BigImage";
 import Comment from "@components/personal/Comment.vue";
 export default {
+  components: {
+    imgUpload,
+    editDynamic,
+    Swpier,
+    BigImage,
+    Comment,
+    
+  },
   data() {
     return {
       bigImg: "",
@@ -680,18 +659,12 @@ export default {
       ],
     };
   },
-  components: {
-    imgUpload,
-    editDynamic,
-    Swpier,
-    BigImage,
-    Comment,
-    
-  },
+  
   methods: {
     cancelAddPhoto(){
        this.modalPhoto = false;  
     },
+    // 一键上传图片
     completeAddPhoto() {
       this.modalPhoto = false;
       setTimeout(() => {
@@ -702,9 +675,8 @@ export default {
     cancel() {
       //  this.$Message.info('')
     },
-    // 点击空白处关闭评论
+    // 点击空白处关闭备注好友
     closeSel(event) {
-    
       var currentName = document.getElementById("remarkName");
        if (currentName) {
         if (!currentName.contains(event.target)) {
@@ -731,12 +703,10 @@ export default {
       for (var i = 0; i < this.option.length; i++) {
         let num = this.option[i];
         arr.push(this.iamgeList[num]);
-        // this.iamgeList.splice(this.option[i],1)
       }
       this.iamgeList = this.iamgeList.filter(
         (item) => !arr.some((ele) => ele === item)
       );
-      // console.log(arr)
       this.option = [];
     },
     // 单项删除照片
@@ -769,7 +739,7 @@ export default {
     closeBigImg(value) {
       this.openBigImg = value;
     },
-    //确定按钮
+    //确定删除按钮
     delEnsure() {
       this.iamgeList.splice(this.modalIndex, 1);
       this.delImg = false;
