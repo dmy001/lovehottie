@@ -13,12 +13,6 @@
         class=" leftText placeholder-gray-800"
         :rows="9"
       />
-      <!-- <div id="textarea" 
-        style="width: 240px;height:150px; border: none"
-        class=" leftText placeholder-gray-800 text-left flex flex-row break-words"
-        contenteditable="true">
-        
-      </div> -->
     </label>
 
     <div class="leftFoot">
@@ -109,10 +103,6 @@
       </div>
       <div class="footRight">
         {{ $trans("发送") }}
-        <!-- <img
-          src="https://statics.lovehottie.com/web-pc//IM/img/qqFace/8.gif"
-          onclick="$('#zone_text').setCaret();$('#zone_text').insertAtCaret('[Sleep]');"
-        /> -->
       </div>
     </div>
   </div>
@@ -137,71 +127,11 @@ export default {
       EmojiList:emoji,
     };
   },
-  // watch:{
-  //     positionAddNode(){
-  //       this.selection = window.getSelection()
-  //       this.range = window.getSelection().getRangeAt(0)
-  //     }
-  // },
-
-
-// function insertInputTxt(id, insertTxt){
-// 	var elInput =document.getElementById(textarea);
-// 	var startPos = elInput.selectionStart;
-// 	var endPos = elInput.selectionEnd;
-// 	if(startPos ===undefined|| endPos ===undefined)return 
-// 	var txt = elInput.value;
-// 	var result = txt.substring(0, startPos) + insertTxt + txt.substring(endPos)    
-// 	elInput.value = result;    
-// 	elInput.focus();  
-// 	this.$nextTick(() => {
-//         elInput.selectionStart = startPos + insertTxt.length;    
-// 		elInput.selectionEnd = startPos + insertTxt.length;
-//       })
-// }
-
-
-
-
   methods: {
     // 选中emoji
-
     selectEmoji(emojiIndex) {
       this.emojiShow = false;
-      //  this.value17 = this.value17 + this.EmojiList[emojiIndex] 
-
-        let input = document.getElementById("textarea");
-
-      let startPos = input.selectionStart;
-      let endPos = input.selectionEnd;
-      let resultText =
-        this.value17.substring(0, startPos) +
-        this.EmojiList[emojiIndex] +
-        this.value17.substring(endPos);
-      this.value17 = resultText;
-      input.focus();
-      // input.selectionStart = startPos + emoji.data.length;
-      // input.selectionEnd = startPos + emoji.data.length;
-      //赋值数据
-      this.$set(this.form, "content", resultText);
-
-      // let imgEmo =<img src="`https://statics.gagahi.com/IM/img/qqFace/${
-      //   emojiIndex - 1
-      // }.gif`"/>;
-      // console.log(imgEmo)
-
-    //  this.value17=this.value17 + <img src="`https://statics.gagahi.com/IM/img/qqFace/${
-    //     emojiIndex - 1
-    //   }.gif`"/>
-      
-      // var img = document.createElement("IMG");
-      // img.src = `https://statics.gagahi.com/IM/img/qqFace/${
-      //   emojiIndex - 1
-      // }.gif`;
-      // img.style="width:24px;height:24px;overflow-wrap: break-all; "
-      // window.textarea.appendChild(img);
-      // // this.range.insertNode(img)
-      // this.range.setEndAfter(img);
+      this.value17 = this.value17 + this.EmojiList[emojiIndex - 1] 
 
     },
     handleView(name) {
