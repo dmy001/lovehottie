@@ -59,7 +59,7 @@
         class="top fixed right-0 cursor-pointer z-1000"
         style="width: auto; bottom: 85px"
       >
-      <BackTop>
+      <BackTop :height="0">
         <div class="scroll_t" style="width: auto; height: auto; border: none">
           <img src="https://s.gagahi.com/web-pc//images/icon_up.png" />
         </div>
