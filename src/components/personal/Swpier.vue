@@ -298,4 +298,7 @@ export default {
 .imgs:hover .bgBlack {
   background-color: rgba(3, 3, 3, 0.294);
 }
+.delete .ivu-modal-content {
+  height: 200px;
+}
 </style>

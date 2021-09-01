@@ -257,6 +257,7 @@ export default {
         this.inputShow = true;
       }
     },
+    //点击空白关闭评论区
     closeSel(event) {
       var currentCli = document.getElementById("sellineName");
       if (currentCli) {
